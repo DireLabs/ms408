@@ -21,8 +21,8 @@ _Last updated: 2026-07-05 (Code session 1)_
 | ID | State | Notes |
 |---|---|---|
 | T0.1 decision locks | ✅ done 2026-07-05 | G0 run in-session with Tim. |
-| T0.2 corpus pipeline | 🔄 in progress | Source verification underway (Code session 1). |
-| T0.3 validation harness | 🔄 in progress | Paper acquisition / generator feasibility underway (Code session 1). |
+| T0.2 corpus pipeline | 🔄 in progress | Source verification ✅ done — see SOURCES.md. ZL3b (EVA) + GC2a (v101) carry all metadata ($I/$L/$H) in-file. Building acquisition + IVTFF parser. |
+| T0.3 validation harness | 🔄 in progress | Source verification ✅ done — both generators have author code (GitHub) + free algorithm descriptions; replication targets all freely accessible. |
 | T2.5 W4 dossiers | ⬜ ready | Unblocked by G0. Awaiting Cowork session 1 — kickoff brief in WORKFLOW.md §6. |
 | all others | ⬜ blocked | Per DAG in WORKFLOW.md §3. |
 
