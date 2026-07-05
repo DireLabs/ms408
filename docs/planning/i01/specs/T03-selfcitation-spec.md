@@ -920,3 +920,21 @@ the H3 acceptance evidence for RESEARCH-PLAN §3.
   comparing against ZL3b statistics, use the same normalization pipeline (T1.x) for both sides —
   e.g. VMS word-type inventory for criterion 14.2.2 must be extracted with identical
   space/uncertain-glyph handling, or the 70 % target moves.
+
+## 17. Post-implementation fidelity resolutions (2026-07-05, during reimplementation)
+
+Two ambiguities in §8.5 were resolved empirically, by matching the author's reference-output
+statistics (both under R1: reconcile against the 2020 paper / a live Java run when available):
+
+- **F3 — "not the first attempt (j > 0)"**: read as *either* the chain-step index (2nd/3rd chained
+  `replaceRandomToken` call) *or* the within-call pool index. The chain-step reading fires the
+  word-final substitutions far more often; with the pool-index-only reading the generated text
+  under-produces ol-type words by ~0.09 (0.305 vs 0.396).
+- **F4 — word-final table on single-token words**: `pos == last` alone also matches 1-token words,
+  whose y/o candidates flood the text with 1-char words that self-amplify through citation (12 %
+  1-char tokens vs the author's 0.2 %). "Final" therefore additionally requires `len(tokens) > 1`.
+
+With both resolutions, 5-seed means vs the author's seed-19 run: i 0.226/0.241, ol 0.397/0.396,
+dy 0.277/0.256 (all within the ±0.03 gate of §14.2.1), VMS-type overlap 0.688 (band 0.65–0.75),
+tokens ≈10.2–10.6k vs 10.8k, types 1.8–2.3k vs 2.2k. Formal multi-seed benchmark still due in the
+T0.3 scoring step (L3: versioned script → results/).

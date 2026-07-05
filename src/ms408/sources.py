@@ -59,6 +59,36 @@ def _naibbe_sources() -> list[Source]:
     ]
 
 
+TIMM_COMMIT = "a6ede2202dd7ad6285ce2c007bf22c2a0e7709b7"
+_TIMM_NOTES = (
+    "Timm SelfCitationTextgenerator repo @ {} — MIT (c) 2019 Torsten Timm. Cite Timm & "
+    "Schinner 2020 doi:10.1080/01611194.2019.1596999 + Zenodo 10.5281/zenodo.2531632 "
+    "(spec T03-selfcitation §13).".format(TIMM_COMMIT[:7])
+)
+
+
+def _timm_sources() -> list[Source]:
+    files = [
+        ("timm_reference_output", "executable/generate/generated_text.txt",
+         "1e954a17b157e83f04ea21353ba877f70084b828b812fab3944347ac2888dc11"),
+        ("timm_conf", "executable/conf.properties",
+         "308af498cd5da6957e7f9d06e01efff0273856d7f59d5e15205edae86f9061ee"),
+        ("timm_license", "LICENSE",
+         "3621db279bfbb241057694d91c22895b4c5210e3c161ecef89c8402d091eb029"),
+    ]
+    return [
+        Source(
+            name=name,
+            url="https://raw.githubusercontent.com/TorstenTimm/SelfCitationTextgenerator/"
+            f"{TIMM_COMMIT}/{rel}",
+            dest=f"timm-selfcitation/{Path(rel).name}",
+            sha256=digest,
+            notes=_TIMM_NOTES,
+        )
+        for name, rel, digest in files
+    ]
+
+
 SOURCES: dict[str, Source] = {
     s.name: s
     for s in [
@@ -101,6 +131,7 @@ SOURCES: dict[str, Source] = {
             notes="IVTFF format spec v2.0.1 (doc issue 2.0.2, 2025-07-08).",
         ),
         *_naibbe_sources(),
+        *_timm_sources(),
     ]
 }
 
