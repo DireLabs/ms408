@@ -22,7 +22,7 @@ _Last updated: 2026-07-05 (Code session 1)_
 |---|---|---|
 | T0.1 decision locks | ✅ done 2026-07-05 | G0 run in-session with Tim. |
 | T0.2 corpus pipeline | ✅ done 2026-07-05 | Text: pinned acquisition + IVTFF parser + dataset v0.1.0 w/ provenance manifest. Scans: all 213 canvases full-res (536 MB), 0 dimension mismatches. Scan↔page join: 227/227 mapped; 20 foldout panels ambiguous (2 candidates each — resolve visually at T1.2); 9 unmatched canvases are binding shots. 19 tests green. |
-| T0.3 validation harness | 🔄 in progress | Specs done for both generators (docs/planning/i01/specs/). **H2 Naibbe generator reimplemented and validated**: golden decrypt of author's ciphertext byte-exact (1,640 lines); token/type/word-length stats within author's reference spread; seeded, manifest-carrying CLI. Next: H3 self-citation generator, H4 assembly, scoring API. |
+| T0.3 validation harness | 🔄 in progress | Specs done for both generators (docs/planning/i01/specs/). **H2 Naibbe reimplemented + validated** (golden decrypt byte-exact; stats within author spread). **H4 controls acquired**: Latin (Vulgate + Macer Floridus), Italian (Decameron, Hamilton 90 orthography), German (ReM + ReF incl. Ulmer Wundarznei late-15th-c. medical prose), Hebrew (Mishneh Torah, PD version) — 13 files, MANIFEST.json w/ sha256+licenses. Remaining: H3 self-citation generator, H4 normalization pass, scoring API, benchmark report. |
 | T2.5 W4 dossiers | ⬜ ready | Unblocked by G0. Awaiting Cowork session 1 — kickoff brief in WORKFLOW.md §6. |
 | all others | ⬜ blocked | Per DAG in WORKFLOW.md §3. |
 
