@@ -21,8 +21,8 @@ _Last updated: 2026-07-05 (Code session 1)_
 | ID | State | Notes |
 |---|---|---|
 | T0.1 decision locks | ✅ done 2026-07-05 | G0 run in-session with Tim. |
-| T0.2 corpus pipeline | 🔄 in progress | Source verification ✅ done — see SOURCES.md. ZL3b (EVA) + GC2a (v101) carry all metadata ($I/$L/$H) in-file. Building acquisition + IVTFF parser. |
-| T0.3 validation harness | 🔄 in progress | Source verification ✅ done — both generators have author code (GitHub) + free algorithm descriptions; replication targets all freely accessible. |
+| T0.2 corpus pipeline | 🔄 nearly done | Sources verified (SOURCES.md) + pinned by sha256. IVTFF parser + integrity tests green (227p/5385 loci ZL; 226p/5367 GC). Versioned dataset v0.1.0 builds with provenance manifest. Scans: IIIF crawl running. Remaining: scan↔page join after crawl. |
+| T0.3 validation harness | 🔄 in progress | Source verification ✅ done — both generators have author code (GitHub) + free algorithm descriptions; replication targets all freely accessible. Implementation not started. |
 | T2.5 W4 dossiers | ⬜ ready | Unblocked by G0. Awaiting Cowork session 1 — kickoff brief in WORKFLOW.md §6. |
 | all others | ⬜ blocked | Per DAG in WORKFLOW.md §3. |
 

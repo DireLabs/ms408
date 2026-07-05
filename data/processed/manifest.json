@@ -1,0 +1,29 @@
+{
+  "dataset_version": "0.1.0",
+  "built_at": "2026-07-05T22:25:28+00:00",
+  "git_commit": "cdb130a2b5bac7f44960ff41bb7642adbdb42da4",
+  "sources": {
+    "zl": {
+      "url": "https://www.voynich.nu/data/ZL3b-n.txt",
+      "sha256": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc",
+      "pinned_sha256": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc",
+      "alphabet": "Eva-"
+    },
+    "gc": {
+      "url": "https://www.voynich.nu/data/GC2a-n.txt",
+      "sha256": "b09570cb6c993bc2d87134d115e60a978650a8a6495483ddbb1f6005a586096f",
+      "pinned_sha256": "b09570cb6c993bc2d87134d115e60a978650a8a6495483ddbb1f6005a586096f",
+      "alphabet": "v101"
+    }
+  },
+  "counts": {
+    "zl": {
+      "pages": 227,
+      "loci": 5385
+    },
+    "gc": {
+      "pages": 226,
+      "loci": 5367
+    }
+  }
+}
