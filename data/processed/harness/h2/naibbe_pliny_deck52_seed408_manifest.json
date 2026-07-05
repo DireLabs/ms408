@@ -1,0 +1,23 @@
+{
+  "generator": "ms408.harness.naibbe",
+  "git_commit": "e0844e6071a242894633f2467c7fa716f33747f8",
+  "built_at": "2026-07-05T22:52:12+00:00",
+  "seed": 408,
+  "config": {
+    "deck": "52",
+    "respacing": 17,
+    "unambiguous": true,
+    "cross_bigram_check": true,
+    "max_bigram_retries": 10000,
+    "space_removal_rate": 0.03
+  },
+  "tables_sha256": "4e7cfd54b7ec66515d39a51e11ec97e8e19b643b0b189124eebc3982e707dcec",
+  "plaintext_source": "naibbe_pliny",
+  "plaintext_sha256": "957909f4982f7ff723dfaaf456678f0a131b844a5c2a8130d8ec75a8740397db",
+  "total_bigram_retries": 1678,
+  "outputs": [
+    "naibbe_pliny_deck52_seed408_ciphertext.txt",
+    "naibbe_pliny_deck52_seed408_respaced.txt",
+    "naibbe_pliny_deck52_seed408_segmented.txt"
+  ]
+}

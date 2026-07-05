@@ -8,3 +8,4 @@ venv/
 *.egg-info/
 data/raw/
 data/processed/*.jsonl
+data/processed/harness/**/*.txt

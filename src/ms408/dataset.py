@@ -50,7 +50,7 @@ def page_record(page) -> dict:
     }
 
 
-def _git_commit() -> str:
+def git_commit() -> str:
     try:
         return subprocess.run(
             ["git", "rev-parse", "HEAD"],
@@ -68,7 +68,7 @@ def build(out_root: Path = PROCESSED_ROOT) -> dict:
     manifest = {
         "dataset_version": DATASET_VERSION,
         "built_at": datetime.now(UTC).isoformat(timespec="seconds"),
-        "git_commit": _git_commit(),
+        "git_commit": git_commit(),
         "sources": {},
         "counts": {},
     }

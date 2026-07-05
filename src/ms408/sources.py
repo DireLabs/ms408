@@ -23,6 +23,42 @@ class Source:
     notes: str
 
 
+NAIBBE_COMMIT = "f2675ec5dd275268bc64dd48ea64fc0e0e9827a2"
+_NAIBBE_NOTES = (
+    "Greshko naibbe-cipher repo @ {} — modified MIT: publications using this must cite "
+    "Greshko 2025, doi:10.1080/01611194.2025.2566408 (spec T03-naibbe §2).".format(
+        NAIBBE_COMMIT[:7]
+    )
+)
+
+
+def _naibbe_sources() -> list[Source]:
+    files = [
+        ("naibbe_tables", "references/naibbe_tables.csv",
+         "4e7cfd54b7ec66515d39a51e11ec97e8e19b643b0b189124eebc3982e707dcec"),
+        ("naibbe_nathist_ciphertext", "encrypted/nathist_output_ciphertext.txt",
+         "9cdf2de12f371ac7efdb2e78713f229ada508286c1717758184238a59cd64326"),
+        ("naibbe_nathist_decrypted", "decrypted/nathist_output_ciphertext_decrypted.txt",
+         "852d1ad67f82d6472c8ef1d99bfa12c62f76f3d37be2623a131f47232b753ca2"),
+        ("naibbe_nathist_respaced", "respaced_plaintext/nathist_pre_encryption_respaced_plaintext.txt",
+         "4979b6826c75dd47b90d6c95ac212a34cd3735b1151ca2a524e9d13b4112e93b"),
+        ("naibbe_pliny", "input/examples/nathist_book16.txt",
+         "957909f4982f7ff723dfaaf456678f0a131b844a5c2a8130d8ec75a8740397db"),
+        ("naibbe_dante", "input/examples/divina_commedia.txt",
+         "aafa15bbc0644dac7680ce3d0e4494b99775fbc83394cb7ad88145a0f8d6b31e"),
+    ]
+    return [
+        Source(
+            name=name,
+            url=f"https://raw.githubusercontent.com/greshko/naibbe-cipher/{NAIBBE_COMMIT}/{rel}",
+            dest=f"naibbe-cipher/{rel}",
+            sha256=digest,
+            notes=_NAIBBE_NOTES,
+        )
+        for name, rel, digest in files
+    ]
+
+
 SOURCES: dict[str, Source] = {
     s.name: s
     for s in [
@@ -64,6 +100,7 @@ SOURCES: dict[str, Source] = {
             sha256="7ac9c4a82064763cac8767cca6f661cc4e1b4503ab9342acc03032ddb6939d49",
             notes="IVTFF format spec v2.0.1 (doc issue 2.0.2, 2025-07-08).",
         ),
+        *_naibbe_sources(),
     ]
 }
 
