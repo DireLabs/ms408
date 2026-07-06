@@ -34,8 +34,8 @@ _Last updated: 2026-07-05 (Code session 1)_
 
 ## Sessions
 
-- **Code session 1** (Claude Code, Fable 5) — workflow setup, G0, now T0.2 + T0.3. Started 2026-07-05.
-- **Cowork session 1** — T2.5 dossiers. Ready for Tim to launch with the WORKFLOW.md §6 brief.
+- **Code session 1** (Claude Code, Fable 5) — the program's primary session per amended L9: Phase 0+1 complete, G0+G1 gates passed, T2.1/T2.2/T2.4 baselines done. As of 2026-07-06, orchestrating 7 background subagents: 5× T2.5 dossiers, T1.4 assumption audit (matrix → Tim review per L29), T1.2 annotation schema.
+- Cowork: not in use for this program (Tim's Cowork capacity committed elsewhere; L9 amended).
 
 ## New D-items raised since G0
 

@@ -18,7 +18,7 @@
 | L6 | Evidence grading (A–D per RESEARCH-PLAN §6) required on every claim; ungraded = D. | Traceability of the narrative deliverable. |
 | L7 | No translation claims without an independent statistical anchor. | Non-negotiable, ever. |
 | L8 | Multi-scribe working model (Fagin Davis hands); Currier A/B stratification in all text analyses. | Both are established structure; ignoring them confounds results. |
-| L9 | Execution split: Cowork + subagents default; Claude Code for code-producing/technical tasks. | Tim's standard workflow. |
+| L9 | Execution split — **amended by Tim 2026-07-06**: Claude Code (+ its subagents) is the primary surface for all lanes, research and synthesis included; Cowork used only when a specific need fits it better. Original split (Cowork default / Code technical) superseded. | Tim's Cowork capacity is committed elsewhere; Code-session subagents cover the research/QA/synthesis lanes. |
 | L10 | Adversarial review by clean-context critic instances before any claim is graded A or B. | Decorrelates authorship bias from evaluation. |
 | L11 | (was D1) Transliteration: EVA primary; v101 sensitivity pass on all Phase 2 experiments. | G0 2026-07-05. Guards against transliteration overfitting while keeping one canonical corpus. |
 | L12 | (was D2) f116v marginalia: appendix-only — catalog it, don't build on it. | G0 2026-07-05. Small text, outsized speculation surface. |
@@ -36,10 +36,12 @@
 | L24 | (was D16) Hebrew register: consonantal primary, pointed as sensitivity. Verse texts (Macer, Commedia) are supplements, not primary bracket members. | G1 2026-07-06. |
 | L25 | (was D17) G1 pass tolerances as printed in reports/replication_report.md (entropy ±0.05 bits on the Takahashi like-for-like corpus; positional/lexical bands as tabled; CHECK rows accepted with documented explanations). | G1 2026-07-06. |
 | L26 | (was D18) Montemurro–Zanette preprocessing: paragraph-text loci only, uncertain words dropped — documented policy where the paper is silent. | G1 2026-07-06. Sensitivity run available on request. |
+| L27 | (was D9) Publication intent: **private for now**; full internal rigor, no publication formatting overhead; revisit at Phase 3. | Tim 2026-07-06. Reversible; licensing posture stays consume-only accordingly. |
+| L28 | (was D12) Bulk-annotation budget (T1.3): **$100 cap**, single coarse pass + QA + partial re-run headroom. T1.3 proceeds within cap without further check-in. | Tim 2026-07-06. Estimate at coarse schema: ~$20–60. |
+| L29 | T1.4 flow: Tim reviews the W6a variant matrix before Phase-2 sweeps run. | Tim 2026-07-06. |
 
 ## Open
 
 | ID | Question | Options | Implications | Recommended default | Owner |
 |---|---|---|---|---|---|
-| D9 | Publication intent | Private · blog series · preprint | Sets rigor bar, licensing care, and write-up format for T3.4 | Decide by end of Phase 1 | Tim |
-| D12 | API budget envelope for bulk annotation | Spend cap for Sonnet 4.6 batch + QA | Bounds T1.3 batch sizing and retry policy | Tim sets cap before T1.3 | Tim |
+| — | (none — all D-items through D18 resolved; D9→L27, D12→L28) | | | | |
