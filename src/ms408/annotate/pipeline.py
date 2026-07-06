@@ -66,8 +66,26 @@ def illustrated_pages(section: str | None = None) -> list:
     return pages
 
 
+MAX_EDGE_PX = 7000  # API rejects any image dimension > 8000px; downscale foldouts
+
+
 def _image_block(path: Path) -> dict:
-    data = base64.standard_b64encode(path.read_bytes()).decode()
+    raw = path.read_bytes()
+    from PIL import Image  # local import: only annotation needs it
+
+    with Image.open(path) as img:
+        if max(img.size) > MAX_EDGE_PX:
+            import io
+
+            scale = MAX_EDGE_PX / max(img.size)
+            resized = img.convert("RGB").resize(
+                (round(img.width * scale), round(img.height * scale)),
+                Image.LANCZOS,
+            )
+            buffer = io.BytesIO()
+            resized.save(buffer, format="JPEG", quality=90)
+            raw = buffer.getvalue()
+    data = base64.standard_b64encode(raw).decode()
     return {"type": "image",
             "source": {"type": "base64", "media_type": "image/jpeg", "data": data}}
 
