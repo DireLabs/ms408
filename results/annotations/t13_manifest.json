@@ -1,9 +1,9 @@
 {
-  "schema_version": "v0.1-coarse",
-  "built_at": "2026-07-06T18:46:08+00:00",
-  "git_commit": "8cde09bbc3a597414f127f90992151180d483394",
+  "schema_version": "v0.2-fine",
+  "built_at": "2026-07-06T21:05:35+00:00",
+  "git_commit": "abb7923414c20fe63fc03ca36333eafdcce4def5",
   "annotator_model": "claude-sonnet-4-6",
   "budget_cap_usd": 100.0,
   "pages_annotated_total": 227,
-  "spent_usd_total": 3.6978
+  "spent_usd_total": 3.5496
 }

@@ -1,12 +1,12 @@
 # T2.3 Study Report — Anchor Hunt (W3)
 
-Generated 2026-07-06T19:09:25+00:00 at commit `fa4d52f4f8` by `python -m ms408.studies.anchor_hunt`; full numbers in `results/studies/anchor_hunt.json`.
+Generated 2026-07-06T21:15:39+00:00 at commit `abb7923414` by `python -m ms408.studies.anchor_hunt`; full numbers in `results/studies/anchor_hunt.json`.
 
-Section H: 129 pages, 314 testable tokens × 47 feature indicators = 14,758 tests, BH-FDR q=0.05.
+Section H: 129 pages, 314 testable tokens × 34 feature indicators = 10,676 tests, BH-FDR q=0.05.
 
 ## Harness gate (L4 — must pass before anchors are admissible)
 
-- **Null control** (features × page-shuffled text): 0 false discoveries in 14,758 tests (fraction 0.0, ≤ q required).
+- **Null control** (features × page-shuffled text): 0 false discoveries in 10,676 tests (fraction 0.0, ≤ q required).
 - **Planted control** (synthetic token on 'illustration_coverage_pct=51-75' pages): recovered = True (phi 1.0, p 0.0).
 - **Gate PASSED** — H1 anchors admissible.
 
@@ -20,22 +20,22 @@ Token↔feature associations surviving FDR, by phi. These are co-occurrence stat
 
 ## Result: rigorous null (graded C; a null is itself a constraint)
 
-**No Voynichese token anchors to a herbal visual feature** after FDR correction across 14,758 tests — nothing behaves like 'root' at page-level granularity with the coarse schema. The harness gate passed (null control 0 false discoveries, planted anchor recovered), so this is a real negative, not a broken method.
+**No Voynichese token anchors to a herbal visual feature** after FDR correction across 10,676 tests — nothing behaves like 'root' at page-level granularity with the coarse schema. The harness gate passed (null control 0 false discoveries, planted anchor recovered), so this is a real negative, not a broken method.
 
 Strongest sub-threshold associations (none significant), for texture:
 
 | token | feature | phi | p | co-pages |
 |---|---|---|---|---|
-| `todaiin` | plant_count=3 | 0.4756 | 0.001084 | 3 |
-| `olor` | color_palette=yellow | 0.4283 | 0.000576 | 4 |
-| `qokaiin` | plant_count=3 | 0.3892 | 0.000508 | 5 |
-| `qokedy` | text_image_relationship=separate-zones | 0.3739 | 6.4e-05 | 13 |
-| `shedy` | text_image_relationship=separate-zones | 0.3492 | 0.000192 | 12 |
+| `todaiin` | plant_count=3 | 0.5278 | 0.000552 | 3 |
+| `olor` | color_palette=yellow | 0.4118 | 0.000763 | 4 |
+| `qokchdy` | plant_count=3 | 0.3923 | 0.003153 | 3 |
+| `okar` | plant_count=3 | 0.3828 | 0.001265 | 4 |
+| `ain` | leaf_shape=palmate | 0.373 | 0.004308 | 3 |
+| `cheeky` | leaf_arrangement=basal-rosette | 0.3505 | 0.005637 | 3 |
 | `yky` | leaf_shape=palmate | 0.3489 | 0.006041 | 3 |
-| `qokchdy` | plant_count=3 | 0.3489 | 0.006041 | 3 |
-| `shdy` | stem_features=multiple | 0.3448 | 0.000394 | 9 |
-| `chodar` | root_type=zoomorphic | 0.3371 | 0.017044 | 2 |
-| `chal` | illustration_coverage_pct=26-50 | 0.3371 | 0.017044 | 2 |
+| `shar` | plant_count=2 | 0.3401 | 0.003483 | 4 |
+| `qokaiin` | plant_count=3 | 0.3361 | 0.002939 | 4 |
+| `chdy` | plant_count=3 | 0.3361 | 0.002939 | 4 |
 
 Two caveats on the strongest raw signals: (a) most co-occur on only 2-5 pages (tiny-sample noise); (b) the very strongest (`qokedy`/`shedy` ↔ separate-zones layout) reflect the **Currier A/B dialect confound** leaking through a layout feature, not semantics. The higher-power follow-up is label-level anchoring (word-next-to-feature), which needs label-region↔feature annotation beyond the coarse schema — flag for the fine-schema extension (L15) and T2.3b.
 

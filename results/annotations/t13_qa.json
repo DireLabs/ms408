@@ -1,0 +1,409 @@
+{
+  "built_at": "2026-07-06T21:14:43+00:00",
+  "git_commit": "abb7923414c20fe63fc03ca36333eafdcce4def5",
+  "qa_model": "claude-fable-5",
+  "qa_served_by": {
+    "claude-fable-5": 9,
+    "claude-opus-4-8": 17
+  },
+  "qa_refused_pages": [],
+  "sampled_pages": 26,
+  "scored_pages": 26,
+  "sample_seed": 408,
+  "overall_disagreement_rate": 0.2114,
+  "critical_disagreement_rate": 0.2234,
+  "worst_field": "root_type",
+  "worst_field_rate": 0.3462,
+  "thresholds": {
+    "overall": 0.2,
+    "critical": 0.15,
+    "single_field": 0.4
+  },
+  "batch_passed": false,
+  "field_disagreement_counts": {
+    "root_type": 9,
+    "leaf_arrangement": 9,
+    "illustration_coverage_pct": 8,
+    "leaf_shape": 7,
+    "color_palette": 5,
+    "leaf_count_band": 4,
+    "central_emblem_class": 2,
+    "celestial_bodies": 2,
+    "color_zones": 2,
+    "figure_adornment": 2,
+    "stem_features": 2,
+    "text_image_relationship": 2,
+    "diagram_form": 1,
+    "nymph_pose_class": 1,
+    "layout_flow": 1,
+    "star_count_band": 1,
+    "root_coloring": 1,
+    "container_count": 1,
+    "root_forms": 1,
+    "whole_plant_present": 1,
+    "nymph_count_band": 1
+  },
+  "per_page": [
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "illustration_coverage_pct",
+        "diagram_form",
+        "central_emblem_class",
+        "celestial_bodies",
+        "color_zones"
+      ],
+      "critical_disagreements": [
+        "central_emblem_class"
+      ],
+      "page_disagreement_rate": 0.3846,
+      "page": "f68v1",
+      "section": "A",
+      "qa_served_by": "claude-fable-5"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "nymph_pose_class",
+        "figure_adornment",
+        "layout_flow"
+      ],
+      "critical_disagreements": [],
+      "page_disagreement_rate": 0.2308,
+      "page": "f79v",
+      "section": "B",
+      "qa_served_by": "claude-fable-5"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "figure_adornment"
+      ],
+      "critical_disagreements": [],
+      "page_disagreement_rate": 0.0769,
+      "page": "f84r",
+      "section": "B",
+      "qa_served_by": "claude-fable-5"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "illustration_coverage_pct",
+        "central_emblem_class",
+        "star_count_band",
+        "celestial_bodies"
+      ],
+      "critical_disagreements": [
+        "central_emblem_class",
+        "star_count_band"
+      ],
+      "page_disagreement_rate": 0.3077,
+      "page": "f69r",
+      "section": "C",
+      "qa_served_by": "claude-fable-5"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "root_type",
+        "leaf_shape",
+        "leaf_arrangement"
+      ],
+      "critical_disagreements": [
+        "root_type",
+        "leaf_shape"
+      ],
+      "page_disagreement_rate": 0.2308,
+      "page": "f14v",
+      "section": "H",
+      "qa_served_by": "claude-opus-4-8"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "illustration_coverage_pct",
+        "leaf_shape",
+        "leaf_arrangement",
+        "leaf_count_band"
+      ],
+      "critical_disagreements": [
+        "leaf_shape"
+      ],
+      "page_disagreement_rate": 0.3077,
+      "page": "f65v",
+      "section": "H",
+      "qa_served_by": "claude-opus-4-8"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "root_type"
+      ],
+      "critical_disagreements": [
+        "root_type"
+      ],
+      "page_disagreement_rate": 0.0769,
+      "page": "f96v",
+      "section": "H",
+      "qa_served_by": "claude-opus-4-8"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "root_type",
+        "leaf_arrangement"
+      ],
+      "critical_disagreements": [
+        "root_type"
+      ],
+      "page_disagreement_rate": 0.1538,
+      "page": "f34v",
+      "section": "H",
+      "qa_served_by": "claude-opus-4-8"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "root_type",
+        "leaf_shape",
+        "leaf_arrangement"
+      ],
+      "critical_disagreements": [
+        "root_type",
+        "leaf_shape"
+      ],
+      "page_disagreement_rate": 0.2308,
+      "page": "f11r",
+      "section": "H",
+      "qa_served_by": "claude-opus-4-8"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "illustration_coverage_pct",
+        "root_type",
+        "leaf_shape",
+        "leaf_arrangement"
+      ],
+      "critical_disagreements": [
+        "root_type",
+        "leaf_shape"
+      ],
+      "page_disagreement_rate": 0.3077,
+      "page": "f90v2",
+      "section": "H",
+      "qa_served_by": "claude-opus-4-8"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "root_type",
+        "leaf_arrangement",
+        "leaf_count_band"
+      ],
+      "critical_disagreements": [
+        "root_type"
+      ],
+      "page_disagreement_rate": 0.2308,
+      "page": "f16r",
+      "section": "H",
+      "qa_served_by": "claude-opus-4-8"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "leaf_count_band"
+      ],
+      "critical_disagreements": [],
+      "page_disagreement_rate": 0.0769,
+      "page": "f36r",
+      "section": "H",
+      "qa_served_by": "claude-opus-4-8"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "leaf_shape",
+        "stem_features"
+      ],
+      "critical_disagreements": [
+        "leaf_shape"
+      ],
+      "page_disagreement_rate": 0.1538,
+      "page": "f37v",
+      "section": "H",
+      "qa_served_by": "claude-opus-4-8"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "illustration_coverage_pct",
+        "root_type",
+        "leaf_arrangement"
+      ],
+      "critical_disagreements": [
+        "root_type"
+      ],
+      "page_disagreement_rate": 0.2308,
+      "page": "f20r",
+      "section": "H",
+      "qa_served_by": "claude-opus-4-8"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "root_type",
+        "root_coloring",
+        "leaf_shape",
+        "leaf_arrangement"
+      ],
+      "critical_disagreements": [
+        "root_type",
+        "leaf_shape"
+      ],
+      "page_disagreement_rate": 0.3077,
+      "page": "f22r",
+      "section": "H",
+      "qa_served_by": "claude-opus-4-8"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "leaf_count_band",
+        "stem_features"
+      ],
+      "critical_disagreements": [],
+      "page_disagreement_rate": 0.1538,
+      "page": "f9r",
+      "section": "H",
+      "qa_served_by": "claude-opus-4-8"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "leaf_shape",
+        "leaf_arrangement"
+      ],
+      "critical_disagreements": [
+        "leaf_shape"
+      ],
+      "page_disagreement_rate": 0.1538,
+      "page": "f29r",
+      "section": "H",
+      "qa_served_by": "claude-opus-4-8"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "root_type"
+      ],
+      "critical_disagreements": [
+        "root_type"
+      ],
+      "page_disagreement_rate": 0.0769,
+      "page": "f25r",
+      "section": "H",
+      "qa_served_by": "claude-opus-4-8"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "illustration_coverage_pct"
+      ],
+      "critical_disagreements": [],
+      "page_disagreement_rate": 0.0769,
+      "page": "f8r",
+      "section": "H",
+      "qa_served_by": "claude-opus-4-8"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "container_count",
+        "root_forms"
+      ],
+      "critical_disagreements": [
+        "container_count"
+      ],
+      "page_disagreement_rate": 0.1538,
+      "page": "f89r2",
+      "section": "P",
+      "qa_served_by": "claude-opus-4-8"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "whole_plant_present"
+      ],
+      "critical_disagreements": [],
+      "page_disagreement_rate": 0.0769,
+      "page": "f99v",
+      "section": "P",
+      "qa_served_by": "claude-opus-4-8"
+    },
+    {
+      "scored_fields": 3,
+      "disagreements": [
+        "color_palette"
+      ],
+      "critical_disagreements": [],
+      "page_disagreement_rate": 0.3333,
+      "page": "f58v",
+      "section": "S",
+      "qa_served_by": "claude-fable-5"
+    },
+    {
+      "scored_fields": 3,
+      "disagreements": [
+        "illustration_coverage_pct",
+        "text_image_relationship",
+        "color_palette"
+      ],
+      "critical_disagreements": [],
+      "page_disagreement_rate": 1.0,
+      "page": "f114r",
+      "section": "S",
+      "qa_served_by": "claude-fable-5"
+    },
+    {
+      "scored_fields": 3,
+      "disagreements": [
+        "color_palette"
+      ],
+      "critical_disagreements": [],
+      "page_disagreement_rate": 0.3333,
+      "page": "f105v",
+      "section": "S",
+      "qa_served_by": "claude-fable-5"
+    },
+    {
+      "scored_fields": 3,
+      "disagreements": [
+        "text_image_relationship",
+        "color_palette"
+      ],
+      "critical_disagreements": [],
+      "page_disagreement_rate": 0.6667,
+      "page": "f116v",
+      "section": "T",
+      "qa_served_by": "claude-fable-5"
+    },
+    {
+      "scored_fields": 13,
+      "disagreements": [
+        "illustration_coverage_pct",
+        "color_palette",
+        "nymph_count_band",
+        "color_zones"
+      ],
+      "critical_disagreements": [
+        "nymph_count_band"
+      ],
+      "page_disagreement_rate": 0.3077,
+      "page": "f72v1",
+      "section": "Z",
+      "qa_served_by": "claude-fable-5"
+    }
+  ],
+  "qa_cost_usd": 1.5525
+}
