@@ -38,7 +38,9 @@
 | L26 | (was D18) Montemurro–Zanette preprocessing: paragraph-text loci only, uncertain words dropped — documented policy where the paper is silent. | G1 2026-07-06. Sensitivity run available on request. |
 | L27 | (was D9) Publication intent: **private for now**; full internal rigor, no publication formatting overhead; revisit at Phase 3. | Tim 2026-07-06. Reversible; licensing posture stays consume-only accordingly. |
 | L28 | (was D12) Bulk-annotation budget (T1.3): **$100 cap**, single coarse pass + QA + partial re-run headroom. T1.3 proceeds within cap without further check-in. | Tim 2026-07-06. Estimate at coarse schema: ~$20–60. |
-| L29 | T1.4 flow: Tim reviews the W6a variant matrix before Phase-2 sweeps run. | Tim 2026-07-06. |
+| L29 | T1.4 flow: Tim reviews the W6a variant matrix before Phase-2 sweeps run. | Tim 2026-07-06. Satisfied same day — see L30. |
+| L30 | W6a variant matrix accepted; P1 sweep set approved: V1 (v101 substrate), V2 (homophone-poor Naibbe), V3 (paradigmatic conlang), V4 (stratified bracket), V8 (tokenization grid), V5 (reading-order probe). **L11 unchanged**: EVA stays primary; v101 co-reported in Phase-2 outputs; revisit only if v101's advantage survives the sweeps. | Tim 2026-07-06. |
+| L31 | Annotation schema v0.1-coarse locked with defaults: ambiguous foldout panels annotated on both candidate scans with provenance; S/T pages common-block only; provisional QA thresholds 0.20/0.15/40%; scan colors as-is with palette enum; zoomorphic-root boolean. **T1.3 bulk annotation green-lit** under the L28 $100 cap; drift stats reported before any G2 ask. | Tim 2026-07-06. |
 
 ## Open
 
