@@ -1,0 +1,124 @@
+{
+  "built_at": "2026-07-06T23:05:34+00:00",
+  "git_commit": "e906816e831638eae74f8965fbd2d392eed90fe4",
+  "bootstrap": 5000,
+  "label_census": {
+    "A": {
+      "pages": 8,
+      "label_bearing_pages": 5,
+      "label_tokens": 148
+    },
+    "B": {
+      "pages": 19,
+      "label_bearing_pages": 11,
+      "label_tokens": 125
+    },
+    "C": {
+      "pages": 11,
+      "label_bearing_pages": 5,
+      "label_tokens": 212
+    },
+    "H": {
+      "pages": 129,
+      "label_bearing_pages": 6,
+      "label_tokens": 31
+    },
+    "P": {
+      "pages": 16,
+      "label_bearing_pages": 15,
+      "label_tokens": 238
+    },
+    "S": {
+      "pages": 25,
+      "label_bearing_pages": 0,
+      "label_tokens": 0
+    },
+    "T": {
+      "pages": 7,
+      "label_bearing_pages": 3,
+      "label_tokens": 62
+    },
+    "Z": {
+      "pages": 12,
+      "label_bearing_pages": 12,
+      "label_tokens": 344
+    }
+  },
+  "recurrence_tests": {
+    "A": {
+      "label_pages": 5,
+      "label_tokens": 148,
+      "label_types": 140,
+      "label_type_token_ratio": 0.9459,
+      "label_types_recurring_2plus": 4,
+      "label_mean_pages_per_type": 1.029,
+      "null_recurrence_band_95": [
+        5,
+        29
+      ],
+      "null_recurrence_median": 16,
+      "p_labels_recur_more_than_running": 0.9914,
+      "labels_are_naming_system": false
+    },
+    "B": {
+      "label_pages": 11,
+      "label_tokens": 125,
+      "label_types": 112,
+      "label_type_token_ratio": 0.896,
+      "label_types_recurring_2plus": 7,
+      "label_mean_pages_per_type": 1.08,
+      "null_recurrence_band_95": [
+        11,
+        22
+      ],
+      "null_recurrence_median": 16,
+      "p_labels_recur_more_than_running": 1.0,
+      "labels_are_naming_system": false
+    },
+    "C": {
+      "label_pages": 5,
+      "label_tokens": 212,
+      "label_types": 188,
+      "label_type_token_ratio": 0.8868,
+      "label_types_recurring_2plus": 6,
+      "label_mean_pages_per_type": 1.032,
+      "null_recurrence_band_95": [
+        3,
+        29
+      ],
+      "null_recurrence_median": 8,
+      "p_labels_recur_more_than_running": 0.77325,
+      "labels_are_naming_system": false
+    },
+    "H": {
+      "label_pages": 6,
+      "label_tokens": 31,
+      "label_types": 20,
+      "label_type_token_ratio": 0.6452,
+      "label_types_recurring_2plus": 0,
+      "label_mean_pages_per_type": 1.0,
+      "null_recurrence_band_95": [
+        0,
+        2
+      ],
+      "null_recurrence_median": 1,
+      "p_labels_recur_more_than_running": 1.0,
+      "labels_are_naming_system": false
+    },
+    "P": {
+      "label_pages": 15,
+      "label_tokens": 238,
+      "label_types": 225,
+      "label_type_token_ratio": 0.9454,
+      "label_types_recurring_2plus": 8,
+      "label_mean_pages_per_type": 1.049,
+      "null_recurrence_band_95": [
+        25,
+        41
+      ],
+      "null_recurrence_median": 33,
+      "p_labels_recur_more_than_running": 1.0,
+      "labels_are_naming_system": false
+    }
+  }
+}
