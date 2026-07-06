@@ -1,0 +1,296 @@
+{
+  "built_at": "2026-07-06T17:36:35+00:00",
+  "git_commit": "6a216cb9a388781ab08d69f29edc544b54531aaa",
+  "vms_reference": {
+    "h1": 3.8789,
+    "h2": 2.1294,
+    "mean_word_length": 5.1,
+    "type_token_ratio": 0.2176,
+    "zipf_slope": -1.1032,
+    "abbreviation_rho": -0.3472,
+    "ed1_main_component": 0.7975,
+    "position_entropy": 0.6675,
+    "repetition_rate": 0.00812,
+    "mz_peak_value": 0.3072,
+    "mz_peak_scale": 812
+  },
+  "V1": {
+    "vms_v101_profile": {
+      "tokens": 36385,
+      "types": 8351,
+      "h1": 4.0333,
+      "h2": 2.5329,
+      "mean_word_length": 3.874,
+      "type_token_ratio": 0.2295,
+      "zipf_slope": -1.0604,
+      "abbreviation_rho": -0.3014,
+      "ed1_main_component": 0.8945,
+      "position_entropy": 0.6433,
+      "repetition_rate": 0.00643,
+      "mz_peak_value": 0.2765,
+      "mz_peak_scale": 866
+    },
+    "note": "word segmentation is shared between transliterations; char-level metrics (h1/h2, ED1, position entropy) shift with v101's finer glyph units. Co-reported per L30; topics/morphology v101 rows already exist in their studies."
+  },
+  "V2": {
+    "52": {
+      "h2": 2.086,
+      "type_token_ratio": 0.1643,
+      "ed1_main_component": 0.944,
+      "mz_peak_value": 0.0002,
+      "mz_peak_scale": 1364
+    },
+    "alpha-only": {
+      "h2": 1.5706,
+      "type_token_ratio": 0.0108,
+      "ed1_main_component": 0.336,
+      "mz_peak_value": 0.0166,
+      "mz_peak_scale": 473
+    },
+    "alpha-only-deterministic": {
+      "h2": 1.5062,
+      "type_token_ratio": 0.009,
+      "ed1_main_component": 0.3464,
+      "mz_peak_value": 0.0277,
+      "mz_peak_scale": 473
+    }
+  },
+  "V3": {
+    "paradigm_conlang": {
+      "h2": 2.0286,
+      "mean_word_length": 6.502,
+      "ed1_main_component": 0.7569,
+      "position_entropy": 0.565,
+      "mz_peak_value": 0.3564,
+      "mz_peak_scale": 812
+    },
+    "note": "template uses a VMS-informed affix inventory \u2014 this is the constructed-language family's UPPER BOUND, not a neutral parameterization."
+  },
+  "V4": {
+    "A": {
+      "tokens": 10709,
+      "scorecard": {
+        "selfcitation": {
+          "distance": 0.823,
+          "worst_metrics": [
+            "type_token_ratio",
+            "mz_peak_value",
+            "mz_peak_scale"
+          ]
+        },
+        "verbose_cipher": {
+          "distance": 0.948,
+          "worst_metrics": [
+            "zipf_slope",
+            "repetition_rate",
+            "mz_peak_scale"
+          ]
+        },
+        "conlang_paradigm": {
+          "distance": 0.982,
+          "worst_metrics": [
+            "repetition_rate",
+            "abbreviation_rho",
+            "zipf_slope"
+          ]
+        },
+        "abjad_anagram": {
+          "distance": 1.133,
+          "worst_metrics": [
+            "h1",
+            "zipf_slope",
+            "repetition_rate"
+          ]
+        },
+        "abbreviation": {
+          "distance": 1.203,
+          "worst_metrics": [
+            "h2",
+            "repetition_rate",
+            "ed1_main_component"
+          ]
+        }
+      },
+      "vms_key_metrics": {
+        "h2": 2.1848,
+        "mz_peak_value": 0.1777,
+        "mz_peak_scale": 764,
+        "ed1_main_component": 0.7544
+      }
+    },
+    "B": {
+      "tokens": 22864,
+      "scorecard": {
+        "selfcitation": {
+          "distance": 0.636,
+          "worst_metrics": [
+            "type_token_ratio",
+            "mz_peak_value",
+            "h1"
+          ]
+        },
+        "conlang_paradigm": {
+          "distance": 0.897,
+          "worst_metrics": [
+            "abbreviation_rho",
+            "zipf_slope",
+            "repetition_rate"
+          ]
+        },
+        "verbose_cipher": {
+          "distance": 0.903,
+          "worst_metrics": [
+            "mz_peak_scale",
+            "zipf_slope",
+            "repetition_rate"
+          ]
+        },
+        "abjad_anagram": {
+          "distance": 1.206,
+          "worst_metrics": [
+            "zipf_slope",
+            "h1",
+            "mz_peak_scale"
+          ]
+        },
+        "abbreviation": {
+          "distance": 1.354,
+          "worst_metrics": [
+            "h2",
+            "position_entropy",
+            "zipf_slope"
+          ]
+        }
+      },
+      "vms_key_metrics": {
+        "h2": 2.0088,
+        "mz_peak_value": 0.2309,
+        "mz_peak_scale": 381,
+        "ed1_main_component": 0.8183
+      }
+    }
+  },
+  "V5": {
+    "mz_forward": {
+      "scale": 812,
+      "value": 0.3072
+    },
+    "mz_words_reversed_within_lines": {
+      "scale": 812,
+      "value": 0.3071
+    },
+    "h2_forward": 2.1294,
+    "h2_glyph_reversed": 2.1294,
+    "note": "MZ \u0394I is structurally near-invariant under within-line reversal (part membership barely changes) and h2 is exactly invariant under full string reversal (bigram bijection). The run documents these invariances: direction evidence must come from positional asymmetries (paragraph-initial gallows, line-final m), not from \u0394I or h2."
+  },
+  "V8": {
+    "grid": {
+      "alt=1 comma=1 braces=1 dropunc=1": {
+        "tokens": 34111,
+        "types": 7424,
+        "h2": 2.1294,
+        "ed1_main_component": 0.7975
+      },
+      "alt=1 comma=1 braces=1 dropunc=0": {
+        "tokens": 34209,
+        "types": 7515,
+        "h2": 2.1349,
+        "ed1_main_component": 0.7955
+      },
+      "alt=1 comma=1 braces=0 dropunc=1": {
+        "tokens": 34111,
+        "types": 7432,
+        "h2": 2.1471,
+        "ed1_main_component": 0.7723
+      },
+      "alt=1 comma=1 braces=0 dropunc=0": {
+        "tokens": 34209,
+        "types": 7523,
+        "h2": 2.1526,
+        "ed1_main_component": 0.7706
+      },
+      "alt=1 comma=0 braces=1 dropunc=1": {
+        "tokens": 31651,
+        "types": 8812,
+        "h2": 2.1762,
+        "ed1_main_component": 0.7063
+      },
+      "alt=1 comma=0 braces=1 dropunc=0": {
+        "tokens": 31749,
+        "types": 8905,
+        "h2": 2.1819,
+        "ed1_main_component": 0.705
+      },
+      "alt=1 comma=0 braces=0 dropunc=1": {
+        "tokens": 31651,
+        "types": 8818,
+        "h2": 2.1937,
+        "ed1_main_component": 0.6875
+      },
+      "alt=1 comma=0 braces=0 dropunc=0": {
+        "tokens": 31749,
+        "types": 8911,
+        "h2": 2.1993,
+        "ed1_main_component": 0.6863
+      },
+      "alt=0 comma=1 braces=1 dropunc=1": {
+        "tokens": 34090,
+        "types": 7400,
+        "h2": 2.1289,
+        "ed1_main_component": 0.7978
+      },
+      "alt=0 comma=1 braces=1 dropunc=0": {
+        "tokens": 34211,
+        "types": 7516,
+        "h2": 2.1358,
+        "ed1_main_component": 0.7963
+      },
+      "alt=0 comma=1 braces=0 dropunc=1": {
+        "tokens": 34090,
+        "types": 7407,
+        "h2": 2.146,
+        "ed1_main_component": 0.7741
+      },
+      "alt=0 comma=1 braces=0 dropunc=0": {
+        "tokens": 34211,
+        "types": 7523,
+        "h2": 2.1529,
+        "ed1_main_component": 0.773
+      },
+      "alt=0 comma=0 braces=1 dropunc=1": {
+        "tokens": 31630,
+        "types": 8792,
+        "h2": 2.1756,
+        "ed1_main_component": 0.7067
+      },
+      "alt=0 comma=0 braces=1 dropunc=0": {
+        "tokens": 31751,
+        "types": 8910,
+        "h2": 2.1827,
+        "ed1_main_component": 0.7057
+      },
+      "alt=0 comma=0 braces=0 dropunc=1": {
+        "tokens": 31630,
+        "types": 8797,
+        "h2": 2.1926,
+        "ed1_main_component": 0.689
+      },
+      "alt=0 comma=0 braces=0 dropunc=0": {
+        "tokens": 31751,
+        "types": 8915,
+        "h2": 2.1996,
+        "ed1_main_component": 0.6883
+      }
+    },
+    "spread": {
+      "h2_range": [
+        2.1289,
+        2.1996
+      ],
+      "ed1_range": [
+        0.6863,
+        0.7978
+      ]
+    }
+  }
+}

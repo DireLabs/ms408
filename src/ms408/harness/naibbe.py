@@ -33,7 +33,14 @@ from ..dataset import git_commit
 from ..sources import RAW_ROOT, SOURCES, path_for
 
 TABLE_NAMES = ("alpha", "beta1", "beta2", "beta3", "gamma1", "gamma2")
-DECKS = {"52": (20, 8, 8, 8, 4, 4), "78": (28, 14, 11, 11, 7, 7)}
+DECKS = {
+    "52": (20, 8, 8, 8, 4, 4),
+    "78": (28, 14, 11, 11, 7, 7),
+    # V2 (W6a variant matrix, L30): homophone-poor variant — alpha table only,
+    # so each plaintext letter has exactly one unigram/prefix/suffix glyph and
+    # homophony comes only from the random unigram/bigram segmentation
+    "alpha-only": (52, 0, 0, 0, 0, 0),
+}
 ALPHABET = frozenset("abcdefghilmnopqrstuvxyz")  # 23 letters: a-z minus j, k, w
 ROLES = ("unigram", "prefix", "suffix")
 TABLES_SHA256 = SOURCES["naibbe_tables"].sha256
