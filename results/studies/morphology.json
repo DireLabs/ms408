@@ -1,0 +1,935 @@
+{
+  "built_at": "2026-07-06T03:39:11+00:00",
+  "git_commit": "fbb6107fe04ba54f15a97f6a6107866b0f7b4220",
+  "word_policy": "EVA default + drop_uncertain_words + drop '@'-escape words; paragraph-text loci; all corpora truncated to the ZL token count",
+  "corpora": {
+    "zl_all": {
+      "class": "H1",
+      "tokens": 34111,
+      "ed1_network": {
+        "types": 7424,
+        "edges": 24366,
+        "mean_degree": 6.564,
+        "main_component_share": 0.7975,
+        "isolate_share": 0.186
+      },
+      "positional": {
+        "mean_normalized_position_entropy": 0.6675,
+        "most_frequent_glyphs": {
+          "o": 0.9152,
+          "e": 0.6547,
+          "h": 0.6867,
+          "y": 0.3712,
+          "a": 0.8565,
+          "c": 0.7037,
+          "d": 0.7809,
+          "i": 0.5965,
+          "k": 0.7736,
+          "l": 0.8027,
+          "r": 0.5374,
+          "s": 0.7474
+        }
+      },
+      "affixes": {
+        "top_prefixes": [
+          {
+            "gram": "o",
+            "token_coverage": 0.2007
+          },
+          {
+            "gram": "c",
+            "token_coverage": 0.1857
+          },
+          {
+            "gram": "ch",
+            "token_coverage": 0.1609
+          },
+          {
+            "gram": "q",
+            "token_coverage": 0.1549
+          },
+          {
+            "gram": "qo",
+            "token_coverage": 0.1499
+          },
+          {
+            "gram": "s",
+            "token_coverage": 0.1126
+          },
+          {
+            "gram": "d",
+            "token_coverage": 0.0913
+          },
+          {
+            "gram": "qok",
+            "token_coverage": 0.0891
+          },
+          {
+            "gram": "sh",
+            "token_coverage": 0.0872
+          },
+          {
+            "gram": "che",
+            "token_coverage": 0.0759
+          }
+        ],
+        "top_suffixes": [
+          {
+            "gram": "y",
+            "token_coverage": 0.3993
+          },
+          {
+            "gram": "dy",
+            "token_coverage": 0.1742
+          },
+          {
+            "gram": "n",
+            "token_coverage": 0.1653
+          },
+          {
+            "gram": "in",
+            "token_coverage": 0.1623
+          },
+          {
+            "gram": "l",
+            "token_coverage": 0.1512
+          },
+          {
+            "gram": "r",
+            "token_coverage": 0.1462
+          },
+          {
+            "gram": "edy",
+            "token_coverage": 0.1171
+          },
+          {
+            "gram": "iin",
+            "token_coverage": 0.1146
+          },
+          {
+            "gram": "ey",
+            "token_coverage": 0.1072
+          },
+          {
+            "gram": "ol",
+            "token_coverage": 0.0791
+          }
+        ],
+        "share_with_top_prefix_and_suffix": 0.6653
+      },
+      "curveline_valid_share": 0.8875
+    },
+    "zl_currierA": {
+      "class": "H1",
+      "tokens": 10709,
+      "ed1_network": {
+        "types": 3432,
+        "edges": 9015,
+        "mean_degree": 5.253,
+        "main_component_share": 0.7544,
+        "isolate_share": 0.2264
+      },
+      "positional": {
+        "mean_normalized_position_entropy": 0.7055,
+        "most_frequent_glyphs": {
+          "o": 0.945,
+          "h": 0.7284,
+          "c": 0.6946,
+          "y": 0.5298,
+          "e": 0.7132,
+          "i": 0.6162,
+          "a": 0.8528,
+          "d": 0.8127,
+          "l": 0.635,
+          "k": 0.8166,
+          "s": 0.8,
+          "r": 0.4602
+        }
+      },
+      "affixes": {
+        "top_prefixes": [
+          {
+            "gram": "c",
+            "token_coverage": 0.2556
+          },
+          {
+            "gram": "ch",
+            "token_coverage": 0.191
+          },
+          {
+            "gram": "o",
+            "token_coverage": 0.1593
+          },
+          {
+            "gram": "d",
+            "token_coverage": 0.1444
+          },
+          {
+            "gram": "s",
+            "token_coverage": 0.1155
+          },
+          {
+            "gram": "q",
+            "token_coverage": 0.1034
+          },
+          {
+            "gram": "qo",
+            "token_coverage": 0.0987
+          },
+          {
+            "gram": "da",
+            "token_coverage": 0.0924
+          },
+          {
+            "gram": "cho",
+            "token_coverage": 0.0913
+          },
+          {
+            "gram": "sh",
+            "token_coverage": 0.0877
+          }
+        ],
+        "top_suffixes": [
+          {
+            "gram": "y",
+            "token_coverage": 0.3066
+          },
+          {
+            "gram": "l",
+            "token_coverage": 0.1844
+          },
+          {
+            "gram": "r",
+            "token_coverage": 0.1662
+          },
+          {
+            "gram": "n",
+            "token_coverage": 0.1568
+          },
+          {
+            "gram": "in",
+            "token_coverage": 0.1513
+          },
+          {
+            "gram": "ol",
+            "token_coverage": 0.1361
+          },
+          {
+            "gram": "iin",
+            "token_coverage": 0.1293
+          },
+          {
+            "gram": "or",
+            "token_coverage": 0.0953
+          },
+          {
+            "gram": "hy",
+            "token_coverage": 0.0931
+          },
+          {
+            "gram": "ey",
+            "token_coverage": 0.0882
+          }
+        ],
+        "share_with_top_prefix_and_suffix": 0.6635
+      },
+      "curveline_valid_share": 0.9055
+    },
+    "zl_currierB": {
+      "class": "H1",
+      "tokens": 22864,
+      "ed1_network": {
+        "types": 4927,
+        "edges": 15329,
+        "mean_degree": 6.222,
+        "main_component_share": 0.8183,
+        "isolate_share": 0.1622
+      },
+      "positional": {
+        "mean_normalized_position_entropy": 0.6315,
+        "most_frequent_glyphs": {
+          "e": 0.6339,
+          "o": 0.8512,
+          "y": 0.2949,
+          "h": 0.6548,
+          "a": 0.8448,
+          "d": 0.7044,
+          "i": 0.5814,
+          "k": 0.752,
+          "c": 0.7035,
+          "l": 0.8368,
+          "r": 0.5694,
+          "q": 0.0386
+        }
+      },
+      "affixes": {
+        "top_prefixes": [
+          {
+            "gram": "o",
+            "token_coverage": 0.2206
+          },
+          {
+            "gram": "q",
+            "token_coverage": 0.1811
+          },
+          {
+            "gram": "qo",
+            "token_coverage": 0.176
+          },
+          {
+            "gram": "c",
+            "token_coverage": 0.1532
+          },
+          {
+            "gram": "ch",
+            "token_coverage": 0.147
+          },
+          {
+            "gram": "s",
+            "token_coverage": 0.1101
+          },
+          {
+            "gram": "qok",
+            "token_coverage": 0.1101
+          },
+          {
+            "gram": "che",
+            "token_coverage": 0.0878
+          },
+          {
+            "gram": "sh",
+            "token_coverage": 0.0865
+          },
+          {
+            "gram": "d",
+            "token_coverage": 0.0656
+          }
+        ],
+        "top_suffixes": [
+          {
+            "gram": "y",
+            "token_coverage": 0.4434
+          },
+          {
+            "gram": "dy",
+            "token_coverage": 0.233
+          },
+          {
+            "gram": "edy",
+            "token_coverage": 0.1735
+          },
+          {
+            "gram": "n",
+            "token_coverage": 0.1704
+          },
+          {
+            "gram": "in",
+            "token_coverage": 0.1684
+          },
+          {
+            "gram": "r",
+            "token_coverage": 0.137
+          },
+          {
+            "gram": "l",
+            "token_coverage": 0.1352
+          },
+          {
+            "gram": "ey",
+            "token_coverage": 0.115
+          },
+          {
+            "gram": "iin",
+            "token_coverage": 0.1082
+          },
+          {
+            "gram": "ar",
+            "token_coverage": 0.0684
+          }
+        ],
+        "share_with_top_prefix_and_suffix": 0.668
+      },
+      "curveline_valid_share": 0.8788
+    },
+    "gc_v101": {
+      "class": "H1-sensitivity",
+      "tokens": 34111,
+      "ed1_network": {
+        "types": 7947,
+        "edges": 46530,
+        "mean_degree": 11.71,
+        "main_component_share": 0.8927,
+        "isolate_share": 0.1039
+      },
+      "positional": {
+        "mean_normalized_position_entropy": 0.643,
+        "most_frequent_glyphs": {
+          "o": 0.9209,
+          "9": 0.3152,
+          "a": 0.7468,
+          "c": 0.7061,
+          "1": 0.7032,
+          "e": 0.7521,
+          "8": 0.7877,
+          "h": 0.7757,
+          "y": 0.4644,
+          "4": 0.0252,
+          "k": 0.7765,
+          "m": 0.0311
+        }
+      },
+      "affixes": {
+        "top_prefixes": [
+          {
+            "gram": "o",
+            "token_coverage": 0.1929
+          },
+          {
+            "gram": "1",
+            "token_coverage": 0.1579
+          },
+          {
+            "gram": "4",
+            "token_coverage": 0.1422
+          },
+          {
+            "gram": "4o",
+            "token_coverage": 0.1344
+          },
+          {
+            "gram": "8",
+            "token_coverage": 0.0821
+          },
+          {
+            "gram": "4oh",
+            "token_coverage": 0.081
+          },
+          {
+            "gram": "1c",
+            "token_coverage": 0.067
+          },
+          {
+            "gram": "2",
+            "token_coverage": 0.064
+          },
+          {
+            "gram": "a",
+            "token_coverage": 0.0621
+          },
+          {
+            "gram": "oh",
+            "token_coverage": 0.0544
+          }
+        ],
+        "top_suffixes": [
+          {
+            "gram": "9",
+            "token_coverage": 0.3738
+          },
+          {
+            "gram": "e",
+            "token_coverage": 0.1575
+          },
+          {
+            "gram": "y",
+            "token_coverage": 0.1275
+          },
+          {
+            "gram": "89",
+            "token_coverage": 0.113
+          },
+          {
+            "gram": "m",
+            "token_coverage": 0.1048
+          },
+          {
+            "gram": "am",
+            "token_coverage": 0.0792
+          },
+          {
+            "gram": "oe",
+            "token_coverage": 0.0769
+          },
+          {
+            "gram": "c9",
+            "token_coverage": 0.0649
+          },
+          {
+            "gram": "c89",
+            "token_coverage": 0.0593
+          },
+          {
+            "gram": "ay",
+            "token_coverage": 0.0537
+          }
+        ],
+        "share_with_top_prefix_and_suffix": 0.5629
+      },
+      "curveline_valid_share": 0.1264
+    },
+    "h2_naibbe": {
+      "class": "H2",
+      "tokens": 34111,
+      "ed1_network": {
+        "types": 5603,
+        "edges": 26981,
+        "mean_degree": 9.631,
+        "main_component_share": 0.944,
+        "isolate_share": 0.0046
+      },
+      "positional": {
+        "mean_normalized_position_entropy": 0.6161,
+        "most_frequent_glyphs": {
+          "e": 0.5862,
+          "o": 0.8355,
+          "y": 0.3379,
+          "d": 0.7837,
+          "a": 0.8089,
+          "h": 0.6278,
+          "i": 0.5633,
+          "l": 0.8126,
+          "k": 0.6745,
+          "c": 0.6637,
+          "s": 0.7254,
+          "r": 0.573
+        }
+      },
+      "affixes": {
+        "top_prefixes": [
+          {
+            "gram": "o",
+            "token_coverage": 0.2531
+          },
+          {
+            "gram": "q",
+            "token_coverage": 0.1783
+          },
+          {
+            "gram": "qo",
+            "token_coverage": 0.1766
+          },
+          {
+            "gram": "s",
+            "token_coverage": 0.121
+          },
+          {
+            "gram": "qok",
+            "token_coverage": 0.1111
+          },
+          {
+            "gram": "c",
+            "token_coverage": 0.1062
+          },
+          {
+            "gram": "ch",
+            "token_coverage": 0.0929
+          },
+          {
+            "gram": "sh",
+            "token_coverage": 0.0851
+          },
+          {
+            "gram": "d",
+            "token_coverage": 0.0755
+          },
+          {
+            "gram": "l",
+            "token_coverage": 0.066
+          }
+        ],
+        "top_suffixes": [
+          {
+            "gram": "y",
+            "token_coverage": 0.3747
+          },
+          {
+            "gram": "dy",
+            "token_coverage": 0.2105
+          },
+          {
+            "gram": "n",
+            "token_coverage": 0.1872
+          },
+          {
+            "gram": "in",
+            "token_coverage": 0.1838
+          },
+          {
+            "gram": "r",
+            "token_coverage": 0.1505
+          },
+          {
+            "gram": "edy",
+            "token_coverage": 0.1464
+          },
+          {
+            "gram": "l",
+            "token_coverage": 0.1411
+          },
+          {
+            "gram": "iin",
+            "token_coverage": 0.115
+          },
+          {
+            "gram": "ey",
+            "token_coverage": 0.1012
+          },
+          {
+            "gram": "ar",
+            "token_coverage": 0.0723
+          }
+        ],
+        "share_with_top_prefix_and_suffix": 0.7003
+      },
+      "curveline_valid_share": 0.8437
+    },
+    "h3_selfcitation": {
+      "class": "H3",
+      "tokens": 33058,
+      "ed1_network": {
+        "types": 4239,
+        "edges": 13478,
+        "mean_degree": 6.359,
+        "main_component_share": 0.9106,
+        "isolate_share": 0.0604
+      },
+      "positional": {
+        "mean_normalized_position_entropy": 0.6699,
+        "most_frequent_glyphs": {
+          "h": 0.6316,
+          "o": 0.8703,
+          "a": 0.831,
+          "c": 0.647,
+          "l": 0.4607,
+          "i": 0.6511,
+          "y": 0.6844,
+          "r": 0.3967,
+          "d": 0.8486,
+          "e": 0.6635,
+          "s": 0.7181,
+          "n": 0.4062
+        }
+      },
+      "affixes": {
+        "top_prefixes": [
+          {
+            "gram": "c",
+            "token_coverage": 0.2426
+          },
+          {
+            "gram": "ch",
+            "token_coverage": 0.2275
+          },
+          {
+            "gram": "o",
+            "token_coverage": 0.1883
+          },
+          {
+            "gram": "a",
+            "token_coverage": 0.1668
+          },
+          {
+            "gram": "s",
+            "token_coverage": 0.1037
+          },
+          {
+            "gram": "sh",
+            "token_coverage": 0.0909
+          },
+          {
+            "gram": "ai",
+            "token_coverage": 0.088
+          },
+          {
+            "gram": "y",
+            "token_coverage": 0.0816
+          },
+          {
+            "gram": "che",
+            "token_coverage": 0.0685
+          },
+          {
+            "gram": "d",
+            "token_coverage": 0.0633
+          }
+        ],
+        "top_suffixes": [
+          {
+            "gram": "l",
+            "token_coverage": 0.2621
+          },
+          {
+            "gram": "r",
+            "token_coverage": 0.2487
+          },
+          {
+            "gram": "y",
+            "token_coverage": 0.1982
+          },
+          {
+            "gram": "n",
+            "token_coverage": 0.1447
+          },
+          {
+            "gram": "ol",
+            "token_coverage": 0.1345
+          },
+          {
+            "gram": "dy",
+            "token_coverage": 0.1263
+          },
+          {
+            "gram": "in",
+            "token_coverage": 0.1234
+          },
+          {
+            "gram": "ar",
+            "token_coverage": 0.1014
+          },
+          {
+            "gram": "al",
+            "token_coverage": 0.0909
+          },
+          {
+            "gram": "hol",
+            "token_coverage": 0.0833
+          }
+        ],
+        "share_with_top_prefix_and_suffix": 0.7424
+      },
+      "curveline_valid_share": 0.9676
+    },
+    "h4_latin": {
+      "class": "H4",
+      "tokens": 34111,
+      "ed1_network": {
+        "types": 6993,
+        "edges": 3846,
+        "mean_degree": 1.1,
+        "main_component_share": 0.1632,
+        "isolate_share": 0.5031
+      },
+      "positional": {
+        "mean_normalized_position_entropy": 0.9185,
+        "most_frequent_glyphs": {
+          "e": 0.9933,
+          "i": 0.9917,
+          "t": 0.8666,
+          "a": 0.9839,
+          "u": 0.9079,
+          "s": 0.8885,
+          "r": 0.9391,
+          "n": 0.9813,
+          "m": 0.8226,
+          "o": 0.9463,
+          "d": 0.9145,
+          "c": 0.9378
+        }
+      },
+      "affixes": {
+        "top_prefixes": [
+          {
+            "gram": "e",
+            "token_coverage": 0.1572
+          },
+          {
+            "gram": "a",
+            "token_coverage": 0.0934
+          },
+          {
+            "gram": "i",
+            "token_coverage": 0.091
+          },
+          {
+            "gram": "s",
+            "token_coverage": 0.0777
+          },
+          {
+            "gram": "d",
+            "token_coverage": 0.0733
+          },
+          {
+            "gram": "p",
+            "token_coverage": 0.0631
+          },
+          {
+            "gram": "m",
+            "token_coverage": 0.0561
+          },
+          {
+            "gram": "c",
+            "token_coverage": 0.0514
+          },
+          {
+            "gram": "t",
+            "token_coverage": 0.0493
+          },
+          {
+            "gram": "f",
+            "token_coverage": 0.0451
+          }
+        ],
+        "top_suffixes": [
+          {
+            "gram": "t",
+            "token_coverage": 0.1984
+          },
+          {
+            "gram": "s",
+            "token_coverage": 0.1772
+          },
+          {
+            "gram": "m",
+            "token_coverage": 0.1564
+          },
+          {
+            "gram": "e",
+            "token_coverage": 0.1207
+          },
+          {
+            "gram": "i",
+            "token_coverage": 0.0772
+          },
+          {
+            "gram": "um",
+            "token_coverage": 0.0716
+          },
+          {
+            "gram": "us",
+            "token_coverage": 0.0648
+          },
+          {
+            "gram": "n",
+            "token_coverage": 0.0536
+          },
+          {
+            "gram": "a",
+            "token_coverage": 0.0507
+          },
+          {
+            "gram": "it",
+            "token_coverage": 0.0501
+          }
+        ],
+        "share_with_top_prefix_and_suffix": 0.6371
+      },
+      "curveline_valid_share": 0.0254
+    },
+    "h4_italian": {
+      "class": "H4",
+      "tokens": 34111,
+      "ed1_network": {
+        "types": 5417,
+        "edges": 4039,
+        "mean_degree": 1.491,
+        "main_component_share": 0.2191,
+        "isolate_share": 0.4399
+      },
+      "positional": {
+        "mean_normalized_position_entropy": 0.8641,
+        "most_frequent_glyphs": {
+          "e": 0.8729,
+          "a": 0.9656,
+          "i": 0.9485,
+          "o": 0.8593,
+          "n": 0.9609,
+          "l": 0.982,
+          "r": 0.9598,
+          "t": 0.8924,
+          "s": 0.8928,
+          "c": 0.699,
+          "d": 0.7614,
+          "u": 0.848
+        }
+      },
+      "affixes": {
+        "top_prefixes": [
+          {
+            "gram": "c",
+            "token_coverage": 0.1215
+          },
+          {
+            "gram": "d",
+            "token_coverage": 0.0952
+          },
+          {
+            "gram": "s",
+            "token_coverage": 0.0777
+          },
+          {
+            "gram": "p",
+            "token_coverage": 0.0759
+          },
+          {
+            "gram": "a",
+            "token_coverage": 0.0746
+          },
+          {
+            "gram": "i",
+            "token_coverage": 0.051
+          },
+          {
+            "gram": "l",
+            "token_coverage": 0.0493
+          },
+          {
+            "gram": "co",
+            "token_coverage": 0.0492
+          },
+          {
+            "gram": "m",
+            "token_coverage": 0.0481
+          },
+          {
+            "gram": "ch",
+            "token_coverage": 0.0426
+          }
+        ],
+        "top_suffixes": [
+          {
+            "gram": "e",
+            "token_coverage": 0.229
+          },
+          {
+            "gram": "o",
+            "token_coverage": 0.1764
+          },
+          {
+            "gram": "a",
+            "token_coverage": 0.1621
+          },
+          {
+            "gram": "i",
+            "token_coverage": 0.1559
+          },
+          {
+            "gram": "n",
+            "token_coverage": 0.0459
+          },
+          {
+            "gram": "to",
+            "token_coverage": 0.0444
+          },
+          {
+            "gram": "re",
+            "token_coverage": 0.0429
+          },
+          {
+            "gram": "l",
+            "token_coverage": 0.0393
+          },
+          {
+            "gram": "he",
+            "token_coverage": 0.0379
+          },
+          {
+            "gram": "te",
+            "token_coverage": 0.0365
+          }
+        ],
+        "share_with_top_prefix_and_suffix": 0.5264
+      },
+      "curveline_valid_share": 0.1092
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "built_at": "2026-07-06T03:43:33+00:00",
+  "git_commit": "fbb6107fe04ba54f15a97f6a6107866b0f7b4220",
+  "method": "page TF-IDF (top 400 words, pages \u226530 tokens, paragraph text only), cosine, deterministic average-linkage; ARI/NMI with 2000 permutations, seed 408",
+  "zl": {
+    "pages": 207,
+    "vocabulary": 400,
+    "k_sections": 7,
+    "alignment_kSections_vs_section": {
+      "ari": 0.0668,
+      "nmi": 0.2433,
+      "p_permutation": 0.004
+    },
+    "alignment_kSections_vs_currier": {
+      "ari": 0.4043,
+      "nmi": 0.4103,
+      "p_permutation": 0.0005
+    },
+    "alignment_kSections_vs_hand": {
+      "ari": 0.2398,
+      "nmi": 0.3701,
+      "p_permutation": 0.0005
+    },
+    "two_largest_clusters_vs_currier": {
+      "ari": 0.4374,
+      "nmi": 0.4511,
+      "p_permutation": 0.0005
+    },
+    "within_dialect_section_alignment": {
+      "A": {
+        "pages": 114,
+        "k": 4,
+        "ari": 0.3507,
+        "nmi": 0.3444,
+        "p_permutation": 0.0005
+      },
+      "B": {
+        "pages": 83,
+        "k": 5,
+        "ari": 0.0036,
+        "nmi": 0.1657,
+        "p_permutation": 0.4028
+      }
+    },
+    "confound_section_vs_currier": {
+      "ari": 0.2793,
+      "nmi": 0.3778
+    },
+    "boundary_test": {
+      "mean_within_section": 0.2636,
+      "mean_across_boundary": 0.1949,
+      "difference": 0.0687,
+      "p_permutation": 0.03448,
+      "boundaries": 23
+    },
+    "cluster_sizes_k": [
+      116,
+      79,
+      6,
+      3,
+      1,
+      1,
+      1
+    ]
+  },
+  "gc_v101": {
+    "pages": 207,
+    "vocabulary": 400,
+    "k_sections": 7,
+    "alignment_kSections_vs_section": {
+      "ari": 0.2835,
+      "nmi": 0.3905,
+      "p_permutation": 0.0005
+    },
+    "alignment_kSections_vs_currier": {
+      "ari": 0.6291,
+      "nmi": 0.6002,
+      "p_permutation": 0.0005
+    },
+    "alignment_kSections_vs_hand": {
+      "ari": 0.5249,
+      "nmi": 0.5683,
+      "p_permutation": 0.0005
+    },
+    "two_largest_clusters_vs_currier": {
+      "ari": 0.9036,
+      "nmi": 0.8393,
+      "p_permutation": 0.0005
+    },
+    "within_dialect_section_alignment": {
+      "A": {
+        "pages": 114,
+        "k": 4,
+        "ari": 0.2714,
+        "nmi": 0.3482,
+        "p_permutation": 0.0005
+      },
+      "B": {
+        "pages": 83,
+        "k": 5,
+        "ari": 0.0086,
+        "nmi": 0.1814,
+        "p_permutation": 0.27936
+      }
+    },
+    "confound_section_vs_currier": {
+      "ari": 0.2793,
+      "nmi": 0.3778
+    },
+    "boundary_test": {
+      "mean_within_section": 0.2531,
+      "mean_across_boundary": 0.1976,
+      "difference": 0.0556,
+      "p_permutation": 0.06597,
+      "boundaries": 23
+    },
+    "cluster_sizes_k": [
+      84,
+      79,
+      31,
+      6,
+      3,
+      2,
+      2
+    ]
+  }
+}
