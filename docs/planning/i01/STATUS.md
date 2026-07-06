@@ -12,7 +12,7 @@ _Last updated: 2026-07-05 (Code session 1)_
 |---|---|---|
 | G0 decision locks | ✅ signed off 2026-07-05 | D1–D8, D10, D11 locked as L11–L20. D9 open until end of Phase 1; D12 open until T1.3. |
 | G1 replication | ✅ signed off 2026-07-06 | 35/38 scored targets PASS; D13–D18 locked as L21–L26. Report: reports/replication_report.md @ ab19821. |
-| G2 annotation | pending | |
+| G2 annotation | ✅ signed off 2026-07-06 | Schema v0.2-fine; QA passes retuned thresholds (L32). root_type flagged low-confidence (L33). T2.3b unblocked. |
 | G3 synthesis | pending | |
 | G4 final | pending | |
 
@@ -30,7 +30,8 @@ _Last updated: 2026-07-05 (Code session 1)_
 | T2.2 topic alignment | ✅ done 2026-07-06 (baseline) | Key test result: co-occurrence structure dominated by A/B (v101 2-cluster ARI 0.90); section alignment survives dialect confound in Language A only (ARI 0.35/0.27, p=0.0005); B textually homogeneous across sections (null). reports/study_topics.md. |
 | T2.4 encoding bracket | ✅ done 2026-07-06 (baseline) | No family reproduces low-h2 + intact word-order info together. Homophonic verbose cipher erases MZ info (0.000 vs 0.307); self-citation overshoots at wrong scale. reports/study_encoding_bracket.md. Parameter sweeps pending T1.4. |
 | T2.5 W4 dossiers | ✅ done 2026-07-06 | All 5 in docs/dossiers/ (cipher culture, balneology, gynecological reading, astro iconography, provenance chain), claims graded C/D. New D-items D19/D20 (deferred). Key tensions for W6b: German/Alemannic zodiac iconography vs L1 northern-Italy premise; no attested in-window verbose cipher; provenance C-solid only from 1637. |
-| T1.3 bulk annotation | ✅ v0.2 done 2026-07-06 — **G2 awaiting Tim** | 227 pages, schema v0.2-fine (Tim's retune), $3.55. QA drift 21.1% overall / 22.3% critical (down from 29.7%/27% at v0.1). Fixed fields worked (text_image_relationship 46%→8%, root_coloring 35%→4%); residual is irreducible perceptual variance on stylized roots/leaves (root_type/leaf_arrangement 35%). Analysis sections near threshold: pharma 0.12, bio 0.15, herbal 0.18. v0.1 archived. **G2 threshold decision for Tim.** |
+| T1.3 bulk annotation | ✅ done — **G2 signed off 2026-07-06** | 227 pages, schema v0.2-fine, $3.55. QA passes ratified thresholds (L32): 0.211/0.223/0.346 vs 0.25/0.25/0.40. root_type low-confidence (L33). Dataset accepted. |
+| T2.3b label-level anchoring | ⬜ ready | **Unblocked by G2.** v0.2 captures label_attachment (herbal/pharma); build word-label↔part association vs the page-level null. Code task. |
 | T2.3 anchor hunt | ✅ done 2026-07-06 (page-level) | Harness gate PASSED (null 0/14758 false disc.; planted recovered). **Rigorous null**: no token anchors to a herbal feature after FDR; nothing behaves like "root" at page granularity. Strongest raw signals = noise / A/B confound. Label-level follow-up (T2.3b) flagged. reports/study_anchor_hunt.md. |
 | all others | ⬜ blocked | Per DAG in WORKFLOW.md §3. |
 

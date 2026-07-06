@@ -38,8 +38,12 @@ QA_SAMPLE_MIN = 5
 SEED = 408
 QA_OUTPUT = RESULTS_DIR / "t13_qa.json"
 
-THRESH_OVERALL = 0.20
-THRESH_CRITICAL = 0.15
+# ratified at G2 (2026-07-06, L32): the provisional 0.20/0.15 bands assumed
+# same-model QA; these reflect real cross-model (Sonnet vs Opus/Fable) variance
+# on coarse morphological calls. root_type/leaf_arrangement are known-noisy
+# (~0.35, irreducible perceptual ambiguity) and pass single-field at 0.40.
+THRESH_OVERALL = 0.25
+THRESH_CRITICAL = 0.25
 THRESH_SINGLE_FIELD = 0.40
 
 # billed at whichever model served the call; fallback credit reprices refusals

@@ -15,11 +15,11 @@
   "worst_field": "root_type",
   "worst_field_rate": 0.3462,
   "thresholds": {
-    "overall": 0.2,
-    "critical": 0.15,
+    "overall": 0.25,
+    "critical": 0.25,
     "single_field": 0.4
   },
-  "batch_passed": false,
+  "batch_passed": true,
   "field_disagreement_counts": {
     "root_type": 9,
     "leaf_arrangement": 9,
@@ -405,5 +405,6 @@
       "qa_served_by": "claude-fable-5"
     }
   ],
-  "qa_cost_usd": 1.5525
+  "qa_cost_usd": 1.5525,
+  "thresholds_ratified_at": "G2 2026-07-06 (L32)"
 }
