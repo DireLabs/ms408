@@ -1,0 +1,172 @@
+{
+  "built_at": "2026-07-06T00:32:02+00:00",
+  "git_commit": "3a020755995b10028e054b762f650cf167b103df",
+  "corpus": "ZL3b EVA, paragraph-text loci (P*), <%>/<$> paragraph structure",
+  "word_policy": "EVA default + drop_uncertain_words + drop '@'-escape words",
+  "entropy_zipf": {
+    "all": {
+      "tokens": 34111,
+      "h1": 3.8696,
+      "h2": 2.0839,
+      "zipf_slope": -1.1032,
+      "abbreviation_rho": -0.3472
+    },
+    "currier_A": {
+      "tokens": 10709,
+      "h1": 3.8371,
+      "h2": 2.1537,
+      "zipf_slope": -1.0329,
+      "abbreviation_rho": -0.3792
+    },
+    "currier_B": {
+      "tokens": 22864,
+      "h1": 3.8634,
+      "h2": 1.9391,
+      "zipf_slope": -1.1314,
+      "abbreviation_rho": -0.3287
+    },
+    "hand_1": {
+      "tokens": 9959,
+      "h1": 3.8268,
+      "h2": 2.136,
+      "zipf_slope": -1.0578,
+      "abbreviation_rho": -0.3737
+    },
+    "hand_2": {
+      "tokens": 10639,
+      "h1": 3.8566,
+      "h2": 1.8832,
+      "zipf_slope": -1.2083,
+      "abbreviation_rho": -0.3448
+    },
+    "hand_3": {
+      "tokens": 11680,
+      "h1": 3.8669,
+      "h2": 1.9634,
+      "zipf_slope": -1.0231,
+      "abbreviation_rho": -0.3263
+    }
+  },
+  "currier_split": {
+    "tokens": {
+      "A": 10709,
+      "B": 22864
+    },
+    "marker_words": {
+      "chedy": {
+        "per_mille_A": 0.093,
+        "per_mille_B": 21.212,
+        "ratio_B_over_A": 228.1
+      },
+      "shedy": {
+        "per_mille_A": 0.187,
+        "per_mille_B": 18.326,
+        "ratio_B_over_A": 98.0
+      },
+      "qokeedy": {
+        "per_mille_A": 0.0,
+        "per_mille_B": 13.252,
+        "ratio_B_over_A": Infinity
+      },
+      "qokedy": {
+        "per_mille_A": 0.093,
+        "per_mille_B": 11.721,
+        "ratio_B_over_A": 126.0
+      },
+      "chol": {
+        "per_mille_A": 24.185,
+        "per_mille_B": 4.33,
+        "ratio_B_over_A": 0.2
+      },
+      "chor": {
+        "per_mille_A": 15.314,
+        "per_mille_B": 1.181,
+        "ratio_B_over_A": 0.1
+      },
+      "daiin": {
+        "per_mille_A": 42.581,
+        "per_mille_B": 12.99,
+        "ratio_B_over_A": 0.3
+      },
+      "aiin": {
+        "per_mille_A": 7.47,
+        "per_mille_B": 15.876,
+        "ratio_B_over_A": 2.1
+      }
+    },
+    "dy_final_rate": {
+      "A": 0.0622,
+      "B": 0.2373
+    },
+    "edy_final_rate": {
+      "A": 0.002,
+      "B": 0.1735
+    },
+    "qo_initial_rate": {
+      "A": 0.1004,
+      "B": 0.1774
+    },
+    "js_divergence_A_vs_B": 0.2601,
+    "js_divergence_within_A": 0.09,
+    "js_divergence_within_B": 0.0401
+  },
+  "positional_effects": {
+    "paragraph_initial_gallows": {
+      "pf_word_rate_paragraph_initial_lines": 0.2252,
+      "pf_word_rate_other_lines": 0.0134,
+      "enrichment": 16.82,
+      "tokens": {
+        "paragraph_initial": 6693,
+        "other": 27418
+      }
+    },
+    "line_final": {
+      "m_final_word_rate_line_end": 0.1528,
+      "m_final_word_rate_mid_line": 0.0091,
+      "share_of_m_final_words_at_line_end": 0.7114,
+      "g_final_word_rate_line_end": 0.0218,
+      "g_final_word_rate_mid_line": 0.0008
+    },
+    "line_initial": {
+      "ydso_initial_rate_line_first": 0.5884,
+      "ydso_initial_rate_mid_line": 0.438,
+      "gallows_initial_rate_line_first": 0.2191,
+      "gallows_initial_rate_mid_line": 0.0647
+    },
+    "lines": 4130
+  },
+  "summary_all_words": {
+    "tokens": 34111,
+    "types": 7424,
+    "mean_word_length": 5.1005,
+    "char_inventory": 26,
+    "h1": 3.8696,
+    "h2": 2.0839,
+    "zipf_slope": -1.1032,
+    "abbreviation_rho": -0.3472,
+    "word_length_distribution": {
+      "1": 0.03046,
+      "2": 0.06112,
+      "3": 0.08851,
+      "4": 0.17657,
+      "5": 0.24807,
+      "6": 0.1951,
+      "7": 0.11603,
+      "8": 0.04758,
+      "9": 0.01926,
+      "10": 0.00756,
+      "11": 0.00334,
+      "12": 0.00249,
+      "13": 0.00152,
+      "14": 0.00091,
+      "15": 0.0005,
+      "16": 0.00059,
+      "17": 0.00012,
+      "18": 6e-05,
+      "19": 0.00012,
+      "20": 3e-05,
+      "21": 3e-05,
+      "22": 3e-05
+    }
+  }
+}
