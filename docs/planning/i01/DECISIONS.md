@@ -4,6 +4,8 @@
 
 **G0 signed off 2026-07-05:** D1–D8, D10, D11 locked (L11–L20 below). D9 and D12 remain open by design, with their own decision points.
 
+**G1 signed off 2026-07-06:** replication gate approved (reports/replication_report.md @ commit ab19821); D13–D18 locked (L21–L26 below). D9 and D12 remain open (deadlines: end of Phase 1; before T1.3).
+
 ## Locked
 
 | ID | Decision | Rationale |
@@ -28,6 +30,12 @@
 | L18 | (was D8) Repo name: `voynich-manuscript`. | G0 2026-07-05. Existing repo confirmed. |
 | L19 | (was D10) Licensing: consume-only for all external data until T0.2 verification; Tim revisits policy on findings. | G0 2026-07-05. Raw downloads gitignored; no redistribution. |
 | L20 | (was D11) Star-section comparisons start with widely available period references; expand on signal. | G0 2026-07-05. Bounds T2.6 Study 1 astronomy leg. |
+| L21 | (was D13) Naibbe cipher-key CSV stays a consume-only pinned download (data/raw/, sha256-pinned); not vendored into the repo. | G1 2026-07-06. Consistent with L19; revisit only if D9 lands on a public repo. |
+| L22 | (was D14) Canonical H2: both decks (52+78), respacing 17, v2 unambiguous mode, author plaintexts (Pliny + Dante); respaced variants are a sensitivity layer. | G1 2026-07-06. Maximizes comparability with Greshko's 20 reference samples. |
+| L23 | (was D15) Timm–Schinner Java repo @ a6ede22 is the H3 version-of-record; the paywalled 2020 paper is obtained and reconciled only before any H3-dependent claim grades above C. | G1 2026-07-06. Empirical fidelity resolutions documented in spec T03-selfcitation §17. |
+| L24 | (was D16) Hebrew register: consonantal primary, pointed as sensitivity. Verse texts (Macer, Commedia) are supplements, not primary bracket members. | G1 2026-07-06. |
+| L25 | (was D17) G1 pass tolerances as printed in reports/replication_report.md (entropy ±0.05 bits on the Takahashi like-for-like corpus; positional/lexical bands as tabled; CHECK rows accepted with documented explanations). | G1 2026-07-06. |
+| L26 | (was D18) Montemurro–Zanette preprocessing: paragraph-text loci only, uncertain words dropped — documented policy where the paper is silent. | G1 2026-07-06. Sensitivity run available on request. |
 
 ## Open
 
@@ -35,9 +43,3 @@
 |---|---|---|---|---|---|
 | D9 | Publication intent | Private · blog series · preprint | Sets rigor bar, licensing care, and write-up format for T3.4 | Decide by end of Phase 1 | Tim |
 | D12 | API budget envelope for bulk annotation | Spend cap for Sonnet 4.6 batch + QA | Bounds T1.3 batch sizing and retry policy | Tim sets cap before T1.3 | Tim |
-| D13 | Vendor Greshko's `naibbe_tables.csv` (414-entry cipher key, modified-MIT license requiring citation) into the repo, or keep it consume-only via pinned download? | Vendor with attribution in a LICENSES file · pinned download into data/raw/ like other sources | Vendoring makes the harness reproducible offline and CI-able; the license permits redistribution with attribution, but L19's default is consume-only. Related fact to verify: paper README cites Zenodo DOI 10.5281/zenodo.16415087 vs. 17219445 found during source verification — pin whichever is the version-of-record when resolving. | Pinned download (least-committal, consistent with acquire.py pattern) — proceeding on this until Tim rules | Tim |
-| D14 | Canonical H2 configuration and plaintexts | Decks: 52 only · 78 only · both. Plaintexts: author's (Pliny *Nat. Hist.* bk 16 Latin + *Divina Commedia* Italian) · other D3-consistent texts | Author publishes 20 reference samples covering both decks; reusing his plaintexts + both decks maximizes comparability of our reimplementation's statistics. Respaced (3% space-drop) variants as sensitivity layer, not primary corpus. | Both decks, respacing=17, v2 unambiguous mode, author's plaintexts — proceeding on this (spec T03-naibbe §10) | Tim |
-| D15 | Self-citation generator: reconcile parameters against the paywalled Timm–Schinner 2020 *Cryptologia* paper? | Obtain paper (ILL / author copy) and reconcile · rely on author's Java code @ a6ede22 as version-of-record | The free arXiv paper has no formal parameters; the Java repo is the 2020 companion code but has shipped-config vs. code-default divergences (e.g. 1200 vs 500 lines, morph fallback weights) flagged in spec T03-selfcitation. Our H3 corpus quality depends on which values are canonical. | Implement from the Java code (it generated the paper's published reference output); reconcile against the paper before any H3-dependent claim is graded above C | Tim |
-| D16 | H4 preprocessing registers | Hebrew: consonantal · pointed · both. Verse texts (Macer Floridus, Commedia): in main bracket · supplements only. | Pointing inflates Hebrew character inventory vs. letters-only comparison; verse imposes metrical structure absent from the (likely prose) VMS. Both choices move character-level statistics. Cross-cutting requirement either way: a documented normalization pass before any cross-corpus statistic (diplomatic vs. critical editions differ on abbreviation expansion — SOURCES.md risk 3). | Consonantal primary + pointed as sensitivity; verse as supplements, prose as primary bracket members — proceeding on these (spec T03-h4-acquisition) | Tim |
-| D17 | G1 pass tolerances | Ratify the proposed bands in reports/replication_report.md (entropy ±0.05 bits on the like-for-like Takahashi corpus; positional/lexical bands as tabled) · tighten · loosen | The bands determine what counts as "replicated." Proposals follow the authors' own accuracy statements (LB: ±0.1 bit at 10k words) and honest operationalization notes; 3 rows are flagged CHECK rather than silently widened. | Ratify as proposed at G1 review | Tim |
-| D18 | Montemurro–Zanette preprocessing policy | Paragraph-text loci only + uncertain words dropped (used) · labels included · uncertain retained | MZ2013 is silent on uncertain-glyph/label handling; peak scale replicated at 812 vs 807 under the chosen policy, but the policy is our call, not theirs. Sensitivity check cheap to run if Tim wants it. | Keep policy as documented in the report; note sensitivity | Tim |
