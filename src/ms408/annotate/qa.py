@@ -32,6 +32,7 @@ from .pipeline import (
 from .schema import SECTION_BLOCKS, critical_fields, fields_for, tool_schema
 
 QA_MODEL = "claude-fable-5"
+QA_FALLBACK = "claude-opus-4-8"  # Fable false-positive-refuses manuscript annotation
 QA_SAMPLE_FRACTION = 0.12
 QA_SAMPLE_MIN = 5
 SEED = 408
@@ -41,19 +42,22 @@ THRESH_OVERALL = 0.20
 THRESH_CRITICAL = 0.15
 THRESH_SINGLE_FIELD = 0.40
 
-PRICE_IN = 10.0 / 1_000_000
-PRICE_OUT = 50.0 / 1_000_000
+# billed at whichever model served the call; fallback credit reprices refusals
+PRICE = {"claude-fable-5": (10.0e-6, 50.0e-6),
+         "claude-opus-4-8": (5.0e-6, 25.0e-6)}
 
 
 def _agree(kind: str, a, b) -> bool:
     if kind == "multi":
-        sa, sb = set(a), set(b)
+        sa, sb = set(a or []), set(b or [])
         if not sa and not sb:
             return True
         union = sa | sb
         # threshold is exactly 2/3 (the schema's "0.67" rounding), so a 2-of-3
         # overlap counts as agreement rather than failing by a rounding hair
         return len(sa & sb) / len(union) >= 2 / 3 if union else True
+    if a is None or b is None:
+        return a == b  # a genuinely absent field counts as a disagreement
     if kind == "count":
         return abs(int(a) - int(b)) <= 1
     return a == b  # enum, bool, count-band (enum strings)
@@ -89,19 +93,27 @@ def reannotate(client, record: dict) -> tuple:
     content.append({"type": "text", "text":
                     f"This is folio {record['page']}, illustration section "
                     f"'{section_name}'. Call annotate_page with your descriptive annotation."})
-    response = client.messages.create(
+    # Fable 5 false-positive-refuses manuscript annotation; server-side fallback
+    # transparently re-serves the refusal on Opus 4.8 (an independent reviewer)
+    response = client.beta.messages.create(
         model=QA_MODEL, max_tokens=3000, system=SYSTEM, tools=[tool],
         tool_choice={"type": "tool", "name": "annotate_page"},
+        betas=["server-side-fallback-2026-06-01"],
+        fallbacks=[{"model": QA_FALLBACK}],
         messages=[{"role": "user", "content": content}],
     )
-    features = next(b.input for b in response.content if b.type == "tool_use")
+    served_by = response.model
+    if response.stop_reason == "refusal":
+        return None, 0.0, served_by  # whole chain refused; page skipped in QA
+    features = next((b.input for b in response.content if b.type == "tool_use"), {})
     fable = {
         "common": {k: features[k] for k in features if k in _COMMON_KEYS},
         "section_features": {k: v for k, v in features.items()
                              if k not in _COMMON_KEYS and k != "notes"},
     }
-    cost = response.usage.input_tokens * PRICE_IN + response.usage.output_tokens * PRICE_OUT
-    return fable, cost
+    price_in, price_out = PRICE.get(served_by, PRICE[QA_FALLBACK])
+    cost = response.usage.input_tokens * price_in + response.usage.output_tokens * price_out
+    return fable, cost, served_by
 
 
 def run() -> dict:
@@ -126,14 +138,21 @@ def run() -> dict:
         sample.extend(rng.sample(remaining, min(QA_SAMPLE_MIN - len(sample), len(remaining))))
 
     scored, field_disagreements, spent = [], Counter(), 0.0
+    served_by = Counter()
+    refused = []
     for record in sample:
-        fable, cost = reannotate(client, record)
+        fable, cost, model = reannotate(client, record)
         spent += cost
+        served_by[model] += 1
+        if fable is None:
+            refused.append(record["page"])
+            continue
         result = score_page(record["section"], record, fable)
-        result.update({"page": record["page"], "section": record["section"]})
+        result.update({"page": record["page"], "section": record["section"],
+                       "qa_served_by": model})
         field_disagreements.update(result["disagreements"])
         scored.append(result)
-        print(f"{record['page']:8s} {record['section']}  "
+        print(f"{record['page']:8s} {record['section']}  {model:16s} "
               f"disagree={result['page_disagreement_rate']:.2f}  "
               f"critical={len(result['critical_disagreements'])}")
 
@@ -154,7 +173,10 @@ def run() -> dict:
         "built_at": datetime.now(UTC).isoformat(timespec="seconds"),
         "git_commit": git_commit(),
         "qa_model": QA_MODEL,
+        "qa_served_by": dict(served_by),
+        "qa_refused_pages": refused,
         "sampled_pages": len(sample),
+        "scored_pages": len(scored),
         "sample_seed": SEED,
         "overall_disagreement_rate": round(overall, 4),
         "critical_disagreement_rate": round(critical_rate, 4),
