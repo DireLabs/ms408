@@ -26,8 +26,9 @@ _Last updated: 2026-07-05 (Code session 1)_
 | T1.1 replication gate | ✅ done — **G1 signed off 2026-07-06** | 35/38 scored targets PASS (h2 full 2.1637 vs 2.1593; MZ peak 812 vs 807; glyph rules within ~1%). Tolerances locked (L25), MZ policy locked (L26). |
 | T1.2 annotation schema | ⬜ ready | Unblocked by T0.2 (scans + scan_map on disk). Cowork task. |
 | T1.4 W6a assumption audit | ⬜ ready | **Unblocked by G1.** Cowork task — kickoff brief in WORKFLOW.md §6 ("Cowork session 2"). |
-| T2.1 morphology / T2.2 topic alignment | ⬜ ready | **Unblocked by G1** (T2.1/T2.2 also want T1.4's variant matrix — can start on baseline variants). Code tasks. |
-| T2.4 encoding bracket | ⬜ ready (partial) | Unblocked by G1 + T0.3; full run wants T1.4 variants. Code task. |
+| T2.1 morphology | ✅ done 2026-07-06 (baseline) | 4 stat families × 8 corpora at matched size. VMS+gibberish classes co-cluster on every axis vs naturals. reports/study_morphology.md. Variant sweep pending T1.4. |
+| T2.2 topic alignment | ✅ done 2026-07-06 (baseline) | Key test result: co-occurrence structure dominated by A/B (v101 2-cluster ARI 0.90); section alignment survives dialect confound in Language A only (ARI 0.35/0.27, p=0.0005); B textually homogeneous across sections (null). reports/study_topics.md. |
+| T2.4 encoding bracket | ✅ done 2026-07-06 (baseline) | No family reproduces low-h2 + intact word-order info together. Homophonic verbose cipher erases MZ info (0.000 vs 0.307); self-citation overshoots at wrong scale. reports/study_encoding_bracket.md. Parameter sweeps pending T1.4. |
 | T2.5 W4 dossiers | ⬜ ready | Unblocked by G0. Awaiting Cowork session 1 — kickoff brief in WORKFLOW.md §6. |
 | all others | ⬜ blocked | Per DAG in WORKFLOW.md §3. |
 
