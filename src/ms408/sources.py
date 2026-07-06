@@ -124,6 +124,14 @@ SOURCES: dict[str, Source] = {
             notes="Reference transliteration (extended EVA, combines ZL+GC). Cross-check only.",
         ),
         Source(
+            name="it",
+            url="https://www.voynich.nu/data/IT2a-n.txt",
+            dest="transliterations/IT2a-n.txt",
+            sha256="7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5",
+            notes="Takahashi transcription in IVTFF (EvaT). T1.1 like-for-like corpus for the "
+            "Lindemann-Bowern entropy targets (they used Takahashi via the LSI interlinear).",
+        ),
+        Source(
             name="ivtff_spec",
             url="https://www.voynich.nu/software/ivtt/IVTFF_format.pdf",
             dest="specs/IVTFF_format.pdf",

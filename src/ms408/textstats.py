@@ -39,6 +39,24 @@ def char_conditional_entropy(words: list) -> float:
     return h
 
 
+def lb_entropies(words: list) -> tuple:
+    """(h1, h2) per Lindemann & Bowern: spaces INCLUDED as a character, bigrams
+    span word boundaries, h2 = H2 - H1 (plug-in, bits, no smoothing).
+
+    Spec: docs/planning/i01/specs/T11-entropy-targets.md §1. This differs from
+    char_conditional_entropy above, which is the within-word convention used by
+    the Naibbe reference statistics.
+    """
+    text = " ".join(words)
+    n = len(text)
+    unigram_counts = Counter(text)
+    h1 = -sum((c / n) * math.log2(c / n) for c in unigram_counts.values())
+    bigram_counts = Counter(text[i : i + 2] for i in range(n - 1))
+    n2 = n - 1
+    big_h2 = -sum((c / n2) * math.log2(c / n2) for c in bigram_counts.values())
+    return h1, big_h2 - h1
+
+
 def zipf_slope(words: list, min_rank: int = 10, max_rank: int = 1000) -> float | None:
     """Log-log slope of the rank-frequency curve over [min_rank, max_rank].
 

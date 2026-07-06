@@ -1,0 +1,840 @@
+{
+  "built_at": "2026-07-06T00:45:40+00:00",
+  "git_commit": "d720081f5c950453c8001fb72e6adfcb6056905d",
+  "corpus": "ZL3b EVA primary; IT2a (Takahashi) for like-for-like entropy",
+  "word_policy": "EVA default + drop_uncertain_words + drop '@'-escape words",
+  "positional_effects": {
+    "paragraph_initial_gallows": {
+      "pf_word_rate_paragraph_initial_lines": 0.2252,
+      "pf_word_rate_other_lines": 0.0134,
+      "enrichment": 16.82,
+      "tokens": {
+        "paragraph_initial": 6693,
+        "other": 27418
+      }
+    },
+    "line_final": {
+      "m_final_word_rate_line_end": 0.1528,
+      "m_final_word_rate_mid_line": 0.0091,
+      "share_of_m_final_words_at_line_end": 0.7114,
+      "g_final_word_rate_line_end": 0.0218,
+      "g_final_word_rate_mid_line": 0.0008
+    },
+    "line_initial": {
+      "ydso_initial_rate_line_first": 0.5884,
+      "ydso_initial_rate_mid_line": 0.438,
+      "gallows_initial_rate_line_first": 0.2191,
+      "gallows_initial_rate_mid_line": 0.0647
+    },
+    "lines": 4130
+  },
+  "currier_split": {
+    "tokens": {
+      "A": 10709,
+      "B": 22864
+    },
+    "marker_words": {
+      "chedy": {
+        "per_mille_A": 0.093,
+        "per_mille_B": 21.212,
+        "ratio_B_over_A": 228.1
+      },
+      "shedy": {
+        "per_mille_A": 0.187,
+        "per_mille_B": 18.326,
+        "ratio_B_over_A": 98.0
+      },
+      "qokeedy": {
+        "per_mille_A": 0.0,
+        "per_mille_B": 13.252,
+        "ratio_B_over_A": Infinity
+      },
+      "qokedy": {
+        "per_mille_A": 0.093,
+        "per_mille_B": 11.721,
+        "ratio_B_over_A": 126.0
+      },
+      "chol": {
+        "per_mille_A": 24.185,
+        "per_mille_B": 4.33,
+        "ratio_B_over_A": 0.2
+      },
+      "chor": {
+        "per_mille_A": 15.314,
+        "per_mille_B": 1.181,
+        "ratio_B_over_A": 0.1
+      },
+      "daiin": {
+        "per_mille_A": 42.581,
+        "per_mille_B": 12.99,
+        "ratio_B_over_A": 0.3
+      },
+      "aiin": {
+        "per_mille_A": 7.47,
+        "per_mille_B": 15.876,
+        "ratio_B_over_A": 2.1
+      }
+    },
+    "dy_final_rate": {
+      "A": 0.0622,
+      "B": 0.2373
+    },
+    "edy_final_rate": {
+      "A": 0.002,
+      "B": 0.1735
+    },
+    "qo_initial_rate": {
+      "A": 0.1004,
+      "B": 0.1774
+    },
+    "js_divergence_A_vs_B": 0.2601,
+    "js_divergence_within_A": 0.09,
+    "js_divergence_within_B": 0.0401
+  },
+  "entropy_zipf": {
+    "all": {
+      "tokens": 34111,
+      "h1": 3.8696,
+      "h2": 2.0839,
+      "zipf_slope": -1.1032,
+      "abbreviation_rho": -0.3472
+    },
+    "currier_A": {
+      "tokens": 10709,
+      "h1": 3.8371,
+      "h2": 2.1537,
+      "zipf_slope": -1.0329,
+      "abbreviation_rho": -0.3792
+    },
+    "currier_B": {
+      "tokens": 22864,
+      "h1": 3.8634,
+      "h2": 1.9391,
+      "zipf_slope": -1.1314,
+      "abbreviation_rho": -0.3287
+    },
+    "hand_1": {
+      "tokens": 9959,
+      "h1": 3.8268,
+      "h2": 2.136,
+      "zipf_slope": -1.0578,
+      "abbreviation_rho": -0.3737
+    },
+    "hand_2": {
+      "tokens": 10639,
+      "h1": 3.8566,
+      "h2": 1.8832,
+      "zipf_slope": -1.2083,
+      "abbreviation_rho": -0.3448
+    },
+    "hand_3": {
+      "tokens": 11680,
+      "h1": 3.8669,
+      "h2": 1.9634,
+      "zipf_slope": -1.0231,
+      "abbreviation_rho": -0.3263
+    }
+  },
+  "lb_entropy": {
+    "it_full": {
+      "words": 36907,
+      "h1": 3.8743,
+      "h2": 2.1637
+    },
+    "it_A": {
+      "words": 10798,
+      "h1": 3.8449,
+      "h2": 2.1924
+    },
+    "it_B": {
+      "words": 22957,
+      "h1": 3.8751,
+      "h2": 2.0197
+    },
+    "it_hand1": {
+      "words": 10187,
+      "h1": 3.8389,
+      "h2": 2.1866
+    },
+    "it_hand2": {
+      "words": 10868,
+      "h1": 3.8639,
+      "h2": 1.9764
+    },
+    "it_hand3": {
+      "words": 11529,
+      "h1": 3.8813,
+      "h2": 2.0291
+    },
+    "it_hand4": {
+      "words": 2990,
+      "h1": 3.7877,
+      "h2": 2.2919
+    },
+    "it_hand5": {
+      "words": 889,
+      "h1": 3.8236,
+      "h2": 2.1907
+    },
+    "zl_full": {
+      "words": 37954,
+      "h1": 3.8776,
+      "h2": 2.1643
+    },
+    "zl_A": {
+      "words": 10974,
+      "h1": 3.8507,
+      "h2": 2.2023
+    },
+    "zl_B": {
+      "words": 23724,
+      "h1": 3.8773,
+      "h2": 2.0248
+    },
+    "zl_hand1": {
+      "words": 10402,
+      "h1": 3.8465,
+      "h2": 2.2007
+    },
+    "zl_hand2": {
+      "words": 10960,
+      "h1": 3.865,
+      "h2": 1.969
+    },
+    "zl_hand3": {
+      "words": 11685,
+      "h1": 3.8813,
+      "h2": 2.0268
+    },
+    "zl_hand4": {
+      "words": 3558,
+      "h1": 3.8039,
+      "h2": 2.2609
+    },
+    "zl_hand5": {
+      "words": 889,
+      "h1": 3.825,
+      "h2": 2.1796
+    }
+  },
+  "lexical": {
+    "e_after_tk": 0.3673,
+    "e_after_pf": 0.0033,
+    "y_final_share": 0.4033,
+    "ynlrms_final_share": 0.9304,
+    "q_followed_by_o": 0.9762,
+    "daiin_share_A": 0.0416,
+    "chedy_share_B": 0.0207,
+    "chedy_count_A": 1,
+    "top10_coverage_A": 0.1488,
+    "top10_coverage_B": 0.1439,
+    "repetition_rate_A": 0.008,
+    "repetition_rate_B": 0.008,
+    "inverse_daiin_herbalA": 21.7,
+    "inverse_daiin_herbalB": 50.9,
+    "inverse_daiin_bioB": 78.8
+  },
+  "positional": {
+    "pf_share_in_paragraph_initial_lines": 0.8317,
+    "pf_occurrences": 1646,
+    "paragraphs_starting_with_gallows": 0.827,
+    "paragraph_initial_benched_gallows_rate": 0.0068,
+    "paragraph_initial_benched_gallows_cases": [
+      [
+        "f1r",
+        "cpho"
+      ],
+      [
+        "f65v",
+        "cphy"
+      ],
+      [
+        "f76v",
+        "cphdor"
+      ],
+      [
+        "f101r",
+        "cphoar"
+      ],
+      [
+        "f102r2",
+        "cthol"
+      ]
+    ],
+    "m_share_line_final": 0.6756,
+    "m_occurrences": 934,
+    "cross_line_adjacent_repeats": 6,
+    "cross_line_repeat_cases": [
+      [
+        "f47v",
+        "chy"
+      ],
+      [
+        "f78v",
+        "qol"
+      ],
+      [
+        "f82r",
+        "qokaiin"
+      ],
+      [
+        "f84r",
+        "dar"
+      ],
+      [
+        "f84r",
+        "qokeedy"
+      ],
+      [
+        "f87r",
+        "daiin"
+      ]
+    ],
+    "cross_line_repeat_rate": 0.00153,
+    "within_line_adjacent_repeats": 271,
+    "within_line_repeat_rate": 0.00904,
+    "first_word_length_excess": 0.392,
+    "first_vs_second_word_excess": 0.421,
+    "chsh_line_initial_vs_expected": 0.327
+  },
+  "adjacency": {
+    "bio_b_qo_rate_after_y_final": 0.3988,
+    "bio_b_qo_rate_after_non_y": 0.0667,
+    "bio_b_qo_baseline": 0.2445,
+    "contrast": 5.97,
+    "lift_vs_baseline": 1.63
+  },
+  "montemurro_zanette": {
+    "tokens": 34111,
+    "peak_scale_words": 812,
+    "peak_parts": 42,
+    "peak_delta_bits_per_word": 0.3072,
+    "top10_at_807": [
+      "shedy",
+      "qokain",
+      "qokeedy",
+      "qokedy",
+      "daiin",
+      "chedy",
+      "chor",
+      "ol",
+      "qokeey",
+      "qol"
+    ],
+    "top10_overlap_with_published": 8,
+    "scan": [
+      [
+        17055,
+        2,
+        0.07893
+      ],
+      [
+        11370,
+        3,
+        0.1835
+      ],
+      [
+        8527,
+        4,
+        0.16938
+      ],
+      [
+        6822,
+        5,
+        0.23498
+      ],
+      [
+        5685,
+        6,
+        0.21503
+      ],
+      [
+        4263,
+        8,
+        0.23157
+      ],
+      [
+        3411,
+        10,
+        0.27639
+      ],
+      [
+        2842,
+        12,
+        0.27244
+      ],
+      [
+        2436,
+        14,
+        0.26374
+      ],
+      [
+        2006,
+        17,
+        0.28534
+      ],
+      [
+        1624,
+        21,
+        0.29385
+      ],
+      [
+        1364,
+        25,
+        0.29797
+      ],
+      [
+        1137,
+        30,
+        0.29999
+      ],
+      [
+        947,
+        36,
+        0.29436
+      ],
+      [
+        812,
+        42,
+        0.30719
+      ],
+      [
+        682,
+        50,
+        0.30255
+      ],
+      [
+        568,
+        60,
+        0.29955
+      ],
+      [
+        473,
+        72,
+        0.29932
+      ],
+      [
+        401,
+        85,
+        0.29391
+      ],
+      [
+        341,
+        100,
+        0.29024
+      ],
+      [
+        284,
+        120,
+        0.28362
+      ],
+      [
+        235,
+        145,
+        0.27552
+      ],
+      [
+        200,
+        170,
+        0.26434
+      ],
+      [
+        170,
+        200,
+        0.25682
+      ],
+      [
+        142,
+        240,
+        0.24149
+      ],
+      [
+        113,
+        300,
+        0.2224
+      ]
+    ],
+    "anchors_truncated_to_N": {
+      "latin_vulgate": 0.3564,
+      "italian_decameron": 0.1895
+    }
+  },
+  "summary_all_words": {
+    "tokens": 34111,
+    "types": 7424,
+    "mean_word_length": 5.1005,
+    "char_inventory": 26,
+    "h1": 3.8696,
+    "h2": 2.0839,
+    "zipf_slope": -1.1032,
+    "abbreviation_rho": -0.3472,
+    "word_length_distribution": {
+      "1": 0.03046,
+      "2": 0.06112,
+      "3": 0.08851,
+      "4": 0.17657,
+      "5": 0.24807,
+      "6": 0.1951,
+      "7": 0.11603,
+      "8": 0.04758,
+      "9": 0.01926,
+      "10": 0.00756,
+      "11": 0.00334,
+      "12": 0.00249,
+      "13": 0.00152,
+      "14": 0.00091,
+      "15": 0.0005,
+      "16": 0.00059,
+      "17": 0.00012,
+      "18": 6e-05,
+      "19": 0.00012,
+      "20": 3e-05,
+      "21": 3e-05,
+      "22": 3e-05
+    }
+  },
+  "targets": [
+    {
+      "id": "E-full",
+      "family": "entropy",
+      "description": "h2 Voynich full (Takahashi, labels incl.)",
+      "published": 2.1593,
+      "measured": 2.1637,
+      "band": "\u00b10.05",
+      "status": "PASS"
+    },
+    {
+      "id": "E-A",
+      "family": "entropy",
+      "description": "h2 Voynich A (Takahashi, labels incl.)",
+      "published": 2.1705,
+      "measured": 2.1924,
+      "band": "\u00b10.05",
+      "status": "PASS"
+    },
+    {
+      "id": "E-B",
+      "family": "entropy",
+      "description": "h2 Voynich B (Takahashi, labels incl.)",
+      "published": 2.0147,
+      "measured": 2.0197,
+      "band": "\u00b10.05",
+      "status": "PASS"
+    },
+    {
+      "id": "E-h1",
+      "family": "entropy",
+      "description": "h1 full Voynich (Takahashi)",
+      "published": 3.8828,
+      "measured": 3.8743,
+      "band": "\u00b10.05",
+      "status": "PASS"
+    },
+    {
+      "id": "E-full-zl",
+      "family": "entropy",
+      "description": "h2 Voynich full on ZL (our primary)",
+      "published": "(informational)",
+      "measured": 2.1643,
+      "band": "\u2014",
+      "status": "INFO"
+    },
+    {
+      "id": "E-A-zl",
+      "family": "entropy",
+      "description": "h2 Voynich A on ZL (our primary)",
+      "published": "(informational)",
+      "measured": 2.2023,
+      "band": "\u2014",
+      "status": "INFO"
+    },
+    {
+      "id": "E-B-zl",
+      "family": "entropy",
+      "description": "h2 Voynich B on ZL (our primary)",
+      "published": "(informational)",
+      "measured": 2.0248,
+      "band": "\u2014",
+      "status": "INFO"
+    },
+    {
+      "id": "E-hand1",
+      "family": "entropy",
+      "description": "h2 Hand 1 (App. A, v2-plume values)",
+      "published": 2.122,
+      "measured": 2.1866,
+      "band": "\u00b10.08 (plume delta)",
+      "status": "PASS"
+    },
+    {
+      "id": "E-hand2",
+      "family": "entropy",
+      "description": "h2 Hand 2 (App. A, v2-plume values)",
+      "published": 1.921,
+      "measured": 1.9764,
+      "band": "\u00b10.08 (plume delta)",
+      "status": "PASS"
+    },
+    {
+      "id": "E-hand3",
+      "family": "entropy",
+      "description": "h2 Hand 3 (App. A, v2-plume values)",
+      "published": 1.999,
+      "measured": 2.0291,
+      "band": "\u00b10.08 (plume delta)",
+      "status": "PASS"
+    },
+    {
+      "id": "E-hand4",
+      "family": "entropy",
+      "description": "h2 Hand 4 (App. A, v2-plume values)",
+      "published": 2.279,
+      "measured": 2.2919,
+      "band": "\u00b10.08 (plume delta)",
+      "status": "PASS"
+    },
+    {
+      "id": "E-hand5",
+      "family": "entropy",
+      "description": "h2 Hand 5 (App. A, v2-plume values)",
+      "published": 2.111,
+      "measured": 2.1907,
+      "band": "\u00b10.08 (plume delta)",
+      "status": "PASS"
+    },
+    {
+      "id": "Z-daiin-A",
+      "family": "zipf",
+      "description": "top word of A: daiin share of A tokens",
+      "published": 0.045,
+      "measured": 0.0416,
+      "band": "\u00b10.01",
+      "status": "PASS"
+    },
+    {
+      "id": "Z-chedy-B",
+      "family": "zipf",
+      "description": "top word of B: chedy share of B tokens",
+      "published": 0.021,
+      "measured": 0.0207,
+      "band": "\u00b10.007",
+      "status": "PASS"
+    },
+    {
+      "id": "Z-top10-A",
+      "family": "zipf",
+      "description": "top-10 words coverage, A",
+      "published": 0.157,
+      "measured": 0.1488,
+      "band": "\u00b10.03",
+      "status": "PASS"
+    },
+    {
+      "id": "Z-top10-B",
+      "family": "zipf",
+      "description": "top-10 words coverage, B",
+      "published": 0.145,
+      "measured": 0.1439,
+      "band": "\u00b10.03",
+      "status": "PASS"
+    },
+    {
+      "id": "AB-chedy0",
+      "family": "currier",
+      "description": "chedy occurrences in A (published: 'does not occur')",
+      "published": 0,
+      "measured": 1,
+      "band": "\u22643",
+      "status": "PASS"
+    },
+    {
+      "id": "AB-daiin-herbalA",
+      "family": "currier",
+      "description": "inverse frequency of daiin, herbalA (targets 19/38/50-60)",
+      "published": 19,
+      "measured": 21.7,
+      "band": "15-25",
+      "status": "PASS"
+    },
+    {
+      "id": "AB-daiin-herbalB",
+      "family": "currier",
+      "description": "inverse frequency of daiin, herbalB (targets 19/38/50-60)",
+      "published": 38,
+      "measured": 50.9,
+      "band": "28-50",
+      "status": "CHECK"
+    },
+    {
+      "id": "AB-daiin-bioB",
+      "family": "currier",
+      "description": "inverse frequency of daiin, bioB (targets 19/38/50-60)",
+      "published": "50-60",
+      "measured": 78.8,
+      "band": "40-75",
+      "status": "CHECK"
+    },
+    {
+      "id": "AB-rep-A",
+      "family": "currier",
+      "description": "consecutive word repetition rate, A",
+      "published": 0.0084,
+      "measured": 0.008,
+      "band": "\u00b10.005",
+      "status": "PASS"
+    },
+    {
+      "id": "AB-rep-B",
+      "family": "currier",
+      "description": "consecutive word repetition rate, B",
+      "published": 0.0094,
+      "measured": 0.008,
+      "band": "\u00b10.005",
+      "status": "PASS"
+    },
+    {
+      "id": "G-e-tk",
+      "family": "glyph",
+      "description": "P(e | after t/k) \u2014 Currier: 'about half'",
+      "published": 0.5,
+      "measured": 0.3673,
+      "band": "0.35-0.65",
+      "status": "PASS"
+    },
+    {
+      "id": "G-e-pf",
+      "family": "glyph",
+      "description": "P(e | after p/f) \u2014 Currier: 'never, ever'",
+      "published": 0.0,
+      "measured": 0.0033,
+      "band": "\u22640.02",
+      "status": "PASS"
+    },
+    {
+      "id": "G-q-o",
+      "family": "glyph",
+      "description": "q followed by o",
+      "published": 0.98,
+      "measured": 0.9762,
+      "band": "\u22650.95",
+      "status": "PASS"
+    },
+    {
+      "id": "G-yfinal",
+      "family": "glyph",
+      "description": "words ending in y (LB: 41%)",
+      "published": 0.41,
+      "measured": 0.4033,
+      "band": "\u00b10.05",
+      "status": "PASS"
+    },
+    {
+      "id": "G-final6",
+      "family": "glyph",
+      "description": "words ending y/n/l/r/m/s (LB: 93%)",
+      "published": 0.93,
+      "measured": 0.9304,
+      "band": "\u00b10.04",
+      "status": "PASS"
+    },
+    {
+      "id": "P-pf-par",
+      "family": "positional",
+      "description": "share of p/f occurrences in paragraph-initial lines (Currier: 90-95%)",
+      "published": "0.90-0.95",
+      "measured": 0.8317,
+      "band": "0.75-0.97",
+      "status": "PASS"
+    },
+    {
+      "id": "P-par-gallows",
+      "family": "positional",
+      "description": "paragraphs beginning with gallows t/k/p/f (BL: 85%)",
+      "published": 0.85,
+      "measured": 0.827,
+      "band": "\u00b10.10",
+      "status": "PASS"
+    },
+    {
+      "id": "P-benched0",
+      "family": "positional",
+      "description": "paragraph-initial words starting benched gallows (published: 'never'; operationalized \u22641% of paragraphs)",
+      "published": 0,
+      "measured": 0.0068,
+      "band": "\u22640.01",
+      "status": "PASS"
+    },
+    {
+      "id": "P-m-final",
+      "family": "positional",
+      "description": "share of m occurrences at line end (Currier: 85%)",
+      "published": 0.85,
+      "measured": 0.6756,
+      "band": "0.60-0.95",
+      "status": "PASS"
+    },
+    {
+      "id": "P-crossline",
+      "family": "positional",
+      "description": "word repeats crossing line breaks (Currier: 'not one'; operationalized \u22653x suppression vs within-line rate)",
+      "published": "0 (rate ~0 vs within 0.00904)",
+      "measured": "6 (rate 0.00153)",
+      "band": "rate \u2264 within/3",
+      "status": "PASS"
+    },
+    {
+      "id": "P-firstlen",
+      "family": "positional",
+      "description": "first word of line longer by ~1 char (Vogt)",
+      "published": 1.0,
+      "measured": 0.392,
+      "band": "0.5-1.5",
+      "status": "CHECK"
+    },
+    {
+      "id": "P-chsh",
+      "family": "positional",
+      "description": "line-initial ch/sh suppression (Currier: ~0.1x expected)",
+      "published": 0.1,
+      "measured": 0.327,
+      "band": "0.05-0.35",
+      "status": "PASS"
+    },
+    {
+      "id": "D-y-qo",
+      "family": "adjacency",
+      "description": "Bio-B: P(qo|after y-final) vs P(qo|after non-y) (Currier: ~4x)",
+      "published": 4.0,
+      "measured": 5.97,
+      "band": "2.5-8.0",
+      "status": "PASS"
+    },
+    {
+      "id": "MZ-scale",
+      "family": "montemurro",
+      "description": "peak scale of word-information (MZ: 807 words; languages 600-800)",
+      "published": 807,
+      "measured": 812,
+      "band": "500-1100",
+      "status": "PASS"
+    },
+    {
+      "id": "MZ-top10",
+      "family": "montemurro",
+      "description": "top-10 informative words overlap with MZ Table 1 (j/i normalized)",
+      "published": "10/10",
+      "measured": "8/10",
+      "band": "\u22656",
+      "status": "PASS"
+    },
+    {
+      "id": "MZ-value",
+      "family": "montemurro",
+      "description": "peak \u0394I bits/word (MZ: between Latin ~0.2 and Chinese ~0.6, above English)",
+      "published": "~0.3-0.5",
+      "measured": 0.3072,
+      "band": "0.2-0.65",
+      "status": "PASS"
+    }
+  ]
+}
