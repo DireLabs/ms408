@@ -1,0 +1,200 @@
+{
+  "built_at": "2026-07-05T23:59:49+00:00",
+  "git_commit": "e62843427cd8e3c37085cacb5a85eb30fb16b769",
+  "words_per_line": 15,
+  "registers_note": "Primary Hebrew register: consonantal (D16 default). German dipl/ascii pairs expose the diplomatic-vs-simplified confound; Vulgate/Macer/Decameron are critical editions with expanded abbreviations. Stratify by `edition`.",
+  "texts": {
+    "latin_vulgate": {
+      "language": "latin",
+      "form": "prose",
+      "edition": "critical",
+      "period": "4th c. (medieval transmission)",
+      "genre": "scripture",
+      "sources": {
+        "latin/vulgate_bible-corpus_Latin.xml": "5bba9f75c06858a28ebe7b2fcc19cc32b3fbf587d6bc237ceac6fe7addd3df31"
+      },
+      "words": 534301,
+      "chars": 2865356
+    },
+    "latin_macer_floridus": {
+      "language": "latin",
+      "form": "verse",
+      "edition": "critical",
+      "period": "11th c.",
+      "genre": "herbal",
+      "sources": {
+        "latin/macer_floridus_de_viribus_herbarum.wikitext.json": "e3d0fe80a5623679281319c4724466720b76651096c62bd41843793fec564866"
+      },
+      "words": 13967,
+      "chars": 81659
+    },
+    "italian_decameron": {
+      "language": "italian",
+      "form": "prose",
+      "edition": "critical",
+      "period": "1349-1353",
+      "genre": "narrative",
+      "sources": {
+        "italian/boccaccio_decameron_branca.txt": "8c4b4dc24661c42daa90024f4c98395c98f70414d299a88b53ab75aea169a8f4"
+      },
+      "words": 269563,
+      "chars": 1200620
+    },
+    "german_ulmer_wundarznei_dipl": {
+      "language": "german-enhg",
+      "form": "prose",
+      "edition": "diplomatic",
+      "period": "late 15th c.",
+      "genre": "medical",
+      "sources": {
+        "german/ReF-v1.0.2.tar.gz": "288a478d02de5796d14faa0b669879dc6bf67c47e2d7ee261815e15120b99f0e"
+      },
+      "words": 21789,
+      "chars": 87410
+    },
+    "german_ulmer_wundarznei_ascii": {
+      "language": "german-enhg",
+      "form": "prose",
+      "edition": "diplomatic-ascii",
+      "period": "late 15th c.",
+      "genre": "medical",
+      "sources": {
+        "german/ReF-v1.0.2.tar.gz": "288a478d02de5796d14faa0b669879dc6bf67c47e2d7ee261815e15120b99f0e"
+      },
+      "words": 20528,
+      "chars": 88396
+    },
+    "german_feldbuch_wundarznei_dipl": {
+      "language": "german-enhg",
+      "form": "prose",
+      "edition": "diplomatic",
+      "period": "early 16th c.",
+      "genre": "medical",
+      "sources": {
+        "german/ReF-v1.0.2.tar.gz": "288a478d02de5796d14faa0b669879dc6bf67c47e2d7ee261815e15120b99f0e"
+      },
+      "words": 21788,
+      "chars": 94474
+    },
+    "german_feldbuch_wundarznei_ascii": {
+      "language": "german-enhg",
+      "form": "prose",
+      "edition": "diplomatic-ascii",
+      "period": "early 16th c.",
+      "genre": "medical",
+      "sources": {
+        "german/ReF-v1.0.2.tar.gz": "288a478d02de5796d14faa0b669879dc6bf67c47e2d7ee261815e15120b99f0e"
+      },
+      "words": 20626,
+      "chars": 95437
+    },
+    "german_arzneibuch_dipl": {
+      "language": "german-enhg",
+      "form": "prose",
+      "edition": "diplomatic",
+      "period": "early 17th c.",
+      "genre": "medical",
+      "sources": {
+        "german/ReF-v1.0.2.tar.gz": "288a478d02de5796d14faa0b669879dc6bf67c47e2d7ee261815e15120b99f0e"
+      },
+      "words": 27445,
+      "chars": 132765
+    },
+    "german_arzneibuch_ascii": {
+      "language": "german-enhg",
+      "form": "prose",
+      "edition": "diplomatic-ascii",
+      "period": "early 17th c.",
+      "genre": "medical",
+      "sources": {
+        "german/ReF-v1.0.2.tar.gz": "288a478d02de5796d14faa0b669879dc6bf67c47e2d7ee261815e15120b99f0e"
+      },
+      "words": 26900,
+      "chars": 132603
+    },
+    "german_wundarznei_dipl": {
+      "language": "german-enhg",
+      "form": "prose",
+      "edition": "diplomatic",
+      "period": "early 16th c.",
+      "genre": "medical",
+      "sources": {
+        "german/ReF-v1.0.2.tar.gz": "288a478d02de5796d14faa0b669879dc6bf67c47e2d7ee261815e15120b99f0e"
+      },
+      "words": 26374,
+      "chars": 111122
+    },
+    "german_wundarznei_ascii": {
+      "language": "german-enhg",
+      "form": "prose",
+      "edition": "diplomatic-ascii",
+      "period": "early 16th c.",
+      "genre": "medical",
+      "sources": {
+        "german/ReF-v1.0.2.tar.gz": "288a478d02de5796d14faa0b669879dc6bf67c47e2d7ee261815e15120b99f0e"
+      },
+      "words": 25538,
+      "chars": 109221
+    },
+    "german_kraeuterbuch_dipl": {
+      "language": "german-enhg",
+      "form": "prose",
+      "edition": "diplomatic",
+      "period": "early 16th c.",
+      "genre": "medical",
+      "sources": {
+        "german/ReF-v1.0.2.tar.gz": "288a478d02de5796d14faa0b669879dc6bf67c47e2d7ee261815e15120b99f0e"
+      },
+      "words": 21932,
+      "chars": 96005
+    },
+    "german_kraeuterbuch_ascii": {
+      "language": "german-enhg",
+      "form": "prose",
+      "edition": "diplomatic-ascii",
+      "period": "early 16th c.",
+      "genre": "medical",
+      "sources": {
+        "german/ReF-v1.0.2.tar.gz": "288a478d02de5796d14faa0b669879dc6bf67c47e2d7ee261815e15120b99f0e"
+      },
+      "words": 20726,
+      "chars": 99856
+    },
+    "hebrew_mishneh_torah_consonantal": {
+      "language": "hebrew",
+      "form": "prose",
+      "edition": "critical",
+      "period": "1170-1180",
+      "genre": "legal code",
+      "sources": {
+        "hebrew/mishneh_torah_foundations_of_the_torah_torat_emet.json": "a35c233dfb57fc67186aee6d0cebe4221c2d7be8b791eaa908efb80ab495ce7c",
+        "hebrew/mishneh_torah_human_dispositions_torat_emet.json": "95080bf20ae830cd76702b8ad0e2b1bbaeb8c460a631f8d5d9b330da8a24bdcd",
+        "hebrew/mishneh_torah_torah_study_torat_emet.json": "08e1e3b3a2219dde6dbe654d4e8faf3019861b169e90a416bbfd14e00cbcb50b",
+        "hebrew/mishneh_torah_foreign_worship_and_customs_of_the_nations_torat_emet.json": "d44062dd9806a383ba2ab19ca6aba1e6ad04db0ec0b1d473a99a3a706a1c1e0f",
+        "hebrew/mishneh_torah_repentance_torat_emet.json": "1c0a500bc219f1751938a5ad955042cdb5ec35b9a61ded66b054beb78cd2cafe",
+        "hebrew/mishneh_torah_sabbath_torat_emet.json": "9dd8918f452cfd6fc68ebfc375e55049a95e56e486f091710acfe60c96d0a196",
+        "hebrew/mishneh_torah_forbidden_foods_torat_emet.json": "1f78ee8d3596e3fd1d85dd68b922796be2ce5797ba5e2b7602b94fffeb62c295"
+      },
+      "words": 90379,
+      "chars": 356139
+    },
+    "hebrew_mishneh_torah_pointed": {
+      "language": "hebrew",
+      "form": "prose",
+      "edition": "critical",
+      "period": "1170-1180",
+      "genre": "legal code",
+      "sources": {
+        "hebrew/mishneh_torah_foundations_of_the_torah_torat_emet.json": "a35c233dfb57fc67186aee6d0cebe4221c2d7be8b791eaa908efb80ab495ce7c",
+        "hebrew/mishneh_torah_human_dispositions_torat_emet.json": "95080bf20ae830cd76702b8ad0e2b1bbaeb8c460a631f8d5d9b330da8a24bdcd",
+        "hebrew/mishneh_torah_torah_study_torat_emet.json": "08e1e3b3a2219dde6dbe654d4e8faf3019861b169e90a416bbfd14e00cbcb50b",
+        "hebrew/mishneh_torah_foreign_worship_and_customs_of_the_nations_torat_emet.json": "d44062dd9806a383ba2ab19ca6aba1e6ad04db0ec0b1d473a99a3a706a1c1e0f",
+        "hebrew/mishneh_torah_repentance_torat_emet.json": "1c0a500bc219f1751938a5ad955042cdb5ec35b9a61ded66b054beb78cd2cafe",
+        "hebrew/mishneh_torah_sabbath_torat_emet.json": "9dd8918f452cfd6fc68ebfc375e55049a95e56e486f091710acfe60c96d0a196",
+        "hebrew/mishneh_torah_forbidden_foods_torat_emet.json": "1f78ee8d3596e3fd1d85dd68b922796be2ce5797ba5e2b7602b94fffeb62c295"
+      },
+      "words": 90379,
+      "chars": 649484
+    }
+  }
+}

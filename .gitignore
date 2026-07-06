@@ -9,3 +9,4 @@ venv/
 data/raw/
 data/processed/*.jsonl
 data/processed/harness/**/*.txt
+data/processed/h4/*.txt
