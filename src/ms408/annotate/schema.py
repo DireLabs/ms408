@@ -16,7 +16,14 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-SCHEMA_VERSION = "v0.1-coarse"
+SCHEMA_VERSION = "v0.2-fine"
+
+# v0.2 changes (G2 batch-1 retune, T2.3b readiness):
+# - text_image_relationship: 4 clear categories (was 7; drove 46% QA drift)
+# - dropped damage_or_stain + marginalia_present from scored fields -> notes only
+# - herbal root_color -> coarse root_coloring enum (faded pigment drove 35% drift)
+# - added label_attachment (herbal, pharma): which plant parts carry adjacent
+#   labels -> the label-region capture T2.3b label-level anchoring needs
 
 
 @dataclass(frozen=True)
@@ -51,22 +58,24 @@ COMMON = [
     _enum("illustration_coverage_pct", ["0", "1-25", "26-50", "51-75", "76-100"],
           "Band of page area occupied by illustration vs text/blank."),
     _enum("text_image_relationship",
-          ["text-wraps-image", "image-in-text-block", "text-labels-only",
-           "separate-zones", "text-only", "image-only"],
-          "How text and illustration are spatially arranged."),
+          ["image-with-running-text", "image-with-labels-only", "image-only", "text-only"],
+          "Does the running Voynichese text share the page with the image? "
+          "'image-with-running-text' = paragraphs of text beside/around the image; "
+          "'image-with-labels-only' = only short word-labels touch the image; "
+          "'image-only' / 'text-only' = essentially one or the other."),
     _multi("color_palette", ["none/ink-only", "green", "blue", "red", "ochre/brown",
                              "yellow"], "Pigments present anywhere on the page."),
-    _bool("marginalia_present", "Any later marginal notes, non-Voynichese script, or added marks?"),
-    _bool("damage_or_stain", "Significant staining, offset, or damage that could affect feature calls?"),
 ]
+# damage/staining and later marginalia are captured in `notes` only (v0.2):
+# both were 35% cross-model-noisy as scored booleans and are not analysis inputs.
 
 HERBAL = [
     _count("plant_count", "Number of distinct whole-plant drawings on the page.", True),
     _enum("root_type", ["none", "taproot", "branched", "bulbous", "tuberous",
                         "fibrous/stringy", "zoomorphic", "other"],
           "Dominant root morphology of the primary plant. Shape only, no species.", True),
-    _multi("root_color", ["none", "brown", "red", "green", "blue", "ochre", "uncolored"],
-           "Pigments used on the root(s)."),
+    _enum("root_coloring", ["uncolored", "brown-ochre", "red", "green", "other"],
+          "Coarse dominant pigment of the root (faded — one bucket, not a hue list)."),
     _enum("leaf_shape", ["simple-entire", "lobed", "palmate", "serrated",
                         "needle/linear", "compound", "heart"],
           "Dominant leaf outline of the primary plant.", True),
@@ -75,10 +84,12 @@ HERBAL = [
     _enum("leaf_count_band", ["1-3", "4-8", "9-20", "20+"],
           "Coarse count band of leaves on the primary plant."),
     _bool("flower_present", "Are flowers/inflorescences drawn?", True),
-    _multi("flower_color", ["none", "white/uncolored", "red", "blue", "yellow/ochre",
-                            "green", "other"], "Pigments on the flowers."),
     _multi("stem_features", ["single", "multiple", "branched", "tendrils", "none/unclear"],
            "Stem structure of the primary plant."),
+    _multi("label_attachment", ["none", "root", "leaf", "flower", "stem", "whole-plant"],
+           "Which plant parts have a short Voynichese word-label drawn touching or "
+           "immediately beside them (label-level anchoring, T2.3b). 'none' if labels "
+           "are absent or not attached to a specific part.", True),
     _bool("container_present", "Is the plant shown in/emerging from a pot, jar, or vessel?"),
 ]
 
@@ -138,7 +149,10 @@ PHARMACEUTICAL = [
            "Root morphologies among the fragments."),
     _multi("leaf_forms", ["none", "simple", "lobed", "serrated", "compound"],
            "Leaf morphologies among the fragments."),
-    _bool("label_present", "Are short text labels attached to individual parts/jars?"),
+    _multi("label_attachment", ["none", "jar", "root", "leaf", "stem", "flower", "seed"],
+           "Which elements have a short Voynichese word-label drawn touching or "
+           "immediately beside them (label-level anchoring, T2.3b). 'none' if labels "
+           "are absent or not attached to a specific element.", True),
     _enum("parts_per_row_band", ["1-3", "4-8", "9+", "mixed"],
           "Coarse density of items per row."),
     _bool("whole_plant_present", "Is any complete plant (not just a fragment) shown?"),

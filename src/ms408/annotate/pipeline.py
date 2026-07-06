@@ -165,8 +165,7 @@ def annotate_page(client, page_name: str, code: str, scan_map: dict) -> dict:
     return record
 
 
-_COMMON_KEYS = {"illustration_coverage_pct", "text_image_relationship", "color_palette",
-                "marginalia_present", "damage_or_stain"}
+_COMMON_KEYS = {"illustration_coverage_pct", "text_image_relationship", "color_palette"}
 
 
 def run(section: str | None = None, limit: int | None = None) -> dict:

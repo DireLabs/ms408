@@ -26,22 +26,24 @@ def test_count_fields_are_bounded_enums():
 def test_common_block_on_every_section():
     for code in SECTION_BLOCKS:
         props = tool_schema(code)["properties"]
-        for common_field in ("illustration_coverage_pct", "color_palette", "marginalia_present"):
+        for common_field in ("illustration_coverage_pct", "text_image_relationship",
+                             "color_palette"):
             assert common_field in props
         assert "notes" in props
 
 
 def test_text_and_star_pages_get_common_only():
     for code in ("S", "T"):
-        # 5 common fields + notes
-        assert len(tool_schema(code)["properties"]) == 6
+        # 3 common fields (v0.2 dropped damage/marginalia) + notes
+        assert len(tool_schema(code)["properties"]) == 4
 
 
 def test_critical_fields_are_anchor_hunt_features():
     assert set(critical_fields("H")) == {"plant_count", "root_type", "leaf_shape",
-                                         "flower_present"}
+                                         "flower_present", "label_attachment"}
     assert "plumbing_present" in critical_fields("B")
     assert "container_count" in critical_fields("P")
+    assert "label_attachment" in critical_fields("P")  # T2.3b readiness
 
 
 def test_enum_fields_include_unclear():
