@@ -1,0 +1,136 @@
+{
+  "built_at": "2026-07-06T23:11:56+00:00",
+  "git_commit": "591d1c0c095dddc99353068573810fd30603d667",
+  "study": "T2.6 W7 discriminator",
+  "herbal_pages_scored": 128,
+  "features_tested": [
+    "root_type",
+    "root_coloring",
+    "leaf_shape",
+    "leaf_arrangement",
+    "leaf_count_band"
+  ],
+  "permutations": 5000,
+  "referential_realism": {
+    "pairwise": {
+      "root_type x root_coloring": {
+        "cramers_v": 0.3416,
+        "null_v_95": 0.3229,
+        "p_associated": 0.03819,
+        "distinct_combinations": 19,
+        "null_combinations_median": 19,
+        "p_fewer_combos": 0.65327,
+        "constrained": true
+      },
+      "root_type x leaf_shape": {
+        "cramers_v": 0.2558,
+        "null_v_95": 0.2966,
+        "p_associated": 0.25835,
+        "distinct_combinations": 29,
+        "null_combinations_median": 28,
+        "p_fewer_combos": 0.79824,
+        "constrained": false
+      },
+      "root_type x leaf_arrangement": {
+        "cramers_v": 0.207,
+        "null_v_95": 0.2952,
+        "p_associated": 0.70286,
+        "distinct_combinations": 25,
+        "null_combinations_median": 25,
+        "p_fewer_combos": 0.78384,
+        "constrained": false
+      },
+      "root_type x leaf_count_band": {
+        "cramers_v": 0.2495,
+        "null_v_95": 0.3457,
+        "p_associated": 0.24435,
+        "distinct_combinations": 20,
+        "null_combinations_median": 21,
+        "p_fewer_combos": 0.32933,
+        "constrained": false
+      },
+      "root_coloring x leaf_shape": {
+        "cramers_v": 0.2287,
+        "null_v_95": 0.2765,
+        "p_associated": 0.23835,
+        "distinct_combinations": 15,
+        "null_combinations_median": 17,
+        "p_fewer_combos": 0.14877,
+        "constrained": false
+      },
+      "root_coloring x leaf_arrangement": {
+        "cramers_v": 0.3953,
+        "null_v_95": 0.231,
+        "p_associated": 0.0036,
+        "distinct_combinations": 15,
+        "null_combinations_median": 15,
+        "p_fewer_combos": 0.81844,
+        "constrained": true
+      },
+      "root_coloring x leaf_count_band": {
+        "cramers_v": 0.361,
+        "null_v_95": 0.2749,
+        "p_associated": 0.0176,
+        "distinct_combinations": 12,
+        "null_combinations_median": 12,
+        "p_fewer_combos": 0.54789,
+        "constrained": true
+      },
+      "leaf_shape x leaf_arrangement": {
+        "cramers_v": 0.2573,
+        "null_v_95": 0.2542,
+        "p_associated": 0.04299,
+        "distinct_combinations": 23,
+        "null_combinations_median": 23,
+        "p_fewer_combos": 0.79044,
+        "constrained": true
+      },
+      "leaf_shape x leaf_count_band": {
+        "cramers_v": 0.178,
+        "null_v_95": 0.2603,
+        "p_associated": 0.65447,
+        "distinct_combinations": 19,
+        "null_combinations_median": 19,
+        "p_fewer_combos": 0.70506,
+        "constrained": false
+      },
+      "leaf_arrangement x leaf_count_band": {
+        "cramers_v": 0.5048,
+        "null_v_95": 0.2536,
+        "p_associated": 0.0002,
+        "distinct_combinations": 13,
+        "null_combinations_median": 16,
+        "p_fewer_combos": 0.0042,
+        "constrained": true
+      }
+    },
+    "pairs_tested": 10,
+    "pairs_constrained": 5,
+    "constrained_pairs": [
+      "root_type x root_coloring",
+      "root_coloring x leaf_arrangement",
+      "root_coloring x leaf_count_band",
+      "leaf_shape x leaf_arrangement",
+      "leaf_arrangement x leaf_count_band"
+    ],
+    "mean_cramers_v": 0.2979,
+    "mean_null_v_95": 0.2811,
+    "cross_organ_root_leaf": {
+      "pair": "root_type x leaf_shape",
+      "cramers_v": 0.2558,
+      "null_v_95": 0.2966,
+      "p_associated": 0.25835,
+      "distinct_combinations": 29,
+      "null_combinations_median": 28,
+      "p_fewer_combos": 0.79824,
+      "constrained": false
+    },
+    "verdict": "within-organ-only"
+  },
+  "anachronism_scan": {
+    "method": "The v0.2 schema captures only morphology (L14): shape, count, colour, spatial arrangement. None of these encodes information beyond unaided 15th-century observation (no cellular detail, no telescopic star data, no information requiring instruments the period lacked). The scan is therefore a structured null by construction.",
+    "result": "null",
+    "grade": "C",
+    "note": "A rigorous null is itself a citable constraint (W7 output form): no annotated feature exceeds period observational capability."
+  }
+}
