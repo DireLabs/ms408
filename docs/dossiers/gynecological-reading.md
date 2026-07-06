@@ -1,16 +1,13 @@
 # W4 Dossier 3/5 — The Gynecological / Women's-Medicine Reading (Brewer & Lewis 2024)
-
 Task T2.5 · compiled 2026-07-06 · W4 (influence mapping). Claims graded per RESEARCH-PLAN §6
 (C/D territory by nature). Web-sourced; the primary paper is paywalled — see D-item at end.
 
----
-
 ## 1. The source, verified
 
-**Citation (verified against the OUP article page):** Keagan Brewer and Michelle L. Lewis,
-"The Voynich Manuscript, Dr Johannes Hartlieb and the Encipherment of Women's Secrets,"
-*Social History of Medicine* 37/3 (August 2024), 559–582. DOI: 10.1093/shm/hkad099.
-Advance-access publication 22 March 2024. [C — OUP page, academic.oup.com/shm/article-abstract/37/3/559/7633883]
+**Citation (verified against the OUP article page):** Keagan Brewer and Michelle L. Lewis, "The
+Voynich Manuscript, Dr Johannes Hartlieb and the Encipherment of Women's Secrets," *Social History
+of Medicine* 37/3 (Aug 2024), 559–582; doi:10.1093/shm/hkad099; advance access 22 March 2024.
+[C — academic.oup.com/shm/article-abstract/37/3/559/7633883]
 
 - The research plan's shorthand "the Hartlieb-adjacent gynecological reading (Brewer & Lewis
   2024)" matches this article; journal and year confirmed. [C]
@@ -126,14 +123,14 @@ with any W2 encoding-class outcome, but it makes checkable iconographic and mili
   ungrammatical Latin that "doesn't hold together". [C — Boing Boing 11 Sept 2017 roundup]
   **Program note [D]:** Gibbs shows the *subject* claim can outlive a failed *reading*; Brewer &
   Lewis deliberately decouple the two — their strength relative to Gibbs.
-- **Community priors:** women's-medicine/gynecology proposals recur on the mailing lists and
-  voynich.ninja long before 2024 (O'Donovan lists earlier proponents and complains B&L present
-  the idea as newer than it is). [C — voynichrevisionist.com, 26 Apr 2024]
+- **Community priors:** women's-medicine proposals recur on the mailing lists and voynich.ninja
+  long before 2024 (O'Donovan complains B&L present the idea as newer than it is).
+  [C — voynichrevisionist.com, 26 Apr 2024]
 
 ## 6. Critical reception of Brewer & Lewis
 
 - **Peer review status:** published in a respected history-of-medicine journal (SHM, OUP) —
-  unusual for Voynich content theories, and noted approvingly by commentators. [C]
+  unusual for Voynich content theories; noted approvingly by commentators. [C]
 - **Language Log (Victor Mair, 21 Apr 2024):** sympathetic ("one that to me makes a lot of
   sense"); commenters praised its limited, hedged claims; D. N. O'Donovan dissented at length.
   [C — languagelog.ldc.upenn.edu/nll/?p=63603]
@@ -203,8 +200,8 @@ If the VMS is (partly) an enciphered women's-medicine/secreta text, then:
 
 ## 9. Flagged statistical / annotation test candidates (for D5 schema + W3 anchor hunt)
 
-Annotation features that would let the anchor hunt test B&L's specific claims (all flagged as
-candidates, not commitments — D-items for the D5 schema decision):
+Annotation features letting the anchor hunt test B&L's specific claims (all flagged as candidates,
+not commitments — D-items for the D5 schema decision):
 
 - **Nymph-level features (Q13 + zodiac):** holds-object (y/n); object type; object orientation
   relative to body (toward abdomen/genitalia vs. raised vs. neutral); posture; abdomen rendering
