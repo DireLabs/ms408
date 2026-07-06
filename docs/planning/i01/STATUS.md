@@ -33,7 +33,8 @@ _Last updated: 2026-07-05 (Code session 1)_
 | T1.3 bulk annotation | ✅ done — **G2 signed off 2026-07-06** | 227 pages, schema v0.2-fine, $3.55. QA passes ratified thresholds (L32): 0.211/0.223/0.346 vs 0.25/0.25/0.40. root_type low-confidence (L33). Dataset accepted. |
 | T2.3b label-level anchoring | ✅ done 2026-07-06 | Labels are NOT a naming system: herbal near-label-free (3/129); in every labeled section labels recur LESS than running text (pharma 95% unique, 8 recurring vs null [25,41]). Coherent with T2.3a — no word→referent mapping detectable. reports/study_anchor_labels.md. |
 | T2.3 anchor hunt | ✅ done 2026-07-06 (page-level) | Harness gate PASSED (null 0/14758 false disc.; planted recovered). **Rigorous null**: no token anchors to a herbal feature after FDR; nothing behaves like "root" at page granularity. Strongest raw signals = noise / A/B confound. Label-level follow-up (T2.3b) flagged. reports/study_anchor_hunt.md. |
-| all others | ⬜ blocked | Per DAG in WORKFLOW.md §3. |
+| T2.6 W7 discriminator | ✅ done 2026-07-06 | Referential-realism: "within-organ-only" — root_type×leaf_shape (the realism bundle) ABSENT (p=0.26, saturated); constraint only in tautological within-leaf geometry. No root↔leaf real-taxa bundle. Anachronism scan = rigorous null. reports/study_referential_realism.md. **Phase 2 COMPLETE (7/7 studies).** |
+| **Phase 3** (T3.1→T3.2 G3→T3.3→T3.4 G4) | ⬜ ready | **All Phase 2 studies + dossiers complete.** T3.1 competing narratives next. |
 
 ## Sessions
 
