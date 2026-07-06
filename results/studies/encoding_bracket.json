@@ -1,0 +1,140 @@
+{
+  "built_at": "2026-07-06T06:32:54+00:00",
+  "git_commit": "0e07c0b6fec07c86092c3e61902af493205791b4",
+  "seed": 408,
+  "note": "one parameterization per family; T1.4 variants pending. Metrics substitution-invariant except residual alphabet-inventory dependence in h1/h2.",
+  "profiles": {
+    "vms": {
+      "tokens": 34111,
+      "types": 7424,
+      "h1": 3.8789,
+      "h2": 2.1294,
+      "mean_word_length": 5.1,
+      "type_token_ratio": 0.2176,
+      "zipf_slope": -1.1032,
+      "abbreviation_rho": -0.3472,
+      "ed1_main_component": 0.7975,
+      "position_entropy": 0.6675,
+      "repetition_rate": 0.00812,
+      "mz_peak_value": 0.3072,
+      "mz_peak_scale": 812
+    },
+    "verbose_cipher": {
+      "tokens": 34111,
+      "types": 5603,
+      "h1": 3.8838,
+      "h2": 2.086,
+      "mean_word_length": 5.245,
+      "type_token_ratio": 0.1643,
+      "zipf_slope": -0.9316,
+      "abbreviation_rho": -0.1943,
+      "ed1_main_component": 0.944,
+      "position_entropy": 0.6161,
+      "repetition_rate": 0.00158,
+      "mz_peak_value": 0.0002,
+      "mz_peak_scale": 1364
+    },
+    "selfcitation": {
+      "tokens": 33058,
+      "types": 4239,
+      "h1": 3.7851,
+      "h2": 1.995,
+      "mean_word_length": 4.766,
+      "type_token_ratio": 0.1282,
+      "zipf_slope": -1.101,
+      "abbreviation_rho": -0.341,
+      "ed1_main_component": 0.9106,
+      "position_entropy": 0.6699,
+      "repetition_rate": 0.00929,
+      "mz_peak_value": 0.4975,
+      "mz_peak_scale": 275
+    },
+    "abjad_anagram": {
+      "tokens": 34111,
+      "types": 7249,
+      "h1": 4.1286,
+      "h2": 2.8673,
+      "mean_word_length": 3.97,
+      "type_token_ratio": 0.2125,
+      "zipf_slope": -0.9188,
+      "abbreviation_rho": -0.34,
+      "ed1_main_component": 0.9244,
+      "position_entropy": 0.6805,
+      "repetition_rate": 0.00158,
+      "mz_peak_value": 0.4471,
+      "mz_peak_scale": 947
+    },
+    "abbreviation": {
+      "tokens": 34111,
+      "types": 6978,
+      "h1": 3.9996,
+      "h2": 3.5022,
+      "mean_word_length": 3.996,
+      "type_token_ratio": 0.2046,
+      "zipf_slope": -0.9307,
+      "abbreviation_rho": -0.3908,
+      "ed1_main_component": 0.4934,
+      "position_entropy": 0.9057,
+      "repetition_rate": 0.00026,
+      "mz_peak_value": 0.2564,
+      "mz_peak_scale": 1364
+    },
+    "conlang_relex": {
+      "tokens": 34111,
+      "types": 6993,
+      "h1": 3.8495,
+      "h2": 2.8182,
+      "mean_word_length": 7.08,
+      "type_token_ratio": 0.205,
+      "zipf_slope": -0.9627,
+      "abbreviation_rho": -0.0826,
+      "ed1_main_component": 0.0006,
+      "position_entropy": 0.9343,
+      "repetition_rate": 0.00035,
+      "mz_peak_value": 0.3564,
+      "mz_peak_scale": 812
+    }
+  },
+  "scorecard": {
+    "selfcitation": {
+      "distance": 0.628,
+      "worst_metrics": [
+        "type_token_ratio",
+        "mz_peak_scale",
+        "mz_peak_value"
+      ]
+    },
+    "abjad_anagram": {
+      "distance": 0.886,
+      "worst_metrics": [
+        "zipf_slope",
+        "h1",
+        "repetition_rate"
+      ]
+    },
+    "verbose_cipher": {
+      "distance": 0.954,
+      "worst_metrics": [
+        "zipf_slope",
+        "mz_peak_value",
+        "repetition_rate"
+      ]
+    },
+    "abbreviation": {
+      "distance": 1.19,
+      "worst_metrics": [
+        "h2",
+        "zipf_slope",
+        "repetition_rate"
+      ]
+    },
+    "conlang_relex": {
+      "distance": 1.237,
+      "worst_metrics": [
+        "abbreviation_rho",
+        "ed1_main_component",
+        "position_entropy"
+      ]
+    }
+  }
+}
