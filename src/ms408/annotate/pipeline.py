@@ -67,12 +67,14 @@ def illustrated_pages(section: str | None = None) -> list:
 
 
 MAX_EDGE_PX = 7000  # API rejects any image dimension > 8000px
-MAX_BYTES = 9_500_000  # API rejects any single image > 10 MB; keep margin
+# API's 10 MB cap is on the base64-ENCODED size; base64 inflates ~4/3, so keep
+# the raw JPEG under ~7.3 MB (encoded ~9.8 MB, safely under 10,485,760)
+MAX_RAW_BYTES = 7_300_000
 
 
 def _image_block(path: Path) -> dict:
     raw = path.read_bytes()
-    if max(_dimensions(path)) <= MAX_EDGE_PX and len(raw) <= MAX_BYTES:
+    if max(_dimensions(path)) <= MAX_EDGE_PX and len(raw) <= MAX_RAW_BYTES:
         data = base64.standard_b64encode(raw).decode()
         return {"type": "image",
                 "source": {"type": "base64", "media_type": "image/jpeg", "data": data}}
@@ -85,12 +87,12 @@ def _image_block(path: Path) -> dict:
         img = img.convert("RGB")
         # cap the long edge, then shrink further if still over the byte budget
         scale = min(1.0, MAX_EDGE_PX / max(img.size))
-        for _ in range(6):
+        for _ in range(8):
             w, h = round(img.width * scale), round(img.height * scale)
             buffer = io.BytesIO()
             img.resize((w, h), Image.LANCZOS).save(buffer, format="JPEG", quality=88)
             raw = buffer.getvalue()
-            if len(raw) <= MAX_BYTES:
+            if len(raw) <= MAX_RAW_BYTES:
                 break
             scale *= 0.85
     data = base64.standard_b64encode(raw).decode()
