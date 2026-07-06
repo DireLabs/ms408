@@ -44,4 +44,5 @@
 
 | ID | Question | Options | Implications | Recommended default | Owner |
 |---|---|---|---|---|---|
-| — | (none — all D-items through D18 resolved; D9→L27, D12→L28) | | | | |
+| D19 | Acquire Meister 1902/1906 (*Die Anfänge der modernen diplomatischen Geheimschrift* / *Die Geheimschrift im Dienste der päpstlichen Kurie*) for primary verification of the cipher-culture dossier's key-count claims? | ILL/digitized copy · rely on secondary citations | Dossier claims about Mantua/Lucca/papal key inventories currently grade C on secondary sources; primary verification would firm the W5 constraint section | Defer until W5 synthesis needs the claims above C | Tim |
+| D20 | Pursue a Giovanni Fontana enciphered-book transcription as a real in-window control corpus (consume-only per L19)? | Yes (locate/transcribe Bellicorum instrumentorum liber cipher passages) · no | The only attested enciphered *book* from the right decades/milieu — a genuine H2-class control that isn't a modern reconstruction; nontrivial acquisition effort | Investigate cost first (one agent-day); decide then | Tim |
