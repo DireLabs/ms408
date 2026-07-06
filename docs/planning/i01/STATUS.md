@@ -22,7 +22,9 @@ _Last updated: 2026-07-05 (Code session 1)_
 |---|---|---|
 | T0.1 decision locks | ✅ done 2026-07-05 | G0 run in-session with Tim. |
 | T0.2 corpus pipeline | ✅ done 2026-07-05 | Text: pinned acquisition + IVTFF parser + dataset v0.1.0 w/ provenance manifest. Scans: all 213 canvases full-res (536 MB), 0 dimension mismatches. Scan↔page join: 227/227 mapped; 20 foldout panels ambiguous (2 candidates each — resolve visually at T1.2); 9 unmatched canvases are binding shots. 19 tests green. |
-| T0.3 validation harness | 🔄 in progress | **H2 Naibbe done** (golden decrypt byte-exact; stats within author spread). **H3 self-citation done**: full reimplementation (tokenizer, curve/line rules, morph ops, page chooser, feedback stats, assembly); 5-seed means vs author reference: i 0.226/0.241, ol 0.397/0.396, dy 0.277/0.256 (all ±0.03 ✓), VMS overlap 0.688 (band 0.65–0.75 ✓); two spec ambiguities resolved empirically (spec §17, reconcile at D15). **H4 acquired** (13 files, licenses+sha256 in MANIFEST.json). Remaining: H4 normalization pass, scoring API, benchmark report. |
+| T0.3 validation harness | ✅ done 2026-07-05 | H2 Naibbe (golden decrypt byte-exact) + H3 self-citation (5-seed distributional match; spec §17 fidelity notes) + H4 normalized in 4 languages w/ edition registers + scoring API (textstats) + **benchmark report**: 29 corpora in reports/harness_benchmark.md, results/harness/benchmark.json. Class separation as designed: H1 h2≈2.0–2.1 vs H4 naturals 2.9–3.9; H2/H3 reproduce the low-h2 property. Informal: ZL Currier B h1/h2 = 3.866/1.958 vs published EVA VMS-B 3.860/1.954 — formal comparison is T1.1. |
+| T1.1 replication gate | ⬜ ready | **Phase 0 complete** — corpus + harness + benchmark all in place. T1.1 compares pipeline outputs to published values (h2, Zipf ×2, A/B split, Montemurro–Zanette, positional effects) → G1 (Tim). |
+| T1.2 annotation schema | ⬜ ready | Unblocked by T0.2 (scans + scan_map on disk). Cowork task. |
 | T2.5 W4 dossiers | ⬜ ready | Unblocked by G0. Awaiting Cowork session 1 — kickoff brief in WORKFLOW.md §6. |
 | all others | ⬜ blocked | Per DAG in WORKFLOW.md §3. |
 
