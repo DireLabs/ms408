@@ -1,0 +1,194 @@
+{
+  "built_at": "2026-07-06T19:09:25+00:00",
+  "git_commit": "fa4d52f4f8946dcef4cff859ff448de4a35f6ad4",
+  "section": "H",
+  "pages": 129,
+  "testable_tokens": 314,
+  "testable_features": 47,
+  "tests": 14758,
+  "fdr_q": 0.05,
+  "harness_gate": {
+    "null_control": {
+      "tests": 14758,
+      "false_discoveries": 0,
+      "false_discovery_fraction": 0.0
+    },
+    "planted_control": {
+      "planted_on_feature": "illustration_coverage_pct=51-75",
+      "planted_pages": 122,
+      "recovered": true,
+      "phi": 1.0,
+      "p": 0.0
+    },
+    "passed": true
+  },
+  "anchors": [],
+  "anchors_admissible": true,
+  "strongest_subthreshold": [
+    {
+      "token": "todaiin",
+      "feature": "plant_count=3",
+      "a": 3,
+      "b": 3,
+      "c": 3,
+      "d": 120,
+      "phi": 0.4756,
+      "p": 0.001084,
+      "discovery": false
+    },
+    {
+      "token": "olor",
+      "feature": "color_palette=yellow",
+      "a": 4,
+      "b": 1,
+      "c": 11,
+      "d": 113,
+      "phi": 0.4283,
+      "p": 0.000576,
+      "discovery": false
+    },
+    {
+      "token": "qokaiin",
+      "feature": "plant_count=3",
+      "a": 5,
+      "b": 17,
+      "c": 1,
+      "d": 106,
+      "phi": 0.3892,
+      "p": 0.000508,
+      "discovery": false
+    },
+    {
+      "token": "qokedy",
+      "feature": "text_image_relationship=separate-zones",
+      "a": 13,
+      "b": 4,
+      "c": 28,
+      "d": 84,
+      "phi": 0.3739,
+      "p": 6.4e-05,
+      "discovery": false
+    },
+    {
+      "token": "shedy",
+      "feature": "text_image_relationship=separate-zones",
+      "a": 12,
+      "b": 4,
+      "c": 29,
+      "d": 84,
+      "phi": 0.3492,
+      "p": 0.000192,
+      "discovery": false
+    },
+    {
+      "token": "yky",
+      "feature": "leaf_shape=palmate",
+      "a": 3,
+      "b": 7,
+      "c": 3,
+      "d": 116,
+      "phi": 0.3489,
+      "p": 0.006041,
+      "discovery": false
+    },
+    {
+      "token": "qokchdy",
+      "feature": "plant_count=3",
+      "a": 3,
+      "b": 7,
+      "c": 3,
+      "d": 116,
+      "phi": 0.3489,
+      "p": 0.006041,
+      "discovery": false
+    },
+    {
+      "token": "shdy",
+      "feature": "stem_features=multiple",
+      "a": 9,
+      "b": 3,
+      "c": 26,
+      "d": 91,
+      "phi": 0.3448,
+      "p": 0.000394,
+      "discovery": false
+    },
+    {
+      "token": "chodar",
+      "feature": "root_type=zoomorphic",
+      "a": 2,
+      "b": 4,
+      "c": 3,
+      "d": 120,
+      "phi": 0.3371,
+      "p": 0.017044,
+      "discovery": false
+    },
+    {
+      "token": "chal",
+      "feature": "illustration_coverage_pct=26-50",
+      "a": 2,
+      "b": 3,
+      "c": 4,
+      "d": 120,
+      "phi": 0.3371,
+      "p": 0.017044,
+      "discovery": false
+    },
+    {
+      "token": "chal",
+      "feature": "plant_count=3",
+      "a": 2,
+      "b": 3,
+      "c": 4,
+      "d": 120,
+      "phi": 0.3371,
+      "p": 0.017044,
+      "discovery": false
+    },
+    {
+      "token": "ksheo",
+      "feature": "illustration_coverage_pct=26-50",
+      "a": 2,
+      "b": 3,
+      "c": 4,
+      "d": 120,
+      "phi": 0.3371,
+      "p": 0.017044,
+      "discovery": false
+    },
+    {
+      "token": "tshol",
+      "feature": "plant_count=3",
+      "a": 2,
+      "b": 3,
+      "c": 4,
+      "d": 120,
+      "phi": 0.3371,
+      "p": 0.017044,
+      "discovery": false
+    },
+    {
+      "token": "olol",
+      "feature": "plant_count=3",
+      "a": 2,
+      "b": 3,
+      "c": 4,
+      "d": 120,
+      "phi": 0.3371,
+      "p": 0.017044,
+      "discovery": false
+    },
+    {
+      "token": "qokchey",
+      "feature": "plant_count=3",
+      "a": 2,
+      "b": 3,
+      "c": 4,
+      "d": 120,
+      "phi": 0.3371,
+      "p": 0.017044,
+      "discovery": false
+    }
+  ]
+}

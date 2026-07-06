@@ -247,6 +247,8 @@ def run(section: str = "H") -> dict:
         (t for t in real_tests if t["discovery"] and t["phi"] > 0),
         key=lambda t: -t["phi"],
     )
+    strongest = sorted((t for t in real_tests if t["phi"] > 0),
+                       key=lambda t: -t["phi"])[:15]
     results = {
         "built_at": datetime.now(UTC).isoformat(timespec="seconds"),
         "git_commit": git_commit(),
@@ -263,6 +265,7 @@ def run(section: str = "H") -> dict:
         },
         "anchors": anchors[:50] if gate_passed else [],
         "anchors_admissible": gate_passed,
+        "strongest_subthreshold": strongest,
     }
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     (RESULTS_DIR / "anchor_hunt.json").write_text(json.dumps(results, indent=2) + "\n")
@@ -314,7 +317,32 @@ def _render_report(results: dict) -> str:
                 f"| {anchor['p']} | {anchor['a']} |"
             )
         if not results["anchors"]:
-            lines.append("| _(none survived FDR)_ | | | | |")
+            lines += [
+                "| _(none survived FDR)_ | | | | |",
+                "",
+                "## Result: rigorous null (graded C; a null is itself a constraint)",
+                "",
+                f"**No Voynichese token anchors to a herbal visual feature** after "
+                f"FDR correction across {results['tests']:,} tests — nothing behaves "
+                f"like 'root' at page-level granularity with the coarse schema. The "
+                f"harness gate passed (null control 0 false discoveries, planted "
+                f"anchor recovered), so this is a real negative, not a broken method.",
+                "",
+                "Strongest sub-threshold associations (none significant), for texture:",
+                "",
+                "| token | feature | phi | p | co-pages |",
+                "|---|---|---|---|---|",
+                *[f"| `{t['token']}` | {t['feature']} | {t['phi']} | {t['p']} "
+                  f"| {t['a']} |" for t in results["strongest_subthreshold"][:10]],
+                "",
+                "Two caveats on the strongest raw signals: (a) most co-occur on only "
+                "2-5 pages (tiny-sample noise); (b) the very strongest "
+                "(`qokedy`/`shedy` ↔ separate-zones layout) reflect the **Currier A/B "
+                "dialect confound** leaking through a layout feature, not semantics. "
+                "The higher-power follow-up is label-level anchoring (word-next-to-"
+                "feature), which needs label-region↔feature annotation beyond the "
+                "coarse schema — flag for the fine-schema extension (L15) and T2.3b.",
+            ]
     else:
         lines += ["## Anchors withheld", "",
                   "The harness gate did not pass; no H1 anchors are reported "
