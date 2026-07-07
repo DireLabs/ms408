@@ -116,6 +116,46 @@ def power_at_phi(pages, tokens, features, target_phi: float, seed: int) -> dict:
     }
 
 
+def power_by_prevalence(pages, tokens, features, target_phi: float, seed: int) -> dict:
+    """Recovery at target_phi stratified by the target feature's prevalence band —
+    Fisher power is cell-count-driven, so rare features have far less power than
+    balanced ones (E3 refutation point)."""
+    import random
+
+    rng = random.Random(seed)
+    all_pages = [p.page for p in pages]
+    n = len(all_pages)
+    bands = {"rare (<20 pp)": (1, 20), "mid (20-45 pp)": (20, 45),
+             "balanced (45+ pp)": (45, n)}
+    by_band = {}
+    for label, (lo, hi) in bands.items():
+        band_feats = [(fn, fp) for fn, fp in features.items() if lo <= len(fp) < hi]
+        if not band_feats:
+            by_band[label] = None
+            continue
+        recovered = attempts = 0
+        for _ in range(40):
+            fname, fpages = rng.choice(band_feats)
+            planted = _plant_for_phi(fpages, all_pages, target_phi, rng)
+            if planted is None:
+                continue
+            attempts += 1
+            pvals, idx = [], None
+            for token, tpages in list(tokens.items()) + [("__PLANT__", planted)]:
+                a = len(tpages & fpages)
+                b = len(tpages - fpages)
+                c = len(fpages - tpages)
+                pvals.append(fisher_right_tail(a, b, c, n - a - b - c))
+                if token == "__PLANT__":
+                    idx = len(pvals) - 1
+            if benjamini_hochberg(pvals, FDR_Q)[idx]:
+                recovered += 1
+        by_band[label] = {"features_in_band": len(band_feats), "attempts": attempts,
+                          "recovery_rate": round(recovered / attempts, 3)
+                          if attempts else None}
+    return by_band
+
+
 def run() -> dict:
     pages = load_pages("H")
     tokens, features = _page_sets(pages)
@@ -123,6 +163,7 @@ def run() -> dict:
 
     curve = [power_at_phi(pages, tokens, features, phi, SEED + int(phi * 100))
              for phi in PHI_GRID]
+    prevalence_at_04 = power_by_prevalence(pages, tokens, features, 0.4, SEED)
 
     # minimum detectable effect = smallest phi with recovery >= 0.8
     mde = next((row["target_phi"] for row in curve
@@ -143,6 +184,7 @@ def run() -> dict:
         "power_curve": curve,
         "minimum_detectable_effect_phi_at_80pct": mde,
         "moderate_anchor_phi0.4_recovered": bool(moderate_recovered),
+        "power_at_phi04_by_prevalence": prevalence_at_04,
     }
     results["verdict"], results["grade"] = _verdict(results)
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -152,24 +194,29 @@ def run() -> dict:
 
 
 def _verdict(r: dict) -> tuple:
-    mde = r["minimum_detectable_effect_phi_at_80pct"]
-    if r["moderate_anchor_phi0.4_recovered"]:
-        return (
-            f"The anchor hunt IS adequately powered: a moderate synthetic anchor "
-            f"(phi=0.4) is recovered "
-            f"{next(x['recovery_rate'] for x in r['power_curve'] if x['target_phi']==0.4):.0%} "
-            f"of the time, minimum detectable effect (80% power) phi={mde}. So the "
-            f"i01 null is INFORMATIVE: had a moderate token<->feature anchor existed, "
-            f"it would likely have been found. 'No strong page-level anchor' "
-            f"strengthens toward 'no moderate-or-strong anchor'.", "B")
+    # Revised per E3's refutation pass. The critic accepted the method but showed
+    # the "null is informative" headline was oversold: (a) recovery is a cliff
+    # (0% below phi 0.4, 85%+ above), and a realistic imperfect/fragmented herbal
+    # anchor likely sits at phi 0.2-0.35 — the dead zone; (b) MDE phi=0.4 hides
+    # prevalence dependence (rare features have far less power).
+    band = r["power_at_phi04_by_prevalence"]
+
+    def rate(label):
+        b = band.get(label)
+        return b["recovery_rate"] if b else None
+
     return (
-        f"The anchor hunt is UNDERPOWERED: even a moderate synthetic anchor "
-        f"(phi=0.4) is recovered "
-        f"{(next((x['recovery_rate'] for x in r['power_curve'] if x['target_phi']==0.4), 0) or 0):.0%} "
-        f"of the time (80%-power MDE phi={mde}). The i01 null is therefore "
-        f"UNINFORMATIVE about moderate anchors — it must be downgraded to 'no VERY "
-        f"STRONG page-level anchor', and the real test is finer granularity "
-        f"(label-adjacency) at higher power.", "B")
+        f"The power ANALYSIS is sound but the 'null is informative' claim is "
+        f"OVERSOLD. Recovery is a cliff: phi<=0.3 -> 0%, phi=0.4 -> 85%. And power "
+        f"is strongly prevalence-dependent at phi=0.4 — rare features "
+        f"{rate('rare (<20 pp)')}, mid {rate('mid (20-45 pp)')}, balanced "
+        f"{rate('balanced (45+ pp)')}. Honest bound: the i01 anchor hunt EXCLUDES "
+        f"only STRONG, prevalence-balanced anchors (phi>=0.4 on common features); "
+        f"it does NOT exclude the WEAK (phi 0.2-0.35) or RARE-feature anchors that a "
+        f"genuine but imperfect herbal cipher would most plausibly produce. So the "
+        f"i01 null is a WEAKER constraint than the flagship implied — it bounds the "
+        f"anchor away from the strong-signal corner, no more. The real test is "
+        f"finer (label-adjacency) granularity, deferred.", "B")
 
 
 def _render(r: dict) -> str:
@@ -194,12 +241,18 @@ def _render(r: dict) -> str:
                      f"| {row['recovery_rate']} |")
     lines += [
         "",
-        f"- Minimum detectable effect (≥80% recovery): "
-        f"**phi = {r['minimum_detectable_effect_phi_at_80pct']}**.",
-        f"- Moderate anchor (phi=0.4) recovered: "
-        f"**{r['moderate_anchor_phi0.4_recovered']}**.",
+        f"- Minimum detectable effect (≥80% recovery, averaged): "
+        f"**phi = {r['minimum_detectable_effect_phi_at_80pct']}** — but this hides "
+        f"prevalence dependence (below).",
         "",
-        f"## Verdict [{r['grade']}, pending refutation pass]",
+        "### Power at phi=0.4 by feature prevalence (the refutation's key point)",
+        "",
+        "| feature prevalence | features in band | recovery rate |",
+        "|---|---|---|",
+        *[f"| {label} | {b['features_in_band']} | {b['recovery_rate']} |"
+          for label, b in r["power_at_phi04_by_prevalence"].items() if b],
+        "",
+        f"## Verdict [{r['grade']}, refutation pass applied]",
         "",
         r["verdict"],
         "",

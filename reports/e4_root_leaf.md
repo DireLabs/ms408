@@ -1,6 +1,6 @@
 # E4 — root<->leaf: masked positive or real null?
 
-Generated 2026-07-07T21:41:11+00:00 at commit `691d0b0d38` by `python -m ms408.experiments.e4_root_leaf`. Numbers in `results/experiments/e4_root_leaf.json`.
+Generated 2026-07-07T21:51:26+00:00 at commit `6fb18eb360` by `python -m ms408.experiments.e4_root_leaf`. Numbers in `results/experiments/e4_root_leaf.json`.
 
 128 herbal pages. Root-region × leaf-region associations, raw and disattenuated for inter-annotator noise (reliability = 1 − QA disagreement). The clean feature (root_coloring, ~4% noise) carries the affirmative test; disattenuation of the noisy root_type is an approximate guide only.
 
@@ -13,9 +13,16 @@ Generated 2026-07-07T21:41:11+00:00 at commit `691d0b0d38` by `python -m ms408.e
 | root_coloring x leaf_arrangement | 0.96 | 0.3953 | 0.5004 | 0.0044 | YES |
 | root_coloring x leaf_count_band | 0.96 | 0.361 | 0.3996 | 0.019 | YES |
 
-- Clean root_coloring significant with: **['root_coloring x leaf_arrangement', 'root_coloring x leaf_count_band']**.
-- Cross-organ bundle exists: **True**.
+Multiple-comparison note: BH/Bonferroni across 6 tested pairs; Bonferroni alpha 0.0083. root_coloring pairs surviving BH across the 6: **['root_coloring x leaf_arrangement']**.
 
-## Verdict [B, pending refutation pass]
+### Pigmentation-confound controls (E4 refutation's decisive test)
 
-OVERTURNS the i01 'no cross-organ bundle' null. The CLEAN root-region feature root_coloring (~4% noise) associates significantly with leaf morphology (root_coloring x leaf_arrangement, root_coloring x leaf_count_band) — a real cross-organ (root-region <-> leaf-region) feature bundle that root_type's 35% noise could not show. The i01 headline pair root_type x leaf_shape (V 0.2558, p 0.26575) disattenuates to ~0.3713 — a moderate association sitting right at the E3 page-level detection floor (phi~0.4), i.e. a masked positive, not a true null. The herbal has cross-organ morphological structure after all; the T2.6 'within-organ only' verdict is withdrawn. (This does NOT by itself decide real-vs-invented: a systematically invented herbal also has bundled features. It removes one of the three legs i01 leaned against the referential-herbal reading.)
+- Binary coloured/uncoloured root × leaf_arrangement (does 'is it coloured at all' drive it?): V 0.0676, p 0.9764 — NOT significant.
+- root_coloring × leaf_arrangement within COLOURED-only pages (115 pages): V 0.4598, p 0.0012, significant True — survives and strengthens.
+- (root_coloring × page-coloured is uninformative: ~90% of herbal pages are coloured, so page-coloured barely varies — not a rebuttal either way.)
+
+- **Cross-organ bundle SUGGESTIVE (crude confound rebutted, deep same-source confound pending): True**. Decisive test: independent re-annotation (E4 third-annotator) to rule out same-model-source confound.
+
+## Verdict [B, refutation pass applied]
+
+SUGGESTIVE but not confirmed — the T2.6 'within-organ only' verdict is WEAKENED, not cleanly overturned. root_coloring x leaf_arrangement survives BH across the 6 pairs (p 0.0012 within colours), and the crude page-pigmentation confound is rebutted: the binary coloured/uncoloured split does NOT drive it (V 0.0676, p 0.9764), and it SURVIVES and strengthens within coloured-only pages (V 0.4598, p 0.0012, n 115). BUT the deep confound the refutation raised — both features come from ONE vision model on ONE image, so a shared visual-gestalt correlation could persist within colours too — is NOT resolvable from these controls. Only INDEPENDENT re-annotation (the E4 third-annotator pass) settles it. Two cautions remain: only leaf_arrangement survives correction (leaf_count_band does not, and the two are non-independent), and the pre-registered pair root_type x leaf_shape is still null even disattenuated (~0.3713, p 0.26575). Net: the herbal MAY have a real cross-organ bundle; the page-colouring artifact is ruled out but the same-source artifact is not. Decisive test pending.

@@ -60,6 +60,56 @@ def _disattenuate(v: float, fx: str, fy: str) -> float:
     return round(v / denom, 4) if denom else v
 
 
+def _pigmentation_controls(annotations: list, seed: int) -> dict:
+    """Test whether root_coloring x leaf_arrangement is a page-pigmentation artifact
+    rather than a morphological bundle (E4 refutation, resolving tests 2 & 3)."""
+    rows = []
+    for rec in annotations:
+        if rec["section"] != "H":
+            continue
+        feats = rec["section_features"]
+        common = rec.get("common", {})
+        if (feats.get("root_coloring") not in (None, "unclear")
+                and feats.get("leaf_arrangement") not in (None, "unclear")):
+            rows.append({
+                "root_coloring": feats["root_coloring"],
+                "leaf_arrangement": feats["leaf_arrangement"],
+                "root_colored": feats["root_coloring"] != "uncolored",
+                "page_colored": bool(common.get("color_palette")
+                                     and common["color_palette"] != ["none/ink-only"]),
+            })
+
+    # (a) does root_coloring simply track whether the page is coloured?
+    root_vs_pagecolor = association_test(
+        [r["root_coloring"] for r in rows], [r["page_colored"] for r in rows], seed)
+    # (b) does the binary coloured/uncoloured root distinction ALONE drive it?
+    binary_assoc = association_test(
+        [r["root_colored"] for r in rows], [r["leaf_arrangement"] for r in rows], seed + 1)
+    # (c) does root_coloring x leaf_arrangement survive within COLOURED-only pages?
+    colored = [r for r in rows if r["root_colored"]]
+    colored_assoc = (association_test(
+        [r["root_coloring"] for r in colored],
+        [r["leaf_arrangement"] for r in colored], seed + 2)
+        if len(colored) >= 20 else {"cramers_v": None, "p_associated": None,
+                                     "constrained": False})
+
+    return {
+        "root_coloring_tracks_page_color": {
+            "cramers_v": root_vs_pagecolor["cramers_v"],
+            "p": root_vs_pagecolor["p_associated"]},
+        "binary_colored_vs_leaf_arrangement": {
+            "cramers_v": binary_assoc["cramers_v"], "p": binary_assoc["p_associated"],
+            "significant": binary_assoc["constrained"]},
+        "within_colored_pages": {
+            "n": len(colored), "cramers_v": colored_assoc["cramers_v"],
+            "p": colored_assoc["p_associated"], "significant": colored_assoc["constrained"]},
+        "survives_colored_only": bool(colored_assoc["constrained"]),
+        "explained_by_page_pigmentation": bool(
+            root_vs_pagecolor["p_associated"] < 0.05
+            and not colored_assoc["constrained"]),
+    }
+
+
 def run() -> dict:
     annotations = [json.loads(line) for line in
                    (ROOT / "results" / "annotations" / "t13_annotations.jsonl")
@@ -80,10 +130,35 @@ def run() -> dict:
 
     clean_pairs = {k: v for k, v in pairs.items()
                    if v["root_feature"] == "root_coloring"}
-    clean_significant = [k for k, v in clean_pairs.items() if v["constrained"]]
     noisy_pairs = {k: v for k, v in pairs.items() if v["root_feature"] == "root_type"}
 
-    cross_organ_bundle_exists = len(clean_significant) >= 1
+    # (i) multiple-comparison correction across the 6 tested pairs (E4 refutation)
+    from ..studies.anchor_hunt import benjamini_hochberg
+    names = list(pairs)
+    pvals = [pairs[k]["p_associated"] for k in names]
+    bh = benjamini_hochberg(pvals, 0.05)
+    bonferroni_alpha = round(0.05 / len(pairs), 4)
+    for k, disc in zip(names, bh):
+        pairs[k]["survives_bh_across_6"] = bool(disc)
+        pairs[k]["survives_bonferroni"] = pairs[k]["p_associated"] <= bonferroni_alpha
+    clean_significant = [k for k, v in clean_pairs.items()
+                         if pairs[k]["survives_bh_across_6"]]
+
+    # (ii) pigmentation-confound controls (E4 refutation's decisive objection):
+    #   is root_coloring just a page-pigment proxy, and does the association
+    #   survive when we strip the coloured/uncoloured distinction?
+    confound = _pigmentation_controls(annotations, seed + 100)
+
+    # survives correction + the CRUDE pigmentation controls, but the deep
+    # same-model-source confound is NOT resolvable without independent
+    # re-annotation (E4 third-annotator). So the strongest honest state is
+    # "suggestive", not a clean overturning.
+    crude_confound_rebutted = (
+        len(clean_significant) >= 1
+        and confound["survives_colored_only"]
+        and not confound["binary_colored_vs_leaf_arrangement"]["significant"]
+    )
+    cross_organ_bundle_suggestive = crude_confound_rebutted
 
     results = {
         "built_at": datetime.now(UTC).isoformat(timespec="seconds"),
@@ -91,8 +166,13 @@ def run() -> dict:
         "experiment": "E4 — root<->leaf masked positive",
         "herbal_pages": n,
         "pairs": pairs,
-        "clean_root_coloring_significant_with": clean_significant,
-        "cross_organ_bundle_exists": bool(cross_organ_bundle_exists),
+        "multiple_comparison_note": f"BH/Bonferroni across {len(pairs)} tested pairs; "
+        f"Bonferroni alpha {bonferroni_alpha}",
+        "clean_root_coloring_survives_correction_with": clean_significant,
+        "pigmentation_controls": confound,
+        "cross_organ_bundle_suggestive": bool(cross_organ_bundle_suggestive),
+        "decisive_test_pending": "independent re-annotation (E4 third-annotator) to "
+        "rule out same-model-source confound",
     }
     results["verdict"], results["grade"] = _verdict(results, clean_pairs, noisy_pairs)
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -102,28 +182,40 @@ def run() -> dict:
 
 
 def _verdict(r: dict, clean_pairs: dict, noisy_pairs: dict) -> tuple:
-    if r["cross_organ_bundle_exists"]:
-        sig = ", ".join(r["clean_root_coloring_significant_with"])
-        rt_leaf = noisy_pairs.get("root_type x leaf_shape", {})
+    # Revised per E4's refutation pass, which largely REFUTED the overturning:
+    # multiple comparisons + a page-pigmentation annotation confound. The
+    # resolving controls the critic named are now run.
+    c = r["pigmentation_controls"]
+    rt_leaf = noisy_pairs.get("root_type x leaf_shape", {})
+    if r["cross_organ_bundle_suggestive"]:
         return (
-            f"OVERTURNS the i01 'no cross-organ bundle' null. The CLEAN root-region "
-            f"feature root_coloring (~4% noise) associates significantly with leaf "
-            f"morphology ({sig}) — a real cross-organ (root-region <-> leaf-region) "
-            f"feature bundle that root_type's 35% noise could not show. The i01 "
-            f"headline pair root_type x leaf_shape (V {rt_leaf.get('cramers_v')}, "
-            f"p {rt_leaf.get('p_associated')}) disattenuates to "
-            f"~{rt_leaf.get('disattenuated_v')} — a moderate association sitting "
-            f"right at the E3 page-level detection floor (phi~0.4), i.e. a masked "
-            f"positive, not a true null. The herbal has cross-organ morphological "
-            f"structure after all; the T2.6 'within-organ only' verdict is "
-            f"withdrawn. (This does NOT by itself decide real-vs-invented: a "
-            f"systematically invented herbal also has bundled features. It removes "
-            f"one of the three legs i01 leaned against the referential-herbal "
-            f"reading.)", "B")
+            f"SUGGESTIVE but not confirmed — the T2.6 'within-organ only' verdict is "
+            f"WEAKENED, not cleanly overturned. root_coloring x leaf_arrangement "
+            f"survives BH across the 6 pairs (p {c['within_colored_pages']['p']} "
+            f"within colours), and the crude page-pigmentation confound is rebutted: "
+            f"the binary coloured/uncoloured split does NOT drive it "
+            f"(V {c['binary_colored_vs_leaf_arrangement']['cramers_v']}, "
+            f"p {c['binary_colored_vs_leaf_arrangement']['p']}), and it SURVIVES and "
+            f"strengthens within coloured-only pages "
+            f"(V {c['within_colored_pages']['cramers_v']}, "
+            f"p {c['within_colored_pages']['p']}, n {c['within_colored_pages']['n']}). "
+            f"BUT the deep confound the refutation raised — both features come from "
+            f"ONE vision model on ONE image, so a shared visual-gestalt correlation "
+            f"could persist within colours too — is NOT resolvable from these "
+            f"controls. Only INDEPENDENT re-annotation (the E4 third-annotator pass) "
+            f"settles it. Two cautions remain: only leaf_arrangement survives "
+            f"correction (leaf_count_band does not, and the two are non-independent), "
+            f"and the pre-registered pair root_type x leaf_shape is still null even "
+            f"disattenuated (~{rt_leaf.get('disattenuated_v')}, "
+            f"p {rt_leaf.get('p_associated')}). Net: the herbal MAY have a real "
+            f"cross-organ bundle; the page-colouring artifact is ruled out but the "
+            f"same-source artifact is not. Decisive test pending.", "B")
     return (
-        "The i01 null STANDS on firmer ground: even the clean root_coloring feature "
-        "does not associate with leaf morphology after permutation testing, so the "
-        "absence of a cross-organ bundle is not a measurement-noise artifact.", "B")
+        f"The i01 'within-organ only' null STANDS: the apparent cross-organ signal "
+        f"does not survive correction and the pigmentation controls, most "
+        f"parsimoniously a page-colouring / annotation artifact. The pre-registered "
+        f"pair root_type x leaf_shape is null even disattenuated "
+        f"(~{rt_leaf.get('disattenuated_v')}, p {rt_leaf.get('p_associated')}).", "B")
 
 
 def _render(r: dict) -> str:
@@ -149,13 +241,31 @@ def _render(r: dict) -> str:
             f"| {v['disattenuated_v']} | {v['p_associated']} "
             f"| {'YES' if v['constrained'] else 'no'} |"
         )
+    c = r["pigmentation_controls"]
     lines += [
         "",
-        f"- Clean root_coloring significant with: "
-        f"**{r['clean_root_coloring_significant_with'] or 'none'}**.",
-        f"- Cross-organ bundle exists: **{r['cross_organ_bundle_exists']}**.",
+        f"Multiple-comparison note: {r['multiple_comparison_note']}. "
+        f"root_coloring pairs surviving BH across the 6: "
+        f"**{r['clean_root_coloring_survives_correction_with'] or 'none'}**.",
         "",
-        f"## Verdict [{r['grade']}, pending refutation pass]",
+        "### Pigmentation-confound controls (E4 refutation's decisive test)",
+        "",
+        f"- Binary coloured/uncoloured root × leaf_arrangement (does 'is it coloured "
+        f"at all' drive it?): V {c['binary_colored_vs_leaf_arrangement']['cramers_v']}, "
+        f"p {c['binary_colored_vs_leaf_arrangement']['p']} — NOT significant.",
+        f"- root_coloring × leaf_arrangement within COLOURED-only pages "
+        f"({c['within_colored_pages']['n']} pages): V "
+        f"{c['within_colored_pages']['cramers_v']}, "
+        f"p {c['within_colored_pages']['p']}, significant "
+        f"{c['within_colored_pages']['significant']} — survives and strengthens.",
+        "- (root_coloring × page-coloured is uninformative: ~90% of herbal pages "
+        "are coloured, so page-coloured barely varies — not a rebuttal either way.)",
+        "",
+        f"- **Cross-organ bundle SUGGESTIVE (crude confound rebutted, deep "
+        f"same-source confound pending): {r['cross_organ_bundle_suggestive']}**. "
+        f"Decisive test: {r['decisive_test_pending']}.",
+        "",
+        f"## Verdict [{r['grade']}, refutation pass applied]",
         "",
         r["verdict"],
         "",
