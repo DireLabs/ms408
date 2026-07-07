@@ -10,12 +10,21 @@ clean-context refutation pass before grading A/B.
 | id | question | state | verdict |
 |---|---|---|---|
 | E1 | Is MZ a meaning detector? | ✅ done + refuted → revised | [C] DI value not a meaning certificate (stands); strong claim withdrawn on refutation (drift-null hits value at wrong scale). Confirms C5: DI can't settle meaningful-vs-meaningless. |
-| E2 | Word-order signal confound | ✅ done (refutation pass running) | [B] Reordering NOT an artifact (natural 0.306 = reordered 0.307); 812 = section-block scale; anti-uniform-cipher point SURVIVES block structure (cipher of blocked text → DI 0.013). |
+| E2 | Word-order signal confound | ✅ done + refuted → resolving controls run | [B] Reordering not an artifact; 812 = block scale; **anti-cipher point CORRECTED**: heavy-homophony cipher collapses DI (0.013) but type-preserving DETERMINISTIC verbose cipher RETAINS it (0.356) → nomenclator/deterministic cipher OPEN, not ruled out. Meaningless block stream reaches DI (2.18) → statistic measures block structure not meaning. |
 | E3 | Anchor-hunt power curve | ⬜ ready | — |
 | E4 | root↔leaf masked positive (disattenuation) | ⬜ ready | — |
 | E5 | Encoding bracket, fair (equal tuning, held-out) | ⬜ ready | — |
 
 **Word-order story (E1+E2) resolved:** MZ cannot decide meaningful-vs-meaningless (E1); its 812 scale is a block-structure signature, not meaning (E1+E2); the signal is intrinsic, not a reordering artifact (E2); verbose cipher is disfavoured more firmly than i01 stated (E2). Net: flagship position reinforced, one part (anti-cipher) strengthened.
+
+## Flagship revisions pending (fold in after E3–E5)
+
+- **Cipher claim (from E2):** narrow "off-the-shelf verbose cipher disfavoured" →
+  "heavy-homophony (Naibbe-class) verbose cipher disfavoured; type-preserving
+  deterministic-verbose / nomenclator / syllabary cipher OPEN (retains the
+  word-order structure)". This *re-opens* the cipher family i01 had leaned against.
+- **Word-order framing (from E1+E2):** ΔI is a block-structure statistic, not a
+  meaning statistic; the 812 scale is the section-block scale.
 
 ## Open decisions for Tim
 
