@@ -12,3 +12,4 @@ data/processed/harness/**/*.txt
 data/processed/h4/*.txt
 .env
 results/annotations/*.jsonl
+results/synthesis/*.json
