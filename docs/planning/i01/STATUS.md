@@ -13,8 +13,8 @@ _Last updated: 2026-07-05 (Code session 1)_
 | G0 decision locks | ✅ signed off 2026-07-05 | D1–D8, D10, D11 locked as L11–L20. D9 open until end of Phase 1; D12 open until T1.3. |
 | G1 replication | ✅ signed off 2026-07-06 | 35/38 scored targets PASS; D13–D18 locked as L21–L26. Report: reports/replication_report.md @ ab19821. |
 | G2 annotation | ✅ signed off 2026-07-06 | Schema v0.2-fine; QA passes retuned thresholds (L32). root_type flagged low-confidence (L33). T2.3b unblocked. |
-| G3 synthesis | pending | |
-| G4 final | pending | |
+| G3 synthesis | ✅ signed off 2026-07-07 | Flagship accepted (L34). |
+| G4 final | ✅ signed off 2026-07-07 | Honest revision accepted; i02 agenda approved (L34). **i01 COMPLETE.** |
 
 ## Tasks
 

@@ -8,6 +8,8 @@
 
 **G2 signed off 2026-07-06:** annotation gate approved (schema v0.2-fine, results/annotations/t13_qa.json). L32–L33 lock the retuned QA thresholds and root_type handling. Annotated dataset accepted; T2.3b (label-level anchoring) unblocked.
 
+**G3 + G4 signed off 2026-07-07:** synthesis flagship accepted (docs/synthesis/FLAGSHIP.md); T3.3 critique-log dispositions ratified; i02 experiment agenda approved. L34 records it. **i01 iteration complete** — all five gates passed, every claim graded and adversarially reviewed.
+
 ## Locked
 
 | ID | Decision | Rationale |
@@ -43,6 +45,7 @@
 | L29 | T1.4 flow: Tim reviews the W6a variant matrix before Phase-2 sweeps run. | Tim 2026-07-06. Satisfied same day — see L30. |
 | L32 | (G2) Annotation schema v0.2-fine accepted. QA batch thresholds retuned to 0.25 overall / 0.25 critical / 0.40 single-field — the provisional 0.20/0.15 assumed same-model QA; these reflect real cross-model variance on coarse morphological calls. v0.2 batch passes (0.211/0.223/0.346). | G2 2026-07-06. Fixable fields fixed at v0.2 (text_image_relationship 46%→8%, root_coloring 35%→4%); residual is irreducible perceptual ambiguity. |
 | L33 | root_type (and leaf_arrangement) carried as known-noisy features (~0.35 cross-model): used in analysis, but every root_type-based finding is flagged with the inter-annotator caveat. The anchor-hunt harness gate already guards against noise-driven false positives. | G2 2026-07-06. Load-bearing anchor-hunt feature but genuinely ambiguous on stylized/faded drawings. |
+| L34 | (G3+G4) Synthesis flagship accepted as the honest final; T3.3 critique-log dispositions ratified (the distinctive meaningful-vs-meaningless / invented-language lean is NOT established and is downgraded; descriptive results + method survive). i02 5-experiment agenda approved. | Tim 2026-07-07. Adversarial review (P5) downgraded the program's own headline before publication — recorded as the primary outcome. |
 | L30 | W6a variant matrix accepted; P1 sweep set approved: V1 (v101 substrate), V2 (homophone-poor Naibbe), V3 (paradigmatic conlang), V4 (stratified bracket), V8 (tokenization grid), V5 (reading-order probe). **L11 unchanged**: EVA stays primary; v101 co-reported in Phase-2 outputs; revisit only if v101's advantage survives the sweeps. | Tim 2026-07-06. |
 | L31 | Annotation schema v0.1-coarse locked with defaults: ambiguous foldout panels annotated on both candidate scans with provenance; S/T pages common-block only; provisional QA thresholds 0.20/0.15/40%; scan colors as-is with palette enum; zoomorphic-root boolean. **T1.3 bulk annotation green-lit** under the L28 $100 cap; drift stats reported before any G2 ask. | Tim 2026-07-06. |
 
