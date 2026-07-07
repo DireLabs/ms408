@@ -1,6 +1,6 @@
 # E1 — Is Montemurro-Zanette DI a meaning detector?
 
-Generated 2026-07-07T21:24:28+00:00 at commit `8058cdb674` by `python -m ms408.experiments.e1_meaning_detector`. Full numbers in `results/experiments/e1_meaning_detector.json`.
+Generated 2026-07-07T21:30:35+00:00 at commit `bb465830a3` by `python -m ms408.experiments.e1_meaning_detector`. Full numbers in `results/experiments/e1_meaning_detector.json`.
 
 **Design.** Reorder the VMS's own 34,111 tokens meaninglessly (each word type clustered around a random centre). Character entropy and Zipf are unchanged by construction (verified: True); only word ORDER changes. Question: does reproducing the VMS DI require meaning?
 
@@ -25,10 +25,10 @@ Generated 2026-07-07T21:24:28+00:00 at commit `8058cdb674` by `python -m ms408.e
 
 Independent corroboration: i01 encoding bracket: the self-citation null scored MZ DI 0.497 (already > VMS 0.307), at scale 275 — an independent second meaningless generator that also exceeds the VMS DI.
 
-## Verdict [B, pending refutation pass]
+## Verdict [C, pending refutation pass]
 
-MZ DI is NOT a meaning detector: a meaningless reordering of the VMS's own word multiset — identical character statistics and Zipf — reaches the VMS DI. Word-order information at this level does not require meaning. The i01 'meaningful vs meaningless' lean cannot rest on MZ DI.
+MODEST claim stands, STRONG claim withdrawn. Established [C, already conceded in i01]: the DI *value* alone is not a meaning certificate — a meaningless reordering of the VMS's own words reaches and exceeds it (max 2.2 vs VMS 0.307), so a high DI value does not imply content. NOT established: that a meaningless PROCESS reproduces the VMS phenomenon, which is DI value AND its 812-word characteristic scale. The drift-null hits the value at the wrong scale; the i01 self-citation process overshot the value (0.497) also at the wrong scale (275). E2 resolves what the 812 scale IS — it is the section/topic-block scale (blocked Vulgate books peak at 812), reachable by any block-structured vocabulary, meaningful or not. Net: DI cannot settle meaningful-vs-meaningless (confirms T3.3/C5); the 812 scale is a block-structure signature, not a meaning signature.
 
-**Scale caveat (honest).** The meaningless generator reproduces the VMS DI *value* trivially (bracketed at spread 0.15–0.20) and vastly exceeds it (max 2.2), but its broad-Gaussian clustering peaks at a *longer* scale than the VMS's 812. Matching the exact 812-word scale as well would need a block-structured drift — but that is unnecessary for the conclusion: i01's argument compared DI *values*, and a meaningless process reproduces or exceeds any DI value on the VMS's own vocabulary.
+**Refutation pass outcome (standing i02 rule).** A clean-context critic WEAKENED the first draft, correctly: (1) the drift-null installs clustering by fiat rather than via a meaningless *process*, so it shows DI measures clustering, not that meaning is unnecessary for the manuscript; (2) DI is a curve peaking at a characteristic SCALE — the drift-null matches the VMS *value* (0.307) only at the wrong scale (1624+ vs 812), and matching height but not location is not reproducing the point. The strong claim ('reproducing the manuscript's word-order information requires no meaning') is withdrawn; the modest claim ('DI value alone is not a meaning certificate') stands and was already conceded in i01.
 
-**Implication for the flagship.** This confirms the T3.3/C5 downgrade: the meaningful-vs-meaningless question cannot be settled by MZ word-order information. It must be pursued (if at all) by a statistic shown to discriminate meaning on the harness — which MZ is not. (This does not revive the anti-cipher point F5, which is that the uniform cipher destroys the vocabulary clustering the VMS has — a separate claim, tested in E2.)
+**Implication for the flagship.** Confirms the T3.3/C5 downgrade — the meaningful-vs-meaningless question cannot be settled by MZ. E2 identifies the 812-word scale as the section/topic-block scale (blocked meaningful text peaks there too), so the scale is a block-structure signature, not a meaning signature. The anti-uniform-cipher point is separate and is tested — and survives — in E2.
