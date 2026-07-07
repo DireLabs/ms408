@@ -11,8 +11,8 @@ clean-context refutation pass before grading A/B.
 |---|---|---|---|
 | E1 | Is MZ a meaning detector? | ✅ done + refuted → revised | [C] DI value not a meaning certificate (stands); strong claim withdrawn on refutation (drift-null hits value at wrong scale). Confirms C5: DI can't settle meaningful-vs-meaningless. |
 | E2 | Word-order signal confound | ✅ done + refuted → resolving controls run | [B] Reordering not an artifact; 812 = block scale; **anti-cipher point CORRECTED**: heavy-homophony cipher collapses DI (0.013) but type-preserving DETERMINISTIC verbose cipher RETAINS it (0.356) → nomenclator/deterministic cipher OPEN, not ruled out. Meaningless block stream reaches DI (2.18) → statistic measures block structure not meaning. |
-| E3 | Anchor-hunt power curve | ✅ done (refutation running) | [B] MDE = phi 0.4 (moderate), not near-perfect. Anchor null is INFORMATIVE for moderate+ anchors; only weak (phi≤0.3) escape. Rebuts C4 pessimism. |
-| E4 | root↔leaf masked positive | ✅ done — **OVERTURNS T2.6** (refutation running) | [B] Clean root_coloring associates with leaf_arrangement (V=0.395 p=0.004) + leaf_count_band (V=0.361 p=0.019) → real cross-organ bundle EXISTS; T2.6 'within-organ only' withdrawn. Caveat: doesn't decide real-vs-invented; multiple-comparisons + annotation-confound to be stress-tested by refutation. |
+| E3 | Anchor-hunt power curve | ✅ done + refuted → revised | [B] "Null informative" OVERSOLD (refutation applied). Recovery is a cliff (phi≤0.3→0%); power prevalence-dependent (rare 0.72 vs balanced 1.0). Honest: excludes only STRONG BALANCED anchors; weak/rare anchors NOT excluded → **weakens the flagship anchor leg**. |
+| E4 | root↔leaf masked positive | ✅ done + refuted → **SUGGESTIVE** | [B] Crude pigmentation confound REBUTTED (survives within coloured pages V=0.46 p=0.001; binary split doesn't drive it); one assoc survives BH. But deep same-model-source confound needs **independent re-annotation** = the E4 third-annotator (now decisive). T2.6 'within-organ only' WEAKENED, not overturned. |
 | E5 | Encoding bracket, fair (equal tuning, held-out) | ⬜ ready | — |
 
 **Word-order story (E1+E2) resolved:** MZ cannot decide meaningful-vs-meaningless (E1); its 812 scale is a block-structure signature, not meaning (E1+E2); the signal is intrinsic, not a reordering artifact (E2); verbose cipher is disfavoured more firmly than i01 stated (E2). Net: flagship position reinforced, one part (anti-cipher) strengthened.
@@ -28,8 +28,13 @@ clean-context refutation pass before grading A/B.
 
 ## Open decisions for Tim
 
-- **E4 third-annotator pass** (optional, small API spend ~$1–2 on root_type only):
-  proceed or skip? Pure-code disattenuation runs regardless.
+- **E4 third-annotator pass — now DECISIVE, not optional.** E4 shows a
+  cross-organ association that survives correction and the crude pigmentation
+  controls; the ONLY remaining confound is that both features came from one vision
+  model on one image. An independent re-annotation of root_coloring + leaf_arrangement
+  by a DIFFERENT model (Opus 4.8, blind) settles whether the bundle is real or a
+  shared-source artifact. ~$1-2. This is the experiment that decides whether i01's
+  "within-organ only / disfavours referential herbal" leg holds. Proceed?
 
 ## Sessions
 
