@@ -34,7 +34,10 @@ _Last updated: 2026-07-05 (Code session 1)_
 | T2.3b label-level anchoring | ✅ done 2026-07-06 | Labels are NOT a naming system: herbal near-label-free (3/129); in every labeled section labels recur LESS than running text (pharma 95% unique, 8 recurring vs null [25,41]). Coherent with T2.3a — no word→referent mapping detectable. reports/study_anchor_labels.md. |
 | T2.3 anchor hunt | ✅ done 2026-07-06 (page-level) | Harness gate PASSED (null 0/14758 false disc.; planted recovered). **Rigorous null**: no token anchors to a herbal feature after FDR; nothing behaves like "root" at page granularity. Strongest raw signals = noise / A/B confound. Label-level follow-up (T2.3b) flagged. reports/study_anchor_hunt.md. |
 | T2.6 W7 discriminator | ✅ done 2026-07-06 | Referential-realism: "within-organ-only" — root_type×leaf_shape (the realism bundle) ABSENT (p=0.26, saturated); constraint only in tautological within-leaf geometry. No root↔leaf real-taxa bundle. Anachronism scan = rigorous null. reports/study_referential_realism.md. **Phase 2 COMPLETE (7/7 studies).** |
-| **Phase 3** (T3.1→T3.2 G3→T3.3→T3.4 G4) | ⬜ ready | **All Phase 2 studies + dossiers complete.** T3.1 competing narratives next. |
+| T3.1 competing narratives | ✅ done 2026-07-06 | Findings registry (13 findings, firewall-clean) + graded evidence ledgers. Conlang/invented-world least contradicted; referential-herbal most constrained. reports/synthesis_competing_narratives.md. |
+| T3.2 living synthesis (W5 flagship) | ✅ draft done 2026-07-06 — **G3 awaiting Tim** | docs/synthesis/FLAGSHIP.md. Envelope shrunk toward a structured meaning-bearing system whose referents aren't internally recoverable. Claims graded, A/B candidate-pending-T3.3. |
+| T3.3 adversarial review | ✅ done 2026-07-06 | 5 clean-context critics; all load-bearing claims WEAKENED. Critique log (T33-critique-log.md) + grade downgrades applied. Meaningful-vs-meaningless lean NOT established (self-tuned null); conlang ranking retired (circular); anchor nulls underpowered; root↔leaf withdrawn (masked positive). Descriptive results + method survive. |
+| T3.4 final narrative | ✅ draft done 2026-07-06 — **G4 awaiting Tim** | FLAGSHIP.md revised to honest post-review state. Envelope shrank (trivial + labelled-herbal disfavoured) but distinctive narrowing not established; 5-experiment i02 agenda. |
 
 ## Sessions
 
