@@ -67,3 +67,61 @@ verdict is issued from E9 alone.
 3. If **all four** coordinates land meaningful-leaning (>0.6), the
    structured-meaningless hypothesis weakens; if A1/A4 land low while A2/A3 land
    high, it strengthens.
+
+---
+
+## Amendment 1 (2026-07-08, pre-run) — axis computability audit
+
+Implementing E9 surfaced two flaws in the registered axes. Per L35, registered
+rows above are left untouched; these dated amendments govern the run.
+
+- **A2 (homophony): registered statistic "ΔI retention" is NOT VMS-computable.**
+  ΔI retention = ΔI(ciphertext)/ΔI(plaintext) requires a plaintext the VMS does not
+  provide. REPLACEMENT statistic: **character conditional entropy h2** — homophony
+  adds surface variety and raises h2, so h2 is monotone in homophony and IS
+  VMS-computable (VMS h2 ≈ 2.13). CAVEAT: h2 is also the flagship low-entropy
+  anomaly driven by other structure, so the A2 coordinate is a homophony *indicator*
+  confounded with general character-entropy; it gets a mandatory refutation pass.
+  Direction and predicted region (high, type-preserving-leaning) are unchanged.
+
+- **A4 (vocabulary drift): DEFERRED — the statistic does not discriminate meaning.**
+  Section↔vocabulary ARI is HIGH for BOTH a real multi-topic book (meaningful) and a
+  meaningless per-section drift-null (meaningless), so ARI cannot separate the two —
+  the same block-structure≠meaning lesson E1/E2 established for ΔI. Placing the VMS
+  on this axis would be uninterpretable. A4 is dropped from E9 and returned to the
+  i03 backlog pending a genuinely meaning-discriminating drift statistic.
+
+**E9 therefore runs on THREE axes: A1 (word-order, ΔI), A2 (homophony, h2 — replaced
++ caveated), A3 (paradigm, ED1).** The reduction is itself a finding: only axes with
+a VMS-computable, meaning-*discriminating* statistic admit a coordinate — and ΔI/ARI
+block-structure statistics do not qualify, consistent with i02.
+
+---
+
+## Amendment 2 (2026-07-08, post-first-run) — the meaningless endpoint was wrong; commitment #3 RETRACTED
+
+The first E9 run placed the VMS at (A1 0.86, A2 0.69, A3 0.92) and, per commitment
+#3, that would "weaken structured-meaningless." A clean-context refutation pass
+(and the program's own prior results) show this is INVALID and the reading is
+retracted:
+
+- **The coord-0 (meaningless) endpoint was TRIVIAL, not structured-meaningless.**
+  Shuffled tokens (A1), atomic lexicon (A3), heavy homophony (A2) are *unstructured*
+  degenerate anchors. But E1/E2 proved a *structured-meaningless* stream (block
+  drift-null) scores HIGH on ΔI, and E6 proved an *abjad of real Latin* (meaningless
+  re-encoding) reaches ED1 ≈ 0.90. So the true meaningless adversary sits NEAR
+  coord 1 on these axes, not at coord 0. All three statistics are STRUCTURE
+  detectors, not meaning detectors.
+
+- **Consequence:** three high coordinates say only "the VMS is highly structured"
+  (already established) — they are *equally consistent* with structured-meaningless.
+  **Pre-registered commitment #3 is RETRACTED as false-premise.** Honoring it would
+  launder a known structural fact into an unsupported meaning claim (L7 failure).
+
+- **E9 v2 (the honest test):** for each axis with an available structured-meaningless
+  generator, set coord 0 = the STRUCTURED-MEANINGLESS endpoint (A1: block drift-null;
+  A3: Latin abjad) and coord 1 = the meaningful endpoint, then ask whether the VMS
+  *separates* from the structured-meaningless adversary. A2 is marked NON-ADMISSIBLE
+  (h2 is fatally confounded; no clean structured-meaningless homophony endpoint).
+  Prediction (from E1/E2/E6): the axes will NOT separate the VMS from structured-
+  meaningless — reconfirming i02 that no structural statistic localizes meaning.
