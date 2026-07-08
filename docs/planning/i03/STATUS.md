@@ -10,10 +10,10 @@ package as E6–E10.
 
 | id | question | priority | state | verdict |
 |---|---|---|---|---|
-| E6 | Deterministic-verbose/nomenclator cipher — joint-signature reconstruction | P1 flagship | ⬜ blocked on E8 | — |
+| E6 | Deterministic-verbose/nomenclator cipher — joint-signature reconstruction | P1 flagship | ✅ done + refuted → **cipher excluded on ED1; abjad revived** | [C] Nothing reproduced all 4 discriminators. (1) Verbose cipher DEDUCTIVELY excluded on the ED1 network (k-glyph bijection turns 1-letter→≥k-glyph diffs; Latin ED1 0.28→0.001 verbose). (2) The 0.80 network does NOT need constructed morphology — an **abjad of real Latin** reaches ED1 0.90 (vowel-drop collapses inflection to ED1-neighbour skeletons), refuting my first-pass "needs constructed morphology" claim (caught by the refutation pass). **Abjad/abbreviation class is now a live positive lead.** Caveat: abjad hits ED1 partly by shortening words. |
 | E7 | Fine-granularity anchor hunt (weak/rare regime) | P2 | ⬜ ready | — |
-| E8 | Whitened, continuously-tuned encoding bracket (fixes E5 residuals; feeds E6) | P2 | 🔷 in progress | — |
-| E9 | VMS coordinate — dose-response localization (variable-introduction flagship) | P1 flagship | ⬜ ready (L35 ratified; pre-register axes first) | — |
+| E8 | Whitened, continuously-tuned encoding bracket (fixes E5 residuals; feeds E6) | P2 | ✅ done + refuted → **negative holds; whitening-confirmation withdrawn** | [C] Whitened ranking reshuffled E5's, but Σ is ill-conditioned (cond 10062; min-eig≈ridge) and the top family is UNSTABLE across ridge/LOO/Σ_vms (∈ 4 families). So the reshuffle is a regularisation artifact, NOT "collinearity removed." Over-determined result (E5 cluster + pooled Σ + Σ_vms): **no family STABLY distinguished**; bracket descriptive only. Fixed a verdict-logic bug (had treated any-cov-high-P as distinction). |
+| E9 | VMS coordinate — dose-response localization (variable-introduction flagship) | P1 flagship | 🔷 next (L35 ratified; axes pre-registered) | — |
 | E10 | root↔leaf third independent vision-model rater | P3 | ⬜ ready (D-i03-2: third model) | — |
 
 **DAG:** E8 → E6 ; E7, E9, E10 independent. Suggested run order: **E8 → E6** (cipher

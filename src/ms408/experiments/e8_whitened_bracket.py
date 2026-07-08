@@ -126,20 +126,33 @@ def run() -> dict:
     mid = {fam: grid[len(grid) // 2] for fam, (_, grid) in families.items()}
     frame = _frame([fit_p[(fam, mid[fam])] for fam in families] + [vp_fit])
 
-    # 3. Whitening covariance Σ from pooled bootstrap z-vectors of all corpora on
-    #    the fit half (full-rank, captures the collinearity to decorrelate).
-    pooled = []
-    tuned_mid_streams = {fam: families[fam][0](n, mid[fam])[:half] for fam in families}
+    # 3. Labelled fit-half bootstrap z-vectors per corpus (feed Σ + LOO + Σ_vms).
+    #    The E8-refutation showed the covariance choice is load-bearing and easy to
+    #    get wrong, so we build TWO whitening matrices and validate conditioning:
+    #      Σ_pooled — all corpora pooled (E8's original; dominated by between-corpus
+    #                 spread, ~few effective independent points → must be stress-tested)
+    #      Σ_vms    — VMS resamples only (the sampling covariance the distance
+    #                 actually needs for a VMS-vs-family comparison)
+    corpora = {"vms": vms_fit,
+               **{fam: families[fam][0](n, mid[fam])[:half] for fam in families}}
+    zvecs = {name: [] for name in corpora}
     for b in range(60):
         rng = random.Random(5000 + b)
-        pooled.append(_zvec(profile(_block_boot(vms_fit, rng)), frame))
-        for fam in families:
-            pooled.append(_zvec(profile(_block_boot(tuned_mid_streams[fam], rng)), frame))
-    M = np.vstack(pooled)
-    cov = np.cov(M, rowvar=False)
-    inv = np.linalg.inv(cov + RIDGE * np.eye(len(METRICS)))
+        for name, stream in corpora.items():
+            zvecs[name].append(_zvec(profile(_block_boot(stream, rng)), frame))
+    all_vecs = np.vstack([v for vs in zvecs.values() for v in vs])
+    cov_pooled = np.cov(all_vecs, rowvar=False)
+    cov_vms = np.cov(np.vstack(zvecs["vms"]), rowvar=False)
+    eig = np.linalg.eigvalsh(cov_pooled)
+    cond_number = float(eig[-1] / max(eig[0], 1e-12))
 
-    # 4. Tune each family on the FIT half under the whitened distance.
+    def inv_of(cov, ridge):
+        return np.linalg.inv(cov + ridge * np.eye(len(METRICS)))
+
+    inv = inv_of(cov_pooled, RIDGE)          # primary whitening
+    inv_vms = inv_of(cov_vms, RIDGE)         # the "matrix the distance needs"
+
+    # 4. Tune on the FIT half under the primary whitened distance.
     zv_fit = _zvec(vp_fit, frame)
     tuned = {}
     for fam, (gen, grid) in families.items():
@@ -149,27 +162,51 @@ def run() -> dict:
         tuned[fam] = {"knob": best, "fit_distance": round(dists[best], 4),
                       "railed": best in (grid[0], grid[-1])}
 
-    # 5. Held-out whitened distance at the tuned knob.
+    # 5. Held-out ranking under the primary distance.
     zv_held = _zvec(vp_held, frame)
+
+    def held_rank(inv_m):
+        d = {fam: _mahalanobis(_zvec(held_p[(fam, tuned[fam]["knob"])], frame),
+                               zv_held, inv_m) for fam in families}
+        return sorted(d, key=d.get)
+
     held_point = {fam: round(_mahalanobis(_zvec(held_p[(fam, tuned[fam]["knob"])],
                                                 frame), zv_held, inv), 4)
                   for fam in families}
     ranking = sorted(held_point, key=held_point.get)
 
-    # 6. Bootstrap held-out distance + P(closest).
+    # 5b. Σ VALIDATION (the E8-refutation's decisive fix). Hold tuning fixed and
+    #     vary only the whitening matrix; if the TOP family is unstable across ridge,
+    #     leave-one-corpus-out, and the Σ_vms distance, the reshuffle is a
+    #     regularisation artifact and whitening cannot "confirm" anything.
+    ridge_top = {}
+    for r in (1e-4, 1e-3, 1e-2, 1e-1):
+        ridge_top[f"ridge_{r:g}"] = held_rank(inv_of(cov_pooled, r))[0]
+    loo_top = {}
+    for drop in corpora:
+        M_loo = np.vstack([v for name, vs in zvecs.items() if name != drop for v in vs])
+        loo_top[f"drop_{drop}"] = held_rank(inv_of(np.cov(M_loo, rowvar=False), RIDGE))[0]
+    vms_cov_ranking = held_rank(inv_vms)
+    top_families_seen = set(ridge_top.values()) | set(loo_top.values()) | {vms_cov_ranking[0]}
+    sigma_stable = len(top_families_seen) == 1
+
+    # 6. Bootstrap held-out distance + P(closest) under BOTH Σ_pooled and Σ_vms.
     tuned_held = {fam: families[fam][0](n, tuned[fam]["knob"])[half:] for fam in families}
     boot = {fam: [] for fam in families}
     wins = {fam: 0 for fam in families}
+    wins_vms = {fam: 0 for fam in families}
     for b in range(BOOTSTRAP):
         rng = random.Random(1000 + b)
         zvb = _zvec(profile(_block_boot(vms_held, rng)), frame)
-        rep = {}
+        rep, rep_vms = {}, {}
         for fam in families:
-            d = _mahalanobis(_zvec(profile(_block_boot(tuned_held[fam], rng)), frame),
-                             zvb, inv)
+            fz = _zvec(profile(_block_boot(tuned_held[fam], rng)), frame)
+            d = _mahalanobis(fz, zvb, inv)
             boot[fam].append(d)
             rep[fam] = d
+            rep_vms[fam] = _mahalanobis(fz, zvb, inv_vms)
         wins[min(rep, key=rep.get)] += 1
+        wins_vms[min(rep_vms, key=rep_vms.get)] += 1
 
     def ci(xs):
         s = sorted(xs)
@@ -178,22 +215,37 @@ def run() -> dict:
 
     summary = {fam: {"held_distance": held_point[fam], "ci95": ci(boot[fam]),
                      "p_is_closest": round(wins[fam] / BOOTSTRAP, 3),
+                     "p_is_closest_vmscov": round(wins_vms[fam] / BOOTSTRAP, 3),
                      "tuned_knob": tuned[fam]["knob"], "railed": tuned[fam]["railed"],
                      "point_in_ci": ci(boot[fam])[0] <= held_point[fam] <= ci(boot[fam])[1]}
                for fam in ranking}
     consistent = all(summary[f]["point_in_ci"] for f in ranking)
     winner, runner = ranking[0], ranking[1]
     ci_sep = summary[winner]["ci95"][1] < summary[runner]["ci95"][0]
-    robust = summary[winner]["p_is_closest"] >= 0.9 and ci_sep
+    # No family distinguished if none reaches P>=0.9 under EITHER covariance —
+    # a metric-INDEPENDENT statement, which is the only one we can trust given
+    # the Σ-conditioning problem.
+    pooled_top_p = max(summary[f]["p_is_closest"] for f in families)
+    vmscov_winner = max(families, key=lambda f: wins_vms[f])
+    vmscov_top_p = round(wins_vms[vmscov_winner] / BOOTSTRAP, 3)
+    # A family is DISTINGUISHED only if the whitened ranking is STABLE (same top
+    # across ridge / LOO / Σ_vms) AND that stable top reaches P>=0.9. An unstable
+    # ranking where a DIFFERENT family dominates under each covariance is the
+    # opposite of a distinguished winner — it means the distance itself is
+    # uninformative. (The earlier "max P under either cov" gate had this backwards.)
+    robust = sigma_stable and pooled_top_p >= 0.9 and ci_sep
     railed = [f for f in ranking if summary[f]["railed"]]
 
-    # Export the whitened frame for E6.
+    # Export the whitened frame for E6 — BOTH matrices + the conditioning report,
+    # so E6 can pick the validated one (or fall back to raw per-metric matching).
     frame_export = {
         "built_at": datetime.now(UTC).isoformat(timespec="seconds"),
         "git_commit": git_commit(), "metrics": list(METRICS),
         "frame_mean": {m: frame[m][0] for m in METRICS},
         "frame_sd": {m: frame[m][1] for m in METRICS},
-        "sigma_inv": inv.tolist(), "ridge": RIDGE,
+        "sigma_inv_pooled": inv.tolist(), "sigma_inv_vmscov": inv_vms.tolist(),
+        "ridge": RIDGE, "cov_condition_number": cond_number,
+        "sigma_validated_stable": bool(sigma_stable),
         "vms_held_zvec": zv_held.tolist(),
     }
     (RESULTS_DIR / "e8_whitened_frame.json").write_text(
@@ -205,10 +257,18 @@ def run() -> dict:
         "experiment": "E8 — whitened, continuously-tuned encoding bracket",
         "seed": SEED, "tokens_total": n, "held_tokens": n - half,
         "bootstrap": BOOTSTRAP, "grid_points": len(FINE),
-        "distance": "Mahalanobis (whitened by pooled-bootstrap metric covariance)",
+        "distance": "Mahalanobis (pooled Σ primary; Σ_vms cross-check)",
+        "sigma_condition_number": round(cond_number, 1),
+        "sigma_min_max_eigenvalue": [round(float(eig[0]), 5), round(float(eig[-1]), 3)],
+        "sigma_stability": {"top_across_ridge": ridge_top, "top_across_loo": loo_top,
+                            "vmscov_top": vms_cov_ranking[0],
+                            "top_families_seen": sorted(top_families_seen),
+                            "stable": bool(sigma_stable)},
         "held_out_ranking": ranking,
         "held_out": summary,
         "winner": winner, "winner_robust": bool(robust),
+        "pooled_top_p_closest": round(pooled_top_p, 3),
+        "vmscov_winner": vmscov_winner, "vmscov_top_p_closest": vmscov_top_p,
         "bootstrap_consistent": bool(consistent),
         "railed_families": railed,
         "frame_exported_to": "results/experiments/e8_whitened_frame.json",
@@ -221,35 +281,52 @@ def run() -> dict:
 
 def _verdict(r: dict) -> tuple:
     ho = r["held_out"]
-    w, ru = r["held_out_ranking"][0], r["held_out_ranking"][1]
+    w = r["held_out_ranking"][0]
+    stab = r["sigma_stability"]
     if not r["bootstrap_consistent"]:
         bad = [f for f in r["held_out_ranking"] if not ho[f]["point_in_ci"]]
         return "D", (f"INCONCLUSIVE — point distances outside bootstrap CIs for {bad}; "
                      f"resampling still biased. Do not grade.")
-    if r["winner_robust"]:
+    if r["winner_robust"] and stab["stable"]:
         return "B", (
-            f"Under the WHITENED distance and finer tuning, {w} is robustly closest "
-            f"(held {ho[w]['held_distance']}, P(closest)={ho[w]['p_is_closest']}, CI "
-            f"{ho[w]['ci95']} separated from {ru} {ho[ru]['ci95']}). A family is "
-            f"distinguished even after de-collinearisation — a genuine positive that "
-            f"E5's cluster-vote missed. (Compatibility, not likelihood; L7.)")
+            f"Under a VALIDATED whitened distance (stable across ridge, "
+            f"leave-one-corpus-out, and the Σ_vms cross-check), {w} is robustly "
+            f"closest (P(closest)={ho[w]['p_is_closest']}). A genuine positive. (L7.)")
+    # The realised case: the whitened ranking is UNSTABLE, so it neither distinguishes
+    # a family nor 'confirms' E5. The honest conclusion rests on that instability.
     return "C", (
-        f"E5 CONFIRMED on unimpeachable footing: with a Mahalanobis-whitened distance "
-        f"(collinearity removed, not just clustered) and a {r['grid_points']}-point "
-        f"grid, still NO family is robustly distinguished — {w} leads (P(closest) "
-        f"{ho[w]['p_is_closest']}) but its CI {ho[w]['ci95']} overlaps {ru} "
-        f"{ho[ru]['ci95']}. Railed families: {r['railed_families'] or 'none'} "
-        f"(boundary optima on bounded knobs are genuine, not under-tuning). The "
-        f"encoding bracket is DESCRIPTIVE only; the i01 'conlang best fit' stays "
-        f"withdrawn. Whitened frame exported for E6.")
+        f"NO STABLY DISTINGUISHED FAMILY; whitening-confirmation WITHDRAWN. Σ is "
+        f"ILL-CONDITIONED (condition number {r['sigma_condition_number']:.0f}; min "
+        f"eigenvalue {r['sigma_min_max_eigenvalue'][0]} ≈ the ridge itself, so the "
+        f"ridge defines the smallest directions), and the closest family is UNSTABLE "
+        f"across the whitening choice — top ∈ {stab['top_families_seen']} across "
+        f"ridge / leave-one-corpus-out / Σ_vms. Under the pooled Σ the best "
+        f"P(closest) is only {r['pooled_top_p_closest']}; under Σ_vms a DIFFERENT "
+        f"family ({r['vmscov_winner']}) dominates at {r['vmscov_top_p_closest']} — "
+        f"but that is exactly the family E5 showed wins via a single-metric "
+        f"repetition_rate artifact, and it does not survive the covariance switch. A "
+        f"ranking that reshuffles its winner with every reasonable distance is "
+        f"UNINFORMATIVE: it cannot distinguish a family, and cannot 'confirm' E5 as a "
+        f"cleaner method. What DOES hold — over-determined across E5's cluster-vote, "
+        f"the pooled Σ, and Σ_vms — is that no family is STABLY closest; the encoding "
+        f"bracket is DESCRIPTIVE only and the i01 'conlang best fit' stays withdrawn. "
+        f"Railed: {r['railed_families'] or 'none'}. E6 correctly uses raw per-metric "
+        f"joint matching, not any single whitened distance.")
 
 
 if __name__ == "__main__":
     out = run()
     print(f"distance: {out['distance']}")
-    print(f"consistent={out['bootstrap_consistent']} railed={out['railed_families']}")
+    print(f"Σ condition number={out['sigma_condition_number']} "
+          f"eig(min,max)={out['sigma_min_max_eigenvalue']} "
+          f"stable={out['sigma_stability']['stable']} "
+          f"top_seen={out['sigma_stability']['top_families_seen']}")
+    print(f"pooled top P={out['pooled_top_p_closest']} | Σ_vms winner "
+          f"{out['vmscov_winner']} P={out['vmscov_top_p_closest']} | "
+          f"consistent={out['bootstrap_consistent']} railed={out['railed_families']}")
     for fam in out["held_out_ranking"]:
         h = out["held_out"][fam]
         print(f"  {fam:20s} knob={str(h['tuned_knob']):5s} d={h['held_distance']:.4f} "
-              f"CI={h['ci95']} P={h['p_is_closest']}{' RAILED' if h['railed'] else ''}")
-    print(f"grade {out['grade']}: {out['verdict'][:120]}...")
+              f"CI={h['ci95']} P={h['p_is_closest']} Pvms={h['p_is_closest_vmscov']}"
+              f"{' RAILED' if h['railed'] else ''}")
+    print(f"grade {out['grade']}: {out['verdict'][:140]}...")
