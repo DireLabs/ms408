@@ -1,6 +1,6 @@
 # STATUS.md — i03 Coordination Bus
 
-_Last updated: 2026-07-08 (agenda RATIFIED — L35+L36; kicking off E8→E6 + E9)._
+_Last updated: 2026-07-08 (i03 COMPLETE — E6–E10 done + refuted; FLAGSHIP folded; awaiting G5)._
 
 **Inherits:** all i01 locks L1–L34, the i02 standing refutation rule, and the five
 standing corrections (README §"Standing corrections"). Continues the experiment

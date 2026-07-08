@@ -1,124 +1,129 @@
 # MS408 — Living Synthesis (W5 flagship)
 
-**Status:** revised **post-i02** (experiments E1–E5 folded in; supersedes the
-post-T3.3 draft). Grades A–D (RESEARCH-PLAN §6); i01 numbers from
-`results/synthesis/findings_registry.json`, i02 numbers from
-`results/experiments/e{1..5}*.json` (L3 firewall). Living document, not a final
-verdict. Every i02 result carries a clean-context refutation pass.
+**Status:** revised **post-i03** (experiments E1–E10 folded in; supersedes the
+post-i02 draft). Grades A–D (RESEARCH-PLAN §6); i01 numbers from
+`results/synthesis/findings_registry.json`, i02/i03 numbers from
+`results/experiments/e{1..10}*.json` (L3 firewall). Living document, not a final
+verdict. Every i02/i03 result carries a clean-context refutation pass.
 
-**Headline (honest, post-i02).** Voynichese is a genuine constrained formal
-system with a real two-system (Currier A/B) structure and the well-known
-low-entropy anomaly, all reproduced against published baselines. i02 **sharpened
-the envelope by subtraction, not by adding a positive lean**: it showed the
-word-order signal that once looked like a meaning fingerprint is a **block-structure
-statistic** (E1, E2), it **re-opened** the deterministic/nomenclator cipher family
-that i01 had leaned against (E2), it **weakened** the anti-"labelled-herbal" anchor
-null to a narrow bound (E3), it resolved the root↔leaf "masked positive" as an
-**annotation artifact** rather than a manuscript bundle (E4/E4b), and it **withdrew**
-the "constructed-language best fit" claim entirely: under fair, equal tuning **no
-encoding family is distinguished** (E5). The meaningful-vs-meaningless question
-remains **open and underdetermined**. The success criterion (defensibly shrink the
-envelope, every claim graded) is **met in a narrower, more honest form** — and the
-mechanism that produced these corrections (harness + firewall + clean-context
-adversarial review) is the program's most robust result.
+**Headline (honest, post-i03).** Voynichese is a genuine constrained formal system
+with a real two-system (Currier A/B) structure and the well-known low-entropy
+anomaly, all reproduced against published baselines. i02 sharpened the envelope by
+subtraction; **i03 did two things at once**: it *further hardened* the negatives —
+no encoding family is distinguished even under a whitened distance (E8), and **no
+structural statistic localizes meaning at all** (E9, the deepest confirmation that
+the meaningful-vs-meaningless question is underdetermined) — while it also produced
+the program's **first surviving referential-signal candidate**: the cross-organ
+root↔leaf visual bundle, which i02 had written off as an annotation artifact, was
+**reopened** when a third independent model reproduced it and it survived scribal-
+hand/dialect stratification (E10, unconfirmed). On encoding mechanism, i03 excluded
+the *verbose* cipher on morphology-network grounds but **revived the abjad/
+abbreviation class** as the one route that reaches the VMS's dense edit-distance-1
+network (E6). The success criterion (defensibly shrink the envelope, every claim
+graded) is **met**, and the self-correcting mechanism — which this iteration used to
+overturn *its own prior conclusion* (E4b) and *its own code's* verdicts — remains
+the most robust result.
 
 ---
 
-## 1. What is established (survives i01 review and i02)
+## 1. What is established (survives i01 review, i02, i03)
 
 - **[A] The conditional character-entropy anomaly is real and replicates.** h2 ≈
-  **2.16** for the manuscript vs **3.23–3.91** for medieval natural-language
-  controls; matches published values within thousandths of a bit, robust across
-  dialect and scribal hand (F1, gate G1).
-- **[A] Two statistically distinct systems (Currier A/B).** Cross-dialect
-  vocabulary divergence JS **0.26** vs within-dialect **0.04–0.09** (F2).
-- **[A] Strong positional grammar.** Paragraph-initial gallows enrichment, line as
-  a functional unit (line-final m), glyph-adjacency constraints — all replicate
-  (F3).
-- **[A] The replication gate passed** on every targeted published statistic (h2,
-  both Zipf laws, A/B split, Montemurro–Zanette *reproduction*, positional
-  effects). Descriptive facts, independent of interpretation.
-- **[B, candidate] Voynichese is a dense, position-constrained, paradigmatic
-  morphology** unlike natural-language controls at matched size (edit-distance-1
-  main component **0.80** vs **0.16–0.22** for Latin/Italian) (F12).
+  **2.16** vs **3.23–3.91** for medieval natural-language controls; matches
+  published values within thousandths of a bit, robust across dialect and hand (F1).
+- **[A] Two statistically distinct systems (Currier A/B).** Cross-dialect vocabulary
+  divergence JS **0.26** vs within-dialect **0.04–0.09** (F2).
+- **[A] Strong positional grammar** (paragraph-initial gallows, line-final m,
+  glyph-adjacency constraints) (F3).
+- **[A] The replication gate passed** on every targeted published statistic (F1–F3,
+  gate G1). Descriptive facts, independent of interpretation.
+- **[B, candidate] A dense, position-constrained, paradigmatic morphology** —
+  edit-distance-1 main component **0.80** vs **0.16–0.22** for Latin/Italian (F12).
+  i03/E6
+  adds a mechanism constraint: this network is **destroyed by verbose expansion** and
+  is reachable only by a length-preserving script over an inventory that already has
+  it (a constructed morphology, an abjad, or a paradigmatic conlang).
 
-## 2. What is disfavoured (i02-refined)
+## 2. What is disfavoured (i03-refined)
 
-- **[C] The simplest "labelled herbal of real plants" reading is disfavoured — but
-  only at the strong-signal corner.** E3's power curve makes the bound precise:
-  synthetic anchor recovery is a **cliff** — φ≤0.3 → **0%**, φ=0.4 → **85%** — and
-  is prevalence-dependent (rare features **0.72**, balanced **1.0**). So the i01
-  anchor null excludes only **strong, prevalence-balanced** word→feature anchors; a
-  **weak or rare-feature** anchor (φ 0.2–0.35), which an imperfect real-herbal
-  encoding would most plausibly produce, is **not excluded**. This is a weaker
-  constraint than the i01 draft implied.
-- **[C] Heavy-homophony (Naibbe-class) verbose cipher is disfavoured — but the
-  cipher family is otherwise RE-OPENED.** E2 is decisive here: a heavy-homophony
-  verbose cipher of blocked text **collapses** the word-order signal (ΔI **0.013**),
-  but a **type-preserving deterministic** verbose cipher of the *same* text
-  **retains** it (ΔI **0.356**). The VMS's intact ΔI therefore argues only against
-  *homophone-rich* ciphers; **deterministic-verbose / nomenclator / syllabary
-  ciphers are consistent with it** and are back on the table — a reversal of the
-  i01 lean.
-- **[C] Abbreviation / abjad families are disfavoured** — they move h2 the wrong
-  direction (≈3.5 vs 2.1) (F7); unaffected by i02.
+- **[C] A text-level "naming system" for the herbal is disfavoured — and now on a
+  tighter bound.** E3 showed the page-level anchor null excludes only strong,
+  prevalence-balanced word→feature anchors. E7 pushed further: a *graded* (token-
+  count) anchor hunt over the mid/rare-prevalence bands, at higher power, still finds
+  **no anchor above chance** (18 raw BH "hits" collapse under the permuted-feature
+  null, permutation p=0.48). And **label-adjacency anchoring is infeasible** on the
+  herbal section (labels are page-unique). So there is no detectable *lexical* label→
+  feature mapping. (L7: not proof none exists.)
+- **[C→reopened] BUT the *visual* cross-organ bundle is NOT disfavoured — see §3
+  (E10).** The "within-organ only / no real-taxa bundle" leg no longer holds.
+- **[C] Verbose ciphers (homophonic AND deterministic) are disfavoured; the abjad/
+  abbreviation class is REVIVED.** E2 killed the *homophone-rich* verbose cipher (ΔI
+  collapses to 0.013). E6 adds the decisive morphology constraint: a *verbose*
+  cipher (≥2 glyphs/letter) **deductively destroys** the ED1 network (Latin ED1 0.28
+  at 1:1 → 0.001 verbose), so the deterministic-verbose family E2 had re-opened is
+  excluded after all. What *does* reach the VMS's ED1≈0.80 is an **abjad of real
+  Latin** (vowel-dropping → shared consonantal skeletons, ED1 0.90) — reviving the
+  abjad/abbreviation class (Hauer-Kondrak / medieval brevigraphy) as the live
+  structural route to the morphology network, in tension with i01's F7 (abbreviation
+  raised h2 the wrong way). Whether any single abjad/abbreviation parameterization
+  hits ED1 **and** h2 **and** ΔI together is the open i04 test.
 
-## 3. What is NOT established (i02 outcomes)
+## 3. What is NOT established (i02/i03 outcomes)
 
-- **The meaningful-vs-meaningless verdict — remains OPEN, now on firmer footing.**
-  E1 shows the Montemurro–Zanette ΔI is **not a meaning detector**: a drift-null
-  with no meaning reproduces the ΔI *value* (mean ΔI **2.20**, but at a mismatched
-  scale). E2 completes the picture — the VMS signal is **intrinsic, not an
-  analyst-reordering artifact** (natural-order ΔI **0.306** ≈ reordered **0.307**),
-  a **meaningless block stream reaches ΔI 2.18**, and the characteristic
-  **812-token scale is the section-block scale** — so ΔI tracks **block structure**,
-  not meaning. Net: the word-order story is *resolved* — it is real
-  structure but **not evidence of meaning**. The meaningful-vs-meaningless question
-  is not settled by any single statistic in hand (this was C5, now demonstrated).
-- **The invented-language / constructed-language narrowing — WITHDRAWN (E5).** The
-  i01 "conlang best fit" was retired on review grounds (circular VMS-informed
-  template, C1); E5 now settles it empirically. Under **equal tuning budget,
-  held-out scoring, de-collinearised metrics, composed families, and bootstrap
-  CIs**, **no family is robustly distinguished**: conlang_relex leads by point
-  estimate but wins only **10%** of bootstraps; the modal winner (self-citation,
-  **71%**) is a **single-metric artifact** — dropping `repetition_rate` (which its
-  copy mechanism inflates) collapses it to **24%**. The encoding bracket is a
-  **descriptive compatibility ordering, not evidence for any one family.**
-- **"No real-taxa root↔leaf bundle" / the E4 masked positive — RESOLVED as an
-  annotation artifact (E4b).** The clean root_coloring↔leaf_arrangement association
-  (Cramér's V **0.395**) does **not** survive independent re-annotation: with a
-  second vision model, only pairings containing the *original* model's root label
-  are significant, the within-second-model replication fails (V 0.214, p 0.14)
-  despite **83%** root agreement, and the effect vanishes when the concordant
-  second-model root is substituted. The association tracks **one model's labelling**,
-  not the manuscript. i01's "within-organ only" leg **holds (weakened, not
-  overturned)**; a masked *manuscript* positive is not established.
+- **The meaningful-vs-meaningless verdict — OPEN, and i03 shows WHY it is hard.** E1
+  showed ΔI is not a meaning detector (a meaningless drift-null reaches ΔI 2.20). E9
+  generalized this decisively: building a meaningful↔meaningless *coordinate* on
+  interpretable axes, **every VMS-computable statistic turns out to be a structure
+  detector, not a meaning detector** — against *honest* structured-meaningless
+  endpoints, the meaningless adversary **out-scores** meaningful text on every axis
+  (word-order: drift-null ΔI 0.57 > Latin 0.36; morphology: abjad ED1 0.89 > conlang
+  0.87) and the VMS sits **below both**. So the VMS is maximally structured on every
+  axis we can measure, yet no axis separates meaning. **Underdetermined, and provably
+  so with current statistics.**
+- **No encoding family is distinguished — confirmed under a whitened distance (E8).**
+  E5 (cluster-vote) and E8 (Mahalanobis whitening) agree: no family is robustly
+  closest (best P(closest) < 0.9 under any distance). E8's whitened ranking is itself
+  a **regularization artifact** (Σ condition number 10,062; the top family flips
+  across ridge/leave-one-out), which only reinforces that the bracket is a
+  **descriptive compatibility ordering**, not evidence for any family. The i01
+  "constructed-language best fit" stays **withdrawn**.
+- **[C→reopened, UNCONFIRMED] The root↔leaf visual bundle — E4b OVERTURNED (E10).**
+  i02/E4b had called the root_coloring↔leaf_arrangement association a Sonnet-specific
+  annotation artifact. E10 overturns that: a **third** independent model (Haiku 4.5)
+  **also** reproduces it, across the other models' leaf labels (Opus is the lone
+  non-reproducer); and it **survives** stratification by scribal hand + Currier
+  dialect (sonnet p=0.003, haiku p=0.014; L8) and colored-only pages (Sonnet V=0.46,
+  E4b). So it is neither a single-model artifact nor a hand/dialect confound — the
+  **strongest referential-signal candidate the program has**. It remains
+  **UNCONFIRMED**: three residuals stand — the three raters share an Anthropic vision
+  lineage (a common prior could drive it; a non-Anthropic/human rater is the real
+  independence test), a fine illustration-*style* convention beyond scribal hand is
+  uncontrolled, and it fails Bonferroni (rests on BH-FDR). Structural/visual only; no
+  plaintext or real-taxon claim (L7).
 
-## 4. The honest constraint envelope (post-i02)
+## 4. The honest constraint envelope (post-i03)
 
-Per P6, a competing-narratives statement with symmetric treatment of nulls:
+**The manuscript is a genuine, constrained, two-system formal script whose
+morphology network requires a length-preserving script over an already-structured
+inventory. It disfavours (a) random/meaningless marks, (b) a *lexical* label→feature
+naming system for the herbal (no text anchor at achieved power), and (c) verbose
+ciphers (homophonic or deterministic). The remaining hypotheses are unranked:**
 
-**The manuscript is a genuine, constrained, two-system formal script that
-disfavours (a) random/meaningless marks, (b) a plain labelled catalogue of real
-plants *with strong balanced anchors*, and (c) a *homophone-rich* verbose cipher —
-while the data underdetermine the remaining class of structured-symbolic
-hypotheses, none of which the encoding bracket can rank:**
-
-- **structured-meaningless** ("grammar without recoverable meaning"): still the
-  simplest hypothesis consistent with all findings; E1's block-structure result
-  removes the main statistic that had counted against it;
-- **cipher** of a real text — specifically a **deterministic-verbose / nomenclator**
-  variant (E2 re-opened this; the homophone-rich Naibbe form stays disfavoured);
-- **constructed language** (a-priori, Lingua-Ignota class) — no longer a
-  *distinguished* fit (E5), but not excluded;
+- **structured-meaningless** — still the simplest fit; E1/E9 removed the statistics
+  that had counted against it (they measure structure, not meaning);
+- **abjad / abbreviation** of a real language — REVIVED by E6 as the route that
+  reaches the ED1 network (pending the joint-signature test);
+- **constructed language** (Lingua-Ignota class) — not a *distinguished* fit (E5/E8),
+  not excluded;
 - **invented-world notation** (Codex-Seraphinianus class);
-- a **meaningful-but-non-nomenclatural** natural text, kept open by the Language-A
-  section↔text co-variation (ARI **0.35**, F8) and by E3's unexcluded weak/rare
-  anchors.
+- a **meaningful-but-non-nomenclatural** natural text — kept open, and now with a
+  *positive* (if unconfirmed) thread: the root↔leaf visual bundle (E10) is the first
+  evidence consistent with real botanical structure in the imagery, distinct from the
+  (absent) text naming system.
 
-These are **not ranked**. The evidence does not separate meaningful from
-meaningless within this class, and cannot license "no referents exist" over
-"referents not recovered by these methods."
+Not ranked. The evidence does not separate meaningful from meaningless, and cannot
+license "no referents exist" over "referents not recovered by these methods." The
+one live positive lead (E10) is visual, not textual, and unconfirmed.
 
 ## 5. Origin (unchanged, grade C)
 
@@ -127,52 +132,54 @@ c. 1420s–1460s, in tension with the northern-Italian working premise (L1);
 provenance documentary-solid only to 1637 (Baresch); Rudolf II purchase and Bacon
 attribution grade D. Carried as rival localizations.
 
-## 6. i02 findings → i03 agenda
+## 6. i03 findings → i04 agenda
 
-**i02 folded in (all five complete, each refutation-passed):** E1 (ΔI is
-block-structure, not meaning), E2 (word-order intrinsic; homophony collapses ΔI but
-deterministic verbose retains it), E3 (anchor null is a narrow strong-balanced
-bound), E4/E4b (root↔leaf is an annotation artifact), E5 (no encoding family
-distinguished under fair tuning).
+**i03 folded in (E6–E10, each refutation-passed):** E6 (verbose cipher excluded on
+ED1; abjad revived), E7 (no lexical anchor at higher power; labels infeasible), E8
+(no family distinguished under whitening; ranking is a regularization artifact), E9
+(no structural statistic localizes meaning), E10 (root↔leaf reopened; E4b overturned;
+unconfirmed).
 
-**i03 leads (surfaced by the i02 refutation passes, not yet run):**
+**i04 leads (surfaced by the i03 refutation passes):**
 
-1. **Deterministic-verbose / nomenclator cipher, blocked like the VMS** — the
-   cipher variant E2 re-opened; does it reproduce h2 **and** the 812-scale ΔI
-   **and** the ED1 morphology network together?
-2. **Anchor hunt at finer granularity** (line / label-adjacency) and restricted to
-   the weak/rare-feature regime E3 left unexcluded.
-3. **Whitened bracket distance** (Mahalanobis/PCA on the empirical metric
-   covariance) + **continuous tuning** past the grid edges where families railed —
-   the principled fix for E5's residual collinearity and unequal tuning *power*.
-4. **Human-in-the-loop root_coloring rater** — the one control that would settle
-   the root↔leaf question E4b left as a model-labelling artifact.
-5. **Controlled variable-introduction studies** (see
-   `docs/planning/CONCEPT-variable-introduction.md`): the dose-response "VMS
-   coordinate" — locate the manuscript on continuous meaningful↔meaningless axes
-   rather than forcing the binary that E1/E5 showed no single statistic can settle.
+1. **Confirm-or-kill the root↔leaf bundle (E10):** a **non-Anthropic or human** root
+   rater (true independence beyond shared model lineage) + a fine illustration-*style*
+   control. This is the highest-value next test — the program's only live positive.
+2. **Abjad/abbreviation joint-signature test:** does any single abjad/brevigraphy
+   parameterization of a real language reach ED1≈0.80 **and** h2≈2.1 **and** the
+   812-scale ΔI **together** (E6 showed abjad overshoots ED1 and misses h2)?
+3. **Exact-p graded anchor hunt:** E7's Mann–Whitney normal approx is anti-
+   conservative on sparse counts; an exact/permutation per-test p would let the
+   higher-power anchor hunt make a *positive* claim, not just a null.
+4. **Retire the whitened-bracket approach (E8):** Σ is ill-conditioned; a family-
+   distinction claim needs a fundamentally better estimator or a larger corpus, not
+   more whitening.
+5. **Extend the variable-introduction program (L35):** E9 showed honest axes need a
+   *structured-meaningless* endpoint; the next coordinate studies should be built
+   that way from the start.
 
 ## 7. Methodological contribution (the most robust result)
 
 Every statistic was computed by deterministic versioned code and validated on a
-synthetic ground-truth harness before touching real-manuscript claims. i02
-extended the record: the refutation rule caught **five** further over-reads before
-they were reported — E1's drift-null (withdrew a "meaning certificate" claim), E2's
-anti-cipher point (corrected homophony-vs-determinism), E3's "null is informative"
-oversell, **E4b's own coded verdict** (the analysis script asserted "bundle
-confirmed"; the refutation pass rejected it), and E5's self-citation over-read — plus
-**two silent methodology bugs** (a block bootstrap that destroyed the 812-scale
-signal, flagged by a point-in-CI guard; a disjunctive confirmation rule that doubled
-the false-positive rate). No plausible-sounding translation was ever generated. The
-harness + firewall + adversarial-review architecture — capable of overturning the
-program's *own code's* stated conclusion — is the differentiator versus prior AI
-attempts and is publishable independently of any Voynich finding.
+synthetic harness before touching real-manuscript claims. Across three iterations
+the clean-context refutation rule has caught **a dozen** over-reads and silent bugs
+before they were reported. i03 alone: E6's "needs constructed morphology" (refuted
+by the abjad control the critic demanded), E7's **18 false-positive anchors** (caught
+by the mandatory null gate — an anti-conservative test that BH-FDR did not control),
+E8's "whitening confirms E5" (withdrawn once Σ was shown ill-conditioned) plus a
+verdict-logic bug, E9's **two broken axes and a trivial-endpoint artifact** that
+forced retraction of a *pre-registered commitment*, and E10 **overturning the
+program's own prior E4b verdict** while surfacing (and fixing) an **L8 stratification
+violation**. The architecture — capable of overturning its own code's conclusions
+and its own prior iteration's verdict — is the differentiator versus prior AI
+attempts and is publishable independently of any Voynich finding. No plausible-
+sounding translation was ever generated.
 
 ---
 
 ## Gate sign-offs
 
 - [x] G4 — post-T3.3 revised synthesis accepted; i02 agenda approved (L34).
-- [ ] **G5 — post-i02 synthesis accepted as honest (Tim).** E1–E5 folded in;
-  i03 agenda proposed above.
-- [ ] i03 agenda approved as the next iteration.
+- [ ] **G5 — post-i02/i03 synthesis accepted as honest (Tim).** E1–E10 folded in.
+- [ ] i04 agenda approved as the next iteration (the E10 confirm-or-kill is the
+  headline).
