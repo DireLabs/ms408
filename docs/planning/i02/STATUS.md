@@ -1,6 +1,6 @@
 # STATUS.md — i02 Coordination Bus
 
-_Last updated: 2026-07-07 (i02 kickoff)_
+_Last updated: 2026-07-07 (i02 COMPLETE — E1–E5 done, FLAGSHIP folded, awaiting G5)._
 
 **Inherits:** all i01 locks L1–L34. Standing rule (new): every i02 result gets a
 clean-context refutation pass before grading A/B.
