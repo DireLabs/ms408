@@ -148,9 +148,30 @@ def analyze() -> dict:
                  if x not in (None, "unclear") and y not in (None, "unclear")]
         return round(sum(1 for x, y in pairs if x == y) / len(pairs), 3) if pairs else None
 
-    cross_sig = [k for k in ("sonnet_root x OPUS_leaf", "opus_root x SONNET_leaf")
-                 if tests[k]["constrained"]]
-    bundle_confirmed = len(cross_sig) >= 1
+    # Refutation-hardened rule (clean-context critic, 2026-07-07). A real
+    # cross-organ bundle is a property of the PAGE, so it must be symmetric under
+    # which model supplies which feature: BOTH cross-model directions significant.
+    # A disjunctive ">=1 of 2" rule roughly doubles the false-positive rate and lets
+    # the experiment cherry-pick the cooperating direction. We also charge Bonferroni
+    # across the 4 correlated tests and run an asymmetry diagnostic — if every
+    # significant test shares one model's root label and every null test lacks it,
+    # the effect tracks that model's LABELING, not the manuscript.
+    BONFERRONI = round(0.05 / 4, 4)  # 0.0125
+    cross = ("sonnet_root x OPUS_leaf", "opus_root x SONNET_leaf")
+    cross_sig = [k for k in cross if tests[k]["constrained"]]
+    within_opus_sig = tests["opus_root x opus_leaf"]["constrained"]
+    sig_all = [k for k, v in tests.items() if v["constrained"]]
+    null_all = [k for k, v in tests.items() if not v["constrained"]]
+    # which root source is common to every significant / every null test?
+    def _root_src(k):  # "sonnet" or "opus"
+        return "sonnet" if k.startswith("sonnet_root") else "opus"
+    sig_roots = {_root_src(k) for k in sig_all}
+    null_roots = {_root_src(k) for k in null_all}
+    single_root_driven = (len(sig_roots) == 1 and len(null_roots) == 1
+                          and sig_roots != null_roots)
+    # Confirmation now requires BOTH cross directions AND within-Opus replication.
+    bundle_confirmed = len(cross_sig) == 2 and within_opus_sig
+    min_cross_p = min(tests[k]["p_associated"] for k in cross)
 
     results = {
         "built_at": datetime.now(UTC).isoformat(timespec="seconds"),
@@ -158,42 +179,69 @@ def analyze() -> dict:
         "experiment": "E4b — cross-model root<->leaf (same-source confound test)",
         "pages": len(pages),
         "second_model": MODEL,
+        "bonferroni_alpha": BONFERRONI,
         "inter_model_agreement": {
             "root_coloring": agree(s_rootcol, o_rootcol),
             "leaf_arrangement": agree(s_leafarr, o_leafarr),
         },
         "associations": {k: {"cramers_v": v["cramers_v"], "p": v["p_associated"],
-                             "significant": v["constrained"]}
+                             "significant": v["constrained"],
+                             "clears_bonferroni": v["p_associated"] < BONFERRONI}
                          for k, v in tests.items()},
         "cross_model_significant": cross_sig,
+        "within_opus_significant": bool(within_opus_sig),
+        "single_root_source_driven": bool(single_root_driven),
+        "root_source_of_significant_tests": sorted(sig_roots),
+        "min_cross_model_p": min_cross_p,
         "bundle_confirmed_across_models": bool(bundle_confirmed),
     }
-    results["verdict"] = _verdict(results)
+    results["grade"], results["verdict"] = _verdict(results)
     (RESULTS_DIR / "e4b_crossmodel.json").write_text(json.dumps(results, indent=2) + "\n")
     return results
 
 
-def _verdict(r: dict) -> str:
+def _verdict(r: dict) -> tuple:
     a = r["associations"]
+    ag = r["inter_model_agreement"]
     if r["bundle_confirmed_across_models"]:
-        return (
-            f"CONFIRMED across models: root<->leaf association survives when the two "
-            f"features come from DIFFERENT vision models ({', '.join(r['cross_model_significant'])}), "
-            f"so it is NOT a single-model visual-gestalt artifact. The cross-organ "
-            f"bundle is real (in the annotations, at least) — i01's 'within-organ "
-            f"only' verdict is OVERTURNED. Inter-model agreement: root_coloring "
-            f"{r['inter_model_agreement']['root_coloring']}, leaf_arrangement "
-            f"{r['inter_model_agreement']['leaf_arrangement']}. (Still does not "
-            f"decide real-vs-invented herbal.)")
-    return (
-        f"NOT confirmed across models: the cross-model associations are "
-        f"non-significant (sonnet_root x OPUS_leaf p "
-        f"{a['sonnet_root x OPUS_leaf']['p']}, opus_root x SONNET_leaf p "
-        f"{a['opus_root x SONNET_leaf']['p']}), while within-model associations "
-        f"may hold — consistent with the E4 signal being a SINGLE-MODEL annotation "
-        f"artifact. The i01 'within-organ only' null STANDS. Inter-model agreement: "
-        f"root_coloring {r['inter_model_agreement']['root_coloring']}, "
-        f"leaf_arrangement {r['inter_model_agreement']['leaf_arrangement']}.")
+        return "CONFIRMED", (
+            "CONFIRMED across models: the root<->leaf association is SYMMETRIC — "
+            "significant in both cross-model directions AND replicated within Opus — "
+            "so it is a property of the page, not a single-model artifact. i01's "
+            "'within-organ only' verdict is OVERTURNED. (Still does not decide "
+            "real-vs-invented herbal.)")
+    # The realised case: split cross-model result driven by one root source.
+    if r["single_root_source_driven"]:
+        src = r["root_source_of_significant_tests"][0]
+        return "SUGGESTIVE-BUT-UNRESOLVED (leaning artifact)", (
+            f"OVERCLAIM REJECTED. The association is NOT symmetric across models: "
+            f"every significant test shares {src.upper()}'s root label "
+            f"(sonnet_root x sonnet_leaf, sonnet_root x OPUS_leaf) and every null "
+            f"test lacks it (opus_root x opus_leaf p {a['opus_root x opus_leaf']['p']}, "
+            f"opus_root x SONNET_leaf p {a['opus_root x SONNET_leaf']['p']}). The "
+            f"discriminating variable is WHICH MODEL LABELLED THE ROOT, not the "
+            f"manuscript. Decisively: root_coloring agrees {ag['root_coloring']} "
+            f"across models, yet swapping Sonnet's root for the 83%-concordant Opus "
+            f"root makes the effect vanish in BOTH leaf conditions — a real page "
+            f"property could not do that. Leaf noise ({ag['leaf_arrangement']}) does "
+            f"not rescue it: the most-null test uses the CLEANER sonnet_leaf, so the "
+            f"pattern tracks root source, not leaf quality. The one surviving "
+            f"cross-model p ({r['min_cross_model_p']}) clears Bonferroni "
+            f"({r['bonferroni_alpha']}) by only ~1.4x, before charging the "
+            f"researcher-df of the original >=1-of-2 rule. NET: the same-model-source "
+            f"confound is NOT cleanly broken; evidence leans toward a Sonnet-root "
+            f"labelling regularity. i01's 'within-organ only' leg is WEAKENED but "
+            f"NOT overturned. Decisive next control: a THIRD independent root_coloring "
+            f"rater (human ground-truth) — if the leaf association reappears with "
+            f"non-Sonnet root labels it is real; if only ever with sonnet_root it is "
+            f"a Sonnet artifact.")
+    return "NOT-CONFIRMED", (
+        f"NOT confirmed across models: cross-model associations non-significant "
+        f"(sonnet_root x OPUS_leaf p {a['sonnet_root x OPUS_leaf']['p']}, "
+        f"opus_root x SONNET_leaf p {a['opus_root x SONNET_leaf']['p']}) — consistent "
+        f"with the E4 signal being a single-model artifact. i01's 'within-organ only' "
+        f"null STANDS. Inter-model agreement: root_coloring {ag['root_coloring']}, "
+        f"leaf_arrangement {ag['leaf_arrangement']}.")
 
 
 def main(argv=None) -> int:
