@@ -1,0 +1,16 @@
+# Paper metadata for the package-paper skill.
+title: "Shrinking the Constraint Envelope of the Voynich Manuscript: A Firewall-Disciplined, Self-Correcting Computational Program"
+authors:
+  - "Tim Walsh"
+affiliations:
+  - "Principal Researcher, DireLabs, LLC"
+contact: "tim@direlabs.com \\quad direlabs.com \\quad ti.mims.ms"
+keywords:
+  - "Voynich Manuscript"
+  - "computational philology"
+  - "constraint-based analysis"
+  - "adversarial validation"
+  - "evidence grading"
+  - "reproducible research"
+venue: "arXiv preprint"
+version: auto
