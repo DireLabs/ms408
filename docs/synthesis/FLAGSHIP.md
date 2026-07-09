@@ -180,6 +180,7 @@ sounding translation was ever generated.
 ## Gate sign-offs
 
 - [x] G4 — post-T3.3 revised synthesis accepted; i02 agenda approved (L34).
-- [ ] **G5 — post-i02/i03 synthesis accepted as honest (Tim).** E1–E10 folded in.
-- [ ] i04 agenda approved as the next iteration (the E10 confirm-or-kill is the
-  headline).
+- [x] **G5 — post-i02/i03 synthesis accepted as honest (Tim, 2026-07-09).** E1–E10
+  folded in; all findings agreed. L37.
+- [ ] i04 / i05 agenda (see L37 note: E10 confirm-or-kill as a focused i04; a
+  mid-level linguistic program with A/B stratification as i05).
