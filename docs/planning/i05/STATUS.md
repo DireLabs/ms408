@@ -12,7 +12,7 @@ word-classes → syntax), stratified by Currier A/B; characterise grammar, not m
 
 | id | probe | priority | state | verdict |
 |---|---|---|---|---|
-| E13 | Function-word vs content-word bimodality | P1 flagship | 🔷 in progress | — |
+| E13 | Function-word vs content-word bimodality | P1 flagship | ✅ done → **inconclusive (probe failed calibration)** | [D] Three global operationalisations (neighbour-entropy promiscuity; freq–dispersion-evenness correlation; evenness variance) all FAIL to separate has-grammar from generated calibration corpora — so NO VMS function/content verdict is issued (harness-first: an uncalibrated probe yields no manuscript claim). Learnings: global stats are TTR/randomness-confounded; the self-citation & conlang nulls are contaminated (they inherit real grammar). **Redesign (E13b):** explicitly identify candidate function words (top-freq, cross-section-stable) and test even-dispersion + position-locking vs matched content words, against CLEAN nulls (shuffle/markov only). |
 | E14 | Distributional word-class (POS) induction | P2 | ⬜ ready | — |
 | E15 | Morphology segmentation & productivity | P2 | ⬜ ready | — |
 | E16 | Grammar depth: long-range dependency | P3 | ⬜ ready | — |
