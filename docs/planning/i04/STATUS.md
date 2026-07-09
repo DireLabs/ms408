@@ -1,6 +1,12 @@
 # STATUS.md — i04 Coordination Bus
 
-_Last updated: 2026-07-09 (spec drafted; E11 unblocked, E12 awaits D-i04-1)._
+_Last updated: 2026-07-09 (i04 COMPLETE — E11 survives; E12 UNRESOLVED-underpowered)._
+
+**i04 outcome:** the root↔leaf bundle survived the palette-style control (E11) but the
+independence test (E12) shows the model-annotation approach is **underpowered/untestable**
+(leaf-label noise ceiling). E10's positive-candidate claim is **withdrawn to UNRESOLVED**.
+Decisive future test = human panel. D-i04-1 is effectively **moot** — a 5th model can't
+settle a noise-limited question, so Google-billing for Gemini is **not** needed for this.
 
 **Inherits:** all locks L1–L37; standing refutation rule; L8 stratification.
 Continues the experiment ledger as E11–E12. Focused iteration: E10 confirm-or-kill.
@@ -10,7 +16,7 @@ Continues the experiment ledger as E11–E12. Focused iteration: E10 confirm-or-
 | id | question | priority | state | verdict |
 |---|---|---|---|---|
 | E11 | Illustration-style control for root↔leaf | P1 | ✅ done → **survives (partial control)** | [C] Bundle survives conditioning on palette-richness style for BOTH models (palette-alone p: sonnet 0.003, haiku 0.014; holds through palette×hand×dialect). Not a palette-style artifact. CAVEAT: partial control (palette richness is the only usable style annotation); E12 independence remains decisive. |
-| E12 | Independent-lineage (non-Anthropic/human) root rater | P1 | ⬜ blocked on D-i04-1 (research done → Gemini 3 + GPT-5 recommended) | — |
+| E12 | Independent-lineage (non-Anthropic/human) root rater | P1 | ✅ done + refuted → **UNRESOLVED-underpowered** | [C] GPT-5.1 (OpenAI, $0.20) re-annotated all 129 pages. GPT root agrees 0.86–0.91 with Anthropic roots yet does NOT reproduce the leaf association (cross-rater nulls: gpt_root×anthropic_leaf p 0.5–0.97). First-pass "KILLED (rater-idiosyncratic)" was CORRECTED by refutation: the root-agreement argument is a red herring (noisy variable is LEAF, κ≈0.45 for all). Consensus-subset power analysis: n=74 reliable pages, effect ~nil there (V=0.19 p=0.63) but MDE φ=0.33 ⇒ underpowered for the ~0.28 effect. **Terminal: model annotation cannot adjudicate; a 5th model won't help (leaf-noise ceiling). E10's positive-candidate claim WITHDRAWN to UNRESOLVED.** Decisive future test = pre-registered 3-human panel on the consensus subset. |
 
 ## Open decisions for Tim
 

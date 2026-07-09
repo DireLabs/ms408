@@ -1,10 +1,20 @@
 # MS408 — Living Synthesis (W5 flagship)
 
-**Status:** revised **post-i03** (experiments E1–E10 folded in; supersedes the
-post-i02 draft). Grades A–D (RESEARCH-PLAN §6); i01 numbers from
-`results/synthesis/findings_registry.json`, i02/i03 numbers from
-`results/experiments/e{1..10}*.json` (L3 firewall). Living document, not a final
-verdict. Every i02/i03 result carries a clean-context refutation pass.
+**Status:** revised **post-i04** (experiments E1–E12 folded in). Grades A–D
+(RESEARCH-PLAN §6); i01 numbers from `results/synthesis/findings_registry.json`,
+i02–i04 numbers from `results/experiments/e{1..12}*.json` (L3 firewall). Living
+document, not a final verdict. Every i02–i04 result carries a clean-context
+refutation pass.
+
+**i04 update (E11–E12):** the one live positive lead — the root↔leaf visual bundle
+that i03/E10 reopened — was pursued to its measurement ceiling. It survived a palette-
+style control (E11), but the cross-lineage independence test (E12: GPT-5.1, a non-
+Anthropic rater) does not reproduce it, and a consensus-subset power analysis shows
+the model-annotation approach is **underpowered/untestable** (the leaf feature is too
+noisy, κ≈0.45 for every rater; the reliable subset is only ~74 pages). **E10's
+"strongest positive candidate" claim is WITHDRAWN to UNRESOLVED** — neither confirmed
+nor an artifact; a pre-registered human panel is the only decisive test, and adding
+more models cannot help. §3/§4 below reflect this.
 
 **Headline (honest, post-i03).** Voynichese is a genuine constrained formal system
 with a real two-system (Currier A/B) structure and the well-known low-entropy
@@ -87,19 +97,25 @@ the most robust result.
   across ridge/leave-one-out), which only reinforces that the bracket is a
   **descriptive compatibility ordering**, not evidence for any family. The i01
   "constructed-language best fit" stays **withdrawn**.
-- **[C→reopened, UNCONFIRMED] The root↔leaf visual bundle — E4b OVERTURNED (E10).**
-  i02/E4b had called the root_coloring↔leaf_arrangement association a Sonnet-specific
-  annotation artifact. E10 overturns that: a **third** independent model (Haiku 4.5)
-  **also** reproduces it, across the other models' leaf labels (Opus is the lone
-  non-reproducer); and it **survives** stratification by scribal hand + Currier
-  dialect (sonnet p=0.003, haiku p=0.014; L8) and colored-only pages (Sonnet V=0.46,
-  E4b). So it is neither a single-model artifact nor a hand/dialect confound — the
-  **strongest referential-signal candidate the program has**. It remains
-  **UNCONFIRMED**: three residuals stand — the three raters share an Anthropic vision
-  lineage (a common prior could drive it; a non-Anthropic/human rater is the real
-  independence test), a fine illustration-*style* convention beyond scribal hand is
-  uncontrolled, and it fails Bonferroni (rests on BH-FDR). Structural/visual only; no
-  plaintext or real-taxon claim (L7).
+- **[C, UNRESOLVED-underpowered] The root↔leaf visual bundle — reopened (E10), then
+  found UNTESTABLE by model annotation (E12).** The arc: E4b called it a Sonnet-
+  specific artifact; E10 overturned that (Haiku reproduced it across other models'
+  leaf labels; it survived hand + dialect); E11 survived a palette-style control. But
+  E12 added GPT-5.1 (a genuinely non-Anthropic rater whose root labels agree 0.86–0.91
+  with the Anthropic models) and it does **not** reproduce the association — every
+  gpt_root×anthropic_leaf pairing is null (p 0.5–0.97). Crucially, the decisive tell
+  is not root agreement but the **cross-rater nulls**: a real cross-organ property
+  should survive pairing one rater's root with another's leaf, and it does not. Yet no
+  firm negative is licensed either: **leaf_arrangement is noisy for every rater
+  (κ≈0.44–0.53)**, the high-confidence consensus subset (≥3 raters agree on both
+  organs) is only **74 pages** with minimum detectable φ≈0.33 — underpowered for the
+  ~0.28 effect (where reliable, the association is ~nil: V=0.19, p=0.63). **Terminal
+  status: too noisy for model annotation to adjudicate; E10's positive claim is
+  WITHDRAWN to UNRESOLVED.** The E4b→E10→E12 sequence was partly narrative-fitting to
+  the last-added model — a caution the program now records. The single decisive test
+  is a **pre-registered 3-human panel** on the consensus subset (power reported
+  first); more models cannot settle a noise-limited question. Visual only; no
+  plaintext claim (L7).
 
 ## 4. The honest constraint envelope (post-i03)
 
@@ -116,14 +132,16 @@ ciphers (homophonic or deterministic). The remaining hypotheses are unranked:**
 - **constructed language** (Lingua-Ignota class) — not a *distinguished* fit (E5/E8),
   not excluded;
 - **invented-world notation** (Codex-Seraphinianus class);
-- a **meaningful-but-non-nomenclatural** natural text — kept open, and now with a
-  *positive* (if unconfirmed) thread: the root↔leaf visual bundle (E10) is the first
-  evidence consistent with real botanical structure in the imagery, distinct from the
-  (absent) text naming system.
+- a **meaningful-but-non-nomenclatural** natural text — kept open on the Language-A
+  section↔text co-variation (F8) and E3's unexcluded weak/rare anchors. The one
+  candidate *positive* thread (the root↔leaf visual bundle) was pursued in i04 and is
+  now **UNRESOLVED-underpowered** (E12) — too noisy for model annotation to settle,
+  pending a human panel; it is no longer carried as a live positive.
 
 Not ranked. The evidence does not separate meaningful from meaningless, and cannot
-license "no referents exist" over "referents not recovered by these methods." The
-one live positive lead (E10) is visual, not textual, and unconfirmed.
+license "no referents exist" over "referents not recovered by these methods." There
+is currently **no confirmed positive referential signal** — the strongest candidate
+dissolved into a measurement-ceiling UNRESOLVED (E12).
 
 ## 5. Origin (unchanged, grade C)
 
@@ -140,11 +158,19 @@ ED1; abjad revived), E7 (no lexical anchor at higher power; labels infeasible), 
 (no structural statistic localizes meaning), E10 (root↔leaf reopened; E4b overturned;
 unconfirmed).
 
-**i04 leads (surfaced by the i03 refutation passes):**
+**i04 folded in (E11–E12):** E11 (root↔leaf survives palette-style control), E12
+(independent-lineage rater GPT-5.1 → the bundle is UNRESOLVED-underpowered; model
+annotation can't adjudicate; E10's positive claim withdrawn).
 
-1. **Confirm-or-kill the root↔leaf bundle (E10):** a **non-Anthropic or human** root
-   rater (true independence beyond shared model lineage) + a fine illustration-*style*
-   control. This is the highest-value next test — the program's only live positive.
+**i05+ leads:**
+
+0. **Human panel on the root↔leaf consensus subset** — the ONLY decisive test left
+   for the visual bundle (E12); pre-register + power-analyse first; if underpowered,
+   declare it untestable by this design. More models cannot help.
+1. **The mid-level linguistic program (i05, L37):** morphology segmentation,
+   distributional word-class/POS induction, function-vs-content bimodality (lead
+   probe), syntactic dependency — with Currier A/B as the primary stratification
+   ("is one dialect a different generative process?"). The main forward thrust.
 2. **Abjad/abbreviation joint-signature test:** does any single abjad/brevigraphy
    parameterization of a real language reach ED1≈0.80 **and** h2≈2.1 **and** the
    812-scale ΔI **together** (E6 showed abjad overshoots ED1 and misses h2)?
@@ -161,9 +187,13 @@ unconfirmed).
 ## 7. Methodological contribution (the most robust result)
 
 Every statistic was computed by deterministic versioned code and validated on a
-synthetic harness before touching real-manuscript claims. Across three iterations
-the clean-context refutation rule has caught **a dozen** over-reads and silent bugs
-before they were reported. i03 alone: E6's "needs constructed morphology" (refuted
+synthetic harness before touching real-manuscript claims. Across four iterations
+the clean-context refutation rule has caught **a dozen-plus** over-reads and silent
+bugs before they were reported. i04's E12 is a textbook case: a first-pass "KILLED —
+rater-idiosyncratic" verdict was itself corrected by the refutation pass, which showed
+the kill's central argument (root-label agreement) was a red herring and the honest
+status is UNRESOLVED-underpowered — the pipeline declining to over-read a negative just
+as it declines to over-read a positive. i03: E6's "needs constructed morphology" (refuted
 by the abjad control the critic demanded), E7's **18 false-positive anchors** (caught
 by the mandatory null gate — an anti-conservative test that BH-FDR did not control),
 E8's "whitening confirms E5" (withdrawn once Σ was shown ill-conditioned) plus a
@@ -182,5 +212,6 @@ sounding translation was ever generated.
 - [x] G4 — post-T3.3 revised synthesis accepted; i02 agenda approved (L34).
 - [x] **G5 — post-i02/i03 synthesis accepted as honest (Tim, 2026-07-09).** E1–E10
   folded in; all findings agreed. L37.
-- [ ] i04 / i05 agenda (see L37 note: E10 confirm-or-kill as a focused i04; a
-  mid-level linguistic program with A/B stratification as i05).
+- [x] **i04 complete (E11–E12):** root↔leaf resolved to UNRESOLVED-underpowered; this
+  is the intended end-of-scope for the first paper (anything past here = future work).
+- [ ] i05 — the mid-level linguistic program with A/B stratification (L37).
