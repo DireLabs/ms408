@@ -1,0 +1,15 @@
+# Copy to  paper/metadata.yaml  and fill in. The package-paper skill reads this.
+title: "Shrinking the Constraint Envelope of the Voynich Manuscript: A Firewall-Disciplined, Self-Correcting Computational Program"
+authors:
+  - "FILL IN — e.g. Tim <Surname>"
+affiliations:
+  - "FILL IN — affiliation / independent researcher"
+contact: "tim@mims.ms"
+keywords:
+  - "Voynich Manuscript"
+  - "computational philology"
+  - "constraint-based analysis"
+  - "adversarial validation"
+  - "evidence grading"
+venue: "arXiv preprint"      # or a target venue name
+version: auto                # 'auto' -> next vN; or pin e.g. v1

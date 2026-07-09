@@ -1,0 +1,66 @@
+% MS408 preprint template (arXiv-style, self-contained; compiles with pdflatex).
+% Placeholders in <ANGLE BRACKETS> are filled by the package-paper skill.
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{natbib}
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{0.6em}{}
+
+% Evidence-grade tag, e.g. \grade{A}
+\newcommand{\grade}[1]{{\small\textbf{[Grade #1]}}}
+
+\title{\textbf{<TITLE>}}
+\author{<AUTHORS> \\ \small <AFFILIATIONS> \\ \small \texttt{<CONTACT>}}
+\date{Preprint <VERSION> --- <DATE>}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent <ABSTRACT>
+\end{abstract}
+
+\noindent\textbf{Keywords:} <KEYWORDS>
+
+\section{Introduction}
+<INTRODUCTION>
+
+\section{Data and Transliteration}
+<DATA>
+
+\section{Method: Harness, Firewall, and Adversarial Refutation}
+<METHOD>
+
+\section{Results}
+<RESULTS>
+
+\section{Discussion}
+<DISCUSSION>
+
+\section{Limitations}
+<LIMITATIONS>
+
+\section{Future Work}
+<FUTUREWORK>
+
+\section*{Reproducibility}
+All statistics are produced by deterministic, versioned code (fixed seeds) writing
+machine-readable JSON to \texttt{results/}; every reported number records its
+producing script, git commit, dataset version, and parameters. Source and data-
+processing code accompany this preprint.
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+
+\end{document}
