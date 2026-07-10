@@ -17,18 +17,22 @@ word-classes → syntax), stratified by Currier A/B; characterise grammar, not m
 | E14 | Distributional word-class (POS) induction | P2 | ⬜ ready | — |
 | E15 | Morphology segmentation & productivity | P2 | ✅ done → **inconclusive (n-confounded measure)** | [D] Paradigm-coherence (top-10 sigs / n) separates cleanly with a token-shuffle null (0.41) but that null is invalid (same word types as Latin); with a proper within-word char-shuffle null the measure is n-confounded (char-shuffle 0.44 > Latin 0.41 via small n), separation 0.10 < 0.15 → no VMS verdict. Descriptive values are suggestively ordered (VMS-A 0.29 / B 0.35 below Latin 0.41, far below conlang 0.98, above abjad 0.16 — hinting only-partly-paradigmatic) but NOT trusted without n-correction. |
 
-## META-FINDING (i05 methodology prerequisite)
+## Null-correction framework (built) + corrected re-runs
 
-**All three attempted mid-level probes (E13, E13b, E15) are inconclusive for the SAME
-structural reason:** each raw measure (neighbour-promiscuity, collocational
-selectivity, paradigm coherence) is confounded by a nuisance parameter (type-token
-ratio, sample size, number-of-stems), and the harness correctly refused a VMS claim
-each time. **The fix is identical in every case: a null-model-corrected statistic —
-compare the observed value against a matched-null permutation baseline that holds the
-nuisance parameter fixed.** Recommendation: **build this null-correction framework
-ONCE** (a reusable `mid_level_null` harness) BEFORE running more probes, rather than
-iterating each measure ad hoc. This is the real i05 prerequisite the first three probes
-surfaced.
+`src/ms408/experiments/mid_level_null.py` — `null_z()` expresses each corpus's raw
+statistic as a z-score vs a matched-null ensemble holding its OWN nuisance parameters
+fixed, so z is comparable across corpora and VMS-A vs VMS-B directly.
+
+| id | probe (corrected) | state | verdict |
+|---|---|---|---|
+| E13c | Function/content, order-shuffle null | ✅ done + refuted → **narrowed** | [C] **CALIBRATED** (real langs latin z=19, german z=8.5). Refutation corrected the framing: NOT "undifferentiated/no grammar". Narrow SURFACE finding — VMS has only weak near-chance surface collocation in both bands (excess over shuffle ~0.01–0.02 vs real-language content 0.15), NO natural-language content>function gap, and its most-FREQUENT words are marginally MORE collocational than content words (template-like daiin/ol/chedy repeats, the OPPOSITE of flat real function words). Holds in A AND B. **Scope (L7): surface collocation only** — a cipher/morphology/low-repetition could erase surface collocation while preserving grammar; does NOT say "no grammar". First substantive i05 result. |
+| E15b | Morphology coherence, random-signature null | ✅ done → still inconclusive | [D] n-confound removed, but calibration STILL fails — collision nulls induce spurious signature structure (char-shuffle z=15.8, abjad z=5.3 both clear the bar). No clean "no-morphology" null; VMS z (11–15) high but so is char-shuffle. |
+
+**Meta:** the framework converted ONE of two probes (function/content) from confounded
+to answerable — a genuine methodological win. Morphology (E15b) needs a fundamentally
+cleaner null (char-shuffle preserves character constraints that fake signatures);
+deferred. E14 (POS induction) / E16 (dependency) should be built with null-correction
+from the start.
 | E16 | Grammar depth: long-range dependency | P3 | ⬜ ready | — |
 
 ## Standing rule (i05)
