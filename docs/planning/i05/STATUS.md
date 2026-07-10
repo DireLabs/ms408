@@ -15,7 +15,20 @@ word-classes → syntax), stratified by Currier A/B; characterise grammar, not m
 | E13 | Function-word vs content-word bimodality | P1 flagship | ✅ done → **inconclusive (probe failed calibration)** | [D] Three global operationalisations (neighbour-entropy promiscuity; freq–dispersion-evenness correlation; evenness variance) all FAIL to separate has-grammar from generated calibration corpora — so NO VMS function/content verdict is issued (harness-first: an uncalibrated probe yields no manuscript claim). Learnings: global stats are TTR/randomness-confounded; the self-citation & conlang nulls are contaminated (they inherit real grammar). **Redesign (E13b):** explicitly identify candidate function words (top-freq, cross-section-stable) and test even-dispersion + position-locking vs matched content words, against CLEAN nulls (shuffle/markov only). |
 | E13b | Function/content via collocational selectivity (redesign) | P1 | ✅ done → **inconclusive (failed calibration)** | [D] 4th operationalisation; the content−function selectivity gap doesn't cleanly separate real language (0.081) from the shuffle null (0.051; sep 0.03 < 0.05) — peak selectivity is sample-size-confounded (content band is lower-freq → inflated). NET across E13+E13b: **the function/content probe is not cleanly detectable with word-stream corpora** (function words ARE the high-freq ones → can't frequency-match vs content; nulls each preserve different structure). Parked pending sentence-segmented controls + a frequency-matched design. |
 | E14 | Distributional word-class (POS) induction | P2 | ⬜ ready | — |
-| E15 | Morphology segmentation & productivity | P2 | 🔷 in progress (firmer ground: ED1 network + clean abjad/Latin contrast) | — |
+| E15 | Morphology segmentation & productivity | P2 | ✅ done → **inconclusive (n-confounded measure)** | [D] Paradigm-coherence (top-10 sigs / n) separates cleanly with a token-shuffle null (0.41) but that null is invalid (same word types as Latin); with a proper within-word char-shuffle null the measure is n-confounded (char-shuffle 0.44 > Latin 0.41 via small n), separation 0.10 < 0.15 → no VMS verdict. Descriptive values are suggestively ordered (VMS-A 0.29 / B 0.35 below Latin 0.41, far below conlang 0.98, above abjad 0.16 — hinting only-partly-paradigmatic) but NOT trusted without n-correction. |
+
+## META-FINDING (i05 methodology prerequisite)
+
+**All three attempted mid-level probes (E13, E13b, E15) are inconclusive for the SAME
+structural reason:** each raw measure (neighbour-promiscuity, collocational
+selectivity, paradigm coherence) is confounded by a nuisance parameter (type-token
+ratio, sample size, number-of-stems), and the harness correctly refused a VMS claim
+each time. **The fix is identical in every case: a null-model-corrected statistic —
+compare the observed value against a matched-null permutation baseline that holds the
+nuisance parameter fixed.** Recommendation: **build this null-correction framework
+ONCE** (a reusable `mid_level_null` harness) BEFORE running more probes, rather than
+iterating each measure ad hoc. This is the real i05 prerequisite the first three probes
+surfaced.
 | E16 | Grammar depth: long-range dependency | P3 | ⬜ ready | — |
 
 ## Standing rule (i05)
