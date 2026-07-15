@@ -33,3 +33,17 @@ exclusive under reordering: latin_verbose ΔI 0.39/z 20 vs latin_verbose_transpo
 adds the ΔI/word-syntax paradox; methodology adds the E19→E19b circular-positive
 narrowing-then-upgrade. Limitations add incompleteness + exclusion scope. Future work:
 characterise the generator (non-Voynich-tuned). All numbers firewall-sourced. 8pp.
+
+## v4 — 2026-07-15
+Folds i07 (E21–E22) and i08 (E23) — characterising and CONSTRAINING the favoured
+generative class. New Results subsection (§4.7): a non-Voynich-tuned positional/template
+generator reproduces entropy (h2 2.14) + block-ΔI (0.08) + weak word-syntax but, across
+a 64-config a-priori grid, NEVER the VMS's morphology connectivity (ED1 ~0.75; generator
+~0.97–1.0), lexical reuse (TTR ~0.22; ~0.59), or frequency slope (E22); a real-Latin-
+lexicon control lands in the VMS syntax bands (fc_z −1.4/wc_z 2.5). Adding word reuse
+(E23, 104 configs incl. global preferential attachment) individually rescues ED1/TTR/Zipf
+and restores the VMS's weak-positive wc_z (−1.0→+2.06) but hits a Pareto tension (0/104
+configs satisfy the frequency group jointly with entropy/ΔI/syntax) → concentration must
+be type-level, not token copying. Records the E21 B→C self-correction (grid-selected
+constants + shuffle-passable threshold). Abstract, Discussion, Limitations, Future Work
+updated; "eight iterations". All numbers firewall-sourced. 9pp.
