@@ -18,3 +18,18 @@ mid-level difference is a content confound, not dialect (global B−A +1.79 reve
 −1.24 within the herbal). Discussion adds the "structure below the word" thesis;
 methodology adds E17 overturning the E14b A/B difference. All numbers firewall-sourced.
 6pp. Future work updated (i05 done → human panel, larger A/B, E16, abjad joint-signature).
+
+## v3 — 2026-07-15
+Folds i06 (the discipline-gated cryptanalytic direction, E18–E20). Adds: a completeness
+paragraph to Data (~12% of the foliated range lost, f1–f116, 14 missing folio numbers;
+non-saturating vocabulary, Heaps β=0.73, ~20% new types/page in the final quartile —
+E18); a new Results subsection (§4.6) EXCLUDING the cipher-of-real-prose class on the
+joint signature — word-order-preserving ciphers keep the source language's strong
+mid-level syntax (~10σ; abjad/subst/nomenclator fc_z 13.8/21.0/9.8), the exclusion is
+language-universal (Latin/Italian/German/Hebrew all strong; Hebrew abjad fc_z 9.7/wc_z
+4.1), and transposition cannot rescue it (retained ΔI and weak word-syntax are mutually
+exclusive under reordering: latin_verbose ΔI 0.39/z 20 vs latin_verbose_transposed ΔI
+0.01/z 0.83), pointing to a template-driven / positional generative system. Discussion
+adds the ΔI/word-syntax paradox; methodology adds the E19→E19b circular-positive
+narrowing-then-upgrade. Limitations add incompleteness + exclusion scope. Future work:
+characterise the generator (non-Voynich-tuned). All numbers firewall-sourced. 8pp.
