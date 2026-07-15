@@ -1,10 +1,28 @@
 # MS408 — Living Synthesis (W5 flagship)
 
-**Status:** revised **post-i05** (experiments E1–E17 folded in). Grades A–D
+**Status:** revised **post-i06** (experiments E1–E20 folded in). Grades A–D
 (RESEARCH-PLAN §6); i01 numbers from `results/synthesis/findings_registry.json`,
-i02–i05 numbers from `results/experiments/e{1..17}*.json` (L3 firewall). Living
-document, not a final verdict. Every i02–i05 result carries a clean-context
+i02–i06 numbers from `results/experiments/e{1..20}*.json` (L3 firewall). Living
+document, not a final verdict. Every i02–i06 result carries a clean-context
 refutation pass.
+
+**i06 update (cryptanalytic direction, E18–E20).** Turning to the decipherment
+question, we asked whether the VMS could be a cipher of a real text — targeting the two
+classes our own work had left non-excluded (deterministic-verbose/nomenclator, abjad/
+abbreviation). Using the i05 mid-level syntax measures as new discriminators, the
+answer is a strong, refutation-hardened **exclusion**: the VMS uniquely combines LOW
+character entropy, RETAINED (block-scale) word-order ΔI, and WEAK word-level syntax — a
+combination **no cipher of real prose produces**. Word-order-PRESERVING ciphers (abjad,
+1:1 substitution, nomenclator) retain the source language's strong word-syntax the VMS
+lacks (~10σ), and this holds across typologically diverse languages including **Hebrew,
+a native abjad** (E19/E19b); the only surviving lead — a transposition cipher — gives
+weak syntax but collapses the ΔI, so retained-ΔI and weak-syntax are mutually exclusive
+under any such cipher (E20). This **closes the cipher-of-real-prose class** and, with
+the E1/E2 result that the ΔI is block/section structure rather than word order, points
+to a **template-driven / positional generative system, not an enciphered real text.** A
+decipherment attack is, by our own evidence, low-yield. (E18 also documents that ~12%
+of the foliated range is missing and the vocabulary is non-saturating — see
+Limitations.)
 
 **i05 update (the mid-level linguistic program, E13–E17).** i01–i04 showed the VMS is
 strongly structured but that magnitude-of-structure statistics cannot reach meaning
@@ -95,8 +113,13 @@ the most robust result.
   Latin** (vowel-dropping → shared consonantal skeletons, ED1 0.90) — reviving the
   abjad/abbreviation class (Hauer-Kondrak / medieval brevigraphy) as the live
   structural route to the morphology network, in tension with i01's F7 (abbreviation
-  raised h2 the wrong way). Whether any single abjad/abbreviation parameterization
-  hits ED1 **and** h2 **and** ΔI together is the open i04 test.
+  raised h2 the wrong way). **i06 UPDATE — the abjad/cipher revival is now closed
+  (E19/E20):** while an abjad reaches the ED1 network, the i05 mid-level syntax
+  discriminators exclude it (and the whole cipher-of-real-prose class) on the JOINT
+  signature — an abjad/substitution/nomenclator of any real language (including Hebrew,
+  a native abjad) retains strong word-syntax the VMS lacks, and the ΔI+weak-syntax
+  combination is unreachable by any cipher of real prose (§ i06 update). So the abjad
+  was a live *structural-morphology* lead but is **excluded once word-syntax is added.**
 
 ## 3. What is NOT established (i02/i03 outcomes)
 
@@ -145,18 +168,23 @@ inventory. It disfavours (a) random/meaningless marks, (b) a *lexical* label→f
 naming system for the herbal (no text anchor at achieved power), and (c) verbose
 ciphers (homophonic or deterministic). The remaining hypotheses are unranked:**
 
-- **structured-meaningless** — still the simplest fit; E1/E9 removed the statistics
-  that had counted against it (they measure structure, not meaning);
-- **abjad / abbreviation** of a real language — REVIVED by E6 as the route that
-  reaches the ED1 network (pending the joint-signature test);
+- **template-driven / positional generation** (incl. structured-meaningless) — now the
+  best-supported class: it is the natural reading of the VMS's block/positional ΔI
+  (E1/E2) + weak word-syntax (i05) + low entropy, and it is the only class NOT excluded
+  by the i06 cipher analysis. E1/E9 also removed the statistics that had counted against
+  structured-meaningless (they measure structure, not meaning);
+- **cipher of a real text** (abjad / abbreviation / substitution / nomenclator /
+  transposition) — **EXCLUDED by i06 (E19/E19b/E20)** on the joint signature: no such
+  cipher of any real language reproduces the VMS's low-entropy + retained-ΔI +
+  weak-word-syntax combination. The abjad E6 revived on morphology is excluded once
+  word-syntax is added;
 - **constructed language** (Lingua-Ignota class) — not a *distinguished* fit (E5/E8),
-  not excluded;
+  not excluded, but must also explain the weak word-syntax (i05);
 - **invented-world notation** (Codex-Seraphinianus class);
-- a **meaningful-but-non-nomenclatural** natural text — kept open on the Language-A
-  section↔text co-variation (F8) and E3's unexcluded weak/rare anchors. The one
-  candidate *positive* thread (the root↔leaf visual bundle) was pursued in i04 and is
-  now **UNRESOLVED-underpowered** (E12) — too noisy for model annotation to settle,
-  pending a human panel; it is no longer carried as a live positive.
+- a **meaningful-but-non-nomenclatural** natural text — weakened by i05/i06 (real prose,
+  enciphered or not, carries strong word-syntax the VMS lacks); the one candidate
+  *positive* thread (the root↔leaf visual bundle) is UNRESOLVED-underpowered (E12),
+  pending a human panel, and is not carried as a live positive.
 
 Not ranked. The evidence does not separate meaningful from meaningless, and cannot
 license "no referents exist" over "referents not recovered by these methods." There
@@ -183,7 +211,7 @@ c. 1420s–1460s, in tension with the northern-Italian working premise (L1);
 provenance documentary-solid only to 1637 (Baresch); Rudolf II purchase and Bacon
 attribution grade D. Carried as rival localizations.
 
-## 6. Iteration findings folded in → i06 agenda
+## 6. Iteration findings folded in → i07 agenda
 
 **i03 (E6–E10):** E6 (verbose cipher excluded on ED1; abjad revived), E7 (no lexical
 anchor at higher power), E8 (no family distinguished under whitening), E9 (no
@@ -193,14 +221,23 @@ lineage rater → the bundle is UNRESOLVED-underpowered; E10's positive claim wi
 **i05 (E13–E17), the mid-level program:** the null-correction framework; E13c/E13d
 (no natural-language surface content/function collocation gap; frequent words
 template-like); E14/E14b (weak distributional word-class structure, ~0.13–0.19× real);
-E17 (the A/B word-class difference is a content confound, not dialect). Two probes
-stayed inconclusive for lack of a clean null: raw function/content (E13/E13b) and
-morphology paradigm coherence (E15/E15b).
+E17 (the A/B word-class difference is a content confound, not dialect).
+**i06 (E18–E20), the cryptanalytic direction:** E18 (~12% of the foliated range
+missing; non-saturating vocabulary); E19/E19b (no cipher of a real language matches the
+VMS's joint signature; the exclusion is universal across typology incl. Hebrew abjad;
+the "favours generation" positive was dropped as circular); E20 (the transposition lead
+is closed — retained-ΔI and weak-syntax are mutually exclusive under any cipher of real
+prose). Net: the cipher-of-real-prose class is EXCLUDED; template/positional generation
+is favoured.
 
-**i06 leads:**
+**i07 leads:**
 
 0. **Human panel on the root↔leaf consensus subset** — the ONLY decisive test left
    for the visual bundle (E12); pre-register + power-analyse first.
+0b. **Characterise the template/positional generative system** — the i06-favoured
+   class: does a positional/line-template generator (fit to the VMS's block ΔI + weak
+   syntax + low entropy) reproduce the full signature? (Use a NON-Voynich-tuned
+   generator to avoid the E19 circularity.)
 1. **A larger content-matched A-vs-B sample** — E17's within-herbal null is
    underpowered (Herbal-B ≈3.3k tokens); firm it up, and extend the mid-level probes
    (E16 long-range dependency; a cleaner-null morphology retry).
@@ -215,9 +252,14 @@ morphology paradigm coherence (E15/E15b).
 ## 7. Methodological contribution (the most robust result)
 
 Every statistic was computed by deterministic versioned code and validated on a
-synthetic harness before touching real-manuscript claims. Across five iterations
+synthetic harness before touching real-manuscript claims. Across six iterations
 the clean-context refutation rule has caught **a dozen-plus** over-reads and silent
-bugs before they were reported. i05 extended the record and added a reusable
+bugs before they were reported. i06 is a clean recent example: E19's first-pass "the
+VMS is favoured as a generation process" was rejected as **circular** (the matching
+generator was the Voynich-tuned one), narrowing the claim to the robust *negative*
+(the cipher-of-real-prose exclusion) — and the refutation's demanded control (test the
+discriminator across typologically diverse languages) then *upgraded* that exclusion to
+universal (E19b). i05 added a reusable
 **null-model-correction framework**: the first mid-level probes were confounded (by
 type-token ratio, sample size, number of stems), and the harness-first discipline
 refused a manuscript claim from each until the confound was corrected — four
@@ -256,5 +298,10 @@ sounding translation was ever generated.
   lacks surface content/function collocation (E13c) and has weak word-class structure
   (E14); A/B don't differ in mid-level grammar once content is controlled (E17).
   Folded into paper v2.
-- [ ] i06 — human panel (root↔leaf); larger content-matched A/B; E16 + cleaner-null
-  morphology; abjad joint-signature test.
+- [x] **i06 complete (E18–E20):** cryptanalytic direction — the cipher-of-real-prose
+  class is EXCLUDED (VMS uniquely combines low entropy + retained ΔI + weak word-syntax,
+  which no cipher of real prose produces; universal across typology incl. Hebrew abjad);
+  ~12% of the foliated range is missing (E18). Favours template/positional generation.
+  Folded into paper v3.
+- [ ] i07 — human panel (root↔leaf); characterise the template/positional generator
+  (non-Voynich-tuned); larger content-matched A/B; E16 long-range dependency.
