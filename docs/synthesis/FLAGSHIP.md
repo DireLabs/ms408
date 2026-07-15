@@ -1,10 +1,10 @@
 # MS408 — Living Synthesis (W5 flagship)
 
-**Status:** revised **post-i07** (experiments E1–E22 folded in). Grades A–D
+**Status:** revised **post-i08** (experiments E1–E23 folded in). Grades A–D
 (RESEARCH-PLAN §6); i01 numbers from `results/synthesis/findings_registry.json`,
-i02–i07 numbers from `results/experiments/e{1..22}*.json` (L3 firewall). Living
-document, not a final verdict. Every i02–i07 result carries a clean-context
-refutation pass.
+i02–i08 numbers from `results/experiments/e{1..23}*.json` (L3 firewall). Living
+document, not a final verdict. Every A/B result carries a clean-context refutation pass
+(E21's first-pass B was overturned by one).
 
 **i07 update (characterising the generative class, E21–E22).** i06 pointed to a
 template/positional *generative* system; i07 tested that positive complement — can such
@@ -26,6 +26,25 @@ sufficiency [B]" was overturned by the refutation pass — its constants had bee
 selected to hit the VMS bands (a fitted point, not an a-priori draw) and its
 weak-syntax leg used a one-sided threshold a full shuffle also passes — and was
 narrowed to this negative, which E22 then made decisive.
+
+**i08 update (adding the reuse mechanism, E23).** i07 named the missing ingredient —
+word reuse. i08 bolted a copy-from-history mechanism onto the positional generator and
+swept it a-priori (E23, 104 configs: reuse-rate × {local, global preferential
+attachment} × generator params). Reuse is a **genuine but insufficient** improvement
+[C]: it individually rescues every axis i07 could never reach (ED1, TTR, Zipf all become
+reachable), and **global preferential attachment restores the VMS's weak-positive
+word-class structure** (wc_z −1.0 → +2.06, into band) — but a **Pareto tension** blocks
+joint success: no config satisfies even the whole frequency group {ED1, TTR, Zipf} at
+once, let alone jointly with {entropy, ΔI, word-syntax}, because the reuse rate that
+concentrates frequency (high ρ) simultaneously *deflates* the character entropy and
+block-ΔI and re-negates the syntax. So the VMS's low entropy + retained ΔI + weak-
+positive syntax **coexist with heavy word reuse in a way token-copying cannot
+reproduce** — the concentration must be bought at the **type** level (a small, skewed
+lexicon with constrained morphology), not by token copying that also compresses the
+character grammar. Net across i07–i08: template/positional generation is the best-
+supported class yet **demonstrably incomplete** as either a context-free or a
++token-reuse model; the VMS's joint signature is more mutually-constraining than these
+generative families produce.
 
 **i06 update (cryptanalytic direction, E18–E20).** Turning to the decipherment
 question, we asked whether the VMS could be a cipher of a real text — targeting the two
@@ -190,14 +209,17 @@ naming system for the herbal (no text anchor at achieved power), and (c) verbose
 ciphers (homophonic or deterministic). The remaining hypotheses are unranked:**
 
 - **template-driven / positional generation** (incl. structured-meaningless) — the
-  best-supported class, but i07 shows it is INCOMPLETE as a *context-free* model: it is
-  the natural reading of the VMS's block/positional ΔI (E1/E2) + weak word-syntax (i05) +
-  low entropy, and the only class NOT excluded by the i06 cipher analysis; a context-free
-  positional generator reproduces those three but NOT (E22) the VMS's morphology
-  connectivity, lexical reuse, or frequency slope at any tuning — so the account needs an
-  added **word-reuse / smaller-lexicon / correlated-slot** mechanism (E21/E22). E1/E9
-  also removed the statistics that had counted against structured-meaningless (they
-  measure structure, not meaning);
+  best-supported class, but i07–i08 show it is INCOMPLETE as any simple generative model:
+  it is the natural reading of the VMS's block/positional ΔI (E1/E2) + weak word-syntax
+  (i05) + low entropy, and the only class NOT excluded by the i06 cipher analysis; a
+  context-free positional generator reproduces those three but NOT (E22) the VMS's
+  morphology connectivity, lexical reuse, or frequency slope at any tuning, and adding
+  word reuse (E23) rescues those axes and the syntax sign individually but hits a **Pareto
+  tension** — frequency concentration and low-entropy/retained-ΔI cannot be satisfied at
+  once by token copying. So the account still needs a **type-level small-lexicon**
+  concentration mechanism; the VMS signature is more mutually-constraining than these
+  families produce. E1/E9 also removed the statistics that had counted against
+  structured-meaningless (they measure structure, not meaning);
 - **cipher of a real text** (abjad / abbreviation / substitution / nomenclator /
   transposition) — **EXCLUDED by i06 (E19/E19b/E20)** on the joint signature: no such
   cipher of any real language reproduces the VMS's low-entropy + retained-ΔI +
@@ -236,7 +258,7 @@ c. 1420s–1460s, in tension with the northern-Italian working premise (L1);
 provenance documentary-solid only to 1637 (Baresch); Rudolf II purchase and Bacon
 attribution grade D. Carried as rival localizations.
 
-## 6. Iteration findings folded in → i08 agenda
+## 6. Iteration findings folded in → i09 agenda
 
 **i03 (E6–E10):** E6 (verbose cipher excluded on ED1; abjad revived), E7 (no lexical
 anchor at higher power), E8 (no family distinguished under whitening), E9 (no
@@ -263,16 +285,25 @@ frequency slope; the context-free bag-of-slots is a PARTIAL account only). Net: 
 positional generation is favoured for entropy/ΔI/weak-syntax but is INSUFFICIENT as a
 context-free model — the signature demands an added word-reuse / smaller-lexicon /
 correlated-slot mechanism.
+**i08 (E23), adding word reuse:** a copy-from-history mechanism swept a-priori (104
+configs) individually rescues ED1/TTR/Zipf and — via global preferential attachment —
+restores the VMS's weak-positive word-class structure, but a **Pareto tension** blocks
+joint success (0 configs satisfy the frequency group and the entropy/ΔI/syntax group at
+once; high reuse deflates entropy/ΔI). Net: reuse is necessary but insufficient; the VMS
+signature demands **type-level** small-lexicon concentration, not token copying.
 
-**i08 leads:**
+**i09 leads:**
 
 0. **Human panel on the root↔leaf consensus subset** — the ONLY decisive test left
    for the visual bundle (E12); pre-register + power-analyse first.
-0b. **Add the reuse mechanism the i07 misses demand** — the evidence-motivated next
-   generator: a positional/template core PLUS word-reuse/copying (smaller effective
-   lexicon, correlated slots) targeting the VMS's ED1 ≈ 0.75 + TTR ≈ 0.22 + Zipf jointly
-   with entropy/ΔI. This loops back to the self-citation/copying family — now driven by
-   the E22 misses, not circularly. Still a class account, never identification (L7).
+0b. **Type-level concentration (the E23 Pareto tension resolver)** — E23 showed token
+   copying cannot concentrate frequency without spending entropy/ΔI; the evidence-
+   motivated next generator concentrates at the TYPE level: a genuinely small, skewed
+   lexicon over the positional morphology (few high-frequency types + a constrained
+   long tail), targeting ED1 ≈ 0.75 + TTR ≈ 0.22 + Zipf JOINTLY with entropy + ΔI +
+   weak-positive syntax. Still a class account, never identification (L7). If this too
+   hits a wall, the honest headline is that the VMS's joint signature is not reproduced
+   by any tested generative family — a strong constraint in itself.
 1. **A larger content-matched A-vs-B sample** — E17's within-herbal null is
    underpowered (Herbal-B ≈3.3k tokens); firm it up, and extend the mid-level probes
    (E16 long-range dependency; a cleaner-null morphology retry).
@@ -287,7 +318,7 @@ correlated-slot mechanism.
 ## 7. Methodological contribution (the most robust result)
 
 Every statistic was computed by deterministic versioned code and validated on a
-synthetic harness before touching real-manuscript claims. Across seven iterations
+synthetic harness before touching real-manuscript claims. Across eight iterations
 the clean-context refutation rule has caught **a dozen-plus** over-reads and silent
 bugs before they were reported. i06/i07 give two clean recent examples. i06: E19's
 first-pass "the VMS is favoured as a generation process" was rejected as **circular**
@@ -350,8 +381,11 @@ sounding translation was ever generated.
   word-class structure, but across a broad a-priori grid NEVER its morphology
   connectivity (ED1), lexical reuse (TTR), or frequency slope (E22); the bag-of-slots is
   a PARTIAL account. E21's first-pass "class sufficiency [B]" was refuted (grid-selected
-  constants + shuffle-passable syntax threshold) → [C]. Signature demands an added
-  word-reuse/correlated-slot mechanism. Not yet in a paper (candidate for v4/i08).
-- [ ] i08 — human panel (root↔leaf); add the reuse mechanism the E22 misses demand
-  (positional core + copying/smaller-lexicon) targeting ED1+TTR+Zipf jointly; larger
-  content-matched A/B; E16 long-range dependency.
+  constants + shuffle-passable syntax threshold) → [C].
+- [x] **i08 complete (E23):** adding word reuse — reuse individually rescues ED1/TTR/Zipf
+  and global preferential attachment restores the VMS's weak-positive syntax, but a
+  Pareto tension blocks joint success (frequency concentration deflates entropy/ΔI); the
+  positional+reuse class is necessary-but-insufficient. Signature demands type-level
+  small-lexicon concentration. Candidate for paper v4 (with i07).
+- [ ] i09 — human panel (root↔leaf); type-level small-lexicon generator (E23 Pareto
+  resolver); larger content-matched A/B; E16 long-range dependency.
