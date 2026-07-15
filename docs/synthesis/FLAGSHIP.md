@@ -1,10 +1,31 @@
 # MS408 — Living Synthesis (W5 flagship)
 
-**Status:** revised **post-i06** (experiments E1–E20 folded in). Grades A–D
+**Status:** revised **post-i07** (experiments E1–E22 folded in). Grades A–D
 (RESEARCH-PLAN §6); i01 numbers from `results/synthesis/findings_registry.json`,
-i02–i06 numbers from `results/experiments/e{1..20}*.json` (L3 firewall). Living
-document, not a final verdict. Every i02–i06 result carries a clean-context
+i02–i07 numbers from `results/experiments/e{1..22}*.json` (L3 firewall). Living
+document, not a final verdict. Every i02–i07 result carries a clean-context
 refutation pass.
+
+**i07 update (characterising the generative class, E21–E22).** i06 pointed to a
+template/positional *generative* system; i07 tested that positive complement — can such
+a generator, not tuned to Voynich, reproduce the *full* signature? The refutation-
+hardened answer is an informative **negative [C]**: a context-free positional/template
+grammar reproduces the VMS's low entropy, its block-scale ΔI, and (via block contrast)
+its weak-but-**positive** word-class structure — but across a broad a-priori grid (E22,
+64 configs) it **never** reproduces the VMS's morphology connectivity (ED1 ≈ 0.75; the
+generator overshoots to ≈ 0.97), its lexical reuse (TTR ≈ 0.22; generator ≈ 0.59), or
+its frequency slope, and no tuning reconciles them (the axes are structurally
+unreachable). A control — real Latin word types under a context-free block wrapper —
+lands in the VMS's *syntax* bands (fc_z −1.4 / wc_z 2.5), confirming that the VMS's weak
+surface syntax is just what context-free block sampling of any lexicon produces. So
+"template/positional generation" as a **bag-of-slots is only a PARTIAL account**; the
+misses point to the next required ingredient — heavier **word reuse / a smaller
+effective lexicon / correlated slots** (looping back to the self-citation/copying
+family, now evidence-motivated, not circular). *Process note:* E21's first-pass "class
+sufficiency [B]" was overturned by the refutation pass — its constants had been grid-
+selected to hit the VMS bands (a fitted point, not an a-priori draw) and its
+weak-syntax leg used a one-sided threshold a full shuffle also passes — and was
+narrowed to this negative, which E22 then made decisive.
 
 **i06 update (cryptanalytic direction, E18–E20).** Turning to the decipherment
 question, we asked whether the VMS could be a cipher of a real text — targeting the two
@@ -168,11 +189,15 @@ inventory. It disfavours (a) random/meaningless marks, (b) a *lexical* label→f
 naming system for the herbal (no text anchor at achieved power), and (c) verbose
 ciphers (homophonic or deterministic). The remaining hypotheses are unranked:**
 
-- **template-driven / positional generation** (incl. structured-meaningless) — now the
-  best-supported class: it is the natural reading of the VMS's block/positional ΔI
-  (E1/E2) + weak word-syntax (i05) + low entropy, and it is the only class NOT excluded
-  by the i06 cipher analysis. E1/E9 also removed the statistics that had counted against
-  structured-meaningless (they measure structure, not meaning);
+- **template-driven / positional generation** (incl. structured-meaningless) — the
+  best-supported class, but i07 shows it is INCOMPLETE as a *context-free* model: it is
+  the natural reading of the VMS's block/positional ΔI (E1/E2) + weak word-syntax (i05) +
+  low entropy, and the only class NOT excluded by the i06 cipher analysis; a context-free
+  positional generator reproduces those three but NOT (E22) the VMS's morphology
+  connectivity, lexical reuse, or frequency slope at any tuning — so the account needs an
+  added **word-reuse / smaller-lexicon / correlated-slot** mechanism (E21/E22). E1/E9
+  also removed the statistics that had counted against structured-meaningless (they
+  measure structure, not meaning);
 - **cipher of a real text** (abjad / abbreviation / substitution / nomenclator /
   transposition) — **EXCLUDED by i06 (E19/E19b/E20)** on the joint signature: no such
   cipher of any real language reproduces the VMS's low-entropy + retained-ΔI +
@@ -211,7 +236,7 @@ c. 1420s–1460s, in tension with the northern-Italian working premise (L1);
 provenance documentary-solid only to 1637 (Baresch); Rudolf II purchase and Bacon
 attribution grade D. Carried as rival localizations.
 
-## 6. Iteration findings folded in → i07 agenda
+## 6. Iteration findings folded in → i08 agenda
 
 **i03 (E6–E10):** E6 (verbose cipher excluded on ED1; abjad revived), E7 (no lexical
 anchor at higher power), E8 (no family distinguished under whitening), E9 (no
@@ -229,15 +254,25 @@ the "favours generation" positive was dropped as circular); E20 (the transpositi
 is closed — retained-ΔI and weak-syntax are mutually exclusive under any cipher of real
 prose). Net: the cipher-of-real-prose class is EXCLUDED; template/positional generation
 is favoured.
+**i07 (E21–E22), characterising the generative class:** E21 (a positional/template
+generator matches the VMS's entropy + block-ΔI + weak-positive syntax, but a first-pass
+"class sufficiency [B]" was refuted — constants were grid-selected to the VMS, and the
+weak-syntax leg used a shuffle-passable threshold — and narrowed to [C]); E22 (an
+a-priori grid NEVER reproduces the VMS's morphology connectivity, lexical reuse, or
+frequency slope; the context-free bag-of-slots is a PARTIAL account only). Net: template/
+positional generation is favoured for entropy/ΔI/weak-syntax but is INSUFFICIENT as a
+context-free model — the signature demands an added word-reuse / smaller-lexicon /
+correlated-slot mechanism.
 
-**i07 leads:**
+**i08 leads:**
 
 0. **Human panel on the root↔leaf consensus subset** — the ONLY decisive test left
    for the visual bundle (E12); pre-register + power-analyse first.
-0b. **Characterise the template/positional generative system** — the i06-favoured
-   class: does a positional/line-template generator (fit to the VMS's block ΔI + weak
-   syntax + low entropy) reproduce the full signature? (Use a NON-Voynich-tuned
-   generator to avoid the E19 circularity.)
+0b. **Add the reuse mechanism the i07 misses demand** — the evidence-motivated next
+   generator: a positional/template core PLUS word-reuse/copying (smaller effective
+   lexicon, correlated slots) targeting the VMS's ED1 ≈ 0.75 + TTR ≈ 0.22 + Zipf jointly
+   with entropy/ΔI. This loops back to the self-citation/copying family — now driven by
+   the E22 misses, not circularly. Still a class account, never identification (L7).
 1. **A larger content-matched A-vs-B sample** — E17's within-herbal null is
    underpowered (Herbal-B ≈3.3k tokens); firm it up, and extend the mid-level probes
    (E16 long-range dependency; a cleaner-null morphology retry).
@@ -252,14 +287,21 @@ is favoured.
 ## 7. Methodological contribution (the most robust result)
 
 Every statistic was computed by deterministic versioned code and validated on a
-synthetic harness before touching real-manuscript claims. Across six iterations
+synthetic harness before touching real-manuscript claims. Across seven iterations
 the clean-context refutation rule has caught **a dozen-plus** over-reads and silent
-bugs before they were reported. i06 is a clean recent example: E19's first-pass "the
-VMS is favoured as a generation process" was rejected as **circular** (the matching
-generator was the Voynich-tuned one), narrowing the claim to the robust *negative*
-(the cipher-of-real-prose exclusion) — and the refutation's demanded control (test the
-discriminator across typologically diverse languages) then *upgraded* that exclusion to
-universal (E19b). i05 added a reusable
+bugs before they were reported. i06/i07 give two clean recent examples. i06: E19's
+first-pass "the VMS is favoured as a generation process" was rejected as **circular**
+(the matching generator was the Voynich-tuned one), narrowing the claim to the robust
+*negative* (the cipher-of-real-prose exclusion) — and the refutation's demanded control
+(test the discriminator across typologically diverse languages) then *upgraded* that
+exclusion to universal (E19b). i07: E21's first-pass "class sufficiency [B]" for the
+favoured generative account was **overturned** — the refutation showed its constants had
+been grid-selected to hit the VMS bands (a fitted point dressed as an a-priori draw, the
+very move that made E19's positive circular) and that its weak-syntax leg used a
+one-sided threshold a full order-shuffle also passes — and the corrected, band-honest
+test (E22) turned an apparent positive into a precise **negative** (the context-free
+generator is insufficient) that names the next mechanism. i05 added a reusable
+**null-model-correction framework**: the first mid-level probes were confounded (by i05 added a reusable
 **null-model-correction framework**: the first mid-level probes were confounded (by
 type-token ratio, sample size, number of stems), and the harness-first discipline
 refused a manuscript claim from each until the confound was corrected — four
@@ -303,5 +345,13 @@ sounding translation was ever generated.
   which no cipher of real prose produces; universal across typology incl. Hebrew abjad);
   ~12% of the foliated range is missing (E18). Favours template/positional generation.
   Folded into paper v3.
-- [ ] i07 — human panel (root↔leaf); characterise the template/positional generator
-  (non-Voynich-tuned); larger content-matched A/B; E16 long-range dependency.
+- [x] **i07 complete (E21–E22):** characterising the generative class — a context-free
+  positional/template generator matches the VMS's entropy + block-ΔI + weak-positive
+  word-class structure, but across a broad a-priori grid NEVER its morphology
+  connectivity (ED1), lexical reuse (TTR), or frequency slope (E22); the bag-of-slots is
+  a PARTIAL account. E21's first-pass "class sufficiency [B]" was refuted (grid-selected
+  constants + shuffle-passable syntax threshold) → [C]. Signature demands an added
+  word-reuse/correlated-slot mechanism. Not yet in a paper (candidate for v4/i08).
+- [ ] i08 — human panel (root↔leaf); add the reuse mechanism the E22 misses demand
+  (positional core + copying/smaller-lexicon) targeting ED1+TTR+Zipf jointly; larger
+  content-matched A/B; E16 long-range dependency.
