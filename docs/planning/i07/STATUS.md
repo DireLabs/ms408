@@ -19,7 +19,24 @@ Continues the experiment ledger as E21–E22.
 | id | probe | priority | state | verdict |
 |---|---|---|---|---|
 | E21 | Minimal positional generator + necessity ablation | P1 gating | ✅ done + **REFUTED → downgraded B→C** | A GRID-SELECTED (not a-priori — firewall framing retracted) positional/template point matches the VMS on character entropy (h2 2.14) + block-scale ΔI (0.081) but MISSES the VMS on its own bands elsewhere: it does NOT reproduce the VMS's weak-but-POSITIVE word-class structure (VMS wc_z [1.9,2.64]; FULL wc_z −1.02 = **anti**-structure, below its own shuffle), and OVERSHOOTS vocabulary productivity (TTR 0.59 vs 0.22), morphology connectivity (ED1 0.998 vs 0.75) and frequency flatness (Zipf −0.37 vs −0.90). Matches 3/8 axes (h2, ΔI, fc_z). Ingredient map corrected: morphology is CO-necessary for ΔI (−morph collapses ΔI harder than −pos); context-free→weak-syntax is TAUTOLOGICAL. **Net (informative negative):** the minimal context-free positional grammar is INSUFFICIENT for the full VMS signature; it constrains the class toward heavier word reuse, a smaller effective lexicon, and mild positive sequential structure. |
-| E22 | Genericity / coupling sweep (refutation-scoped) | P1 (now gating the i07 conclusion) | ⏳ next | Must use an a-priori-fixed grid; score against the VMS's ACTUAL bands (incl. positive wc_z ∈ [1.9,2.64], not the discredited one-sided `<3`); require JOINT coverage of ≥5/8 axes bringing ED1+TTR+Zipf in-band SIMULTANEOUSLY with h2/ΔI. Test the coupling the refutation predicts (does satisfying TTR force h2/ED1 out?). Add the pre-registered real-language-under-positional-wrapper control. Broad basin covering ≥5 incl. real wc_z → B; coupling failure / knife-edge → i07 concludes with the E21 negative (class INSUFFICIENT), grade C. |
+| E22 | Genericity / coupling sweep (refutation-scoped) | P1 gating | ✅ done → **class INSUFFICIENT [C]** | A-priori 64-config grid (branching 4–7 × zipf 0.6–1.2 × boost 3–16, not centred on E21's point). **basin ≥5/8 axes = 0%**; ED1, Zipf and word-length are NEVER matched at any tuning; coupling confirmed (of 2 TTR-in-band configs, 0 also match h2 AND ED1). The best config reaches only 3/8 (h2, ΔI, and — with high block contrast — the VMS's weak-positive wc_z 2.62). CONTROL: real Latin types under a context-free block wrapper give fc_z −1.41 / wc_z 2.5, both IN the VMS bands → the VMS's weak-positive surface syntax is exactly what context-free block sampling of ANY lexicon produces. Conclusion: the minimal context-free positional/template grammar is a PARTIAL account — it matches entropy + block-ΔI + weak-positive syntax but STRUCTURALLY overshoots morphology connectivity (ED1) and lexical productivity (TTR) and is too flat in frequency (Zipf); the full VMS signature demands an ADDED reuse / smaller-effective-lexicon / correlated-slot mechanism a bag-of-slots lacks. |
+
+## i07 outcome
+
+**The positive complement did not confirm a clean generative account — it CONSTRAINED
+one.** A context-free positional/template generator reproduces the VMS's low character
+entropy, its block-scale ΔI, and (via block contrast) its weak-but-positive word-class
+structure — but at NO tuning in a broad a-priori grid does it also reproduce the VMS's
+morphological connectivity (ED1 ≈ 0.75; the generator overshoots to ≈ 0.97), lexical
+reuse (TTR ≈ 0.22; generator ≈ 0.59), or frequency slope. So "template/positional
+generation" as a *context-free bag-of-slots* is a PARTIAL account only. The specific
+misses point the next mechanism: the VMS reuses words far more heavily and has a less
+combinatorially productive, more clumped morphology than independent slot-sampling — i.e.
+it needs a **word-reuse / copying** component (which loops back to the self-citation
+family, now motivated by evidence rather than circularly) plus mild positive sequential
+structure. **This is an informative negative [C], not a decipherment step (L7).** Next:
+consolidate E18–E22 (i06+i07) — decide with Tim whether to fold i07 into a paper v4 or
+carry the "reuse mechanism" question into i08.
 
 ## Refutation record (E21)
 
