@@ -1,10 +1,30 @@
 # MS408 — Living Synthesis (W5 flagship)
 
-**Status:** revised **post-i04** (experiments E1–E12 folded in). Grades A–D
+**Status:** revised **post-i05** (experiments E1–E17 folded in). Grades A–D
 (RESEARCH-PLAN §6); i01 numbers from `results/synthesis/findings_registry.json`,
-i02–i04 numbers from `results/experiments/e{1..12}*.json` (L3 firewall). Living
-document, not a final verdict. Every i02–i04 result carries a clean-context
+i02–i05 numbers from `results/experiments/e{1..17}*.json` (L3 firewall). Living
+document, not a final verdict. Every i02–i05 result carries a clean-context
 refutation pass.
+
+**i05 update (the mid-level linguistic program, E13–E17).** i01–i04 showed the VMS is
+strongly structured but that magnitude-of-structure statistics cannot reach meaning
+(E9). i05 built the *mid-level* layers between structure and semantics — morphology,
+word-classes, syntax — each **null-model-corrected** (a reusable framework that
+z-scores every statistic against a matched null holding its nuisance parameters fixed,
+after the first probes proved confounded) and stratified by Currier A/B. Two validated,
+robustness-checked findings emerged, both scoped to *surface distributional* structure
+(L7): (i) the VMS lacks the natural-language surface **content>function collocational
+gap** — its content-band words carry only near-chance collocational selectivity and its
+*most-frequent* words are the more collocational (template-like, the opposite of flat
+function words), robust across band cutoffs (E13c/E13d); and (ii) the VMS has **weak
+distributional word-class (POS) structure** — ~0.13–0.19× real language, robust across
+clustering parameters (E14/E14b). A dedicated content-controlled A-vs-B study (E17)
+then showed the apparent A/B difference in word-class structure is a **section/content
+confound, not a dialect difference**: it vanishes within the herbal section (the only
+one carrying both dialects). Net i05 thesis: **the VMS's structure lives below the word
+(characters, morphology); its word-level syntactic structure is weak; and the two
+Currier systems do not differ in mid-level grammar once content is controlled** — their
+established difference (F2) is vocabulary, not grammar.
 
 **i04 update (E11–E12):** the one live positive lead — the root↔leaf visual bundle
 that i03/E10 reopened — was pursued to its measurement ceiling. It survived a palette-
@@ -143,6 +163,19 @@ license "no referents exist" over "referents not recovered by these methods." Th
 is currently **no confirmed positive referential signal** — the strongest candidate
 dissolved into a measurement-ceiling UNRESOLVED (E12).
 
+**i05 adds a layered constraint on WHERE the structure lives.** The VMS is strongly
+structured at the character (entropy anomaly) and morphology (ED1 network) levels, but
+its **word-level surface syntax is weak**: it lacks the natural-language content>function
+collocational gap (content words carry only near-chance collocational selectivity, and
+frequent words are template-like rather than flat function words; E13c/E13d), and its
+distributional word-class structure is ~0.13–0.19× real language (E14/E14b). And the
+two Currier systems do **not** differ in this mid-level grammar once content is
+controlled (E17) — their difference is lexical (F2), not grammatical. This is
+compatible with several of the unranked hypotheses (a verbose/abbreviatory cipher or a
+template-driven generation process would both depress surface word-syntax while leaving
+character/morphology structure intact) and is scoped strictly to *surface* distribution
+(L7): it does not prove absence of an underlying grammar.
+
 ## 5. Origin (unchanged, grade C)
 
 German/Alemannic iconographic gravity (crossbowman Sagittarius, cycle comparanda)
@@ -150,46 +183,52 @@ c. 1420s–1460s, in tension with the northern-Italian working premise (L1);
 provenance documentary-solid only to 1637 (Baresch); Rudolf II purchase and Bacon
 attribution grade D. Carried as rival localizations.
 
-## 6. i03 findings → i04 agenda
+## 6. Iteration findings folded in → i06 agenda
 
-**i03 folded in (E6–E10, each refutation-passed):** E6 (verbose cipher excluded on
-ED1; abjad revived), E7 (no lexical anchor at higher power; labels infeasible), E8
-(no family distinguished under whitening; ranking is a regularization artifact), E9
-(no structural statistic localizes meaning), E10 (root↔leaf reopened; E4b overturned;
-unconfirmed).
+**i03 (E6–E10):** E6 (verbose cipher excluded on ED1; abjad revived), E7 (no lexical
+anchor at higher power), E8 (no family distinguished under whitening), E9 (no
+structural statistic localizes meaning), E10 (root↔leaf reopened; E4b overturned).
+**i04 (E11–E12):** E11 (root↔leaf survives palette-style control), E12 (independent-
+lineage rater → the bundle is UNRESOLVED-underpowered; E10's positive claim withdrawn).
+**i05 (E13–E17), the mid-level program:** the null-correction framework; E13c/E13d
+(no natural-language surface content/function collocation gap; frequent words
+template-like); E14/E14b (weak distributional word-class structure, ~0.13–0.19× real);
+E17 (the A/B word-class difference is a content confound, not dialect). Two probes
+stayed inconclusive for lack of a clean null: raw function/content (E13/E13b) and
+morphology paradigm coherence (E15/E15b).
 
-**i04 folded in (E11–E12):** E11 (root↔leaf survives palette-style control), E12
-(independent-lineage rater GPT-5.1 → the bundle is UNRESOLVED-underpowered; model
-annotation can't adjudicate; E10's positive claim withdrawn).
-
-**i05+ leads:**
+**i06 leads:**
 
 0. **Human panel on the root↔leaf consensus subset** — the ONLY decisive test left
-   for the visual bundle (E12); pre-register + power-analyse first; if underpowered,
-   declare it untestable by this design. More models cannot help.
-1. **The mid-level linguistic program (i05, L37):** morphology segmentation,
-   distributional word-class/POS induction, function-vs-content bimodality (lead
-   probe), syntactic dependency — with Currier A/B as the primary stratification
-   ("is one dialect a different generative process?"). The main forward thrust.
-2. **Abjad/abbreviation joint-signature test:** does any single abjad/brevigraphy
-   parameterization of a real language reach ED1≈0.80 **and** h2≈2.1 **and** the
-   812-scale ΔI **together** (E6 showed abjad overshoots ED1 and misses h2)?
-3. **Exact-p graded anchor hunt:** E7's Mann–Whitney normal approx is anti-
-   conservative on sparse counts; an exact/permutation per-test p would let the
-   higher-power anchor hunt make a *positive* claim, not just a null.
-4. **Retire the whitened-bracket approach (E8):** Σ is ill-conditioned; a family-
-   distinction claim needs a fundamentally better estimator or a larger corpus, not
-   more whitening.
-5. **Extend the variable-introduction program (L35):** E9 showed honest axes need a
-   *structured-meaningless* endpoint; the next coordinate studies should be built
-   that way from the start.
+   for the visual bundle (E12); pre-register + power-analyse first.
+1. **A larger content-matched A-vs-B sample** — E17's within-herbal null is
+   underpowered (Herbal-B ≈3.3k tokens); firm it up, and extend the mid-level probes
+   (E16 long-range dependency; a cleaner-null morphology retry).
+2. **Abjad/abbreviation joint-signature test:** does any single parameterization reach
+   ED1≈0.80 **and** h2≈2.1 **and** the 812-scale ΔI **together** (E6 showed abjad
+   overshoots ED1 and misses h2)? The abjad/abbreviatory reading is also consistent
+   with i05's weak surface word-syntax.
+3. **Exact-p graded anchor hunt** (E7's Mann–Whitney approx is anti-conservative);
+   **retire the whitened bracket** (E8, ill-conditioned Σ); **extend the variable-
+   introduction program with structured-meaningless endpoints** (E9/L35).
 
 ## 7. Methodological contribution (the most robust result)
 
 Every statistic was computed by deterministic versioned code and validated on a
-synthetic harness before touching real-manuscript claims. Across four iterations
+synthetic harness before touching real-manuscript claims. Across five iterations
 the clean-context refutation rule has caught **a dozen-plus** over-reads and silent
-bugs before they were reported. i04's E12 is a textbook case: a first-pass "KILLED —
+bugs before they were reported. i05 extended the record and added a reusable
+**null-model-correction framework**: the first mid-level probes were confounded (by
+type-token ratio, sample size, number of stems), and the harness-first discipline
+refused a manuscript claim from each until the confound was corrected — four
+inconclusive probes (E13/E13b raw function-content, E15/E15b morphology) that a
+less-disciplined pipeline would have reported. When correction succeeded, refutation
+still narrowed the result (E13c's "undifferentiated / no grammar" was corrected to a
+precise *surface-collocation* claim by a band-decomposition check), self-caught an
+over-read (E14's code flagged "A≠B, different processes" from a threshold-straddle,
+which we down-weighted as noise), and — decisively — a dedicated content-controlled
+study **overturned the resulting A/B difference as a section confound (E17), just as
+E12 overturned E10**. i04's E12 is a textbook case: a first-pass "KILLED —
 rater-idiosyncratic" verdict was itself corrected by the refutation pass, which showed
 the kill's central argument (root-label agreement) was a red herring and the honest
 status is UNRESOLVED-underpowered — the pipeline declining to over-read a negative just
@@ -212,6 +251,10 @@ sounding translation was ever generated.
 - [x] G4 — post-T3.3 revised synthesis accepted; i02 agenda approved (L34).
 - [x] **G5 — post-i02/i03 synthesis accepted as honest (Tim, 2026-07-09).** E1–E10
   folded in; all findings agreed. L37.
-- [x] **i04 complete (E11–E12):** root↔leaf resolved to UNRESOLVED-underpowered; this
-  is the intended end-of-scope for the first paper (anything past here = future work).
-- [ ] i05 — the mid-level linguistic program with A/B stratification (L37).
+- [x] **i04 complete (E11–E12):** root↔leaf resolved to UNRESOLVED-underpowered.
+- [x] **i05 complete (E13–E17):** mid-level program — null-correction framework; VMS
+  lacks surface content/function collocation (E13c) and has weak word-class structure
+  (E14); A/B don't differ in mid-level grammar once content is controlled (E17).
+  Folded into paper v2.
+- [ ] i06 — human panel (root↔leaf); larger content-matched A/B; E16 + cleaner-null
+  morphology; abjad joint-signature test.
