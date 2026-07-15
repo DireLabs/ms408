@@ -62,11 +62,14 @@ produce, pointing away from enciphered natural prose and toward a template-drive
 positional generative system. Pursuing that favoured class, we then find it is
 \emph{itself demonstrably incomplete}: a positional/template generator reproduces the
 manuscript's entropy, block-scale $\Delta I$, and weak word-syntax but, across broad
-parameter sweeps, never simultaneously its morphological connectivity, lexical reuse,
-and frequency law; adding word reuse rescues those axes and the syntax individually yet
-hits a Pareto tension---frequency concentration and low entropy cannot be satisfied at
-once by token copying---so the manuscript's joint signature is more mutually
-constraining than any generative family we have tested. A candidate positive signal (a
+a-priori sweeps, not \emph{simultaneously} its morphological connectivity, lexical reuse,
+and frequency law; adding word reuse rescues those axes individually yet trades them
+against entropy and $\Delta I$, and concentrating frequency instead at the lexical
+(type) level resolves that trade-off but leaves a residual coupling centred on
+morphological connectivity---so across the positional/template, token-reuse, and
+small-lexicon families we sweep, none reproduces the manuscript's full joint signature,
+whose summary statistics are mutually coupled in a way these mechanisms do not capture
+(a constraint on those families, not a proof that no generative process can match). A candidate positive signal (a
 cross-organ root$\leftrightarrow$leaf visual regularity) was pursued to its measurement
 ceiling and is \emph{unresolved and underpowered}. The most robust result is the
 architecture itself: across eight iterations, the refutation pass repeatedly overturned
@@ -335,15 +338,21 @@ generator---a positional character grammar (disjoint small glyph inventories per
 block-theme wrapper, and context-free slot-filling---whose parameters were swept over an
 a-priori grid rather than fitted. It reproduces the manuscript's character entropy
 ($h_2=2.14$), block-scale $\Delta I$ ($0.08$), and (via block contrast) its
-weak-but-positive word-class structure, but across a $64$-point grid it \emph{never}
-matches the manuscript's morphology-network connectivity (edit-distance-1 main component
-$\approx 0.75$; the generator saturates at $\approx 0.97$--$1.0$), its lexical reuse
-(type-token ratio $\approx 0.22$; generator $\approx 0.59$), or its frequency slope---the
-context-free ``bag of slots'' is too productive and too uniform. A control confirms the
-mechanism: real Latin word \emph{types} sampled context-free under the same block wrapper
-land squarely in the manuscript's own weak-syntax bands ($z_{fc}=-1.4$, $z_{wc}=2.5$), so
-the weak surface syntax is simply what context-free block sampling of any lexicon
-produces. \emph{Process note (a self-correction on the record):} a first-pass verdict had
+weak-but-positive word-class structure, but across a $64$-point a-priori grid it does not
+\emph{simultaneously} match the manuscript's morphology-network connectivity
+(edit-distance-1 main component $\approx 0.75$; the generator runs high, $\approx
+0.97$--$1.0$), its lexical reuse (type-token ratio $\approx 0.22$; generator $\approx
+0.59$), or its frequency slope. These are not proven unreachable---connectivity and slope
+move toward band at the grid's edge---but they are \emph{coupled}: the branching that
+lowers connectivity raises entropy out of band, and the concentration that lowers the
+type-token ratio does likewise, so the context-free ``bag of slots'' cannot place them
+in-band together. Two of the eight axes carry little independent weight here: the
+function/content and word-class $z$-scores are scored against two-point Currier~A/B ranges
+(not bootstrap intervals), and a control shows the manuscript's weak-positive word-class
+$z$ is reproduced by real Latin word \emph{types} sampled context-free under the same
+block wrapper ($z_{fc}=-1.4$, $z_{wc}=2.5$)---so that ``positive'' signal is sectional
+vocabulary drift, not a grammatical feature a generator must earn, and we do not lean on
+it. \emph{Process note (a self-correction on the record):} a first-pass verdict had
 graded this generator a ``class sufficiency'' at grade~B; the refutation pass showed its
 constants had been grid-selected to hit the manuscript's bands (a fitted point, not an
 a-priori draw) and that its weak-syntax test used a one-sided threshold a full order
@@ -356,18 +365,33 @@ and swept it a-priori ($104$ configurations, including global preferential attac
 Reuse individually rescues every missed axis---connectivity in-band from copy-rate
 $\rho\geq 0.6$, reuse from $\rho\geq 0.4$, frequency slope from $\rho\geq 0.8$---and
 global preferential attachment additionally \emph{restores} the manuscript's weak-positive
-word-class structure ($z_{wc}$ from $-1.0$ up into the $[1.9,2.6]$ band). But no
-configuration satisfies even the whole frequency group at once, let alone jointly with
-the entropy/$\Delta I$/syntax group (zero of $104$): the copy rate that concentrates
-frequency simultaneously deflates the character entropy and the block-scale $\Delta I$ and
-re-negates the word-class structure. The manuscript's low entropy and retained $\Delta I$
-thus \emph{coexist with heavy word reuse} in a way simple token copying cannot reproduce;
-the concentration would have to be bought at the \emph{type} level (a genuinely small,
-skewed lexicon over a constrained morphology), which is the next test. The honest present
-status is that the manuscript's joint signature is \emph{more mutually constraining than
-any generative family we have tested reproduces}---a substantive constraint in itself.
-(Grade C; sufficiency of a class was never established, and no identification of the
-manuscript with any generator is claimed---L7.)
+word-class structure ($z_{wc}$ from $-1.0$ up into band, though as just noted that axis is
+soft). But no configuration satisfies even the whole frequency group at once, let alone
+jointly with the entropy/$\Delta I$ group (the grid's ceiling is four of eight axes): the
+copy rate that concentrates frequency simultaneously deflates the character entropy and
+the block-scale $\Delta I$. So token-level copying does not, at the swept frequency
+exponent and block length, concentrate frequency without spending entropy and~$\Delta I$.
+
+\textbf{Type-level concentration resolves that trade-off but leaves a residual coupling.}
+The natural fix is to concentrate frequency at the \emph{type} level---a genuinely small,
+skewed lexicon of positional-grammar words, sampled context-free---rather than by copying
+tokens. Swept a-priori ($144$ configurations over lexicon size, branching, frequency
+exponent, and block contrast), this \emph{does} achieve what token reuse could not: the
+type-token ratio now sits in band \emph{jointly} with the character entropy, dissolving
+the entropy-versus-reuse tension. Yet the full signature is still not reached (ceiling
+again four of eight): the obstruction migrates to \emph{morphological connectivity}---
+matching the manuscript's edit-distance-1 connectivity ($\approx 0.75$) forces a
+lexicon/branching regime that is out of band on entropy, reuse, and frequency slope---
+together with a block-contrast trade-off (retained $\Delta I$ favours weak block contrast
+while a positive word-class $z$ favours strong contrast). Across the three families we
+sweep---context-free positional, positional-plus-token-reuse, and positional-plus-small-
+lexicon---none reproduces the manuscript's full eight-axis signature over the swept ranges;
+its summary statistics are mutually coupled in a way these mechanisms do not capture. We
+state this as a constraint on those families, not as a proof that no generative process
+can match: the sweeps fix word length and slot count, use a single random seed without
+generator-side resampling, and leave untested corners (steeper frequency laws crossed with
+reuse, a type lexicon decoupled from the slot grammar) that are the named next steps.
+(Grade C; no sufficiency and no identification are claimed---L7.)
 
 \section{Discussion}
 Two substantive conclusions and one methodological one. Substantively: (i) the
@@ -391,14 +415,17 @@ information, yet is syntactically thin above the word, cannot be produced by any
 of real prose---order-preserving ciphers keep the plaintext's strong syntax, and
 transposition ciphers destroy the retained positional information; only a template-driven
 or positional \emph{generative} process reconciles all three properties. Yet that
-favoured generative account is itself incomplete (\S4.7): neither a context-free
-positional generator nor one augmented with word reuse reproduces the manuscript's
-morphology connectivity, lexical reuse, and frequency law \emph{jointly} with its entropy
-and $\Delta I$---the axes trade off against one another under every generative family we
-have swept. The constraint envelope has thus tightened from both sides: no cipher of real
-prose fits, and no simple generative model fits either, so the manuscript sits in a narrow
-region that is easy to describe axis-by-axis but that no single tested mechanism occupies
-all at once. That the two Currier systems share this mid-level profile (their difference
+favoured generative account is itself incomplete (\S4.7): across the three families we
+sweep---context-free positional, positional-plus-token-reuse, and positional-plus-small-
+lexicon---none reproduces the manuscript's morphology connectivity, lexical reuse, and
+frequency law \emph{jointly} with its entropy and $\Delta I$; the axes trade off against
+one another, each mechanism dissolving the previous blocker and exposing a new one (token
+reuse trades frequency against entropy; type-level concentration then trades morphological
+connectivity against the rest). The constraint envelope has thus tightened from both
+sides: no cipher of real prose fits, and no simple generative model \emph{we tested} fits
+either over the swept ranges, so the manuscript sits in a narrow region that is easy to
+describe axis-by-axis but that no tested mechanism occupies all at once---a coupling we
+report as a constraint on these families rather than an impossibility for all. That the two Currier systems share this mid-level profile (their difference
 being lexical, not grammatical) further constrains ``two languages'' readings toward ``two
 registers/vocabularies of one system.''
 
@@ -436,11 +463,14 @@ bounds every lexical and anchor statistic below; all vision raters to date share
 broadly similar training lineages, so ``independence'' is cross-vendor, not absolute;
 the cipher-of-real-prose exclusion (\S4.6) is computed over constructions of a Latin
 plaintext with a diverse-language control on the mid-level axes, not over every possible
-plaintext language or every exotic cipher; the generative-insufficiency result (\S4.7) is
-over the positional/template and positional-plus-token-reuse families swept with fixed
-Zipf exponent, block length, and word length, so it constrains those families rather than
-proving that \emph{no} generative process can match (a type-level small-lexicon mechanism
-is untested and is the named next step); and text results are primarily EVA-based,
+plaintext language or every exotic cipher; the generative-incompleteness result (\S4.7) is
+over three families (context-free positional, token-reuse, small-lexicon) swept with
+fixed word length and slot count, a single random seed, and no generator-side resampling,
+and two of its eight axes (the function/content and word-class $z$-scores) are scored
+against two-point dialect ranges rather than confidence intervals and are confounded with
+sectional vocabulary drift; so it constrains those families over those ranges rather than
+proving that \emph{no} generative process can match, and its tight single-seed in/out
+calls invite multi-seed replication; and text results are primarily EVA-based,
 with v101 as a sensitivity layer rather than a full replication. Grades reflect these
 limits.
 
@@ -448,13 +478,17 @@ limits.
 The decisive next test for the root$\leftrightarrow$leaf question is a pre-registered
 independent \emph{human} panel on the high-confidence consensus subset, with a power
 analysis reported first; more models cannot settle a noise-limited question. The
-generative-account result (\S4.7) names its own next step: because token-level reuse
-cannot concentrate frequency without spending character entropy and $\Delta I$, the
-decisive test is a \emph{type-level} mechanism---a genuinely small, skewed lexicon over
-the positional morphology---and whether it can bring morphology connectivity, lexical
-reuse, and frequency slope in-band \emph{jointly} with entropy, $\Delta I$, and
-weak-positive syntax; if it too fails, the honest headline strengthens to ``no tested
-generative family reproduces the joint signature.'' The mid-level results additionally
+generative-account result (\S4.7) names its own next steps. Type-level concentration
+already dissolved the entropy-versus-reuse tension but left morphological connectivity as
+the residual obstruction, so the decisive tests are now (i)~multi-seed replication with
+generator-side resampling, to convert the tight single-seed in/out calls into
+confidence-interval overlaps; (ii)~the untested corners the present sweeps extrapolate
+over---branching below the grid floor, steeper frequency laws crossed with reuse, and a
+type lexicon \emph{decoupled} from the slot grammar so that connectivity can be tuned
+independently of entropy; and (iii)~a morphology model whose edit-distance connectivity is
+not rigidly coupled to word length. Only if these too leave the axes mutually incompatible
+would the headline strengthen toward ``no tested generative family reproduces the joint
+signature.'' The mid-level results additionally
 invite a larger content-matched A-vs-B sample (the within-herbal contrast is
 underpowered) to firm up the ``no grammatical dialect difference'' finding, and a
 long-range/hierarchical dependency probe to complete the mid-level layer. None of these
