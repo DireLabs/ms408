@@ -142,30 +142,29 @@ def _verdict(r: dict) -> tuple:
                     for c in ("cipher_abjad", "cipher_subst_1to1", "cipher_nomenclator",
                               "gen_self_citation", "gen_conlang"))
     if r["no_cipher_of_real_language_matches"] and r["generation_process_matches"]:
-        return "C", (
-            f"NO cipher of a real language matches the VMS on the joint signature; only "
-            f"a GENERATION process does. On the discriminating axes — low character "
-            f"entropy (VMS h2≈{r['vms_mean_h2']}) together with WEAK mid-level syntax — "
-            f"every word-order-preserving cipher of real Latin FAILS: the abjad "
-            f"(h2 {s['cipher_abjad']['h2']}, fc_z {s['cipher_abjad']['fc_z']}) and the "
-            f"1:1 substitution (fc_z {s['cipher_subst_1to1']['fc_z']}) RETAIN strong "
-            f"real-language word-syntax the VMS lacks; the nomenclator uniquely degrades "
-            f"word-class structure (wc_z {s['cipher_nomenclator']['wc_z']}) — because it "
-            f"obliterates function words — but still fails on character entropy "
-            f"(h2 {s['cipher_nomenclator']['h2']}) and function/content "
-            f"(fc_z {s['cipher_nomenclator']['fc_z']}). The only candidate reproducing "
-            f"the VMS's low-entropy + weak-syntax combination is the SELF-CITATION "
-            f"generation process ({', '.join(r['generation_process_matches'])}: "
-            f"h2 {s['gen_self_citation']['h2']}, fc_z {s['gen_self_citation']['fc_z']}, "
-            f"wc_z {s['gen_self_citation']['wc_z']}), though it overshoots ΔI/ED1. "
-            f"**Net: the weak word-syntax constraint DISFAVOURS the VMS as a "
-            f"straightforward cipher of real prose (the abjad E6 revived is excluded on "
-            f"the JOINT signature) and FAVOURS a generative / function-word-destroying "
-            f"mechanism.** For E20 the cryptanalytic target collapses: no syntax-"
-            f"preserving cipher of real prose is viable; the surviving lead is a heavy "
-            f"nomenclator-like transform, and even it is a poor joint match — so a "
-            f"decipherment attack is low-yield, and E20 should REDIRECT to the "
-            f"generative alternative. {tab}. (Statistical; no meaning claim — L7.)")
+        return "B", (
+            f"NEGATIVE (refutation-narrowed to what the data supports): the VMS is "
+            f"INCONSISTENT with a word-order-preserving 1:1 substitution, vowel-dropping "
+            f"abjad, or light nomenclator applied to LATIN. On the mid-level syntax axes "
+            f"the separation is ~10σ: VMS fc_z −1.2/−4.7, wc_z 1.9/2.6, while all three "
+            f"Latin ciphers sit at fc_z {s['cipher_abjad']['fc_z']}–{s['cipher_subst_1to1']['fc_z']} "
+            f"and wc_z {s['cipher_nomenclator']['wc_z']}–{s['cipher_subst_1to1']['wc_z']} — "
+            f"they retain the source language's strong function/content collocation and "
+            f"word-class distribution the VMS lacks. The abjad (marginal on h2) and "
+            f"nomenclator (marginal on wc_z) fail the OTHER axes by huge margins, so the "
+            f"exclusion does not hinge on the thresholds. This excludes on the JOINT "
+            f"signature the abjad class E6 had revived on morphology alone. A FURTHER "
+            f"constraint: the VMS's word-order information (ΔI {s['VMS_A']['dI']}/{s['VMS_B']['dI']}) "
+            f"is LOWER than every candidate here — nothing tested reproduces it. "
+            f"NOT SUPPORTED (dropped as circular): 'favours generation'. The only "
+            f"candidate matching the VMS's weak syntax is self-citation — but that is the "
+            f"Timm–Schinner generator BUILT to mimic Voynichese, so its match is by "
+            f"construction and is NOT independent evidence for a generative mechanism (it "
+            f"also overshoots ΔI/ED1). CAVEAT: the exclusion is over three constructions "
+            f"of ONE plaintext (Latin); it assumes fc_z/wc_z are universally high in real "
+            f"language. The decisive control (E19b) is to run fc_z/wc_z on typologically "
+            f"DIVERSE languages + an order-scrambling cipher — if any real language "
+            f"natively yields weak fc_z/wc_z, the exclusion narrows. {tab}. (L7.)")
     if r["cipher_of_real_language_matches"]:
         return "C", (
             f"A cipher of a real language ({', '.join(r['cipher_of_real_language_matches'])}) "
