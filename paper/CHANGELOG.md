@@ -51,3 +51,18 @@ generative family" → "coupling within swept ranges"; fc_z/wc_z flagged as 2-po
 ranges (not CIs) confounded with sectional drift (soft axes); 4/8 ceiling reported;
 single-seed + fixed word-length/slot-count caveats added; Future Work → multi-seed +
 decoupled type lexicon. All numbers firewall-sourced. 10pp.
+
+## v5 — 2026-07-16
+Folds i09 (E25–E26), which WALKS BACK v4's i08 "no generative family reproduces the
+signature" negative. §4.7 retitled "an apparent constraint that dissolves": a
+refutation-directed test made morphology connectivity (ED1) an INDEPENDENT control —
+first via a larger character space (E25, multi-seed CI-overlap: ED1 co-occurs with
+ΔI/TTR/Zipf; only a shallow entropy↔connectivity near-miss, ED1 0.63 at h2-in-band vs
+floor 0.74), then via WORD-LENGTH VARIANCE (E26: ED1 lands in-band 0.76 jointly, residual
+a ~0.03 h2 near-miss + a fixable mean-length construction artifact). So a positional +
+skewed-type-lexicon generator reproduces ALL distributional hard axes to within ~0.03 —
+the joint signature does NOT discriminate the generating mechanism; the load-bearing
+constraints stay the i06 cipher exclusion + qualitative character/morphology structure.
+Abstract, Discussion, methodology (adds the over-read-negative-then-walked-back episode),
+Limitations, Future Work all updated; "nine iterations". Grade C throughout; soft
+fc_z/wc_z not counted; L7. Compiles clean (10pp, 0 undefined cites, 0 overfull).
