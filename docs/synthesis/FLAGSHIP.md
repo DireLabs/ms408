@@ -73,6 +73,22 @@ drift — the control reaches the "weak-positive" wc_z with no reuse); results a
 seed. Robustness follow-ups: multi-seed + generator-side bootstrap; branching below the
 grid floor; a type lexicon decoupled from the slot grammar.
 
+**⚠ i06 CORRECTION (i11/E29, 2026-07-17) — the ΔI leg is confounded; headline softened.**
+Engaging the concurrent Naibbe cipher (Greshko, *Cryptologia* 2025) exposed a real weakness
+in the i06 cipher-of-real-prose exclusion below. Running Naibbe through our discriminators
+first looked like confirmation (its ΔI collapses), but the refutation showed that
+(a) real **word-boundary Latin sits IN the VMS ΔI band** (0.076), (b) ~82% of Naibbe's ΔI
+loss is from Greshko's *respacing*, before the cipher, and (c) ΔI **collapses under homophony
+alone with word order fixed** — so ΔI is a homophony/type-token-coupling detector, **not** the
+robust "retained word-order" axis i06 leaned on, and the VMS's ΔI (block structure) vs Naibbe's
+token-level ΔI is not like-for-like. **Consequence:** the exclusion rests more heavily on the
+**soft** fc_z/wc_z syntax measures than the i06 text and papers v3–v5b state. *Flag, don't
+over-correct (D-item i11-c):* i06 may still hold on cleaner axes — the ~10σ syntax gap for
+order-preserving ciphers, or a low-h2 ↔ collapsed-ΔI mutual exclusivity (untested, → E30).
+Until then, read the exclusion below as **provisional and soft-measure-dependent**, and cite
+Naibbe + Parisel (arXiv:2604.19762) as concurrent work. See
+[refutations/2026-07-17-e29-naibbe.md](../refutations/2026-07-17-e29-naibbe.md).
+
 **i06 update (cryptanalytic direction, E18–E20).** Turning to the decipherment
 question, we asked whether the VMS could be a cipher of a real text — targeting the two
 classes our own work had left non-excluded (deterministic-verbose/nomenclator, abjad/
@@ -436,6 +452,11 @@ sounding translation was ever generated.
   generator approaches within ~0.03–0.05 on 4/6 axes, but no config reproduces the full set.
   Within-family under-determination only; the signature still excludes ciphers (i06). A
   refutation of the walk-back corrected v5's over-read → **paper v5b**.
+- [~] **i11 (E29) in progress: engaging concurrent work (Naibbe, Parisel).** The make-or-break
+  Naibbe test did NOT confirm i06 — it exposed that i06's ΔI leg is confounded (homophony +
+  respacing; real word-boundary Latin is in the VMS ΔI band), so the cipher exclusion is
+  **provisional and now soft-measure-dependent** (see the ⚠ i06 correction above). Open: cite
+  Naibbe/Parisel in the papers; harden the soft measures; E30 to re-examine i06 on cleaner axes.
 - [x] **i10 (E27–E28): symbols-as-values direction — CLOSED at D (clean negative).** E27
   excluded a positional-numeral sub-type on shape (VMS positional specialisation 0.74 vs
   numeral ~0.06); E28's decipherment-free angular anchor on the zodiac rings (sensitivity-
