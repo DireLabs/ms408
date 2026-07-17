@@ -114,6 +114,18 @@ Rao/Sproat, Ascher, Urton & Brezine, Ventris, Rugg, and Timm–Schinner (verify 
 formal citation).
 
 **Recommendation:** if a next direction is wanted after the current approach, this is the
-best-motivated one — but scoped tightly to the **summation/check-digit search (#4)** on the
-most table-like folios first, because that single test is what separates "consistent with a
-register" (which we already are) from "is a register" (which only an anchor can show).
+best-motivated one — scoped tightly to the **decipherment-free arithmetic/ordinal anchor**
+first, because that single test is what separates "consistent with a register" (which we
+already are) from "is a register" (which only an anchor can show).
+
+**Scoped as i10** ([docs/planning/i10/](../planning/i10/)). One refinement from inspecting
+the actual data: the generic **summation/check-digit search (#4)** is deprecated as the
+primary anchor — the VMS has no figure-columns — in favour of **ordinal/periodic structure in
+the angular-tagged circular diagrams**. The 12 zodiac pages carry `<!HH:MM>` angular-position
+tags on their labels (plus 84 circular + 142 radial loci), so we can test whether label
+*content* tracks angular position (as a degree/date/count would) beyond a matched null —
+grounded, killable, on existing data. E27 (the "quantify the symbols" step) is cheap
+grounding; **E28 (the angular anchor) gates the whole iteration**; controls (#5) and
+digit-slot tests (#3) run only if E28 signals. Honest prior: a positive is unlikely (no
+obvious numeric tables), so the most probable outcome is a clean graded *negative* — still a
+real envelope result. L7 binds throughout.
