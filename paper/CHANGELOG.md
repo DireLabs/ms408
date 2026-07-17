@@ -100,3 +100,22 @@ refutation); an adoption checklist. Built on the shared template; refs extended 
 Simmons, Gelman/Loken, Steegen, Simonsohn, Nosek, Mellers, Sandve, Sproat, Rao). Compiles
 clean (8pp, 0 undefined cites). gelman2013garden flagged % UNVERIFIED (exact venue/date).
 NOT yet refutation-passed — which, per the paper's own §6, is the required next step.
+
+## methods/v2 — 2026-07-17 (refutation-corrected methods paper)
+A clean-context refutation of methods/v1 (archived: docs/refutations/2026-07-17-methods-paper.md)
+verified every Table-1 number as accurate but found the inferential framing over-claimed.
+v2 corrects it and — the P0 fix — the refutation briefs are now PRESERVED under the firewall
+(docs/refutations/), closing the paper's own "no claim lives only in prose" doctrine against its
+core evidence (partial: i06+ archived, earlier briefs documented only in FLAGSHIP §7, stated
+honestly). Wording fixes: abstract drops causal "caught ... before they were reported" +
+"practical route to defensible research" → record-language + "disciplined default worth adopting
+and testing"; "bidirectional" softened (negatives resolved to NON-FINDINGS, not restored
+positives — "declines to over-read a negative"); the recursive v5→v5b episode now states its
+skeptical reading (three headlines on one question = possible instability) and concedes new
+EXPERIMENTS, not the pass alone, adjudicated; "independent" qualified as context-independent only
+(same model family/operator; cross-vendor E12 was a rater, not refuter; "analyst worst-placed" =
+motivating hypothesis); §5 adds ML adversarial validation, Mayo severe-testing, red-teaming
+(Perez 2022); §6 adds the missing denominator + partial-archive admission; transfer claim →
+conjecture; E19b row notes the transposition gap. Refs +mayo2018severe, +perez2022red,
++rugg2004elegant. 9pp; compiles clean, 0 undefined cites. gelman2013garden + rugg2004elegant
+remain % UNVERIFIED (exact venue/pages) — fix at submission.
