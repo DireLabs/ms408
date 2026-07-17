@@ -83,3 +83,20 @@ i08; ~9–15% of matches median-out-of-band) and that the mean-length "artifact"
 untested conjecture possibly = the same entropy/connectivity wall; ED1 target ~0.75 is a
 10k-subsample value vs 0.80 full. Grade C stands for the deflation; the universal-quantifier
 claims are removed. 11pp; compiles clean.
+
+## methods/v1 — 2026-07-16 (standalone methods paper, separate from the envelope preprint)
+"Adversarial Self-Correction for Computational Research on Undeciphered Corpora: A
+Harness–Firewall–Refutation Architecture and Its Record" (paper/methods/, 8pp). Distinct
+from the MS408 envelope preprint (v1–v5b): the case study is the program, but the claim is
+the architecture. Sections: the problem (forking paths on ground-truth-free corpora; the
+Indus Rao/Sproat archetype); the three coupled disciplines (harness, firewall, standing
+clean-context refutation) + grades/decision-ledger; why each catches a distinct error class;
+THE RECORD — a catalogued table of the program's own first-pass verdicts overturned before
+publication (circular positives, fitted-to-target, missing-null false positives, confounds,
+over-strong NEGATIVES walked back, and the recursive refutation of the walk-back itself);
+relation to pre-registration / multiverse / adversarial collaboration / reproducible research;
+reflexive limitations (n=1 program; over-refutation risk; the paper invites its own
+refutation); an adoption checklist. Built on the shared template; refs extended (Ioannidis,
+Simmons, Gelman/Loken, Steegen, Simonsohn, Nosek, Mellers, Sandve, Sproat, Rao). Compiles
+clean (8pp, 0 undefined cites). gelman2013garden flagged % UNVERIFIED (exact venue/date).
+NOT yet refutation-passed — which, per the paper's own §6, is the required next step.

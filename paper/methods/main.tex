@@ -1,0 +1,340 @@
+% MS408 methods paper --- adversarial self-correction architecture.
+% Built on the shared package-paper template; every quoted program number traces to
+% results/**/*.json or docs/synthesis/FLAGSHIP.md (firewall L3).
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{natbib}
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{0.6em}{}
+
+\title{\textbf{Adversarial Self-Correction for Computational Research on\\
+Undeciphered Corpora: A Harness--Firewall--Refutation Architecture\\ and Its Record}}
+\author{Tim Walsh \\ \small Principal Researcher, DireLabs, LLC \\
+\small \texttt{tim@direlabs.com \quad direlabs.com \quad ti.mims.ms}}
+\date{Methods preprint v1 --- 16 July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent Computational study of undeciphered or otherwise ground-truth-free corpora is
+unusually prone to plausible-but-wrong conclusions: with no key against which to check a
+reading, ``it comes out looking like language/a cipher/a number system'' is nearly
+unfalsifiable, and the analyst's degrees of freedom are vast. We describe an operating
+architecture that couples three disciplines to blunt this: a synthetic \emph{ground-truth
+harness} (every method must separate known positives from matched null/meaningless
+controls before it touches the real object); a \emph{firewall} (every reported number is
+produced by deterministic, versioned code that records its own script, commit, inputs, and
+parameters---nothing is estimated or recalled); and a standing \emph{clean-context
+adversarial refutation pass} in which an independent skeptic, working \emph{without} the
+original analysis's context or investment, is tasked to build the strongest case against
+each finding, and no associational claim is graded reportable until it survives. We report
+the architecture's record over a ten-iteration computational program on the Voynich
+Manuscript (Beinecke MS~408). The pass caught a dozen-plus over-reads before they were
+reported---including conclusions asserted by the program's \emph{own analysis code}---and,
+unusually, it overturned the program's own \emph{negatives} as readily as its positives,
+once even refuting its own walk-back of a negative (``retraction, not reversal''). We argue
+that the transferable contribution is the architecture, not the case study, situate it
+against pre-registration, multiverse analysis, adversarial collaboration, and reproducible-
+research practice, and give an adoption checklist. The evidence is a single program's
+record---the main limitation---and, consistent with the method it describes, this paper
+invites the same refutation.
+\end{abstract}
+
+\noindent\textbf{Keywords:} adversarial validation; reproducible research; undeciphered
+scripts; red-teaming; researcher degrees of freedom; evidence grading; self-correction.
+
+\section{Introduction}
+The computational study of undeciphered corpora---the Voynich Manuscript, the Indus script,
+Linear~A, rongorongo---has a recurring pathology: confident, mutually incompatible
+``solutions'' are produced faster than they are refuted \citep{reddy2011know,
+bowern2021linguistics}. The root cause is structural. Where there is no ground truth, a
+result of the form ``under transform~$T$ the text resembles class~$C$'' cannot be checked
+against a key; it can only be checked against \emph{itself}, and a sufficiently flexible
+analysis will nearly always find some $T$ that makes some $C$ look plausible. This is the
+``garden of forking paths'' \citep{gelman2013garden} and the researcher-degrees-of-freedom
+problem \citep{simmons2011false} in an acute form: not merely many analyses of one dataset,
+but many analyses of an object whose correct analysis is unknown even in principle. The
+field's own literature supplies the cautionary archetype: the debate over whether
+block-entropy statistics show the Indus script to be linguistic
+\citep{rao2009entropic} was settled methodologically by the demonstration that those very
+statistics \emph{cannot} separate linguistic from non-linguistic symbol systems as used
+\citep{sproat2014statistical}---a measure that does not discriminate the hypotheses it is
+invoked to decide.
+
+Our response inverts the usual order of work. Rather than seek a finding and then defend
+it, we make the \emph{validation machinery} the primary object and treat every candidate
+finding as guilty until an adversary fails to convict it. Concretely, we couple three
+disciplines---a harness, a firewall, and a standing clean-context refutation pass---so that
+the default output of the pipeline is not a claim but a \emph{graded} claim that has
+already survived an attempt to destroy it, or an honest ``not established.'' This paper
+describes that architecture (\S2), explains why each component catches a distinct class of
+error (\S3), and---its empirical core---reports the architecture's \emph{record}: the
+catalogue of the program's own conclusions that the discipline overturned before they were
+published (\S4). We then situate the approach against existing practice (\S5), state its
+limitations reflexively (\S6), and give an adoption checklist (\S7). The case study is a
+ten-iteration program on the Voynich Manuscript; the numbers we quote from it are
+illustrative of \emph{corrections}, and each traces to versioned code under the firewall.
+The claim of the paper, however, is not about the Voynich Manuscript. It is that this
+architecture is a transferable way to do defensible computational research where the answer
+cannot be looked up.
+
+\section{The architecture}
+Three disciplines, each necessary, jointly sufficient to make refutation bite.
+
+\subsection{The harness: validate on knowns before the unknown}
+No method is trusted on the real object until it behaves correctly on synthetic ground
+truth. For each method we assemble (i) \emph{real positives} (period- and register-matched
+natural-language corpora), (ii) \emph{matched negatives}---structured-but-meaningless
+generators (auto-copying/self-citation processes \citep{timm2020selfcitation}, grille-style
+table generators, parameterised null models) tuned to the object's own nuisance parameters,
+and (iii) \emph{cipher/transform controls}. A method that cannot separate these knowns is
+not used on the unknown, and a \emph{replication gate} requires the pipeline to reproduce
+already-published baseline statistics before any novel experiment. The harness is what makes
+a negative result meaningful: ``the statistic does not distinguish $A$ from $B$'' is only
+informative once the statistic is shown to distinguish a synthetic $A$ from a synthetic $B$.
+
+\subsection{The firewall: numbers come only from code}
+Every statistic in every report is produced by deterministic, versioned code with fixed
+seeds, written to machine-readable output that records its producing script, commit hash,
+input-dataset version, and parameters. No number is estimated, remembered, or carried in
+prose. This is standard reproducible-research hygiene \citep{sandve2013ten}, but in this
+architecture it is also load-bearing for \emph{refutation}: because every claim dereferences
+to an exact computation, the adversary attacks the computation itself---re-running it,
+re-scoring it, probing its bands and nulls---rather than a summary sentence. A firewall
+turns ``I don't find your argument convincing'' into ``your config \texttt{X} has its median
+out of band and you counted it as a match,'' which is checkable.
+
+\subsection{The standing clean-context refutation pass}
+Every finding is submitted to an independent skeptic instructed to build the
+\emph{strongest} case against it, with positive and associational claims held to the
+harshest scrutiny (plausible-but-wrong positives being the field's dominant failure mode).
+The pass is \emph{clean-context}: the refuter is given the claim, the code, and the data,
+but not the original analyst's narrative, hopes, or sunk cost. In our instantiation the
+refuter is a fresh-context large-language-model agent with read access to the repository and
+no memory of how the finding was reached; it returns a written brief---often several
+thousand words---quoting the offending numbers and recommending a grade. A claim is graded
+\textbf{A} (replicated/robust) or \textbf{B} (candidate) only after it survives; otherwise it
+is narrowed, downgraded to \textbf{C} (directional) or \textbf{D} (speculative), or withdrawn.
+This is the operational descendant of red-teaming and adversarial collaboration
+\citep{mellers2001adversarial}, made cheap and repeatable enough to run on \emph{every}
+finding rather than a chosen few.
+
+\subsection{Connective tissue: grades and a decision ledger}
+Two lighter rules bind the disciplines. \emph{Evidence grading} (A--D) is attached to every
+claim, so downgrades are first-class outcomes rather than failures. \emph{``Flag, don't
+resolve''}: any decision not covered by a locked ledger becomes a surfaced open item on the
+least-committal path, never a silent judgment call---so the forking paths are logged, not
+walked in secret. Together these convert the review of a program from ``is the headline
+right?'' to ``is each claim carrying the grade its evidence and its refutation permit?''
+
+\section{Why it catches things}
+Each discipline structurally removes a distinct source of error.
+
+\textbf{The harness removes non-discriminating methods.} A statistic that cannot separate
+the synthetic knowns is discarded before it can produce a spurious verdict on the unknown.
+This is exactly the failure the Indus entropy debate diagnosed
+\citep{rao2009entropic,sproat2014statistical}; the harness makes it a precondition, not a
+post-hoc rebuttal.
+
+\textbf{The firewall removes recall drift and gives refutation teeth.} Numbers that live
+only in prose accrete small errors and resist attack; numbers that dereference to code do
+neither. The firewall is what lets the refutation pass be adversarial in substance rather
+than rhetoric (\S2.2).
+
+\textbf{The clean-context refuter removes confirmation bias and sunk cost.} The analyst who
+built a finding is the worst-placed person to destroy it; an independent agent with no
+investment and no narrative is the best-placed. Running it on \emph{every} claim---feasible
+only because the refuter is automated---turns adversarial review from an occasional event
+into a gate.
+
+The consequence we most want to emphasise is \emph{bidirectionality}. The replication-crisis
+literature concentrates on false positives \citep{ioannidis2005why,simmons2011false}, and for
+good reason. But in undeciphered-corpus work an over-strong \emph{negative}---``no cipher of
+this class fits,'' ``no generative family reproduces the signature''---is equally damaging
+and more insidious, because a negative silently closes a hypothesis and invites no
+replication. An architecture that only guards positives will let over-read negatives ship
+unchallenged. The record below shows this architecture overturning its own negatives as
+readily as its positives, and once refuting its own \emph{correction} of a negative---which
+is, to our knowledge, an unusual degree of reflexive control.
+
+\section{The record}
+The empirical core of this paper is the catalogue of the program's own conclusions that the
+discipline overturned or narrowed before they were reported. Table~\ref{tab:record} groups
+the salient cases by failure mode; the text then expands the most instructive. Every entry
+is a first-pass verdict that a less-disciplined pipeline would plausibly have published.
+Numbers trace to the program's versioned results under the firewall.
+
+\begin{table}[t]\centering\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}p{2.55cm}p{4.4cm}p{4.1cm}p{2.3cm}@{}}
+\toprule
+\textbf{Failure mode} & \textbf{First-pass claim (would have shipped)} &
+\textbf{What caught it} & \textbf{Direction} \\
+\midrule
+Circular positive & ``The manuscript is favoured as a \emph{generation} process'' (E19) &
+Refuter: the only matching generator was tuned to the target; match is by construction &
+false positive \\
+Fitted-to-target & ``The generative class is \emph{sufficient}'' [B] (E21) &
+Refuter: constants were grid-selected to hit the target bands (a fitted point mislabelled
+a-priori); weak-syntax test used a threshold a shuffle also passes & false positive \\
+Missing null / control & 18 word$\rightarrow$feature ``anchors'' (E7); ``needs constructed
+morphology'' (E6); ``whitening confirms'' (E8) & Mandatory permutation null (E7); the
+abjad control the refuter demanded (E6); covariance shown ill-conditioned (E8) &
+false positive \\
+Broken metric / artifact & A ``meaning certificate'' from a word-order statistic; a
+trivial-endpoint effect (E9) & Two axes shown broken; a pre-registered commitment
+retracted & false positive \\
+Confound & Currier A/B ``differ in grammar'' (E14) & Content-controlled study: the
+difference reverses within-section (E17) & false positive \\
+Over-strong negative & ``root$\leftrightarrow$leaf bundle KILLED'' (E12); ``no generative
+family reproduces the signature'' (i08) & Refuter: the kill's key argument was a red
+herring $\rightarrow$ ``unresolved'' (E12); the coupling was a morphology artifact, walked
+back (i09) & \textbf{false negative} \\
+Recursive (self-check) & The i09 \emph{walk-back} itself: ``reproduces all axes / signature
+doesn't constrain mechanism'' & Refuter of the walk-back: no single config matches all axes
+$\rightarrow$ ``retraction, not reversal'' & over-correction \\
+Demanded-control upgrade & A Latin-only exclusion (E19) & Refuter demanded typologically
+diverse controls; exclusion \emph{upgraded} to universal (E19b) & strengthening \\
+\bottomrule
+\end{tabular}
+\caption{Selected entries from the program's self-correction record (iterations i03--i09).
+Each first-pass claim was overturned, narrowed, or strengthened by the discipline before
+publication. Note the recurrence of the \emph{false-negative} and \emph{recursive} rows---
+corrections in the direction the replication-crisis toolkit usually ignores.}
+\label{tab:record}
+\end{table}
+
+\textbf{Circular positives and fitted points.} The two most seductive errors were
+self-referential. In one iteration a joint-signature test reported that the manuscript was
+``favoured as a generation process''; the refuter observed that the only generator matching
+the manuscript was the one built to imitate it, so the match was true by construction and
+carried no evidence---the claim was narrowed to the robust \emph{negative} it actually
+supported (a cipher-class exclusion). One iteration later the same trap reappeared in a new
+guise: a generator was graded a ``class sufficiency'' \textbf{[B]}, until the refuter showed
+its constants had been grid-selected against the target's own statistical bands---a fitted
+point dressed as an a-priori draw---and that its weak-syntax criterion used a one-sided
+threshold that a fully order-shuffled control also passes. The corrected, band-honest test
+turned the apparent positive into a precise negative. Recognising the \emph{same} circularity
+twice, across different experiments, is itself a product of the standing pass: the pattern
+was in the reviewer's checklist because it had been named once.
+
+\textbf{Mandatory nulls catch false positives that multiple-testing control does not.} An
+anchor hunt for word$\rightarrow$feature associations produced eighteen ``hits.'' These
+survived Benjamini--Hochberg control yet were all false: the test was anti-conservative in a
+way FDR does not address, and a mandatory permutation null---shuffling the feature labels and
+re-running the entire pipeline---returned them to chance ($p\approx0.48$). The lesson is that
+a null which re-executes the whole analysis is a different, stronger instrument than a
+$p$-value correction applied to its output.
+
+\textbf{Overturning negatives.} Two cases show the bidirectional property. A candidate visual
+regularity was first over-claimed, then \emph{over-killed} (``rater-idiosyncratic, KILLED'');
+the refuter showed the kill's central argument was a red herring and the honest status was
+\emph{unresolved-underpowered}---the pipeline declining to over-read a negative exactly as it
+declines to over-read a positive. More strikingly, a whole iteration concluded that ``no
+tested generative family reproduces the manuscript's joint signature.'' A refutation-directed
+follow-up showed the alleged obstruction was an artifact of a rigid morphology model; freeing
+the relevant control dissolved most of the coupling, and the negative was walked back. That
+walk-back was then \emph{itself} refuted---no single configuration actually reproduced the
+full signature---yielding the final, doubly-corrected reading: ``a retraction of the hard
+constraint, not a promotion to no constraint.'' The pipeline over-read a negative, corrected
+it, and corrected the correction.
+
+\textbf{Corrections can also strengthen.} Not every refutation downgrades. A cipher-class
+exclusion was first established over a single plaintext language; the refuter demanded
+typologically diverse controls; adding them \emph{upgraded} the exclusion from
+language-specific to universal. Adversarial review improves calibration in both directions.
+
+Across ten iterations the discipline produced, in addition to the graded findings, a running
+log of these overturns---conclusions asserted by the analysis, and in several cases by the
+analysis \emph{code}, that were withdrawn or narrowed before they reached a reader. We regard
+that log, not any individual manuscript finding, as the program's most robust output.
+
+\section{Relation to existing practice}
+The components are individually familiar; the contribution is their integration and the gate
+they jointly enforce. \emph{Pre-registration} \citep{nosek2018preregistration} fixes analyses
+in advance to curb forking paths, but cannot help an exploratory program on an object whose
+right analysis is unknown; our decision ledger and standing refutation are the exploratory
+analogue---forking paths are logged and adversarially reviewed rather than pre-committed.
+\emph{Multiverse} \citep{steegen2016multiverse} and \emph{specification-curve}
+\citep{simonsohn2020specification} analyses report a claim across many defensible
+specifications; our harness-gated, band-honest scoring is a targeted version---and the
+refuter's job is precisely to find the specification that breaks the headline.
+\emph{Adversarial collaboration} \citep{mellers2001adversarial} pairs opposed experts; the
+clean-context automated refuter is a scalable, sunk-cost-free instantiation that can be run on
+every claim rather than a negotiated few. \emph{Reproducible-research} practice
+\citep{sandve2013ten} supplies the firewall; we add that reproducibility is not only an end
+(others can re-run) but a \emph{means} (the adversary can attack the computation). The novel
+combination is thus: harness-gated methods, a firewall that gives refutation teeth, a standing
+clean-context refuter as a publication gate, and---most distinctively---bidirectional and
+recursive self-correction, including of the program's own negatives and of its own
+corrections. The automated fresh-context refuter is the enabling ingredient: it makes
+adversarial review cheap enough to be a default rather than an event.
+
+\section{Limitations and reflexivity}
+The evidence is a \emph{single program's record}. We cannot present a controlled
+counterfactual---the same program run without the discipline---so we cannot quantify how many
+of the overturned claims would truly have been published elsewhere; we can only show that they
+were the pipeline's genuine first-pass verdicts. The architecture reduces but does not
+eliminate error: the refuter can miss things, grades are judgment calls, and there is a real
+risk of \emph{over}-refutation---killing true findings---for which the double-corrected
+root$\leftrightarrow$leaf case is both a cautionary instance and a demonstration that the
+tension is itself detectable. The approach is not free: each refutation is a full independent
+analysis, and the firewall imposes an engineering tax. The automated refuter inherits its
+substrate's blind spots; an adversary and analyst drawn from the same model family may share
+failure modes, so cross-vendor or human refutation remains the stronger check where stakes are
+high. Finally, and in keeping with the method it advocates, this paper is written under the
+firewall it describes and makes claims that should themselves be refuted; we regard an
+adversarial pass on \emph{this} argument as the appropriate next step, not an optional one.
+
+\section{Adoption checklist}
+For a computational program on an ambiguous or ground-truth-free corpus:
+\begin{enumerate}[leftmargin=1.4em,itemsep=1pt]
+\item \textbf{Build the harness first.} Real positives, matched structured-meaningless
+  negatives, and transform/cipher controls. Do not run a method on the object until it
+  separates the knowns; gate novel work behind reproducing published baselines.
+\item \textbf{Erect the firewall.} Every reported number from deterministic, versioned code
+  that stamps its script, commit, inputs, and parameters. No number in prose that is not in a
+  results file.
+\item \textbf{Grade everything A--D}, and make downgrades and ``not established'' first-class
+  outcomes.
+\item \textbf{Run a clean-context refutation pass on every A/B claim}---an independent
+  reviewer, without the analyst's context, tasked to break it, with authority to downgrade.
+  Hold negatives to the same standard as positives.
+\item \textbf{Log decisions; don't resolve silently.} Surface every uncovered choice on the
+  least-committal path.
+\item \textbf{Refute your corrections.} A walk-back is a claim; subject it to the same pass.
+\item \textbf{Diversify the adversary} (cross-vendor model, or human) where stakes justify it.
+\end{enumerate}
+
+\section{Conclusion}
+Where the answer cannot be looked up, the discipline of \emph{how} a claim is made must carry
+the weight that ground truth carries elsewhere. Coupling a validating harness, a firewall that
+makes every number attackable, and a standing clean-context adversarial pass produces a
+pipeline whose default output is a graded claim that has already survived an attempt to
+destroy it---and, as the record shows, a pipeline willing to overturn its own positives, its
+own negatives, and its own corrections. The transferable result is not a reading of any
+manuscript; it is that adversarial self-correction, made cheap enough to run on every claim,
+is a practical route to defensible computational research on undeciphered corpora.
+
+\section*{Reproducibility}
+The case-study program's statistics are produced by deterministic, versioned code (fixed
+seeds) writing machine-readable results, each recording its producing script, commit,
+dataset version, and parameters; the self-correction record is documented in the program's
+synthesis notes. Numbers quoted here are illustrative of corrections and trace to that code.
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+
+\end{document}
