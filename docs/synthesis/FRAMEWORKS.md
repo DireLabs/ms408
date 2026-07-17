@@ -95,6 +95,17 @@ the independent arithmetic anchor):
 
 ## 5. Honest verdict
 
+> **Update (i10, E27–E28): the direction was scoped, the primary anchor was tested, and it
+> came back NULL — the register hypothesis stays grade D.** E27 excluded a positional-*numeral*
+> sub-type on shape (the VMS is strongly position-specialised, unlike a base-N system that
+> reuses digits across places). E28 ran the decipherment-free arithmetic anchor on the
+> manuscript's most number-like folios — the angular-tagged zodiac rings — with a
+> sensitivity-confirmed test, and found **no robust ordinal structure** in the labels (a lone
+> f73r hit that does not reproduce across the other 11 rings). So the register framing remains
+> *consistent with* the envelope but gains **no positive anchor**; per L7 it cannot rise above
+> D. The direction closes here barring a materially different anchor or folio class. Original
+> pre-test verdict retained below for the record.
+
 **Grade D (exploratory), with a clear path to C/B *only* via test #4.** The
 symbols-as-values framing is (i) grounded in a genuinely decoded precedent (khipu) and a
 period-contemporary notation (Cistercian), (ii) **consistent with, not contradicted by,

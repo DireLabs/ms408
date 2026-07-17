@@ -436,8 +436,11 @@ sounding translation was ever generated.
   generator approaches within ~0.03–0.05 on 4/6 axes, but no config reproduces the full set.
   Within-family under-determination only; the signature still excludes ciphers (i06). A
   refutation of the walk-back corrected v5's over-read → **paper v5b**.
-- [ ] i10 open — **symbols-as-values direction scoped** ([docs/planning/i10/](../planning/i10/)):
-  E27 symbol quantification (grounding) + E28 angular/ordinal anchor on the zodiac rings
-  (gating, killable, on existing data); E29 controls only if E28 signals. Also held: root↔leaf
-  human panel; i09 residual clean-up (length artifact, re-score i08 families under multi-seed,
-  soft-axis nulls); larger content-matched A/B; standalone methods paper.
+- [x] **i10 (E27–E28): symbols-as-values direction — CLOSED at D (clean negative).** E27
+  excluded a positional-numeral sub-type on shape (VMS positional specialisation 0.74 vs
+  numeral ~0.06); E28's decipherment-free angular anchor on the zodiac rings (sensitivity-
+  confirmed) found no robust ordinal structure (lone f73r hit, not reproduced). Consistent with
+  the envelope but no positive anchor → stays D (L7). See [FRAMEWORKS.md](FRAMEWORKS.md).
+- [ ] i11 open (held) — root↔leaf human panel; i09 residual clean-up (length artifact, re-score
+  i08 families under multi-seed, soft-axis nulls); larger content-matched A/B; standalone
+  methods paper. (f73r single-ring idiosyncrasy is a footnote lead, not queued.)
