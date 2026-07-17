@@ -73,21 +73,26 @@ drift — the control reaches the "weak-positive" wc_z with no reuse); results a
 seed. Robustness follow-ups: multi-seed + generator-side bootstrap; branching below the
 grid floor; a type lexicon decoupled from the slot grammar.
 
-**⚠ i06 CORRECTION (i11/E29, 2026-07-17) — the ΔI leg is confounded; headline softened.**
-Engaging the concurrent Naibbe cipher (Greshko, *Cryptologia* 2025) exposed a real weakness
-in the i06 cipher-of-real-prose exclusion below. Running Naibbe through our discriminators
-first looked like confirmation (its ΔI collapses), but the refutation showed that
-(a) real **word-boundary Latin sits IN the VMS ΔI band** (0.076), (b) ~82% of Naibbe's ΔI
-loss is from Greshko's *respacing*, before the cipher, and (c) ΔI **collapses under homophony
-alone with word order fixed** — so ΔI is a homophony/type-token-coupling detector, **not** the
-robust "retained word-order" axis i06 leaned on, and the VMS's ΔI (block structure) vs Naibbe's
-token-level ΔI is not like-for-like. **Consequence:** the exclusion rests more heavily on the
-**soft** fc_z/wc_z syntax measures than the i06 text and papers v3–v5b state. *Flag, don't
-over-correct (D-item i11-c):* i06 may still hold on cleaner axes — the ~10σ syntax gap for
-order-preserving ciphers, or a low-h2 ↔ collapsed-ΔI mutual exclusivity (untested, → E30).
-Until then, read the exclusion below as **provisional and soft-measure-dependent**, and cite
-Naibbe + Parisel (arXiv:2604.19762) as concurrent work. See
-[refutations/2026-07-17-e29-naibbe.md](../refutations/2026-07-17-e29-naibbe.md).
+**⚠ i06 RETRACTION (i11/E29–E30, 2026-07-17) — the universal cipher headline is withdrawn.**
+Engaging the concurrent Naibbe cipher (Greshko, *Cryptologia* 2025) exposed and then
+falsified the over-reach in the i06 exclusion below. E29: i06's ΔI leg is confounded — real
+**word-boundary Latin sits IN the VMS ΔI band** (0.076), ~82% of Naibbe's ΔI loss is from
+Greshko's *respacing* (not the cipher), and ΔI **collapses under homophony alone** with word
+order fixed, so ΔI is a homophony detector, not a clean word-order axis. E30 (multi-seed, on
+blocked *word-boundary* Latin) then re-partitioned the claim:
+- **ROBUST (kept):** word-order-**preserving** ciphers of real prose carry strong word-syntax
+  (fc_z 11–21) the VMS lacks — a large, stable gap — so that class **is** excluded.
+- **RETRACTED:** the **verbose+homophonic** class (≈ the Naibbe mechanism) scatters at the
+  edge of the VMS joint-signature corner; several configs robustly hit 3/4 axes and one seed
+  hit 4/4, but the discriminating syntax measures are too unstable (wc_z swings 2–6/seed) to
+  exclude it. So **homophonic/verbose ciphers are NOT excluded — the VMS-as-cipher hypothesis
+  (Naibbe) is viable on our own analysis**, converging with Greshko.
+
+**Net: the "cipher-of-real-prose EXCLUDED" headline (paper v3–v5b) is FALSE as stated and is
+retracted to "word-order-preserving ciphers excluded; homophonic/verbose not excluded."** The
+homophonic verdict is soft-measure-limited (E31 hardens fc_z/wc_z). Cite Naibbe + Parisel
+(arXiv:2604.19762) as concurrent work. The exclusion text below is superseded by this banner.
+See [refutations/2026-07-17-e29-naibbe.md](../refutations/2026-07-17-e29-naibbe.md).
 
 **i06 update (cryptanalytic direction, E18–E20).** Turning to the decipherment
 question, we asked whether the VMS could be a cipher of a real text — targeting the two
@@ -266,11 +271,13 @@ ciphers (homophonic or deterministic). The remaining hypotheses are unranked:**
   classes (it excludes the cipher-of-real-prose class, i06). The best-supported class is a
   positional/template + type-lexicon generator. E1/E9 also removed the statistics that had
   counted against structured-meaningless (they measure structure, not meaning);
-- **cipher of a real text** (abjad / abbreviation / substitution / nomenclator /
-  transposition) — **EXCLUDED by i06 (E19/E19b/E20)** on the joint signature: no such
-  cipher of any real language reproduces the VMS's low-entropy + retained-ΔI +
-  weak-word-syntax combination. The abjad E6 revived on morphology is excluded once
-  word-syntax is added;
+- **cipher of a real text** — **PARTIALLY excluded (i06 headline RETRACTED by i11/E29–E30;
+  see the ⚠ banner).** Robust: word-order-**preserving** ciphers (abjad, 1:1 substitution,
+  nomenclator, deterministic-verbose) carry strong word-syntax (fc_z 11–21) the VMS lacks →
+  excluded. NOT excluded: **verbose+homophonic** ciphers (≈ the Naibbe mechanism, Greshko
+  2025) — they scatter at the edge of the VMS joint signature and the discriminating measures
+  are too soft to exclude them, so this class (and the VMS-as-cipher hypothesis) is **viable**.
+  The E29 ΔI leg was confounded (homophony/respacing);
 - **constructed language** (Lingua-Ignota class) — not a *distinguished* fit (E5/E8),
   not excluded, but must also explain the weak word-syntax (i05);
 - **invented-world notation** (Codex-Seraphinianus class);
@@ -452,11 +459,12 @@ sounding translation was ever generated.
   generator approaches within ~0.03–0.05 on 4/6 axes, but no config reproduces the full set.
   Within-family under-determination only; the signature still excludes ciphers (i06). A
   refutation of the walk-back corrected v5's over-read → **paper v5b**.
-- [~] **i11 (E29) in progress: engaging concurrent work (Naibbe, Parisel).** The make-or-break
-  Naibbe test did NOT confirm i06 — it exposed that i06's ΔI leg is confounded (homophony +
-  respacing; real word-boundary Latin is in the VMS ΔI band), so the cipher exclusion is
-  **provisional and now soft-measure-dependent** (see the ⚠ i06 correction above). Open: cite
-  Naibbe/Parisel in the papers; harden the soft measures; E30 to re-examine i06 on cleaner axes.
+- [~] **i11 (E29–E30) in progress: engaging concurrent work (Naibbe, Parisel).** The Naibbe
+  engagement RETRACTED i06's universal cipher headline: order-preserving ciphers robustly
+  excluded (strong syntax), but verbose+homophonic ciphers (≈ Naibbe) are NOT excluded and
+  remain viable (see the ⚠ banner). Open: E31 harden the soft fc_z/wc_z (the crux for the
+  homophonic verdict); cite Naibbe/Parisel + re-issue the papers (v3–v5b carry the retracted
+  headline).
 - [x] **i10 (E27–E28): symbols-as-values direction — CLOSED at D (clean negative).** E27
   excluded a positional-numeral sub-type on shape (VMS positional specialisation 0.74 vs
   numeral ~0.06); E28's decipherment-free angular anchor on the zodiac rings (sensitivity-
