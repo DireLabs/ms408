@@ -21,8 +21,8 @@ ledger as E27–. Scopes the [FRAMEWORKS.md](../../synthesis/FRAMEWORKS.md) dire
 
 | id | probe | priority | state | verdict |
 |---|---|---|---|---|
-| E27 | Symbol quantification (inventory, positional, system-type) | P2 grounding | ⏳ specced | — |
-| E28 | Angular/ordinal anchor in circular diagrams | **P1 GATING** | ⏳ specced (awaiting go/no-go) | — |
+| E27 | Symbol quantification (inventory, positional, system-type) | P2 grounding | ✅ done → **[D] descriptive; base-N register shape-EXCLUDED** | VMS paragraph: 37 glyph types, effective alphabet ~15 (small; 15 glyphs cover 95%). Decisive: **positional specialisation 0.74** (mean TV among initial/interior/final glyph distributions) vs base-10 numeral 0.07 / base-16 0.05 (same digits every place) / syllabary 0.51 / alphabet 0.39. So a **positional-NUMERAL sub-type is shape-incompatible** (the VMS uses strongly position-specific glyph sets — templatic, per i09); a non-positional value scheme (tallies / label-values) is untouched → E28. Stable across A/B (0.73/0.76) and labels (0.69). |
+| E28 | Angular/ordinal anchor in circular diagrams | **P1 GATING** | 🔨 building | — |
 | E29 | Digit-slot discriminator + numeral-register controls | P2 (cond. on E28) | ⏳ pending E28 | — |
 
 ## Exploratory grounding (to be formalised by E27 — NOT firewall-committed)
