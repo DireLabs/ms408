@@ -89,8 +89,9 @@ blocked *word-boundary* Latin) then re-partitioned the claim:
   (Naibbe) is viable on our own analysis**, converging with Greshko.
 
 **Net: the "cipher-of-real-prose EXCLUDED" headline (paper v3–v5b) is FALSE as stated and is
-retracted to "word-order-preserving ciphers excluded; homophonic/verbose not excluded."** The
-homophonic verdict is soft-measure-limited (E31 hardens fc_z/wc_z). Cite Naibbe + Parisel
+retracted to "word-order-preserving ciphers excluded; homophonic/verbose not excluded."** E31 then HARDENED the measures (deconfounded within-block null + proper CIs): the
+order-preserving exclusion is FIRM (~30σ, and the VMS's weak syntax is real grammar, not
+topic drift), while the homophonic class stays not-excludable. Cite Naibbe + Parisel
 (arXiv:2604.19762) as concurrent work. The exclusion text below is superseded by this banner.
 See [refutations/2026-07-17-e29-naibbe.md](../refutations/2026-07-17-e29-naibbe.md).
 
