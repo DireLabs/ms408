@@ -31,23 +31,26 @@ narrowed to this negative, which E22 then made decisive.
 residual obstruction (morphology connectivity, ED1) might be an artifact of the slot
 grammar, where ED1 is rigidly coupled to word length/branching and saturates near 1.0.
 i09 tested this by making ED1 an **independent knob** — a large character space (85-glyph
-alphabet, swept pool size) with a connected-core/isolate lexicon — and scoring **multi-
-seed** (generator-side CI-overlap), not single-seed. The result **substantially deflates
-i08**: once ED1 is a real knob, it **co-occurs** (CI-overlap) with block-ΔI, lexical reuse
-AND frequency slope — which the small-pool families (E22–E24) never could, confirming
-E24's ED1 ≈ 0.97 saturation was largely an artifact of the tiny character space. What
-survives is a single, shallow, *principled* tension between **character entropy and
-morphology connectivity**: low h2 needs a small effective character space (dense
-edit-graph → high ED1), and enlarging it to lower ED1 raises h2. The (h2, ED1) frontier
-passes near but not through the VMS box (h2 in-band → ED1 reaches 0.63 vs floor 0.74; ED1
-in-band → h2 reaches 2.04 vs floor 2.11) — a ~0.05–0.11 near-miss, **not** the gross
-incompatibility i08 reported, and plausibly crossable with word-length variance (indel
-connectivity decouples ED1 from the character space). **Net:** the VMS's hard-axis
-signature constrains the generative mechanism *far less* than i08 claimed; a positional +
-decoupled type-lexicon generator comes within ~0.05–0.11 on all five hard axes at once.
-The i08 "no generative family reproduces the signature" framing (paper v4 §4.7) is
-**superseded** and should be softened in a v5. (Grade C; soft fc_z/wc_z not counted;
-single word length; no identification — L7.)
+alphabet, swept pool size) with a connected-core/isolate lexicon (E25), then adding
+**word-length variance** (E26) — scored **multi-seed** (generator-side CI-overlap). The
+result is a **RETRACTION of the i08 hard constraint, not a promotion to "no constraint"**
+(a second refutation, of the walk-back itself, curbed an initial over-read). Once ED1 is a
+real knob, the i08 "gross multi-axis incompatibility" collapses to a single shallow
+**coupled** frontier among character entropy, connectivity, and mean word length: a
+positional + type-lexicon generator comes within ~0.03–0.05 on **four of six** hard axes,
+so E24's ED1 ≈ 0.97 saturation was largely a morphology-parameterisation artifact. **But
+no single configuration reproduces the full hard-axis set** (E25 0/48, ceiling 4/5; E26
+0/48, ceiling 4/6, none at 5/6): at the config where ED1 enters the band the residual is
+*two* misses — h2 (~0.03) **and** mean length (~6.4 vs ~5.1, a *conjectured, untested*
+short-word-saturation artifact that may not be separable from the same wall). Two caveats
+temper the deflation: the CI-overlap scoring is more lenient than i08's single-seed rule
+and was not applied back to E24 (not apples-to-apples), and the ED1 target ~0.75 is a
+10k-subsample value vs 0.80 full. **Net (the honest middle):** i08's hard constraint is
+retracted — *within this one generative family* the hard axes under-determine the
+sub-mechanism — but this is **not** a general "signature doesn't constrain mechanism"
+claim: the same signature still excludes the cipher-of-real-prose class (i06). Folded into
+paper **v5b** (v5's stronger phrasing was corrected by the refutation). (Grade C; soft
+fc_z/wc_z not counted; no identification — L7.)
 
 **i08 update (word reuse and type-level concentration, E23–E24).** i07 named the missing
 ingredient — frequency concentration. i08 tested two ways to add it, each an a-priori
@@ -238,14 +241,15 @@ ciphers (homophonic or deterministic). The remaining hypotheses are unranked:**
   (i05) + low entropy, and the only class NOT excluded by the i06 cipher analysis; a
   context-free positional generator reproduces those three but not (E22) the VMS's
   morphology connectivity, lexical reuse, or frequency slope *simultaneously* — but i09
-  (E25) showed this apparent coupling was **largely an artifact**: with ED1 made an
-  independent knob (large character space), a positional + decoupled type-lexicon generator
-  comes **within ~0.05–0.11 on all five hard axes at once** (multi-seed), leaving only a
-  shallow, principled **entropy↔connectivity** frontier near-miss. So the joint signature
-  constrains the generative mechanism much less than i07–i08 first suggested; the
-  best-supported class is a positional/template + type-lexicon generator, near-reproducing
-  the hard-axis signature. E1/E9 also removed the statistics that had counted against
-  structured-meaningless (they measure structure, not meaning);
+  (E25–E26) showed this apparent coupling was **largely a morphology-parameterisation
+  artifact**: with ED1 made an independent knob (large character space, then word-length
+  variance), a positional + type-lexicon generator comes within ~0.03–0.05 on **four of six**
+  hard axes, though **no single config reproduces the full set** (a retraction of i08's hard
+  constraint, *not* a promotion to "no constraint"). So *within this generative family* the
+  hard axes under-determine the sub-mechanism — but the signature still discriminates across
+  classes (it excludes the cipher-of-real-prose class, i06). The best-supported class is a
+  positional/template + type-lexicon generator. E1/E9 also removed the statistics that had
+  counted against structured-meaningless (they measure structure, not meaning);
 - **cipher of a real text** (abjad / abbreviation / substitution / nomenclator /
   transposition) — **EXCLUDED by i06 (E19/E19b/E20)** on the joint signature: no such
   cipher of any real language reproduces the VMS's low-entropy + retained-ΔI +
@@ -315,11 +319,14 @@ correlated-slot mechanism.
 ED1/TTR/Zipf individually but trades them against entropy/ΔI (ceiling 4/8); type-level
 small-lexicon concentration (E24, 144 configs) resolves the entropy-vs-reuse tension (TTR
 co-occurs with h2) but leaves a residual coupling on morphology connectivity (ED1).
-**i09 (E25), is that coupling real?:** with ED1 made an independent knob (large char-space,
-multi-seed CI-overlap), the coupling **largely dissolves** — ED1 co-occurs with ΔI/TTR/Zipf
-— leaving only a shallow entropy↔connectivity frontier near-miss (~0.05–0.11). Net: the
-i08 "no generative family" claim is deflated; a positional + decoupled type-lexicon
-generator near-reproduces the hard-axis signature.
+**i09 (E25–E26), is that coupling real?:** with ED1 made an independent knob (large
+char-space, then word-length variance; multi-seed CI-overlap), the i08 gross incompatibility
+**collapses to a single shallow coupled frontier** (entropy↔connectivity↔length) a generator
+approaches within ~0.03–0.05 on **4/6** hard axes — but **no single config reproduces the
+full set** (E25/E26 both 0/48; ceiling 4). Net: i08's hard constraint is **retracted, not
+reversed** — within this family the hard axes under-determine the sub-mechanism, though the
+signature still excludes cipher-of-real-prose (i06). A refutation of the walk-back itself
+curbed the initial over-read (→ v5b).
 
 **i09 leads:**
 
@@ -363,10 +370,12 @@ one-sided threshold a full order-shuffle also passes — and the corrected, band
 test (E22) turned an apparent positive into a precise **negative** (the context-free
 generator is insufficient) that names the next mechanism — and then, one iteration later,
 i09 (E25) **walked back that very negative**: the refutation's suspicion proved right, the
-"coupling" was largely a slot-grammar artifact, and with connectivity decoupled the
-generator near-reproduces the hard-axis signature. The pipeline overturns its own
-negatives as readily as its positives. i05 added a reusable
-**null-model-correction framework**: the first mid-level probes were confounded (by i05 added a reusable
+"coupling" was largely a morphology-parameterisation artifact; with connectivity decoupled
+the generator gets within ~0.03–0.05 on four of six hard axes — and then a **further**
+refutation of *that* walk-back curbed its over-read (no single config reproduces the full
+set; "retraction, not reversal"). The pipeline over-read a negative, corrected it, and
+corrected the correction — overturning its own negatives as readily as its positives. i05
+added a reusable
 **null-model-correction framework**: the first mid-level probes were confounded (by
 type-token ratio, sample size, number of stems), and the harness-first discipline
 refused a manuscript claim from each until the confound was corrected — four
@@ -421,9 +430,12 @@ sounding translation was ever generated.
   concentration (E24) resolves the entropy-vs-reuse tension (TTR co-occurs with h2) but
   leaves a residual coupling on morphology connectivity. Folded into paper v4. **Note:
   i08's strong "no generative family" claim was walked back by i09.**
-- [x] **i09 in progress (E25):** the i08 coupling is largely a slot-grammar artifact —
-  with ED1 an independent knob (large char-space, multi-seed), a positional + decoupled
-  type-lexicon generator comes within ~0.05–0.11 on all five hard axes at once, leaving
-  only a shallow entropy↔connectivity frontier near-miss. Supersedes v4 §4.7 (→ v5).
-- [ ] i09/i10 open — E26 word-length variance (try to cross the h2↔ED1 frontier); multi-
-  seed bootstrap of soft fc_z/wc_z; root↔leaf human panel; larger content-matched A/B.
+- [x] **i09 complete (E25–E26):** i08's hard constraint **retracted, not reversed** — the
+  gross incompatibility was largely a morphology-parameterisation artifact; freeing ED1
+  (char-space, then length variance) collapses it to a single shallow coupled frontier a
+  generator approaches within ~0.03–0.05 on 4/6 axes, but no config reproduces the full set.
+  Within-family under-determination only; the signature still excludes ciphers (i06). A
+  refutation of the walk-back corrected v5's over-read → **paper v5b**.
+- [ ] i10 open (held) — root↔leaf human panel; i09 residual clean-up (length artifact,
+  re-score i08 families under multi-seed, soft-axis nulls); symbols-as-values framework
+  (see [FRAMEWORKS.md](FRAMEWORKS.md)); larger content-matched A/B; standalone methods paper.

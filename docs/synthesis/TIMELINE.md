@@ -28,7 +28,7 @@ conclusions — including ones asserted by its own code, and, in i09, one of its
 | **i06** | Could the VMS be a cipher of a real text? | E18 (completeness), E19/E19b (joint signature), E20 (transposition closure) | **[B, negative]** the **cipher-of-real-prose class is EXCLUDED** — the VMS uniquely combines low entropy + retained block-scale ΔI + weak word-syntax, which no word-order-preserving cipher (universal incl. Hebrew abjad) nor transposition cipher can produce. **[known issue]** ~12% of the foliated range is missing, vocabulary non-saturating | E19's first-pass "favours generation" dropped as **circular** (the only match was a Voynich-tuned generator); the demanded control (diverse languages) then *upgraded* the exclusion to universal (E19b) |
 | **i07** | Can a template/positional generator — not tuned to the VMS — reproduce the full signature? | E21 (positional generator + ablation), E22 (genericity sweep) | **[C]** a context-free positional generator matches entropy + block-ΔI + weak-positive syntax but not, jointly, morphology connectivity / lexical reuse / frequency slope | E21's first-pass "class sufficiency **[B]**" overturned — its constants had been **grid-selected to the VMS bands** (a fitted point), and its weak-syntax test used a threshold a shuffle also passes → narrowed to [C] |
 | **i08** | Add the frequency-concentration mechanism the misses demand | E23 (token reuse), E24 (type-level small lexicon) | **[C]** token reuse rescues the frequency axes but trades them against entropy/ΔI; type-level concentration resolves that (TTR co-occurs with h₂) but leaves a residual coupling on **morphology connectivity (ED1)**. First-pass framing: "no tested family reproduces the signature" | The E22/E23 refutation narrowed "structurally unreachable / any family" to "a coupling within swept ranges"; flagged fc_z/wc_z as **soft** axes (2-point ranges, sectional-drift confound) |
-| **i09** | Is that ED1 coupling real, or an artifact of the morphology model? | E25 (decoupled-ED1 generator, multi-seed), E26 (word-length variance) | **[C, walk-back]** the coupling was **largely an artifact**: with ED1 an independent knob (larger character space, then length variance), a positional + skewed-type-lexicon generator reproduces the distributional hard axes together to within a ~0.03 residual (+ a fixable length-construction artifact). **The distributional signature does not, by itself, discriminate the generating mechanism** | The pipeline **over-read its own i08 negative and then caught it** — the rarer direction of self-correction |
+| **i09** | Is that ED1 coupling real, or an artifact of the morphology model? | E25 (decoupled-ED1 generator, multi-seed), E26 (word-length variance) | **[C, retraction — not reversal]** the i08 gross incompatibility was **largely a morphology-parameterisation artifact**: freeing ED1 (larger character space, then length variance) collapses it to a single shallow *coupled* entropy↔connectivity↔length frontier a generator approaches within ~0.03–0.05 on **4/6** hard axes — but **no config reproduces the full set**. So *within this family* the hard axes under-determine the sub-mechanism; the signature still excludes ciphers (i06) | The pipeline **over-read its own i08 negative, corrected it, then a refutation of the walk-back corrected the correction** — self-correction in both directions |
 
 ## The evidence ledger (current standing)
 
@@ -40,8 +40,9 @@ conclusions — including ones asserted by its own code, and, in i09, one of its
 - **Excluded [B, negative]:** the **cipher-of-real-prose** class (i06).
 - **Underdetermined:** whether the structure carries *meaning* (E9 shows *why* it is hard —
   structure statistics are not meaning detectors); the root↔leaf visual bundle
-  (unresolved-underpowered); the specific generating mechanism (i09 — the distributional
-  signature does not pin it down).
+  (unresolved-underpowered); the specific generating mechanism (i09 — *within* the favoured
+  positional/type-lexicon family the hard axes under-determine the sub-mechanism; across
+  classes the signature still discriminates, e.g. it excludes ciphers).
 - **The load-bearing constraints** are therefore the **cipher-class exclusion** and the
   **qualitative character/morphology structure**, *not* a joint-distribution barrier.
 
@@ -53,7 +54,8 @@ conclusions — including ones asserted by its own code, and, in i09, one of its
 | v2 | 2026-07-14 | + i05 | Mid-level linguistic program; null-correction framework |
 | v3 | 2026-07-15 | + i06 | Cipher-of-real-prose class excluded; ~12% missing folios |
 | v4 | 2026-07-15 | + i07–i08 | Favoured generative class characterised and (apparently) constrained; E22/E23 refutation corrections |
-| v5 | 2026-07-16 | + i09 | **Walk-back:** the apparent generative constraint dissolves; the signature does not discriminate the mechanism |
+| v5 | 2026-07-16 | + i09 | Walk-back of the i08 generative negative (later found over-stated) |
+| v5b | 2026-07-16 | (v5 corrected) | **Honest middle:** a *retraction* of i08's hard constraint, not "no constraint"; within-family under-determination only, signature still excludes ciphers |
 
 ## Methodological headline (the transferable contribution)
 

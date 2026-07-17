@@ -66,3 +66,20 @@ constraints stay the i06 cipher exclusion + qualitative character/morphology str
 Abstract, Discussion, methodology (adds the over-read-negative-then-walked-back episode),
 Limitations, Future Work all updated; "nine iterations". Grade C throughout; soft
 fc_z/wc_z not counted; L7. Compiles clean (10pp, 0 undefined cites, 0 overfull).
+
+## v5b — 2026-07-16 (wording correction of v5, per clean-context refutation)
+A refutation of v5 found the deflation directionally right but its headline over-stated.
+Corrected throughout to the "honest middle": a RETRACTION of i08's hard constraint, NOT a
+promotion to "no constraint." Fixes: (1) drop "reproduces ALL hard axes to within ~0.03" —
+NO single config matches all axes in either experiment (E25 0/48, ceiling 4/5; E26 0/48,
+ceiling 4/6, none at 5/6); the showcase config has TWO misses (h2 ~0.03 AND mean-length
+~1.25), and "ED1 co-occurs with ΔI/TTR/Zipf" is a cross-config composite. (2) narrow "the
+signature doesn't discriminate the mechanism" → "within this one generative family the hard
+axes under-determine the sub-mechanism" and re-assert that the signature DOES discriminate
+across classes (§4.6 cipher exclusion). (3) delete "fitting is easy/near-vacuous" —
+contradicted by the 0% basin (fitting was hard and incomplete). (4) disclose the
+scoring-method shift (single-seed hard → lenient multi-seed CI-overlap, not applied back to
+i08; ~9–15% of matches median-out-of-band) and that the mean-length "artifact" is an
+untested conjecture possibly = the same entropy/connectivity wall; ED1 target ~0.75 is a
+10k-subsample value vs 0.80 full. Grade C stands for the deflation; the universal-quantifier
+claims are removed. 11pp; compiles clean.

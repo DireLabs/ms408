@@ -189,16 +189,19 @@ def _verdict(r: dict) -> tuple:
     common = (
         f"A-priori grid {r['grid_size']} × {r['k_seeds']} seeds (alphabet "
         f"{r['grid_ranges']['alpha_size']} × spread {r['grid_ranges']['spread']} × word-Zipf "
-        f"{r['grid_ranges']['word_zipf']} × boost {r['grid_ranges']['boost']}). KEY: length "
-        f"variance now brings ED1 fully IN-BAND ({cj['ed1']}) jointly with ΔI/TTR/Zipf — the "
-        f"E25 sticking point (fixed length capped ED1@h2-in-band at "
-        f"{fr['e25_max_ed1_while_h2_in_band']}) is largely gone. The residual is a ~"
-        f"{cj['h2_gap']} near-miss on h2 (h2={cj['h2']} at that point, band {fr['vms_h2_band']}) "
-        f"plus a LENGTH-CONSTRUCTION ARTIFACT (len {cj['len']}: a small alphabet saturates "
-        f"short words so the realised mean skews above the PMF mean of 5 — a fixable "
-        f"construction issue, not a fundamental miss). Best config {b['n_hard']}/6 [{matched}]: "
-        f"h2={m['h2']} ΔI={m['mz_peak_value']} ED1={m['ed1_main_component']} "
-        f"TTR={m['type_token_ratio']} Zipf={m['zipf_slope']} len={m['mean_word_length']}.")
+        f"{r['grid_ranges']['word_zipf']} × boost {r['grid_ranges']['boost']}). Length variance "
+        f"brings ED1 into the VMS band at the best config ({cj['ed1']}) with block-ΔI/TTR/Zipf; "
+        f"the E25 sticking point (fixed length capped ED1@h2-in-band at "
+        f"{fr['e25_max_ed1_while_h2_in_band']}) is largely gone. BUT no single config reaches all "
+        f"six (ceiling {r['ceiling_hard']}/6; {r['n_ge5']} at ≥5/6): at that config the residual "
+        f"is TWO misses — h2 gap ~{cj['h2_gap']} (h2={cj['h2']}, band {fr['vms_h2_band']}) AND "
+        f"mean length {cj['len']} vs band max ~5.13 (CONJECTURED short-word-saturation artifact, "
+        f"UNTESTED and possibly not separable — ED1-in-band configs are confined to the smallest "
+        f"alphabet + widest spread). CI-overlap scoring is lenient (seed min..max touches band) "
+        f"and was not applied to the i08 families, so the E24→E26 comparison is not "
+        f"apples-to-apples. Best config {b['n_hard']}/6 [{matched}]: h2={m['h2']} "
+        f"ΔI={m['mz_peak_value']} ED1={m['ed1_main_component']} TTR={m['type_token_ratio']} "
+        f"Zipf={m['zipf_slope']} len={m['mean_word_length']}.")
     if r["basin_all6"] >= BROAD_BASIN_FRAC:
         return "B", (
             f"FRONTIER CROSSED — the i08 negative is OVERTURNED. A BROAD basin "
@@ -211,22 +214,20 @@ def _verdict(r: dict) -> tuple:
             f"the i06 cipher exclusion and the character/morphology structure). Soft fc_z/wc_z "
             f"not counted; sufficiency of a class, NOT identification (L7). {common}")
     return "C", (
-        f"FRONTIER ALL-BUT-CROSSED — i08 further DEFLATED to a ~{cj['h2_gap']} single-axis "
-        f"near-miss. Word-length variance supplies the connectivity control fixed-length words "
-        f"lacked: ED1 now lands squarely in the VMS band ({cj['ed1']}) together with block-ΔI, "
-        f"lexical reuse and frequency slope (ED1 co-occurs with ΔI/TTR/Zipf), so the E25 "
-        f"entropy↔connectivity tension is largely resolved. No single config matches ALL six "
-        f"hard axes under strict multi-seed CI-overlap (ceiling {r['ceiling_hard']}/6), but the "
-        f"two residual misses are (i) a ~{cj['h2_gap']} overshoot on h2 at the ED1-in-band point "
-        f"and (ii) a mean-length CONSTRUCTION ARTIFACT (small alphabet saturates short words) — "
-        f"neither a fundamental barrier. NET across E25–E26: successive, principled mechanisms "
-        f"(decoupled character space, then length variance) shrank the i08 'coupling' from a "
-        f"gross multi-axis incompatibility to a ~0.03 near-miss on one axis plus a fixable "
-        f"artifact. The honest v5 statement: the VMS hard-axis signature does NOT meaningfully "
-        f"constrain the generative mechanism beyond the per-axis values — the standing "
-        f"constraints are the i06 cipher exclusion and the character/morphology structure, not "
-        f"a joint-signature barrier. (Grade C: not a clean all-6 basin, but a decisive further "
-        f"deflation. Soft fc_z/wc_z not counted; no identification — L7.) {common}")
+        f"RETRACTION OF THE i08 HARD CONSTRAINT — NOT a promotion to 'no constraint' "
+        f"(refutation-corrected). Word-length variance supplies the connectivity control "
+        f"fixed-length words lacked, so the E25 entropy↔connectivity tension is largely resolved "
+        f"and the i08 'gross multi-axis incompatibility' was largely a morphology-parameterisation "
+        f"artifact. NET across E25–E26: freeing connectivity collapses that incompatibility to a "
+        f"single shallow COUPLED entropy↔connectivity↔length frontier a flexible generator "
+        f"approaches within ~0.03–0.05 on 4/6 axes — but NO single config reproduces the full set "
+        f"(incomplete, NOT vacuous), and the last obstruction MOVED (ED1→h2/length) rather than "
+        f"vanished. So WITHIN this one generative family the hard axes under-determine the "
+        f"sub-mechanism; this is NOT a general non-discrimination claim — the same signature still "
+        f"EXCLUDES the cipher-of-real-prose class (i06). The load-bearing constraints stay i06 + "
+        f"the qualitative character/morphology structure, not a joint-signature barrier within "
+        f"the favoured class. (Grade C. Soft fc_z/wc_z not counted; no identification — L7.) "
+        f"{common}")
 
 
 def _render(r: dict) -> str:
