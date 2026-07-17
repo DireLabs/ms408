@@ -119,3 +119,24 @@ motivating hypothesis); §5 adds ML adversarial validation, Mayo severe-testing,
 conjecture; E19b row notes the transposition gap. Refs +mayo2018severe, +perez2022red,
 +rugg2004elegant. 9pp; compiles clean, 0 undefined cites. gelman2013garden + rugg2004elegant
 remain % UNVERIFIED (exact venue/pages) — fix at submission.
+
+## v6 — 2026-07-17 (i06 cipher exclusion RETRACTED; engages concurrent work)
+Folds i11 (E29–E31), which RETRACTS v3–v5b's "cipher-of-real-prose EXCLUDED" headline after
+engaging Michael Greshko's concurrent Naibbe cipher (Cryptologia 2025). §4.6 retitled
+"Ciphers of real prose: word-order-preserving excluded, homophonic NOT":
+- ROBUST (kept, firmed): word-order-preserving ciphers (subst/abjad/nomenclator) carry strong
+  surface syntax the VMS lacks — language-universal, and ~30σ once the measure is DECONFOUNDED
+  from topic drift (E31: within-block null; the VMS weak wc_z is real grammar, 1.98→1.97, not
+  drift; block-bootstrap-with-replacement found INVALID for these measures).
+- RETRACTED: the "entire class" claim leaned on a "retained-ΔI" leg now shown CONFOUNDED
+  (E29) — real word-boundary Latin is IN the VMS ΔI band (0.076); ~82% of Naibbe's ΔI loss is
+  from its RESPACING before the cipher; ΔI collapses under homophony alone with word order
+  fixed. E30 (multi-seed, blocked word-boundary Latin): verbose+homophonic ciphers (≈ Naibbe)
+  scatter at the edge of the joint-signature corner and CANNOT be excluded → the cipher
+  hypothesis is viable, converging with Greshko + Parisel (arXiv:2604.19762).
+Abstract, §4.7 opener, Discussion, methodology (adds "reversed a would-be favourable result
+before it reached the cipher's author"), Limitations, Future Work all updated; "ten
+iterations". Refs +greshko2025naibbe, +parisel2026layered. 11pp; compiles clean, 0 undefined
+cites. NOTE: not yet put through a fresh refutation pass; paper/methods v2 also references the
+(now-narrowed) cipher exclusion and should be updated to cite this retraction as its strongest
+external-facing self-correction example.
