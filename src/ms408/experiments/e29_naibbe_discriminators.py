@@ -35,8 +35,10 @@ from .e21_positional_generator import _vms_band
 ROOT = Path(__file__).resolve().parents[3]
 RESULTS_DIR = ROOT / "results" / "experiments"
 REPORTS_DIR = ROOT / "reports"
-NAIBBE = (ROOT / "data" / "raw" / "naibbe-cipher" / "encrypted"
-          / "nathist_output_ciphertext.txt")
+NAIBBE_DIR = ROOT / "data" / "raw" / "naibbe-cipher"
+NAIBBE = NAIBBE_DIR / "encrypted" / "nathist_output_ciphertext.txt"
+LATIN_WB = NAIBBE_DIR / "input" / "examples" / "nathist_book16.txt"      # word boundaries
+RESPACED = NAIBBE_DIR / "respaced_plaintext" / "nathist_pre_encryption_respaced_plaintext.txt"
 SEED = 408
 N = 10000                            # matched to the VMS band budget
 K = 5                                # block subsamples for generator-side range
@@ -52,6 +54,26 @@ def _block(words: list, n: int, seed: int) -> list:
 
 def _in(v: float, band: list) -> bool:
     return band[0] <= v <= band[1]
+
+
+def _di(words: list) -> tuple:
+    p = profile(words)
+    return round(p["mz_peak_value"], 4), p["mz_peak_scale"]
+
+
+def _homophony_sweep(words: list, hs: tuple, seed: int) -> list:
+    """CONTROL: word order AND boundaries preserved; map each word TYPE to H homophone
+    tokens, drawn per occurrence; measure ΔI. Isolates homophony from word order — if ΔI
+    falls anyway, ΔI is not a clean word-order measure."""
+    types = sorted(set(words))
+    out = []
+    for h in hs:
+        rng = random.Random(seed)
+        homo = {t: [f"{i}_{t}" for i in range(h)] for t in types}
+        stream = [rng.choice(homo[t]) for t in words]
+        di, scale = _di(stream)
+        out.append({"homophones_per_type": h, "dI": di, "scale": scale})
+    return out
 
 
 def run() -> dict:
@@ -89,10 +111,35 @@ def run() -> dict:
 
     # The decisive i06 axes.
     dI_lo = band["mz_peak_value"][0]
+    dI_band = band["mz_peak_value"]
     shuffle_floor = 0.011                      # ref_shuffle ΔI from the harness
     di_collapsed = naibbe["mz_peak_value"] < shuffle_floor
     weak_syntax = naibbe["fc_z"] < 3.0 and naibbe["wc_z"] < 3.0
     reproduces_joint = (hit["h2"] and hit["mz_peak_value"] and weak_syntax)
+
+    # --- REFUTATION CONTROLS (why the ΔI collapse is uninformative) ------------------
+    # (1) ΔI decomposition across Greshko's pipeline stages: is the collapse from the
+    #     CIPHER, or already present in the respaced plaintext / absent in real Latin?
+    latin_di = _di(LATIN_WB.read_text().split()) if LATIN_WB.exists() else (None, None)
+    respaced_di = _di(RESPACED.read_text().split()) if RESPACED.exists() else (None, None)
+    decomposition = {
+        "word_boundary_latin": {"dI": latin_di[0], "scale": latin_di[1],
+                                "in_vms_band": bool(latin_di[0] is not None
+                                                    and _in(latin_di[0], dI_band))},
+        "respaced_fragments_pre_cipher": {"dI": respaced_di[0], "scale": respaced_di[1]},
+        "ciphertext": {"dI": naibbe["mz_peak_value"]},
+    }
+    # (2) homophony sweep: word order + boundaries FIXED, ΔI vs homophones/type.
+    sweep = (_homophony_sweep(LATIN_WB.read_text().split(), (1, 2, 4, 8, 16, 18, 32), SEED)
+             if LATIN_WB.exists() else [])
+    sweep_H1_in_band = bool(sweep and _in(sweep[0]["dI"], dI_band))
+    sweep_collapses_with_order_fixed = bool(sweep and sweep[-1]["dI"] < dI_band[0])
+    dI_confounded = sweep_H1_in_band and sweep_collapses_with_order_fixed
+    # Attribute the collapse: how much is respacing vs the cipher itself?
+    respacing_share = None
+    if latin_di[0] and respaced_di[0] is not None:
+        total = latin_di[0] - naibbe["mz_peak_value"]
+        respacing_share = round((latin_di[0] - respaced_di[0]) / total, 3) if total else None
 
     results = {
         "built_at": datetime.now(UTC).isoformat(timespec="seconds"),
@@ -115,6 +162,10 @@ def run() -> dict:
         "weak_syntax": bool(weak_syntax),
         "reproduces_vms_joint_signature": bool(reproduces_joint),
         "vms_dI_band_floor": dI_lo,
+        "dI_decomposition": decomposition,
+        "respacing_share_of_dI_loss": respacing_share,
+        "homophony_sweep_order_fixed": sweep,
+        "dI_confounded_by_homophony": dI_confounded,
     }
     results["grade"], results["verdict"] = _verdict(results)
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -137,37 +188,41 @@ def _verdict(r: dict) -> tuple:
         f"{n['zipf_slope']} (VMS {r['vms_band']['zipf_slope']}), TTR {n['type_token_ratio']}, "
         f"len {n['mean_word_length']}, fc_z {n['fc_z']}, wc_z {n['wc_z']} (VMS wc_z "
         f"{r['vms_band']['wc_z']}). {r['n_axes_in_band']}/8 axes in the VMS band.")
+    dec = r["dI_decomposition"]
+    lat = dec["word_boundary_latin"]
+    sw = r["homophony_sweep_order_fixed"]
     if r["reproduces_vms_joint_signature"]:
         return "B", (
             f"i06 EXCLUSION FALSIFIED (report immediately). The Naibbe cipher of real prose "
-            f"DOES reproduce the VMS's joint signature — low h2, RETAINED ΔI, and weak "
-            f"word-syntax together. A word-order-preserving/homophonic cipher of Latin matches "
-            f"the discriminators our i06 exclusion said no cipher could. The exclusion must be "
-            f"withdrawn or narrowed. {common} (L7.)")
-    return "B", (
-        f"i06 EXCLUSION CONFIRMED against the strongest real counterexample. Naibbe — the "
-        f"field's newest, hand-constructable, DECIPHERABLE cipher, built to imitate the VMS — "
-        f"matches only {r['n_axes_in_band']}/8 of our tight VMS bands (Zipf in band; h2 "
-        f"{n['h2']}, TTR {n['type_token_ratio']}, length {n['mean_word_length']} just outside), "
-        f"and FAILS DECISIVELY on RETAINED WORD-ORDER INFORMATION: its ΔI has COLLAPSED to "
-        f"{n['mz_peak_value']} (full-text {ft['mz_peak_value']}), BELOW the shuffle floor "
-        f"~{r['dI_shuffle_floor']} and far below the VMS floor {r['vms_dI_band_floor']}. It "
-        f"lands exactly in the 'weak-syntax + collapsed-ΔI' corner i06 predicts for a "
-        f"homophonic cipher (E2 found the same, ΔI 0.013): the homophone draws — PLUS Naibbe's "
-        f"word-RESPACING (the Latin was refragmented into non-word units 'i po mi f er…' before "
-        f"encryption) — decouple the ciphertext from any word-order/block structure, so it "
-        f"cannot reproduce the VMS's retained block-scale ΔI. That respacing is itself the "
-        f"mechanism i06 predicts: to reach weak surface syntax, a cipher of real prose must "
-        f"destroy word structure, which costs it the ΔI the VMS keeps — retained-ΔI and "
-        f"weak-syntax remain mutually exclusive, now against a real cipher. Crucially the "
-        f"exclusion here is carried by the ΔI axis (a robust word-order measure), NOT the soft "
-        f"mid-level fc_z/wc_z — so it does not depend on the contested measures. HONEST "
-        f"CAVEATS: (i) this is ONE cipher (the strongest available); (ii) our '1/8 bands' is "
-        f"stricter than Greshko's 'reproduces many properties' because we use different, "
-        f"tighter statistics — the specific, robust claim is the ΔI failure, not that Naibbe "
-        f"is otherwise a poor VMS match; (iii) Greshko himself concedes 'incomplete "
-        f"replication, esp. Voynich B', which this quantifies. Net: the i06 [B] exclusion "
-        f"survives a constructive existence proof. {common} (Statistical; no decipherment — L7.)")
+            f"DOES reproduce the VMS's joint signature. The exclusion must be withdrawn. "
+            f"{common} (L7.)")
+    return "C", (
+        f"THE NAIBBE ΔI TEST IS UNINFORMATIVE — i06 is NOT confirmed, and the analysis EXPOSES "
+        f"A CONFOUND IN i06's ΔI LEG (refutation-corrected from a first-pass 'CONFIRMED [B]'). "
+        f"First-pass reasoning: Naibbe's ΔI collapses to {n['mz_peak_value']} (full-text "
+        f"{ft['mz_peak_value']}) vs the VMS band {r['vms_band']['mz_peak_value']}, so 'no cipher "
+        f"reproduces retained ΔI' looked confirmed. Two controls kill that reading. "
+        f"(1) DECOMPOSITION across Greshko's pipeline: word-boundary Latin (Pliny) ΔI={lat['dI']} "
+        f"is IN the VMS band ({lat['in_vms_band']}); the RESPACING into non-word fragments drops "
+        f"it to {dec['respaced_fragments_pre_cipher']['dI']} — i.e. ~{r['respacing_share_of_dI_loss']} "
+        f"of the total ΔI loss happens BEFORE the cipher runs — and the homophonic encryption "
+        f"only accounts for the small remainder. The collapse is dominated by a SPACING "
+        f"CONVENTION, not by ciphering. (2) HOMOPHONY SWEEP with word order AND boundaries "
+        f"FIXED: ΔI falls monotonically with homophones/type anyway (H=1 {sw[0]['dI']} in-band → "
+        f"H={sw[-1]['homophones_per_type']} {sw[-1]['dI']} below floor), so ΔI is a homophony / "
+        f"type-token-coupling detector, NOT a clean word-order measure. CONSEQUENCES: (a) faulting "
+        f"Naibbe for low ΔI is circular — real Latin with word boundaries is already IN the VMS "
+        f"band, and Greshko's respacing (not the cipher) removes it; (b) the VMS's own retained "
+        f"ΔI is BLOCK/section structure (our i06/E1/E2), so comparing it to Naibbe's token-level "
+        f"ΔI on an unsectioned stream is not like-for-like; (c) a LOW-homophony or word-boundary-"
+        f"preserving cipher of real prose would sit in the VMS ΔI band. NET: i06's ΔI leg does "
+        f"NOT robustly separate the VMS from ciphers of real prose — the exclusion leans more "
+        f"heavily on the SOFT fc_z/wc_z measures than i06/paper v3–v5b state, and must be walked "
+        f"back accordingly. On our battery Naibbe still matches only {r['n_axes_in_band']}/8 tight "
+        f"bands, but that is a different, weaker claim than 'i06 confirmed'. REQUIRED FOLLOW-UP "
+        f"before any external engagement: encrypt word-boundary Latin (order-preserving) and "
+        f"re-test; measure the glyph-level properties Greshko actually claims. {common} "
+        f"(Statistical; no decipherment — L7.)")
 
 
 def _render(r: dict) -> str:
