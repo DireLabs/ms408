@@ -22,8 +22,23 @@ ledger as E27–. Scopes the [FRAMEWORKS.md](../../synthesis/FRAMEWORKS.md) dire
 | id | probe | priority | state | verdict |
 |---|---|---|---|---|
 | E27 | Symbol quantification (inventory, positional, system-type) | P2 grounding | ✅ done → **[D] descriptive; base-N register shape-EXCLUDED** | VMS paragraph: 37 glyph types, effective alphabet ~15 (small; 15 glyphs cover 95%). Decisive: **positional specialisation 0.74** (mean TV among initial/interior/final glyph distributions) vs base-10 numeral 0.07 / base-16 0.05 (same digits every place) / syllabary 0.51 / alphabet 0.39. So a **positional-NUMERAL sub-type is shape-incompatible** (the VMS uses strongly position-specific glyph sets — templatic, per i09); a non-positional value scheme (tallies / label-values) is untouched → E28. Stable across A/B (0.73/0.76) and labels (0.69). |
-| E28 | Angular/ordinal anchor in circular diagrams | **P1 GATING** | 🔨 building | — |
-| E29 | Digit-slot discriminator + numeral-register controls | P2 (cond. on E28) | ⏳ pending E28 | — |
+| E28 | Angular/ordinal anchor in circular diagrams | **P1 GATING** | ✅ done → **[D] NO robust anchor — register stays D** | Mantel test (angular-distance vs label-edit-distance) on all 12 zodiac rings (hand 4; 999 perms), with a positive control that DOES fire (ordered integers: r=0.24, p=0.001 — test is sensitive). Result: no consistent signal. Combined Mantel p=0.0074 is **driven by a single ring** (f73r p=0.001); dropping it → p=0.11 (n.s.); only 1/12 rings individually p<0.05, mixed sign; length-autocorrelation null (0.388). All 12 rings are the same diagram type, so a real value-encoding would show across them — the lone f73r hit reads as chance (a footnote, not an anchor). |
+| E29 | Digit-slot discriminator + numeral-register controls | P2 (cond. on E28) | ❌ not triggered (E28 null) | — |
+
+## i10 outcome
+
+**The symbols-as-values direction finds NO support and closes at grade D — a clean graded
+negative.** E27 excluded a positional-NUMERAL sub-type on shape (the VMS is strongly
+position-specialised, unlike a base-N system that reuses digits across places). E28 — the
+decipherment-free arithmetic anchor, run on the manuscript's *most number-like* folios (the
+angular-tagged zodiac rings) with a sensitivity-confirmed test — found no robust ordinal
+structure in the labels. So the register hypothesis, though *consistent with* the
+distributional envelope (FRAMEWORKS §2), gains **no positive anchor**; per L7 it cannot be
+elevated above D, exactly as the honest prior predicted. The standing constraints remain the
+i06 cipher exclusion and the character/morphology structure, not a value-register reading.
+**Footnote lead (not pursued):** f73r alone shows adjacent-label similarity (Mantel r=0.24,
+p=0.001) — a lone idiosyncrasy someone could probe, but not reproduced across the other 11
+rings. i10 closes unless a materially different anchor (or folio class) is proposed.
 
 ## Exploratory grounding (to be formalised by E27 — NOT firewall-committed)
 
