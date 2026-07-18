@@ -156,3 +156,13 @@ with a tension on the generator question", ref de-UNVERIFIED; (7) methodology bo
 "before it reached the cipher's author" → "our own first-pass error, caught by the refutation
 pass"); (8) ΔI leg noted retired "as applied", block-scale like-for-like untested. 12pp; compiles
 clean, 0 undefined cites.
+
+## methods/v3 — 2026-07-17 (adds the i06/Naibbe external-facing self-correction)
+Adds the strongest self-correction example to the methods paper: engaging Greshko's
+concurrently-published Naibbe cipher, the refutation pass reversed a first-pass result that
+FLATTERED the program's prior "cipher-of-real-prose excluded" conclusion (the confirming ΔI
+statistic was a respacing/homophony artifact), forcing the retraction; and a further pass caught
+a recalled, unsourced "~30σ" in the retraction write-up (true 6.8–8.0σ) — the firewall catching
+its own violation. New Table-1 row (External-facing + recall error), a §4 narrative paragraph,
+an abstract clause, counts → "eleven iterations / over a dozen". Ref +greshko2025naibbe. 9pp;
+compiles clean, 0 undefined cites. v2 preserved immutable.
