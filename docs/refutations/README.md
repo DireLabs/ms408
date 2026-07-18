@@ -40,3 +40,5 @@ refuter. Cross-vendor / human refutation remains the stronger check where stakes
 | `2026-07-15-e22-e23-genericity-reuse.md` | E22/E23 "structurally unreachable" | narrowed to "coupling within swept ranges" |
 | `2026-07-16-e25-e26-v5-deflation.md` | v5 "reproduces all axes / signature doesn't constrain mechanism" | narrowed to "retraction, not reversal" → v5b |
 | `2026-07-17-methods-paper.md` | the methods paper's inferential framing | record accurate; framing over-claims → v2 |
+| `2026-07-17-e29-naibbe.md` | E29 "i06 confirmed against Naibbe" | ΔI test confounded → C; i06 ΔI leg weakened |
+| `2026-07-17-paper-v6.md` | paper v6 i06 retraction | retraction sound; fabricated ~30σ + over-correction → v6b |

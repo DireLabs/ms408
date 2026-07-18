@@ -140,3 +140,19 @@ iterations". Refs +greshko2025naibbe, +parisel2026layered. 11pp; compiles clean,
 cites. NOTE: not yet put through a fresh refutation pass; paper/methods v2 also references the
 (now-narrowed) cipher exclusion and should be updated to cite this retraction as its strongest
 external-facing self-correction example.
+
+## v6b — 2026-07-17 (v6 wording corrected per clean-context refutation)
+A refutation of v6 (archived: docs/refutations/2026-07-17-paper-v6.md) confirmed the i06
+retraction is sound but caught over-claims. Fixes: (1) [L1 firewall] the flagship "~30σ"
+order-preserving separability was FABRICATED — E31 gives 6.8σ (fc) / 8.0σ (wc); corrected in all
+3 places (+ FLAGSHIP). (2) Over-correction: "verbose/homophonic cipher remains VIABLE" → "INCONCLUSIVE
+(neither excluded nor robustly reached; 1 of 64 seed-configs touched all four bands; 1.2σ marginal
+non-separation)". (3) The "the VMS's weak wc_z is real grammar" sub-claim dropped/qualified — its
+subsample CI [-1.44,1.94] crosses zero and an earlier control (E22) reproduced it as sectional
+drift; the exclusion rests on the large gap either way. (4) Two stale pre-retraction sentences
+("cipher of real prose is excluded"; abjad "closes it") corrected. (5) "~82%" qualified as
+text/spacing-specific (book16 vs full-nathist corpus mismatch); (6) Parisel "converge" → "adjacent,
+with a tension on the generator question", ref de-UNVERIFIED; (7) methodology boast reworded (drop
+"before it reached the cipher's author" → "our own first-pass error, caught by the refutation
+pass"); (8) ΔI leg noted retired "as applied", block-scale like-for-like untested. 12pp; compiles
+clean, 0 undefined cites.
