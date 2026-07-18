@@ -1,6 +1,7 @@
 # STATUS.md — i11 Coordination Bus
 
-_Last updated: 2026-07-17 (E29 run + refuted → C; i06 ΔI leg flagged confounded)._
+_Last updated: 2026-07-17 (Tier-0 release engineering: public evaluate() API + bands + docs;
+v6b ledger correction of the ~30σ/grammar slips; E29 run + refuted → C)._
 
 **Inherits:** all locks; standing refutation rule; firewall (L3); harness (L4); L7 absolute;
 L8; **L19 consume-only** (Naibbe raw data in `data/raw/`, gitignored, not redistributed).
@@ -40,3 +41,38 @@ author). E29's data engage the live Naibbe/Parisel debate regardless of the i06 
 - **i11-a** cite/engage Naibbe + Parisel in FLAGSHIP + papers (still required).
 - **i11-b** harden the soft mid-level measures (now the load-bearing leg of the cipher exclusion).
 - **i11-c** E30 — re-examine i06 on cleaner axes (above).
+
+## Correction (2026-07-17, v6→v6b refutation) — read the E31 row with these fixes
+
+The E31 narrative cell above carries two claims the clean-context refutation on paper v6
+overturned; the corrected values (from `results/experiments/e31_harden_syntax.json`) are:
+- **NOT "~30σ".** Order-preserving separability is **6.8σ (fc_local) / 8.0σ (wc_local)**.
+  "~30σ" was a recalled number in no result JSON (an L1 firewall slip) — do not reuse it.
+- **NOT "REAL grammar".** The VMS `wc_local` 90% CI is **[-1.44, 1.94]**, which crosses
+  zero; the point 1.97 is not a grammar claim. The order-preserving exclusion still holds
+  (6–16 vs a CI near zero), but the "weak-positive is real grammar" sub-claim is withdrawn.
+- Honest partition (v6b): order-preserving ciphers robustly excluded; verbose+homophonic
+  (Naibbe-class) **inconclusive** (1/64 seed-configs hit the corner; 1.2σ) — neither excluded
+  nor robustly reached. Paper **v6b** and methods **v3** are the current honest statements.
+
+## Release engineering (2026-07-17) — repo packaged as a public evaluator (Tier 0)
+
+Per the open-source-tool pivot and the release-readiness assessment
+(`docs/RELEASE-READINESS.md`). Decisions locked: name **ms408**, license **Apache-2.0**,
+scope **evaluator + methodology + reproductions**.
+- Public API `ms408.evaluate(tokens)` (`src/ms408/signature.py`) + CLI `python -m ms408`:
+  per-axis {value, band, in_band} with each axis's caveat attached; hard axes {h2, ed1,
+  zipf}; dI flagged confounded (E29) and uncounted; ttr advisory (token-sensitive); fc/wc
+  soft (VMS CIs cross zero). Matching = necessary not sufficient (L7 note in every verdict).
+- Reference bands built firewall-clean by `e32_reference_bands` →
+  `src/ms408/data/reference_bands.json` (committed, shipped). **Subsample-without-
+  replacement** throughout (fixes a real bug: block-bootstrap-with-replacement put the VMS
+  OUTSIDE its own TTR/Zipf band — the duplicate-block bias E31 flagged). Self-consistency:
+  VMS 3/3 hard; raw Latin 0/3.
+- LICENSE + NOTICE (Greshko/ZL attributions, consume-only), README, `docs/METHODOLOGY.md`
+  (refutation as protocol not code), `docs/LIMITS.md`. `anthropic` → optional `vision`
+  extra (core import anthropic-free). Full suite **174 passed**; ruff clean; wheel builds
+  and ships the bands.
+- **Deferred (Tier 1+):** pin discriminator values in tests against acquired data on CI;
+  worked "evaluate the Naibbe cipher" example; reproduce-the-paper `--verify` path; the
+  block-scale like-for-like ΔI test the v6 refuter flagged as the one untested ΔI leg.
