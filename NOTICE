@@ -1,0 +1,21 @@
+MS408 — a reproducible evaluator for Voynich-Manuscript hypotheses
+Copyright 2026 Tim Walsh
+
+Licensed under the Apache License, Version 2.0 (the "License"); see the LICENSE file.
+
+------------------------------------------------------------------------------
+Third-party data (NOT redistributed by this project — consume-only, L19)
+------------------------------------------------------------------------------
+
+This package ships NO third-party corpora. Users fetch reference data at runtime with
+`python -m ms408.acquire`, which pins every source by URL + sha256 with its licensing
+note (see src/ms408/sources.py). Attribution obligations that pass through to users:
+
+  * Voynich EVA transliteration — Zandbergen & Landini (the ZL transliteration).
+  * Naibbe cipher example data — Greshko (2025), "The Naibbe cipher",
+    Cryptologia, doi:10.1080/01611194.2025.2566408; github.com/greshko/naibbe-cipher.
+    Its source licence requires citing Greshko 2025 when the Naibbe data is used.
+
+The only artifact this package ships that is derived from the manuscript is
+`src/ms408/data/reference_bands.json` — aggregate statistical bands (not text),
+produced deterministically by `ms408.experiments.e32_reference_bands`.

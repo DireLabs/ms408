@@ -3,23 +3,35 @@ name = "ms408"
 version = "0.1.0"
 description = "MS408 research program: corpus pipeline, validation harness, statistics"
 requires-python = ">=3.11"
+# Core deps are all the evaluator needs. `anthropic` powers only the optional
+# vision-annotation track (ms408.annotate), so it lives in the `vision` extra — a stranger
+# running `evaluate()` should not have to install it.
 dependencies = [
     "numpy>=1.26",
     "pandas>=2.1",
     "requests>=2.31",
-    "anthropic>=0.116",
-    "Pillow>=11.0",
 ]
 
 [project.optional-dependencies]
+vision = [
+    "anthropic>=0.116",
+    "Pillow>=11.0",
+]
 dev = [
     "pytest>=8.0",
     "ruff>=0.4",
 ]
 
+[project.scripts]
+ms408 = "ms408.__main__:main"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.hatch.build]
+# Ship the committed reference-band artifact inside the wheel (evaluate() loads it).
+artifacts = ["src/ms408/data/reference_bands.json"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ms408"]

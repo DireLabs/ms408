@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "script": "ms408.experiments.e32_reference_bands",
+    "git_commit": "d166fbb5d7808621a8fb3da400eba9e65b26fd90",
+    "built_at": "2026-07-18T00:48:27+00:00",
+    "vms_dataset": "ZL EVA transliteration, Currier A+B, matched token budget",
+    "n_tokens": 10000,
+    "seed": 408,
+    "block": 250,
+    "method": "profile axes = subsample-without-replacement 95% CI (120 reps); syntax axes = subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
+    "params": {
+      "profile_subsample": 120,
+      "syntax_subsample": 40,
+      "keep_frac": 0.75,
+      "n_null": 20,
+      "resample": "subsample-without-replacement (duplicate-safe)"
+    },
+    "caveats": {
+      "dI": "homophony/respacing-confounded (E29); in-band is weak evidence",
+      "syntax_soft": "VMS-side CIs cross zero \u2014 soft axes; see docs/LIMITS.md"
+    }
+  },
+  "vms_point": {
+    "tokens": 10000,
+    "types": 3292,
+    "h2": 2.1822,
+    "dI": 0.1634,
+    "ed1": 0.7509,
+    "zipf": -1.0486,
+    "ttr": 0.3292,
+    "mz_peak_scale": 333,
+    "fc_z_local": -1.54,
+    "wc_z_local": 1.97,
+    "fc_z_global": -1.19,
+    "wc_z_global": 1.98
+  },
+  "axes": {
+    "h2": {
+      "band": [
+        2.1595,
+        2.1972
+      ],
+      "method": "subsample-without-replacement 95% CI (120 reps)",
+      "soft": false,
+      "crosses_zero": false
+    },
+    "dI": {
+      "band": [
+        0.1435,
+        0.178
+      ],
+      "method": "subsample-without-replacement 95% CI (120 reps)",
+      "soft": false,
+      "crosses_zero": false
+    },
+    "ed1": {
+      "band": [
+        0.7374,
+        0.7619
+      ],
+      "method": "subsample-without-replacement 95% CI (120 reps)",
+      "soft": false,
+      "crosses_zero": false
+    },
+    "zipf": {
+      "band": [
+        -1.0673,
+        -1.0358
+      ],
+      "method": "subsample-without-replacement 95% CI (120 reps)",
+      "soft": false,
+      "crosses_zero": false
+    },
+    "ttr": {
+      "band": null,
+      "method": "advisory (token-count-sensitive; not banded)",
+      "soft": false,
+      "token_sensitive": true,
+      "vms_full_point": 0.3292,
+      "vms_subsample_75pct_range": [
+        0.3419,
+        0.3644
+      ]
+    },
+    "fc_z_local": {
+      "band": [
+        -4.51,
+        0.72
+      ],
+      "method": "subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
+      "soft": true,
+      "crosses_zero": true
+    },
+    "wc_z_local": {
+      "band": [
+        -1.23,
+        2.56
+      ],
+      "method": "subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
+      "soft": true,
+      "crosses_zero": true
+    },
+    "fc_z_global": {
+      "band": [
+        -4.65,
+        0.43
+      ],
+      "method": "subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
+      "soft": true,
+      "crosses_zero": true
+    },
+    "wc_z_global": {
+      "band": [
+        -1.07,
+        2.93
+      ],
+      "method": "subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
+      "soft": true,
+      "crosses_zero": true
+    }
+  }
+}

@@ -23,3 +23,13 @@ paper/**/*.fls
 paper/**/*.fdb_latexmk
 paper/**/*.out
 paper/**/*.log
+
+# LaTeX build artifacts
+paper/**/main.pdf
+paper/**/*.aux
+paper/**/*.log
+paper/**/*.out
+paper/**/*.bbl
+paper/**/*.blg
+paper/**/*.fls
+paper/**/*.fdb_latexmk
