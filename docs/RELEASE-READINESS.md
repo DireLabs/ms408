@@ -143,11 +143,18 @@ record (papers §7, TIMELINE) is the demonstration.
   promote `fc_z`/`wc_z`/`vms_bands` into a public `signature.py`; the `evaluate()` entry point +
   CLI with caveats attached; cache the VMS bands as a committed artifact; `METHODOLOGY.md` +
   point to `docs/refutations/`; `LIMITS.md`.
-- **Tier 1 (credible tool):** tests pinning the discriminator numbers; make `anthropic`
-  optional; a worked "evaluate the Naibbe cipher" example; a reproduce-the-paper `--verify`
-  path.
-- **Tier 2 (community-facing):** rename decision; CI; CONTRIBUTING; a short tutorial notebook;
-  register the DOI/arXiv companion (v6b + methods-v3).
+- **Tier 1 (credible tool) — DONE (2026-07-22):** ✅ value-pinning tests
+  (`test_verify.py::test_shipped_bands_are_pinned`, data-free, freezes the exact reported
+  numbers) + reproducibility/example guards; ✅ `anthropic` optional (`vision` extra, done
+  in Tier 0); ✅ worked "evaluate the Naibbe cipher" example (`examples/evaluate_naibbe.py`);
+  ✅ reproduce-our-numbers path (`python -m ms408.verify [--full]`, rebuilds the bands and
+  diffs vs the shipped artifact — bit-for-bit). Pulled forward from Tier 2: ✅ minimal CI
+  (`.github/workflows/ci.yml`, ruff + pytest on 3.11/3.12) so the pinning tests actually
+  guard on push. Note: `--verify` reproduces the EVALUATOR's own bands; full paper-number
+  reproduction remains per-experiment (each `e*` writes its own `results/*.json`).
+- **Tier 2 (community-facing):** rename decision (deferred — kept `ms408`); CONTRIBUTING; a
+  short tutorial notebook; register the DOI/arXiv companion (v6b + methods-v3); the
+  block-scale like-for-like ΔI research test (the one untested ΔI leg).
 
 ## 8. Risks / scope discipline
 - **Don't let the tool over-claim** — the same failure mode we spent ten iterations fighting.

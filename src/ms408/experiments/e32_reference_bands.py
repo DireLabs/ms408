@@ -72,7 +72,9 @@ def _subsample(vms: list, nb: int, frac: float, seed: int) -> list:
             for j in range(i * BLOCK, min((i + 1) * BLOCK, len(vms)))]
 
 
-def run() -> dict:
+def build() -> dict:
+    """Compute the reference-band artifact deterministically. No file IO (reads only the
+    acquired VMS corpus). `run()` writes it; `ms408.verify` rebuilds and compares."""
     vms = _sub(_vms_tokens("A") + _vms_tokens("B"), N_TOKENS)
     nb = len(vms) // BLOCK
 
@@ -135,7 +137,12 @@ def run() -> dict:
         "vms_point": axis_values(vms),
         "axes": axes,
     }
+    return artifact
 
+
+def run() -> dict:
+    """Build the artifact and write it (shipped copy + firewall record)."""
+    artifact = build()
     SHIPPED.parent.mkdir(parents=True, exist_ok=True)
     SHIPPED.write_text(json.dumps(artifact, indent=2) + "\n")
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)

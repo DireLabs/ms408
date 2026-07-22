@@ -72,10 +72,25 @@ Sanity check the discrimination yourself: the manuscript lands in all of its own
 and raw Latin prose (high character entropy, no morphology network) lands in none —
 `tests/test_signature.py` pins both.
 
+**Worked example — a real cipher.** [`examples/evaluate_naibbe.py`](examples/evaluate_naibbe.py)
+runs Greshko's Naibbe cipher (2025) through the evaluator. It lands 0/3 on the hard axes — and
+the example explains why that is *not* exclusion (the `dI` collapse is a respacing artifact on
+a confounded axis; verbose+homophonic ciphers are inconclusive, not excluded). It is the
+sharpest demonstration of the tool's discipline.
+
+**Reproduce the numbers.** The numbers the tool ships are reproducible from committed code:
+
+```bash
+python -m ms408.verify          # recompute the VMS point + check self-consistency
+python -m ms408.verify --full   # also rebuild the reference bands and diff vs the shipped file
+```
+
 ## What's in the box
 
 - `ms408.evaluate` / `ms408.signature` — the public evaluator: `evaluate`, `axis_values`,
   `vms_bands`, `format_verdict`, and the CLI (`python -m ms408`).
+- `ms408.verify` — reproduce-our-numbers self-check (`python -m ms408.verify [--full]`).
+- `examples/` — runnable demos (`evaluate_naibbe.py`).
 - `ms408.harness`, `ms408.experiments.e6/e21–e26` — matched controls: real-language corpora,
   self-citation and Naibbe-style cipher generators, positional/reuse/type-lexicon generators.
 - `ms408.acquire` / `ms408.sources` — pinned, sha256-verified, license-aware data acquisition.
