@@ -96,6 +96,16 @@ the exclusion rests on the large gap either way. The homophonic class is INCONCL
 (1 of 64 seed-configs touched all four bands; neither excluded nor robustly reached). Cite Naibbe + Parisel
 (arXiv:2604.19762) as concurrent work. The exclusion text below is superseded by this banner.
 See [refutations/2026-07-17-e29-naibbe.md](../refutations/2026-07-17-e29-naibbe.md).
+E33 then closed the last untested ΔI question — the **block-scale, like-for-like** ΔI leg
+(matched budget/partitions, no respacing, null-corrected), cast as the (h2, block-ΔI) plane.
+A first pass wrongly found a homophonic cipher *reaching* the VMS corner; the refutation pass
+([refutations/2026-07-22-e33-block-scale-di.md](../refutations/2026-07-22-e33-block-scale-di.md))
+showed that was an artifact of a homophony marker that deflates h2, and under a fair model
+**no config reaches the corner (closest normalized distance 1.36, and only at ~3× the VMS word
+length)** — so the block-scale plane **WEAKLY SEPARATES** verbose+homophonic ciphers. This
+retires the "ΔI leg is dead even at block scale" phrasing but does NOT revive ΔI into a hard
+standalone discriminator (one soft axis, single generative family): the program-level
+homophonic verdict stays **INCONCLUSIVE**, resting on the deconfounded syntax measures (E31).
 
 **i06 update (cryptanalytic direction, E18–E20).** Turning to the decipherment
 question, we asked whether the VMS could be a cipher of a real text — targeting the two

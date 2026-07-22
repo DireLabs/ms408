@@ -114,9 +114,14 @@ given below for each (the v6b paper abstract is 5.1k chars and must be shortened
 These preprints predate two closing results from the release/verification work. Neither
 changes a headline, but a future revision (v7 / methods-v4) should fold them:
 
-- **E33** (this iteration): the block-scale, like-for-like ΔI test — the last untested way
-  the word-order leg could have discriminated — does not cleanly separate verbose+homophonic
-  ciphers, so the "inconclusive" partition is now *closed*, not merely untested.
+- **E33** (this iteration): the block-scale, like-for-like ΔI test — the last untested way the
+  word-order leg could have discriminated. A first pass wrongly found it *reached* the VMS
+  corner; the refutation pass showed that was a homophony-marker artifact, and under a fair
+  model the (h2, block-ΔI) plane **weakly separates** verbose+homophonic ciphers (closest
+  config still misses, and only at 3× the VMS word length). This does NOT revive ΔI into a
+  hard discriminator, so the program-level "inconclusive" cipher disposition (resting on the
+  soft syntax measures) is unchanged — but the "ΔI leg is dead even at block scale" phrasing
+  is retired. A v7 should state the block-scale plane weakly separates.
 - The program shipped as an **open-source evaluator** (`ms408.evaluate`, Apache-2.0); the
   papers can cite the repo as the reproducibility artifact.
 

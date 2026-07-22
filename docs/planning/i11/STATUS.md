@@ -1,7 +1,8 @@
 # STATUS.md — i11 Coordination Bus
 
-_Last updated: 2026-07-17 (Tier-0 release engineering: public evaluate() API + bands + docs;
-v6b ledger correction of the ~30σ/grammar slips; E29 run + refuted → C)._
+_Last updated: 2026-07-22 (E33 block-scale ΔI run + refuted → corrected: block-scale plane
+WEAKLY SEPARATES verbose+homophonic ciphers, "ΔI leg dead" retired; Tier-1/Tier-2 release +
+arXiv bundle. Earlier: Tier-0 API/bands/docs; v6b ledger correction of the ~30σ/grammar slips)._
 
 **Inherits:** all locks; standing refutation rule; firewall (L3); harness (L4); L7 absolute;
 L8; **L19 consume-only** (Naibbe raw data in `data/raw/`, gitignored, not redistributed).
@@ -41,6 +42,8 @@ author). E29's data engage the live Naibbe/Parisel debate regardless of the i06 
 - **i11-a** cite/engage Naibbe + Parisel in FLAGSHIP + papers (still required).
 - **i11-b** harden the soft mid-level measures (now the load-bearing leg of the cipher exclusion).
 - **i11-c** E30 — re-examine i06 on cleaner axes (above).
+- **i11-d** (new, 2026-07-22) re-run E30/E31 with the fair in-alphabet homophony model (the
+  shared `_homoph` marker deflates h2); confirm their "inconclusive" verdict is unchanged.
 
 ## Correction (2026-07-17, v6→v6b refutation) — read the E31 row with these fixes
 
@@ -54,6 +57,18 @@ overturned; the corrected values (from `results/experiments/e31_harden_syntax.js
 - Honest partition (v6b): order-preserving ciphers robustly excluded; verbose+homophonic
   (Naibbe-class) **inconclusive** (1/64 seed-configs hit the corner; 1.2σ) — neither excluded
   nor robustly reached. Paper **v6b** and methods **v3** are the current honest statements.
+
+## E33 (2026-07-22) — the last untested ΔI leg: block-scale, like-for-like
+
+| id | probe | state | verdict |
+|---|---|---|---|
+| E33 | Block-scale like-for-like ΔI on the (h2, block-ΔI) plane | ✅ done + **REFUTED → corrected** | Tests the one untested way the ΔI leg could discriminate (matched budget/partitions, no respacing, null-corrected; sweeps verbose × homophony). **First pass WRONG (direction reversed):** a homophonic cipher "reached" the VMS corner → "ΔI leg dead." The clean-context refutation ([refutations/2026-07-22-e33-block-scale-di.md](../../refutations/2026-07-22-e33-block-scale-di.md)) proved the corner was an artifact of the shared `_homoph` marker (`"{i}#"` prefix deflates h2 ~0.34 bits). **Corrected (fair in-alphabet homophony):** 0 configs reach the corner (closest normalized distance 1.36, and only at ~3× VMS word length) → block-scale ΔI **WEAKLY SEPARATES** verbose+homophonic ciphers. Does NOT revive ΔI to a hard discriminator; program-level homophonic verdict stays INCONCLUSIVE (rests on E31 syntax measures). Grade C. |
+
+**Carried forward (new D-item i11-d):** the defective `_homoph` marker distorts the h2 axis
+wherever E30/E31 compare a verbose+homophonic cipher's h2 to the VMS. Neither's disposition
+depends on that h2 leg (E30 uses h2 as 1 of 4 bands; E31 a single fixed config), but a future
+pass should re-run E30/E31 with the fair homophony model to confirm the "inconclusive"
+verdict is unchanged.
 
 ## Release engineering (2026-07-17) — repo packaged as a public evaluator (Tier 0)
 
