@@ -44,6 +44,8 @@ pip install -e ".[vision]"        # + the optional vision-annotation track (anth
 pip install -e ".[dev]"           # + pytest / ruff
 ```
 
+New here? The [tutorial](docs/TUTORIAL.md) walks through the whole loop end to end.
+
 ## Quickstart — evaluate your own hypothesis
 
 ```bash
@@ -96,10 +98,11 @@ python -m ms408.verify --full   # also rebuild the reference bands and diff vs t
 - `ms408.acquire` / `ms408.sources` — pinned, sha256-verified, license-aware data acquisition.
 - `ms408.experiments.e*` — the firewall studies behind the papers (reproductions, not the
   API); `e32_reference_bands` builds the evaluator's committed reference bands.
-- `docs/` — [`METHODOLOGY.md`](docs/METHODOLOGY.md) (the refutation protocol),
+- `docs/` — [`TUTORIAL.md`](docs/TUTORIAL.md) (end-to-end walkthrough),
+  [`METHODOLOGY.md`](docs/METHODOLOGY.md) (the refutation protocol),
   [`LIMITS.md`](docs/LIMITS.md), the graded synthesis (`synthesis/`),
   [`refutations/`](docs/refutations/) (the archived adversary briefs), and the preprints
-  (`paper/`).
+  (`paper/`). Contributing? See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## The honest record (a feature, not an embarrassment)
 
