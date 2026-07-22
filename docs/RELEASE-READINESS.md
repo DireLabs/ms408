@@ -152,9 +152,14 @@ record (papers §7, TIMELINE) is the demonstration.
   (`.github/workflows/ci.yml`, ruff + pytest on 3.11/3.12) so the pinning tests actually
   guard on push. Note: `--verify` reproduces the EVALUATOR's own bands; full paper-number
   reproduction remains per-experiment (each `e*` writes its own `results/*.json`).
-- **Tier 2 (community-facing):** rename decision (deferred — kept `ms408`); CONTRIBUTING; a
-  short tutorial notebook; register the DOI/arXiv companion (v6b + methods-v3); the
-  block-scale like-for-like ΔI research test (the one untested ΔI leg).
+- **Tier 2 (community-facing) — mostly DONE (2026-07-22):** rename decided (kept `ms408`);
+  ✅ CI hardened (`.github/workflows/ci.yml` — matrix lint+test + wheel-build guard, caching,
+  concurrency); ✅ `CONTRIBUTING.md` (the discipline as contribution rules); ✅
+  `docs/TUTORIAL.md` (markdown, not a notebook — project ethos). **Remaining (need Tim):**
+  (i) register the DOI/arXiv companion (v6b + methods-v3) — a *publishing* action, Tim's call;
+  (ii) the block-scale like-for-like ΔI research experiment — the one untested way the ΔI leg
+  could still discriminate; this reopens the *research* track (needs a refutation pass +
+  grade), not packaging.
 
 ## 8. Risks / scope discipline
 - **Don't let the tool over-claim** — the same failure mode we spent ten iterations fighting.
