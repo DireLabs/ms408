@@ -31,8 +31,9 @@ class TestNormalizers:
 
 @needs_data
 class TestBuild:
+    @staticmethod
     @pytest.fixture(scope="class")
-    def manifest(self, tmp_path_factory):
+    def manifest(tmp_path_factory):
         out = tmp_path_factory.mktemp("h4")
         result = build(out_root=out)
         result["_out"] = out

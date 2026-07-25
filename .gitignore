@@ -15,22 +15,14 @@ results/annotations/*.jsonl
 results/synthesis/*.json
 results/experiments/*.json
 
-# LaTeX build artifacts (keep .tex, .bib, .pdf; drop intermediates)
-paper/**/*.aux
-paper/**/*.bbl
-paper/**/*.blg
-paper/**/*.fls
-paper/**/*.fdb_latexmk
-paper/**/*.out
-paper/**/*.log
-
-# LaTeX build artifacts
+# LaTeX build artifacts — keep .tex/.bib source; PDFs are built on demand
+# (make_arxiv_bundle.sh) or hosted on the site, not committed.
 paper/**/main.pdf
 paper/**/*.aux
-paper/**/*.log
-paper/**/*.out
 paper/**/*.bbl
 paper/**/*.blg
 paper/**/*.fls
 paper/**/*.fdb_latexmk
+paper/**/*.out
+paper/**/*.log
 paper/dist/

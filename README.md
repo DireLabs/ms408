@@ -1,5 +1,17 @@
 # MS408 — a cold, reproducible evaluator for Voynich-Manuscript hypotheses
 
+[![CI](https://github.com/OWNER/ms408/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/ms408/actions/workflows/ci.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+![Python](https://img.shields.io/badge/python-3.11%E2%80%933.13-blue)
+
+> **New here? Pick your path.**
+> - **You study the Voynich Manuscript** (and want to test an idea, or understand what's
+>   been found): start with the [tutorial](docs/TUTORIAL.md), then [`LIMITS.md`](docs/LIMITS.md)
+>   and the [glossary](docs/GLOSSARY.md). You do not need to read the code.
+> - **You're a developer / not a Voynich specialist**: the [glossary](docs/GLOSSARY.md)
+>   defines the domain terms; then the API in `ms408.signature`, [`CONTRIBUTING.md`](CONTRIBUTING.md),
+>   and the reproducibility path (`python -m ms408.verify`).
+
 **What this is.** A firewall-disciplined toolkit and methodology for the computational study
 of the Voynich Manuscript (Beinecke MS 408) and other undeciphered corpora. It does **not**
 propose a solution. It gives you a *rigorous, reproducible way to evaluate* a hypothesis —
@@ -44,7 +56,7 @@ pip install -e ".[vision]"        # + the optional vision-annotation track (anth
 pip install -e ".[dev]"           # + pytest / ruff
 ```
 
-New here? The [tutorial](docs/TUTORIAL.md) walks through the whole loop end to end.
+The [tutorial](docs/TUTORIAL.md) walks through the whole loop end to end.
 
 ## Quickstart — evaluate your own hypothesis
 
@@ -53,6 +65,10 @@ python -m ms408 my_tokens.txt          # whitespace-separated word tokens; print
 python -m ms408 --json my_tokens.txt   # machine-readable verdict
 cat my_tokens.txt | python -m ms408 -  # tokens from stdin
 ```
+
+> `my_tokens.txt` needs **at least ~1,000 word tokens** (the reference bands are built at
+> 10,000; below ~8,000 some axes aren't strictly comparable). Shorter streams are refused
+> with a clear error rather than a misleading verdict — see [`docs/LIMITS.md`](docs/LIMITS.md).
 
 ```python
 from ms408 import evaluate

@@ -1,5 +1,11 @@
 # Release-readiness assessment — MS408 as an open-source evaluator + methodology
 
+> **Historical internal memo (kept for provenance).** This is the assessment that motivated
+> the release; the Tier-0/1/2 work below is now done. The `evaluate()` API sketch in §4 is
+> illustrative and predates the implementation — for the real verdict shape see
+> [`TUTORIAL.md`](TUTORIAL.md), the `ms408.signature` docstrings, and [`GLOSSARY.md`](GLOSSARY.md).
+> The live pre-publication checklist is [`../OSS_RELEASE.md`](../OSS_RELEASE.md).
+
 _Grounded inventory of what is reusable vs. research-scaffolding, the gap between "our
 research pipeline" and "a tool a stranger can run," a proposed public entry point, and a
 tiered work plan. Written 2026-07-17. No timelines (sequencing/scope only)._

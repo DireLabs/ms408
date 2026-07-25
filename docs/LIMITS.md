@@ -6,6 +6,15 @@ landing in-band means your hypothesis is *not excluded*, never that it is the ma
 mechanism. Plausible-looking output is the field's primary failure mode; this tool is
 built to withhold, not to confirm.
 
+## Token budget (a minimum, and a comparability floor)
+
+`evaluate()` **refuses inputs below 1,000 tokens** with a clear error: the MZ word-order
+scan and the mid-level syntax z's are undefined or unstable on short streams, and a tiny
+sample would otherwise crash or — worse — report a confident but meaningless verdict. The
+reference bands are built at **10,000 tokens**; below ~8,000 the axes (especially the
+token-sensitive `ttr`, and the confidence intervals) are not strictly comparable, and the
+verdict carries a `LOW TOKEN BUDGET` note. Evaluate near 10,000 tokens where you can.
+
 ## The single manuscript (n = 1)
 
 The reference bands come from one artifact resampled by subsampling its own blocks. That

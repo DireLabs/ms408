@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this software or its findings, please cite the preprints below."
+title: "MS408 — a firewall-disciplined, self-correcting evaluator for Voynich-Manuscript hypotheses"
+abstract: >-
+  A reproducible computational toolkit and methodology for the Voynich Manuscript
+  (Beinecke MS 408) and other ground-truth-free corpora. It does not propose a
+  decipherment; it provides a cold, deterministic way to evaluate a hypothesis against
+  the manuscript's statistical discriminator bands, with every axis's caveat attached,
+  plus a documented adversarial-refutation protocol.
+type: software
+authors:
+  - family-names: Walsh
+    given-names: Tim
+    affiliation: "DireLabs, LLC"
+license: Apache-2.0
+repository-code: "https://github.com/OWNER/ms408"
+keywords:
+  - Voynich Manuscript
+  - computational philology
+  - reproducible research
+  - adversarial validation
+  - evidence grading
+preferred-citation:
+  type: article
+  title: "Shrinking the Constraint Envelope of the Voynich Manuscript: A Firewall-Disciplined, Self-Correcting Computational Program"
+  authors:
+    - family-names: Walsh
+      given-names: Tim
+  year: 2026
+  notes: "Preprint. DOI to be added on arXiv registration."

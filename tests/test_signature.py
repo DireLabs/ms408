@@ -26,8 +26,9 @@ needs_data = pytest.mark.skipif(
 )
 
 
-def _toy(n: int = 600) -> list:
-    # deterministic pseudo-text with some structure (not meant to match the VMS)
+def _toy(n: int = 1500) -> list:
+    # deterministic pseudo-text with some structure (not meant to match the VMS); n is kept
+    # above MIN_TOKENS so axis_values() does not (correctly) refuse it.
     vocab = [f"w{i}" for i in range(40)]
     return [vocab[(i * 7 + (i // 5)) % len(vocab)] for i in range(n)]
 
@@ -44,6 +45,22 @@ def test_axis_values_deterministic():
 def test_axis_values_rejects_tiny_input():
     with pytest.raises(ValueError):
         axis_values(["only-one"])
+
+
+def test_evaluate_refuses_short_streams_cleanly():
+    """A short stream must raise a clear ValueError, not crash with an internal traceback
+    (regression: the README's own 9-token example used to hit max()/round(None))."""
+    from ms408.signature import MIN_TOKENS
+
+    for n in (9, 50, 700, MIN_TOKENS - 1):
+        with pytest.raises(ValueError, match="at least"):
+            evaluate([f"w{i % 20}" for i in range(n)])
+
+
+def test_evaluate_low_budget_note():
+    """Between MIN_TOKENS and the reference budget it must WORK (no crash) and warn."""
+    v = evaluate(_toy(1500))
+    assert any("LOW TOKEN BUDGET" in n for n in v["notes"])
 
 
 def test_reference_bands_shape():

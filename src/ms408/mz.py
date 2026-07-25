@@ -93,6 +93,8 @@ def scan_scales(tokens: list, part_counts: tuple | None = None) -> list:
 
 def peak(scan: list) -> tuple:
     """(scale_words, parts, delta_bits) at the maximum of a scan."""
+    if not scan:
+        raise ValueError("empty MZ scan (too few tokens for any partition); need more tokens")
     return max(scan, key=lambda row: row[2])
 
 

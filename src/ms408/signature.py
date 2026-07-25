@@ -45,6 +45,9 @@ SEED = 408
 N_NULL = 20          # null replicates per syntax z (matches E31 hardening)
 BLOCK = 250          # within-block local-shuffle block (E31 deconfounding null)
 WEAK_Z = 3.0         # legacy one-sided "weak syntax" reference threshold (E19)
+REFERENCE_TOKENS = 10_000   # the token budget the VMS bands are built at (e32)
+MIN_TOKENS = 1_000   # below this the axes are unreliable / undefined; evaluate() refuses
+LOW_BUDGET_TOKENS = 8_000   # below this, axes (esp. ttr) are not comparable to the bands
 
 # Axes carried by evaluate(), in report order, each with its standing caveat. The caveat
 # text is the honest hedge for that axis; it ships with every verdict.
@@ -96,11 +99,12 @@ def _fc_z(tokens: list, null_fn, seed: int) -> float | None:
     return None if z is None else round(z, 2)
 
 
-def _wc_z(tokens: list, null_fn, seed: int) -> float:
+def _wc_z(tokens: list, null_fn, seed: int) -> float | None:
     obs = _adjacent_class_nmi(tokens, seed)
     nulls = [_adjacent_class_nmi(null_fn(tokens, seed + 1 + i), seed + 1 + i)
              for i in range(N_NULL)]
-    return round(null_z(obs, nulls)["z"], 2)
+    z = null_z(obs, nulls)["z"]
+    return None if z is None else round(z, 2)
 
 
 def _glob(t, s):
@@ -116,9 +120,18 @@ def axis_values(tokens: list, seed: int = SEED) -> dict:
 
     Deterministic given `seed`. The reference-band builder and evaluate() both call this,
     so a user's value and its band are always computed by identical code.
+
+    Refuses inputs below MIN_TOKENS: several axes (the MZ word-order scan, the mid-level
+    syntax z's) are undefined or unstable on short streams, and the bands are built at
+    REFERENCE_TOKENS — so a tiny sample would either crash or, worse, report a confident
+    but meaningless verdict. See docs/LIMITS.md.
     """
-    if len(tokens) < 2:
-        raise ValueError("need at least 2 tokens to evaluate")
+    if len(tokens) < MIN_TOKENS:
+        raise ValueError(
+            f"evaluate needs at least {MIN_TOKENS} word tokens (the reference bands are built "
+            f"at {REFERENCE_TOKENS}); got {len(tokens)}. Short streams leave several axes "
+            f"undefined — see docs/LIMITS.md."
+        )
     p = profile(tokens)
     return {
         "tokens": p["tokens"],
@@ -202,6 +215,12 @@ def evaluate(tokens: list, seed: int = SEED) -> dict:
         f"Reference bands: {bands['meta']['method']} (built at commit "
         f"{bands['meta'].get('git_commit', '?')[:10]}). See docs/LIMITS.md.",
     ]
+    if av["tokens"] < LOW_BUDGET_TOKENS:
+        notes.insert(0, (
+            f"LOW TOKEN BUDGET: {av['tokens']} tokens is well below the reference budget "
+            f"({REFERENCE_TOKENS}); axes (especially ttr and the CIs) are not strictly "
+            f"comparable to the bands. Evaluate near {REFERENCE_TOKENS} tokens where possible."
+        ))
     return {
         "axes": out_axes,
         "hard_axes_in_band": hard_in,
