@@ -166,3 +166,17 @@ a recalled, unsourced "~30σ" in the retraction write-up (true 6.8–8.0σ) — 
 its own violation. New Table-1 row (External-facing + recall error), a §4 narrative paragraph,
 an abstract clause, counts → "eleven iterations / over a dozen". Ref +greshko2025naibbe. 9pp;
 compiles clean, 0 undefined cites. v2 preserved immutable.
+
+## v7 — 2026-07-25 (folds E33 block-scale ΔI + the open-source release)
+Two substantive additions to v6b, both firewall-sourced. (1) §4.6 closes the "block-scale
+like-for-like ΔI untested" open item with E33: on the (h2, block-ΔI) plane, under a fair
+in-alphabet homophony model, NO verbose+homophonic config reaches the manuscript's corner
+(closest normalized distance 1.36, only at ~3× its word length) → the block-scale plane WEAKLY
+SEPARATES the class; it does NOT revive ΔI into a hard discriminator, so the §4.6 class verdict
+(inconclusive) is unchanged. §5 adds the E33 self-correction episode (a first pass found a cipher
+"reaching" the corner → "ΔI leg dead"; refutation traced it to a homophony-marker h2 artifact of
+~0.34 bits, reversing the direction). (2) The Reproducibility section becomes "Reproducibility
+and open-source release": announces the ms408 package (Apache-2.0) — public evaluate() with
+caveats-attached verdicts, the verify reproduce-our-numbers path, the archived refutation briefs,
+and consume-only pinned data acquisition. No headline changes. 12pp; compiles clean, 0 undefined
+cites. v6b preserved immutable.
