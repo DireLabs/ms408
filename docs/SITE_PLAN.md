@@ -56,6 +56,14 @@ surface. The main site consumes it read-only.
   existing `paper/make_arxiv_bundle.sh` / a latex Action, or uploaded as release assets and linked.
 - Link-check + build in CI so a broken doc link fails the build.
 
+## Status
+
+- **Decisions locked (2026-07-25):** Astro · `site/` in this repo · docs+papers first ·
+  community-map deferred to v2.
+- **v1 built:** `site/` Astro project — landing, layered docs (synced from `docs/`), papers,
+  about, cite; `.github/workflows/pages.yml` deploy. Builds clean (10 pages). Remaining to go
+  live: enable Pages in repo settings; replace the `OWNER/ms408` placeholders (`OSS_RELEASE.md`).
+
 ## Decisions to confirm before building
 
 - **D-site-1 — SSG framework** (Astro vs Docusaurus vs MkDocs Material). Shapes everything.

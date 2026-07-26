@@ -42,10 +42,22 @@ clean · `python -m ms408.verify` PASS · `pytest -q` **180 passed** · wheel bu
 - [ ] Decide whether the tracked `results/experiments/e12_openai_annotations.jsonl` (model-rater
   output) should ship — confirm it contains no third-party corpus text (L19). Likely fine as a research record.
 
+## Website (GitHub Pages)
+
+- [x] Astro v1 site under `site/` — landing (researcher/developer fork), layered docs (synced
+  from `docs/`), papers list, about, cite. Builds clean (10 pages). Deploy Action
+  `.github/workflows/pages.yml` (derives base/origin from Pages settings).
+- [ ] **(you) Enable GitHub Pages** for the repo (Settings → Pages → Source: GitHub Actions)
+  so the `pages` workflow can deploy.
+- [ ] v2 (see `docs/SITE_PLAN.md`): blog/news, interactive research timeline, and the separate
+  `ms408-community-map` repo.
+
 ## Open URLs / naming (fill once the GitHub repo exists)
 
 - [ ] **(you) Replace the `OWNER/ms408` placeholder** with the real repo path in: README badges,
-  `CITATION.cff` (`repository-code`), and `.github/ISSUE_TEMPLATE/config.yml`. (Grep `OWNER/ms408`.)
+  `CITATION.cff` (`repository-code`), `.github/ISSUE_TEMPLATE/config.yml`, and the two site
+  defaults (`site/astro.config.mjs`, `site/src/config.ts` — CI overrides these, so only the
+  local-build defaults). (Grep `OWNER/ms408`.)
 - [ ] **(you) Contact line `ti.mims.ms`** looks like a typo of `tim@mims.ms`; it appears in
   `paper/metadata.yaml` and every `paper/**/main.tex` title page. Fix or confirm before publishing.
 - [ ] **(you) DOI:** mint on arXiv/Zenodo registration, then add to `CITATION.cff` and a README badge.
