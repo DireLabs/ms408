@@ -1,0 +1,17 @@
+{
+  "name": "ms408-site",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Public website for the MS408 Voynich evaluator + methodology.",
+  "scripts": {
+    "sync": "node scripts/sync-content.mjs",
+    "dev": "npm run sync && astro dev",
+    "build": "npm run sync && astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "astro": "^5.2.0"
+  }
+}

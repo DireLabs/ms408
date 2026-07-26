@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import { REPO_URL } from '../config';
+const bibtex = `@misc{ms408,
+  author = {Walsh, Tim},
+  title  = {MS408 --- a firewall-disciplined evaluator for Voynich-Manuscript hypotheses},
+  year   = {2026},
+  note   = {Apache-2.0. Preprint DOI to be added.},
+  howpublished = {\\url{${REPO_URL}}}
+}`;
+---
+<Base title="Cite" description="How to cite MS408." active="cite">
+  <h1>Cite</h1>
+  <p class="lede">If you use the toolkit or its findings, please cite the software and the
+    relevant preprint.</p>
+  <p>The repository ships a <a href={`${REPO_URL}/blob/main/CITATION.cff`}><code>CITATION.cff</code></a>,
+    so GitHub's "Cite this repository" works directly. DOIs will be added here on preprint
+    registration.</p>
+  <h2>Software (BibTeX)</h2>
+  <pre><code>{bibtex}</code></pre>
+  <p>Data note: if you use the bundled Naibbe example data, also cite Greshko (2025),
+    <em>The Naibbe cipher</em>, Cryptologia, doi:10.1080/01611194.2025.2566408, per its source
+    licence.</p>
+</Base>

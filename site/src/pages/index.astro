@@ -1,0 +1,58 @@
+---
+import Base from '../layouts/Base.astro';
+import { href, REPO_URL, SITE_TAGLINE } from '../config';
+---
+<Base title={null} description={SITE_TAGLINE} active="home">
+  <h1>A cold, reproducible evaluator for Voynich-Manuscript hypotheses</h1>
+  <p class="lede">
+    It does <strong>not</strong> propose a solution. It gives you a rigorous, reproducible way
+    to evaluate a hypothesis about Beinecke MS&nbsp;408 — "is this a cipher of Latin?", "does my
+    generator reproduce the manuscript?" — and to grade the answer honestly.
+  </p>
+  <div class="badges">
+    <span class="pill">Apache-2.0</span>
+    <span class="pill">firewall-disciplined</span>
+    <span class="pill">necessary, not sufficient</span>
+    <span class="pill">no decipherment claims</span>
+  </div>
+
+  <p>
+    Point it at your hypothesis and it reports, against firewall-computed reference bands, which
+    of the manuscript's statistical properties you actually reproduce — and which you only appear
+    to. It is built to be unimpressed, including by its own authors: the public record includes
+    the toolkit <strong>retracting its authors' own headline result</strong> after a
+    concurrently-published cipher was run through it.
+  </p>
+
+  <h2>Pick your path</h2>
+  <div class="cards">
+    <div class="card">
+      <span class="tag">Researcher</span>
+      <h3>Evaluate an idea</h3>
+      <p>Test a hypothesis and read the verdict honestly — no code required.</p>
+      <p><a href={href('docs/tutorial')}>Tutorial</a> · <a href={href('docs/limits')}>Limits</a>
+        · <a href={href('docs/glossary')}>Glossary</a></p>
+    </div>
+    <div class="card">
+      <span class="tag">Developer</span>
+      <h3>The API &amp; method</h3>
+      <p>The <code>evaluate()</code> surface, the reproducibility contract, the discipline.</p>
+      <p><a href={href('docs/methodology')}>Methodology</a> ·
+        <a href={href('docs/contributing')}>Contributing</a> · <a href={REPO_URL}>Source ↗</a></p>
+    </div>
+  </div>
+
+  <h2>Try it</h2>
+  <pre><code>pip install ms408
+python -m ms408.acquire            # pinned, checksummed reference data (consume-only)
+python -m ms408 my_tokens.txt      # ≥1000 word tokens; prints a per-axis verdict</code></pre>
+  <p class="note">
+    Matching the manuscript is <strong>necessary, not sufficient</strong>: an in-band result
+    means your hypothesis is not excluded, never that it is the mechanism. Every axis ships with
+    its caveat. See <a href={href('docs/limits')}>Limits</a>.
+  </p>
+
+  <h2>Read the work</h2>
+  <p><a href={href('papers')}>Preprints</a> — the constraint-envelope program and the methods
+    paper on adversarial self-correction.</p>
+</Base>

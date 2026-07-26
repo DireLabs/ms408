@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { href } from '../../config';
+const docs = (await getCollection('docs')).sort((a, b) => a.data.order - b.data.order);
+const label = { researcher: 'Researcher', developer: 'Developer', both: 'Everyone' };
+---
+<Base title="Docs" description="Documentation for the MS408 evaluator." active="docs">
+  <h1>Documentation</h1>
+  <p class="lede">Layered from overview to deep-dive. New terms are defined in the
+    <a href={href('docs/glossary')}>glossary</a>.</p>
+  <div class="cards">
+    {docs.map((d) => (
+      <div class="card">
+        <span class="tag">{label[d.data.audience]}</span>
+        <h3><a href={href(`docs/${d.id}`)}>{d.data.title}</a></h3>
+        <p>{d.data.description}</p>
+      </div>
+    ))}
+  </div>
+</Base>

@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import { REPO_URL } from '../../config';
+import papers from '../../data/papers.json';
+---
+<Base title="Papers" description="Preprints from the MS408 program." active="papers">
+  <h1>Papers</h1>
+  <p class="lede">Preprints and drafts. All statistics are firewall-reproducible from the
+    repository. DOIs will appear here on registration.</p>
+  {papers.map((p) => (
+    <article style="border-top:1px solid var(--line);padding:1.4rem 0">
+      <div class="badges">
+        <span class="pill">{p.status}</span>
+        <span class="pill">{p.version}</span>
+        <span class="pill">{p.date}</span>
+      </div>
+      <h2 style="margin-top:0.3rem">{p.title}</h2>
+      <p style="color:var(--muted);margin:0.2rem 0 0.8rem">{p.authors.join(', ')}</p>
+      <p>{p.abstract}</p>
+      {p.note && <p class="note">{p.note}</p>}
+      <p style="font-size:0.9rem">
+        <a href={`${REPO_URL}/tree/main/${p.sourceDir}`}>LaTeX source ↗</a>
+        {p.doi && <> · <a href={`https://doi.org/${p.doi}`}>doi:{p.doi}</a></>}
+      </p>
+    </article>
+  ))}
+  <p class="note" style="margin-top:1.5rem">
+    Built PDFs are produced from source (<code>paper/make_arxiv_bundle.sh</code>) and will be
+    linked here once the papers are posted to a preprint server.
+  </p>
+</Base>

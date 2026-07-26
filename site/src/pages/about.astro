@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import { href, REPO_URL } from '../config';
+---
+<Base title="About" description="What MS408 is and why it exists." active="about">
+  <h1>About</h1>
+  <p class="lede">A firewall-disciplined toolkit and methodology for the computational study of
+    the Voynich Manuscript (Beinecke MS&nbsp;408) and other ground-truth-free corpora.</p>
+
+  <p>Computational Voynich work has a long record of confident, mutually incompatible
+    "solutions," because with no ground truth "it looks like X" is nearly unfalsifiable. This
+    project inverts the order: <strong>validate first, claim second.</strong> Four coupled
+    disciplines make that concrete:</p>
+  <ul>
+    <li><strong>Harness</strong> — every method must separate real language from matched
+      structured-meaningless controls and ciphers before it touches the manuscript.</li>
+    <li><strong>Firewall</strong> — every number comes from deterministic, versioned code;
+      nothing is estimated or recalled.</li>
+    <li><strong>Evidence grading</strong> — every claim carries an A–D grade and never gets
+      upgraded to look stronger.</li>
+    <li><strong>Adversarial refutation</strong> — every strong claim is attacked by an
+      independent clean-context reviewer before it stands.</li>
+  </ul>
+
+  <p>The statistical evaluator is cold and reproducible; the accompanying refutation protocol
+    uses a fallible language model and is a discipline, not an oracle. Read the
+    <a href={href('docs/methodology')}>methodology</a> and the <a href={href('docs/limits')}>limits</a>.</p>
+
+  <p>Everything is open source under Apache-2.0. Source, issues, and contribution guidelines are
+    on <a href={REPO_URL}>GitHub</a>.</p>
+</Base>

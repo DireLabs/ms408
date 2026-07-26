@@ -1,0 +1,6 @@
+# Astro / node
+node_modules/
+dist/
+.astro/
+# Synced content is generated from ../docs at build time — not committed.
+src/content/docs/

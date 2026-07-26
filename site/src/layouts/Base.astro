@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+import { REPO_URL, SITE_TITLE, href } from '../config';
+const { title, description, active } = Astro.props;
+const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
+const nav = [
+  { label: 'Home', path: '', key: 'home' },
+  { label: 'Docs', path: 'docs', key: 'docs' },
+  { label: 'Papers', path: 'papers', key: 'papers' },
+  { label: 'About', path: 'about', key: 'about' },
+  { label: 'Cite', path: 'cite', key: 'cite' },
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    {description && <meta name="description" content={description} />}
+    <meta name="color-scheme" content="light" />
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap">
+        <a class="brand" href={href('')}>MS408</a>
+        <nav>
+          {nav.map((n) => (
+            <a href={href(n.path)} aria-current={active === n.key ? 'page' : undefined}>{n.label}</a>
+          ))}
+          <a href={REPO_URL} rel="noopener">GitHub ↗</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="wrap">
+        <slot />
+      </div>
+    </main>
+    <footer class="site">
+      <div class="wrap">
+        <span>MS408 — {SITE_TITLE}. Apache-2.0. No decipherment or meaning claim.</span>
+        <span><a href={href('cite')}>Cite</a> · <a href={REPO_URL}>Source</a></span>
+      </div>
+    </footer>
+  </body>
+</html>
