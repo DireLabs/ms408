@@ -145,6 +145,29 @@ th { background: #eef1f6; font-family: var(--font-mono); font-weight: 500; font-
 .flag.fiction { color: #6929c4; border-color: #8a3ffc; }
 .flag.popular-explainer { color: var(--accent-ink); border-color: var(--accent); }
 
+/* ---- Research timeline (vertical rail) ---- */
+.tl { position: relative; margin: 1.5rem 0; padding-left: 1.6rem; border-left: 2px solid var(--line-2); }
+.tl-item { position: relative; padding: 0 0 1.6rem 0.4rem; }
+.tl-item::before { content: ""; position: absolute; left: calc(-1.6rem - 0.4rem - 1px); top: 0.35rem;
+  width: 11px; height: 11px; background: var(--panel); border: 2px solid var(--line-strong);
+  border-radius: 50%; }
+.tl-item[data-kind="experiment"]::before { border-color: var(--accent); }
+.tl-item[data-kind="milestone"]::before { border-color: #198038; background: #198038; }
+.tl-item[data-kind="gate"]::before { border-color: #8a3ffc; background: #8a3ffc; }
+.tl-item[data-kind="retraction"]::before { border-color: #da1e28; background: #da1e28; }
+.tl-item[data-kind="iteration"]::before { background: var(--line-strong); }
+.tl-item[data-sc="true"]::after { content: "↺ self-correction"; font-family: var(--font-mono);
+  font-size: 0.64rem; color: #a2191f; letter-spacing: 0.04em; margin-left: 0.5rem; }
+.tl-date { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.03em; }
+.tl-item h3 { margin: 0.1rem 0 0.25rem; font-size: 1.02rem; display: inline; }
+.tl-grade { font-family: var(--font-mono); font-size: 0.66rem; border: 1px solid var(--line-2);
+  padding: 0.02rem 0.32rem; margin-left: 0.4rem; vertical-align: middle; color: var(--muted); }
+.tl-grade[data-g="A"], .tl-grade[data-g="B"] { color: #0e6027; border-color: #198038; }
+.tl-grade[data-g="C"] { color: var(--accent-ink); border-color: var(--accent); }
+.tl-grade[data-g="D"] { color: #a2191f; border-color: #da1e28; }
+.tl-item p { margin: 0.25rem 0 0; font-size: 0.93rem; color: #33383b; max-width: 44rem; }
+.tl-tags { font-family: var(--font-mono); font-size: 0.68rem; color: var(--faint); margin-top: 0.3rem; }
+
 /* ---- Footer ---- */
 footer.site { border-top: 1px solid var(--line-2); color: var(--muted);
   font-family: var(--font-mono); font-size: 0.78rem; padding: 1.6rem 0 3rem; margin-top: 2rem; }

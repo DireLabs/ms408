@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import { href } from '../../config';
+import raw from '../../data/timeline.json';
+
+// sort ascending by date (nulls last), stable
+const entries = [...raw].sort((a, b) => (a.date ?? '9999').localeCompare(b.date ?? '9999'));
+const nSelf = entries.filter((e) => e.self_correction).length;
+const filters = [
+  { key: 'all', label: 'Everything' },
+  { key: 'self', label: `Self-corrections (${nSelf})` },
+  { key: 'experiment', label: 'Experiments' },
+  { key: 'iteration', label: 'Iterations' },
+  { key: 'milestone', label: 'Milestones' },
+  { key: 'gate', label: 'Gates' },
+];
+const fmt = (d) => d ? d : '—';
+---
+<Base title="Research timeline"
+  description="The program's iterations, experiments, gates, and — its signature — the self-corrections where the discipline overturned its own conclusions."
+  active="timeline">
+  <section class="hero">
+    <p class="eyebrow">The record · iterations i01–i11</p>
+    <h1>Research timeline</h1>
+    <p class="lede">
+      Every iteration, experiment, gate, and milestone — and, most tellingly, the
+      <strong>{nSelf} self-corrections</strong> where the refutation pass overturned the
+      program's own conclusions before they stood. The honest record <em>is</em> the method.
+    </p>
+  </section>
+
+  <p class="note">
+    Dots are colored by kind — <span style="color:var(--accent)">● experiment</span>,
+    <span style="color:#198038">● milestone</span>, <span style="color:#8a3ffc">● gate</span>,
+    <span style="color:#da1e28">● retraction</span>. Entries marked
+    <span style="color:#a2191f;font-family:var(--font-mono);font-size:0.8em">↺ self-correction</span>
+    are where a first-pass claim was narrowed, walked back, or retracted. Grades are A–D
+    (<a href={href('docs/glossary')}>glossary</a>). A <em>community</em> research track is
+    planned next — see the <a href={href('')}>repo</a> to contribute.
+  </p>
+
+  <div class="filters" id="tlfilters">
+    {filters.map((f) => (
+      <button data-filter={f.key} aria-pressed={f.key === 'all' ? 'true' : 'false'}>{f.label}</button>
+    ))}
+  </div>
+
+  <div class="tl" id="tl">
+    {entries.map((e) => (
+      <div class="tl-item" data-kind={e.kind} data-sc={String(e.self_correction)}>
+        <div class="tl-date">{fmt(e.date)} · {e.id} · {e.kind}{e.outcome ? ` · ${e.outcome}` : ''}</div>
+        <h3>{e.title}</h3>
+        {e.grade && <span class="tl-grade" data-g={e.grade}>grade {e.grade}</span>}
+        <p>{e.summary}</p>
+        {e.tags?.length > 0 && <div class="tl-tags">{e.tags.join(' · ')}</div>}
+      </div>
+    ))}
+  </div>
+
+  <script is:inline>
+    const tl = document.getElementById('tl');
+    const btns = [...document.querySelectorAll('#tlfilters button')];
+    btns.forEach((btn) => btn.addEventListener('click', () => {
+      const key = btn.dataset.filter;
+      btns.forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+      tl.querySelectorAll('.tl-item').forEach((it) => {
+        const show = key === 'all'
+          || (key === 'self' && it.dataset.sc === 'true')
+          || it.dataset.kind === key;
+        it.style.display = show ? '' : 'none';
+      });
+    }));
+  </script>
+</Base>
