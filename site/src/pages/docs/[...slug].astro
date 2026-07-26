@@ -11,10 +11,11 @@ const { doc } = Astro.props;
 const { Content } = await render(doc);
 ---
 <Base title={doc.data.title} description={doc.data.description} active="docs">
-  <p style="font-size:0.9rem"><a href={href('docs')}>← Docs</a></p>
+  <p class="eyebrow">Docs / {doc.data.audience === 'both' ? 'Everyone' : doc.data.audience}</p>
+  <p style="font-size:0.82rem;font-family:var(--font-mono)"><a href={href('docs')}>← All docs</a></p>
   <h1>{doc.data.title}</h1>
   {doc.data.description && <p class="lede">{doc.data.description}</p>}
-  <article>
+  <article class="prose">
     <Content />
   </article>
   <hr />

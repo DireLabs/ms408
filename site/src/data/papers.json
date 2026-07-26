@@ -7,6 +7,7 @@
     "date": "2026-07-25",
     "status": "preprint",
     "sourceDir": "paper/v7",
+    "pdf": "constraint-envelope.pdf",
     "doi": null,
     "abstract": "A computational program on Beinecke MS 408 whose goal is not decipherment but defensibly shrinking the constraint envelope around what the book is, with every claim carrying an A–D evidence grade. It couples three disciplines — a synthetic ground-truth harness, a firewall (all numbers from deterministic versioned code), and a standing clean-context adversarial refutation pass. It confirms the low-entropy anomaly, a two-system (Currier A/B) structure, strong positional grammar, and dense paradigmatic morphology; finds no lexical label→feature naming and that no statistic localizes meaning; robustly excludes word-order-preserving ciphers while leaving the verbose+homophonic class inconclusive; and reports that, across iterations, the refutation pass repeatedly overturned the program's own conclusions. No translation or real-taxon claim is made.",
     "note": "Supersedes v6b (folds the block-scale ΔI result E33 and the open-source release)."
@@ -19,6 +20,7 @@
     "date": "2026-07-17",
     "status": "preprint",
     "sourceDir": "paper/methods/v3",
+    "pdf": "adversarial-self-correction.pdf",
     "doi": null,
     "abstract": "Computational study of ground-truth-free corpora is unusually prone to plausible-but-wrong conclusions. We describe an operating architecture that couples a synthetic ground-truth harness, a firewall (every reported number produced by deterministic, versioned code — nothing estimated or recalled), and a standing clean-context adversarial refutation pass whose briefs are archived. Over an eleven-iteration program on the Voynich Manuscript, we report a firewall-verified record in which over a dozen first-pass conclusions — several asserted by the program's own analysis code, two of them negatives — were narrowed, withdrawn, or retracted. We offer the architecture, with an adoption checklist, as a disciplined default worth adopting and testing, not a demonstrated cure.",
     "note": "This paper was itself subjected to the same refutation pass."

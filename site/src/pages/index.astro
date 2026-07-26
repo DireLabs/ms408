@@ -3,12 +3,15 @@ import Base from '../layouts/Base.astro';
 import { href, REPO_URL, SITE_TAGLINE } from '../config';
 ---
 <Base title={null} description={SITE_TAGLINE} active="home">
-  <h1>A cold, reproducible evaluator for Voynich-Manuscript hypotheses</h1>
-  <p class="lede">
-    It does <strong>not</strong> propose a solution. It gives you a rigorous, reproducible way
-    to evaluate a hypothesis about Beinecke MS&nbsp;408 — "is this a cipher of Latin?", "does my
-    generator reproduce the manuscript?" — and to grade the answer honestly.
-  </p>
+  <section class="hero">
+    <p class="eyebrow">Beinecke MS 408 · computational analysis</p>
+    <h1>A cold, reproducible evaluator for Voynich-Manuscript hypotheses</h1>
+    <p class="lede">
+      It does <strong>not</strong> propose a solution. It gives you a rigorous, reproducible way
+      to evaluate a hypothesis about Beinecke MS&nbsp;408 — "is this a cipher of Latin?", "does my
+      generator reproduce the manuscript?" — and to grade the answer honestly.
+    </p>
+  </section>
   <div class="badges">
     <span class="pill">Apache-2.0</span>
     <span class="pill">firewall-disciplined</span>
@@ -24,6 +27,7 @@ import { href, REPO_URL, SITE_TAGLINE } from '../config';
     concurrently-published cipher was run through it.
   </p>
 
+  <p class="eyebrow">01 · Start here</p>
   <h2>Pick your path</h2>
   <div class="cards">
     <div class="card">
@@ -42,6 +46,7 @@ import { href, REPO_URL, SITE_TAGLINE } from '../config';
     </div>
   </div>
 
+  <p class="eyebrow">02 · Run it</p>
   <h2>Try it</h2>
   <pre><code>pip install ms408
 python -m ms408.acquire            # pinned, checksummed reference data (consume-only)
@@ -52,7 +57,9 @@ python -m ms408 my_tokens.txt      # ≥1000 word tokens; prints a per-axis verd
     its caveat. See <a href={href('docs/limits')}>Limits</a>.
   </p>
 
-  <h2>Read the work</h2>
+  <p class="eyebrow">03 · Read the work</p>
+  <h2>The research</h2>
   <p><a href={href('papers')}>Preprints</a> — the constraint-envelope program and the methods
-    paper on adversarial self-correction.</p>
+    paper on adversarial self-correction. Every reported number is reproducible from the
+    repository.</p>
 </Base>
