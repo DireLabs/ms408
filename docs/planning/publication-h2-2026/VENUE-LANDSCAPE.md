@@ -23,39 +23,62 @@ free non-OA route). DSH is the tradition-aligned generalist for either (only APC
 
 ## 2. Conferences & workshops (chronological by deadline)
 
-| Deadline | Venue | Event dates / place | Paper | Fit | Confidence |
-|---|---|---|---|---|---|
-| **Aug 3, 2026** | ACL Rolling Review cycle → **EACL 2027** | Athens, Mar 9–14 2027 | **B** (A only if framed as constraint/negative) | Main-track NLP; no anonymity-period (arXiv OK) | [confirmed] |
-| **Aug 14, 2026** | **CHR 2027** (Computational Humanities Research) | Manchester, Jan 6–8 2027; CEUR proceedings | **A** (statistical constraint modeling, foreground uncertainty) | B also | [confirmed] |
-| Sep 4, 2026 | ACL 2027 *workshop-proposal* close (not a paper deadline) | — | — | Trigger to watch SIGTYP/LaTeCH/ALP 2027 CFPs | [confirmed] |
-| **Oct 12, 2026** | ARR cycle → **COLING 2027** | ~Macau, ~May 2027 | A & B | COLING friendly to historical/low-resource/resources | [confirmed] |
-| ~Dec 2026–Jan 2027 | **SIGTYP 2027 / LaTeCH-CLfL 2027 / ALP 2027** (likely @ EACL/NAACL 2027); ARR Dec → NAACL 2027 | spring 2027 | B (SIGTYP/ALP); A or B (LaTeCH) | LaTeCH-CLfL = closest topical fit | [est — CFPs not posted; re-check Oct 2026] |
-| ~early Feb 2027 | **HistoCrypt 2027** (Historical Cryptology); ARR early-2027 → ACL 2027 (Kyoto, Aug 2027) | ~June 2027 | **A** (natural home for a Voynich constraint study) | Regularly hosts undeciphered-manuscript / negative work | [est — 2026 had Feb 6 deadline; expect similar] |
+`[C]` confirmed for this cycle · `[P]` projected from prior cycle / co-located host — do not
+treat a `[P]` date as a milestone until the organizer posts it.
 
-**Closed / out-of-window (reference):** LT4HALA@LREC2026, LREC 2026, SIGTYP@EACL2026,
-LaTeCH-CLfL@EACL2026, LChange'26, NLP4DH@ACL2026, ComputEL-9, LoResMT 2026, CAWL 2026 (scope
-includes "decipherment"), DESCRYPT "Philology Meets AI" (May 2026). ML4AL ran only in 2024.
+| Deadline | Venue | Event / place | Paper | Fit | Conf |
+|---|---|---|---|---|---|
+| **Aug 1, 2026** | **DHd 2027** (German DH) | Mar 1–5 2027, Marburg | A/B | Theme "knowledge, uncertainty, responsibility" ≈ evidence grading; non-extendable | [C] |
+| **Aug 3, 2026** | **ARR Aug cycle → EACL 2027 / ACL 2027** | EACL Mar 9–14 Athens; ACL Aug 17–22 Kyoto | A/B | Nearest CL main-conf; welcomes negative results; one submission → either commit; no arXiv blackout | [C] |
+| **Aug 5, 2026** | REALM @ EMNLP 2026 | Oct 2026, Budapest | B | Evaluation-methodology (agent-flavored) | [C] |
+| **Aug 14, 2026** | **CHR 2027** (Computational Humanities Research) | Jan 6–8 2027, Manchester; peer-reviewed archival | **B** (A) | Best methodology home outside metascience; rewards reproducible/rigorous work | [C] |
+| **Aug 15, 2026** | **AIMOS 2026** (meta-research / open science) | Nov 30–Dec 2 2026, Wellington NZ | **B** | Strongest metascience home for adversarial self-correction / firewall | [C] |
+| **Aug 15, 2026** | RSA 2027 (Renaissance Society) | Mar 11–13 2027, Philadelphia | A | Book-history/materiality framing | [C] |
+| **~late Aug 2026** | Insights from Negative Results in NLP @ EMNLP 2026 | Oct 2026, Budapest | **B** | Highest-fit workshop for the refutation-first ethos | [P — CFP not posted] |
+| **Aug 31, 2026** | **Voynich Manuscript Conference 2026** (U Malta) | Dec 9 2026, online | **A** | **Exact audience; explicitly bars "solutions"** → suits the constraint-envelope framing. ⚠ full-paper slot is accepted-abstract-only and the **abstract deadline (Jun 30) has passed** → email organizers about a late/poster slot | [C] |
+| **Aug 31, 2026** | IMC Leeds 2027 | Jul 5–8 2027, Leeds | A | Theme "Communities" ≈ scribal-hand/dialect; historian audience | [C] |
+| **Sep 4, 2026** | ACL 2027 *workshop-proposal* close (admin, not papers) | notif Oct 2 | — | Gates when 2027 workshop paper-CFPs post — monitor | [C] |
+| **Sep 15, 2026** | ICMS Kalamazoo 2027 | May 13–15 2027, MI | A | Needs an accepted DH/manuscript session; historian audience | [C] |
+| **Oct 12, 2026** | **ARR Oct cycle → NAACL 2027 + COLING 2027** | NAACL Jun SF; COLING May Macau | A/B | One submission → two commits; COLING best big-venue thematic fit | [C] |
+| **Oct 16, 2026** | DHNB 2027 (Nordic/Baltic DH) | Mar 2027, Umeå | A/B | Full-text proceedings + works-in-progress track | [C] |
+| **Nov 15, 2026** | **ICDAR 2027 — IJDAR journal track** | Aug 18–22 2027, Kuala Lumpur | **A** | Highest-rigor doc-analysis fit; depth rewards the harness/statistical-anchor method | [C] |
+| ~early–mid Dec 2026 | DH2027 (ADHO flagship) | Jun 28–Jul 3 2027, Galway | A/B | Field-central DH venue; CFP expected ~Oct 2026 | [P] |
+| ~Dec 2026–Jan 2027 | SIGTYP / **LaTeCH-CLfL** / LoResLM (if @ EACL 2027) | Mar 2027, Athens | A/B | LaTeCH-CLfL = strongest topical CL fit | [P] |
+| ~early Feb 2027 | **HistoCrypt 2027** (Historical Cryptology) | Jun 21–23 2027, Stockholm | **A** | Near-perfect: computational analysis of unsolved historical ciphers + ancient-scripts workshop; CFP ~Oct 2026 | [P — 2026 had Feb 6] |
+
+**Closed / out-of-window (reference):** LT4HALA@LREC2026, LREC 2026 (biennial — **no 2027**),
+SIGTYP/LaTeCH/LChange/LoResMT/NLP4DH/ComputEL/CAWL 2026 editions, DESCRYPT (May 2026). ML4AL ran
+only in 2024. **Corrections:** ICDAR is now **annual** (not biennial); **ICFHR appears dormant**
+(absorbed into ICDAR; DAS/HIP/IWCP are ICDAR workshops, 2027 editions [P] ~May); the ML4AL/ALP/
+SIGTYP/LaTeCH 2027 workshop paper-CFPs are gated behind the Sep 4 2026 ACL workshop-proposal
+round → expect them from Oct 2026.
 
 **ACL mechanics:** *ACL venues take no direct submissions — submit to an **ARR** cycle, then
-*commit* the reviewed paper to a venue. In-window commit routes: EACL 2027 ← Aug 3; COLING 2027
-← Oct 12; NAACL 2027 ← Dec (est); ACL 2027 ← early-2027 (est). Current ACL policy imposes **no
-anonymity/preprint blackout** — arXiv posting is allowed. Double-blind at submission.
+*commit* the reviewed paper. In-window routes: EACL 2027 ← Aug 3; COLING/NAACL 2027 ← Oct 12;
+ACL 2027 ← early-2027 (est). No anonymity/preprint blackout (arXiv OK); double-blind at submission.
 
 ## 3. Dead-zone analysis
 
-- **Cluster (front-loaded):** Aug 3 + Aug 14 2026 — two confirmed, imminent, best-fit slots.
-- **Then Oct 12** (ARR→COLING) — the next comfortable, confirmed window.
-- **Nov 2026:** quiet — a genuine dead zone for *new* submissions (mostly notifications/reviews).
-- **Dec 2026–early Feb 2027:** the estimated workshop cluster (SIGTYP/LaTeCH/ALP) + HistoCrypt,
-  but all **unconfirmed** — CFPs post in fall 2026. This is where most best-fit *conference*
-  homes actually are, so the practical plan is: hit journals (no deadlines) any time, catch
-  Aug/Oct conference slots if ready, and monitor the winter cluster from October.
-- **Journals have no deadlines** → they absorb the conference dead zones; submit when a paper is
-  ready rather than racing a CFP.
+- **Cluster 1 — the "August wall" (Jul 31 – Aug 31 2026):** by far the densest zone — ~10
+  deadlines, including nearly every high-fit venue (DHd, ARR→EACL, CHR, AIMOS, Voynich Conf,
+  IMC, + the projected Insights-NLP workshop). **The calendar is won or lost here;** plan capacity
+  for August.
+- **Cluster 2 — autumn ramp (Sep 15 – Nov 15):** moderate, well-spaced (ICMS, ARR→COLING/NAACL,
+  DHNB, ICDAR-IJDAR) — good for a second submission after the August rush.
+- **Cluster 3 — winter tail (Dec 2026 – early Feb 2027):** DH2027 CFP, EACL-colocated workshops,
+  ICDAR main, HistoCrypt — but **[P]-heavy** (mostly extrapolated, not posted).
+- **Genuine lulls:** late-Sep → early-Oct; mid-Nov → early-Dec. **No *confirmed* deadline exists
+  after ~Nov 15 2026** — every winter target is projected; commit against them only once posted.
+- **Journals have no deadlines** → they absorb the conference dead zones; submit when ready.
 
-## 4. Open augmentation
+## 4. Top conference shortlist (from the broader pass)
 
-A broader research pass (DH2027/ADHO cycle, confirmed HistoCrypt 2027 dates, ICDAR/ICFHR
-document-analysis, medieval-studies congresses, reproducibility/metascience venues) is
-finishing and will be merged here. Treat §2 as CompLing/NLP-complete and DH/crypto/manuscript
-rows as forthcoming.
+1. **Voynich Manuscript Conference 2026** (Paper A) — most on-topic; bars "solutions" (fits us).
+   Access caveat: abstract deadline passed → contact organizers now.
+2. **HistoCrypt 2027** (Paper A) — near-perfect scope; deadline [P] ~early Feb, re-check Oct 2026.
+3. **CHR 2027** (Paper B, also A) — best archival methodology home; **Aug 14 [C], imminent**.
+4. **AIMOS 2026** (Paper B) — strongest metascience venue; **Aug 15 [C]** (Wellington NZ — travel).
+5. **EACL 2027 via ARR** (A or B) — nearest CL main-conf + gateway to the winter workshop slate;
+   **ARR Aug 3 [C]**.
+   Honorable mentions: ICDAR-IJDAR (Nov 15 [C], Paper A); DH2027 Galway (~Dec [P]); the projected
+   LaTeCH-CLfL / SIGTYP workshops (best thematic CL fit, deadlines likely just past the window).

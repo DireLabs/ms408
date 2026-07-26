@@ -31,13 +31,19 @@ hypothesis-shrinking / negative-results / methodology framings.** That is exactl
 
 ## Time-sensitive (as of 2026-07-26)
 
-The 2026 workshop cohort has largely closed; confirmed in-window openings are sparse and
-front-loaded. Two are imminent (feasibility flagged in PATHWAYS):
-- **Aug 3, 2026** — ACL Rolling Review cycle → commit to **EACL 2027** (Paper B main-track). ~1 week out.
-- **Aug 14, 2026** — **CHR 2027** (Computational Humanities Research, Manchester, Jan 2027), Paper A. ~3 weeks out.
-- **Oct 12, 2026** — ARR cycle → **COLING 2027**. The next comfortable window.
-- **Fall 2026 → early 2027** — monitor **HistoCrypt 2027** (natural home for Paper A), **SIGTYP /
-  LaTeCH-CLfL / ALP 2027** (Paper B); CFPs not yet posted — re-check Oct 2026.
+The confirmed in-window openings are front-loaded into an **"August wall"** (~10 deadlines
+Jul 31–Aug 31); after ~Nov 15 every target is *projected*, not posted. The most important, in order:
+- **Aug 3, 2026** — ACL Rolling Review cycle → commit to **EACL 2027** (Paper A or B). ~1 week out.
+- **Aug 14, 2026** — **CHR 2027** (Computational Humanities Research, Manchester, Jan 2027) — best
+  archival methodology home (Paper B, also A). ~3 weeks out.
+- **Aug 15, 2026** — **AIMOS 2026** (meta-research, Wellington NZ) — strongest metascience home for Paper B.
+- **Aug 31, 2026** — **Voynich Manuscript Conference 2026** (U Malta, Dec 9, online) — *the* on-topic
+  venue for Paper A, and it **bars "solutions"** (fits us). ⚠ abstract deadline (Jun 30) has passed →
+  **email the organizers now** about a late/poster slot, or target the next edition.
+- **Oct 12, 2026** — ARR cycle → **COLING 2027 / NAACL 2027**. The next comfortable window.
+- **Nov 15, 2026** — **ICDAR 2027 IJDAR** journal track (Paper A, document analysis).
+- **Fall 2026 → early 2027 (projected)** — monitor **HistoCrypt 2027** (near-perfect for Paper A),
+  **DH2027**, **LaTeCH-CLfL / SIGTYP 2027** (Paper B) — CFPs post from Oct 2026.
 
 ## Status
 
