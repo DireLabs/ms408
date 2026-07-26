@@ -1,0 +1,57 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { href } from '../../config';
+const activities = (await getCollection('activities')).sort((a, b) => a.data.order - b.data.order);
+---
+<Base title="For libraries & educators"
+  description="A friendly welcome and guided activities for libraries, classrooms, and summer programs exploring the Voynich Manuscript."
+  active="library">
+  <section class="hero">
+    <p class="eyebrow">For libraries · classrooms · summer programs</p>
+    <h1>Explore the world's most mysterious book — together</h1>
+    <p class="lede">
+      The Voynich Manuscript is a real 600-year-old book that <strong>nobody can read</strong>.
+      That makes it a wonderful way to teach observation, patterns, codes, and honest
+      reasoning. This is your welcome guide and a set of ready-to-run activities.
+    </p>
+  </section>
+
+  <p class="eyebrow">01 · How to use this site</p>
+  <h2>Finding your way</h2>
+  <ul>
+    <li><strong>Just curious?</strong> Start with the <a href={href('media')}>media corner</a> —
+      documentaries, stories, and (fun but unproven) theories, with honest reality-checks.</li>
+    <li><strong>Running a session?</strong> Use the <a href="#activities">guided activities</a>
+      below — each has ages, timing, materials, and learning goals.</li>
+    <li><strong>Want the real science?</strong> The <a href={href('docs/tutorial')}>docs</a> and
+      <a href={href('papers')}>papers</a> show how researchers actually study the manuscript
+      (older students, or your own curiosity).</li>
+  </ul>
+
+  <p class="eyebrow">02 · What learners take away</p>
+  <h2>Why this is great for programs</h2>
+  <p>Every activity teaches a transferable habit of mind, not Voynich trivia: telling
+    <em>observation</em> from <em>interpretation</em>, spotting patterns, building a code, and —
+    the big one — being honest about <strong>how sure you are</strong>. No prior knowledge
+    needed, for learners or facilitators.</p>
+
+  <p class="eyebrow" id="activities">03 · Guided activities</p>
+  <h2>Ready-to-run activities</h2>
+  <div class="cards">
+    {activities.map((a) => (
+      <div class="card">
+        <span class="tag">Ages {a.data.ages} · {a.data.duration}
+          {!a.data.classroom_tested && <> · <em>pilot</em></>}</span>
+        <h3><a href={href(`library/activities/${a.id}`)}>{a.data.title}</a></h3>
+        <p>{a.data.summary}</p>
+      </div>
+    ))}
+  </div>
+
+  <p class="eyebrow">04 · Contribute</p>
+  <h2>Made your own activity?</h2>
+  <p>If you're an educator and you've run an activity with real learners, we'd love to add it.
+    To keep quality high, submissions are reviewed and must be <strong>tested with a real
+    class or group</strong> first — see <a href={href('library/submit')}>how to submit</a>.</p>
+</Base>

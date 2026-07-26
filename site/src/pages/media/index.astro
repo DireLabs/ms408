@@ -1,0 +1,91 @@
+---
+import Base from '../../layouts/Base.astro';
+import { href } from '../../config';
+import media from '../../data/media.json';
+
+const flagLabel = {
+  'verified-scholarship': 'scholarship',
+  'popular-explainer': 'explainer',
+  'unverified-claim': 'unverified claim',
+  'fiction': 'fiction',
+};
+// filter buttons: by claim posture + a couple of categories
+const filters = [
+  { key: 'all', label: 'Everything' },
+  { key: 'verified-scholarship', label: 'Scholarship', kind: 'flag' },
+  { key: 'reality-check', label: 'Reality checks', kind: 'cat' },
+  { key: 'unverified-claim', label: 'Theories & claims', kind: 'flag' },
+  { key: 'video', label: 'Watch', kind: 'cat' },
+  { key: 'podcast', label: 'Listen', kind: 'cat' },
+  { key: 'fiction', label: 'In fiction & games', kind: 'flag' },
+  { key: 'community', label: 'Explore the manuscript', kind: 'cat' },
+];
+const order = ['community', 'reality-check', 'academic', 'article', 'documentary', 'video',
+  'podcast', 'book', 'fiction', 'game', 'theory'];
+const items = [...media].sort((a, b) => order.indexOf(a.category) - order.indexOf(b.category));
+---
+<Base title="The Voynich in the wild"
+  description="Documentaries, articles, podcasts, games, theories, and reality-checks about the Voynich Manuscript — all sides, honestly flagged."
+  active="media">
+  <section class="hero">
+    <p class="eyebrow">The media corner · explore all sides</p>
+    <h1>The Voynich, in the wild</h1>
+    <p class="lede">
+      A century of fascination has produced documentaries, novels, video games, breathless
+      "we cracked it!" headlines, and patient scholarship. Here's a feed of the lot — the fun,
+      the fringe, and the facts. Every item links out; every claim is flagged.
+    </p>
+  </section>
+
+  <p class="note">
+    <strong>How to read this feed.</strong> A colored edge and a tag tell you what each item is:
+    <span class="flag verified-scholarship">scholarship</span>
+    <span class="flag popular-explainer">explainer</span>
+    <span class="flag unverified-claim">unverified claim</span>
+    <span class="flag fiction">fiction</span>.
+    Enjoy the theories — but remember the honest bottom line: the manuscript is <strong>not
+    solved</strong>. Every "solved!" claim here is paired with a reality-check. See
+    <a href={href('docs/limits')}>what the statistics actually say</a>.
+  </p>
+
+  <div class="filters" id="filters">
+    {filters.map((f) => (
+      <button data-filter={f.key} data-kind={f.kind ?? 'all'} aria-pressed={f.key === 'all' ? 'true' : 'false'}>{f.label}</button>
+    ))}
+  </div>
+
+  <div class="feed" id="feed">
+    {items.map((m) => (
+      <article class="feed-item" data-flag={m.claim_flag ?? ''} data-cat={m.category}>
+        <div class="feed-meta">
+          <span>{m.category}</span>
+          <span>{m.source}</span>
+          {m.year && <span>{m.year}</span>}
+          {m.claim_flag && <span class={`flag ${m.claim_flag}`}>{flagLabel[m.claim_flag]}</span>}
+        </div>
+        <h3><a href={m.url} rel="noopener nofollow" target="_blank">{m.title} ↗</a></h3>
+        <p>{m.note}</p>
+      </article>
+    ))}
+  </div>
+
+  <p style="font-size:0.82rem;color:var(--muted);margin-top:2rem;font-family:var(--font-mono)">
+    Curated links to third-party content; we host none of it. Spotted something to add or fix?
+    Open an issue on <a href={href('')}>the repo</a>.
+  </p>
+
+  <script is:inline>
+    const feed = document.getElementById('feed');
+    const btns = [...document.querySelectorAll('#filters button')];
+    btns.forEach((btn) => btn.addEventListener('click', () => {
+      const key = btn.dataset.filter, kind = btn.dataset.kind;
+      btns.forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+      feed.querySelectorAll('.feed-item').forEach((it) => {
+        const show = key === 'all'
+          || (kind === 'flag' && it.dataset.flag === key)
+          || (kind === 'cat' && it.dataset.cat === key);
+        it.style.display = show ? '' : 'none';
+      });
+    }));
+  </script>
+</Base>

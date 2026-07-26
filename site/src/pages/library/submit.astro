@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import { href, REPO_URL } from '../../config';
+const formUrl = `${REPO_URL}/issues/new?template=activity-submission.yml`;
+---
+<Base title="Submit an activity"
+  description="How educators can contribute a guided activity — reviewed, and required to be tested with real learners first."
+  active="library">
+  <p class="eyebrow">For educators</p>
+  <p style="font-size:0.82rem;font-family:var(--font-mono)"><a href={href('library')}>← Library</a></p>
+  <h1>Submit a guided activity</h1>
+  <p class="lede">We're glad you want to share your work. To keep this a trustworthy resource,
+    submissions are lightly reviewed and must clear two simple bars first.</p>
+
+  <p class="eyebrow">The two requirements</p>
+  <h2>Who and what we accept</h2>
+  <ol>
+    <li><strong>You are an educational practitioner.</strong> A teacher, librarian, museum
+      educator, homeschool educator, tutor, or similar — someone who works with learners.</li>
+    <li><strong>You have run the activity with a real class or group.</strong> Not just an idea:
+      something you've actually tried with learners (even once), so you can tell us how it went
+      and what you'd change.</li>
+  </ol>
+  <p class="note">Why the bars? An open activity library is only useful if it isn't flooded with
+    untested ideas. Requiring real classroom experience keeps the collection honest and
+    genuinely useful — the same "tested before we trust it" discipline the whole project runs on.</p>
+
+  <p class="eyebrow">The process</p>
+  <h2>How it works</h2>
+  <ol>
+    <li><strong>Open the submission form</strong> (a guided GitHub form — no coding needed; you
+      just answer questions). It asks the qualifying questions, then your activity's details.</li>
+    <li><strong>We review</strong> for the two requirements, clarity, and safety/age-appropriateness.</li>
+    <li><strong>We publish</strong> it here with your credit, marked <em>classroom-tested</em>.
+      Prefer to draft the file yourself? You can open a pull request instead
+      (see <a href={`${REPO_URL}/blob/main/CONTRIBUTING.md`}>CONTRIBUTING</a>).</li>
+  </ol>
+
+  <p style="margin:1.6rem 0">
+    <a href={formUrl} class="pill" style="font-size:0.95rem;padding:0.5rem 1rem;background:var(--accent);color:#fff;border:none">
+      Open the submission form ↗</a>
+  </p>
+  <p style="font-size:0.9rem;color:var(--muted)">The form opens a GitHub issue. A free GitHub
+    account is required (it's how we track and discuss submissions). No account?
+    Email us instead — see the repository README.</p>
+</Base>

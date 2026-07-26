@@ -1,0 +1,41 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { href } from '../../../config';
+
+export async function getStaticPaths() {
+  const activities = await getCollection('activities');
+  return activities.map((a) => ({ params: { slug: a.id }, props: { a } }));
+}
+const { a } = Astro.props;
+const { Content } = await render(a);
+const d = a.data;
+---
+<Base title={d.title} description={d.summary} active="library">
+  <p class="eyebrow">Guided activity{d.classroom_tested ? '' : ' · pilot (not yet classroom-tested)'}</p>
+  <p style="font-size:0.82rem;font-family:var(--font-mono)"><a href={href('library')}>← All activities</a></p>
+  <h1>{d.title}</h1>
+  <p class="lede">{d.summary}</p>
+
+  <div class="badges">
+    <span class="pill">Ages {d.ages}</span>
+    <span class="pill">{d.duration}</span>
+    <span class="pill">{d.group}</span>
+    <span class="pill">{d.classroom_tested ? 'classroom-tested' : 'pilot'}</span>
+  </div>
+
+  <table>
+    <tr><th>Materials</th><td>{d.materials.join('; ')}</td></tr>
+    <tr><th>Learning goals</th><td><ul style="margin:0;padding-left:1.1rem">
+      {d.objectives.map((o) => <li>{o}</li>)}</ul></td></tr>
+  </table>
+
+  <article class="prose">
+    <Content />
+  </article>
+  <hr />
+  <p style="font-size:0.85rem;color:var(--muted)">
+    Contributed by {d.contributor}. Have you run this with learners? Improvements welcome via
+    <a href={href('library/submit')}>the submission page</a>.
+  </p>
+</Base>

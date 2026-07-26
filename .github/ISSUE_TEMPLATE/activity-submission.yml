@@ -1,0 +1,91 @@
+name: Guided activity submission
+description: Submit a guided activity for the library/education portal. Educators only; must be classroom-tested.
+title: "[activity] "
+labels: ["activity-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing! Two requirements keep this collection trustworthy:
+        **(1)** you are an educational practitioner, and **(2)** you have run this activity
+        with real learners. Please answer honestly — untested ideas can't be published.
+  - type: dropdown
+    id: practitioner
+    attributes:
+      label: Are you an educational practitioner?
+      description: Required. Roughly — do you work with learners?
+      options:
+        - Teacher (K–12)
+        - Librarian
+        - Museum / informal educator
+        - Homeschool educator
+        - Tutor / after-school
+        - University / college educator
+        - Other educator
+    validations:
+      required: true
+  - type: checkboxes
+    id: qualify
+    attributes:
+      label: Required confirmations
+      options:
+        - label: I have run this activity with a real class or group of learners (at least once).
+          required: true
+        - label: I can describe how it went and what I would change.
+          required: true
+        - label: I agree to license the submitted activity under CC BY 4.0 so others can use it.
+          required: true
+  - type: input
+    id: title
+    attributes:
+      label: Activity title
+    validations:
+      required: true
+  - type: input
+    id: ages
+    attributes:
+      label: Age range
+      placeholder: "e.g. 8–12"
+    validations:
+      required: true
+  - type: input
+    id: duration
+    attributes:
+      label: Duration
+      placeholder: "e.g. 30–45 min"
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: One-paragraph summary
+      description: What learners do and take away.
+    validations:
+      required: true
+  - type: textarea
+    id: objectives
+    attributes:
+      label: Learning goals (one per line)
+    validations:
+      required: true
+  - type: textarea
+    id: materials
+    attributes:
+      label: Materials (one per line)
+  - type: textarea
+    id: steps
+    attributes:
+      label: Step-by-step instructions
+    validations:
+      required: true
+  - type: textarea
+    id: classroom_experience
+    attributes:
+      label: How did it go with real learners?
+      description: The group/setting, what worked, and what you would change. This is how we know it's tested.
+    validations:
+      required: true
+  - type: input
+    id: credit
+    attributes:
+      label: Name / affiliation for credit (optional)

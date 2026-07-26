@@ -121,6 +121,30 @@ th { background: #eef1f6; font-family: var(--font-mono); font-weight: 500; font-
   background: var(--panel); border: 1px solid var(--line-2); color: #444;
   padding: 0.16rem 0.5rem; }
 
+/* ---- Media feed (social-style, distinct from the rest of the site) ---- */
+.filters { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1.2rem 0 1.8rem; }
+.filters button { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.02em;
+  background: var(--panel); border: 1px solid var(--line-2); color: #444; padding: 0.25rem 0.7rem;
+  cursor: pointer; }
+.filters button[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+.feed { display: flex; flex-direction: column; gap: 0.9rem; max-width: 44rem; }
+.feed-item { background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--line-2);
+  padding: 0.9rem 1.1rem; }
+.feed-item[data-flag="verified-scholarship"] { border-left-color: #198038; }   /* green */
+.feed-item[data-flag="unverified-claim"] { border-left-color: #da1e28; }         /* red */
+.feed-item[data-flag="fiction"] { border-left-color: #8a3ffc; }                  /* purple */
+.feed-item[data-flag="popular-explainer"] { border-left-color: var(--accent); }  /* blue */
+.feed-meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted);
+  display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.3rem; text-transform: uppercase;
+  letter-spacing: 0.04em; }
+.feed-item h3 { margin: 0.1rem 0 0.35rem; font-size: 1.05rem; }
+.feed-item p { margin: 0; font-size: 0.95rem; color: #33383b; max-width: none; }
+.flag { font-family: var(--font-mono); font-size: 0.68rem; padding: 0.08rem 0.4rem; border: 1px solid; }
+.flag.verified-scholarship { color: #0e6027; border-color: #198038; }
+.flag.unverified-claim { color: #a2191f; border-color: #da1e28; }
+.flag.fiction { color: #6929c4; border-color: #8a3ffc; }
+.flag.popular-explainer { color: var(--accent-ink); border-color: var(--accent); }
+
 /* ---- Footer ---- */
 footer.site { border-top: 1px solid var(--line-2); color: var(--muted);
   font-family: var(--font-mono); font-size: 0.78rem; padding: 1.6rem 0 3rem; margin-top: 2rem; }
