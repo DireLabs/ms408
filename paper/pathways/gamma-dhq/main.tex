@@ -1,0 +1,164 @@
+% gamma-v1 — Paper A adapted for Digital Humanities Quarterly (DHQ).
+% Base content: paper/v7 (firewall-sourced). A DH-framed, epistemology-first sibling of the
+% alpha (TACL) draft — NOT the same manuscript (see the alpha/gamma coordination note in
+% docs/planning/publication-h2-2026/pathways/gamma/v1.md). Article class for portability;
+% DHQ uses an XML authoring workflow at acceptance. Single-blind: author retained.
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{natbib}
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{0.6em}{}
+
+\title{\textbf{What the Statistics Can and Cannot Say About the Voynich Manuscript:\\
+A Firewall-Disciplined, Evidence-Graded Constraint Study}}
+\author{Tim Walsh \\ \small DireLabs, LLC}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent The Voynich Manuscript (Beinecke MS~408) has drawn a century of confident, mutually
+incompatible ``solutions,'' a pattern enabled by a specific epistemic predicament: with no
+ground truth against which to check a reading, ``it looks like language / a cipher / a number
+system'' is nearly unfalsifiable. We take the opposite stance. Rather than claim what the book
+says, we ask, for each interpretable dimension, \emph{how far along it sits}, and we require every
+such claim to carry an explicit A--D evidence grade produced by deterministic, reproducible code.
+We confirm the manuscript's anomalously low character entropy and its two-system (Currier~A/B)
+structure; we show \emph{why} purely distributional statistics cannot localize meaning
+(structured-but-meaningless processes reproduce them); and we turn a mid-level syntactic signature
+into a cryptanalytic discriminator that robustly excludes word-order-preserving ciphers of real
+prose while leaving verbose-homophonic ciphers inconclusive. The contribution is a disciplined way
+to \emph{shrink the space of viable hypotheses} about an undeciphered artifact --- and an honest
+account of where distributional methods stop. We make no decipherment claim.
+\end{abstract}
+
+\section{Introduction: a discipline of not-knowing}
+For more than a century, readers have announced that the Voynich Manuscript is solved --- as
+medieval Latin shorthand, as an artificial language, as Hebrew, as proto-Romance, most recently by
+artificial intelligence --- and each time the wider community has shown the reading does not hold
+\citep{bowern2021linguistics}. This is not merely a run of bad luck. It is the predictable
+consequence of studying an object with \emph{no recoverable ground truth}: when nothing can be
+checked against a key, any sufficiently clever reading ``comes out looking like'' sense, and there
+is no principled way to tell an insight from a coincidence.
+
+This paper adopts the discipline that predicament demands. We do not offer a reading. We treat the
+manuscript as an object to \emph{constrain} --- to ask which broad classes of explanation remain
+consistent with the evidence and which can be set aside --- and we hold ourselves to two rules
+that the field's history of over-claiming motivates: every quantitative claim is produced by
+deterministic, versioned code (so it can be re-run and audited, never merely asserted), and every
+claim wears an explicit grade from A (robust) to D (speculative). The result is not an answer but
+a \emph{smaller, better-defended space of possible answers}, and --- we will argue --- a clearer
+view of exactly where quantitative methods lose their grip.
+
+\section{The manuscript and the evidence}
+MS~408 is an early-fifteenth-century illustrated codex whose script no one can read. We work from
+the standard Zandbergen--Landini transliteration of the text \citep{zandbergen_voynichnu} and
+stratify throughout by the two writing systems Currier identified \citep{currier1976} and by
+scribal hand \citep{fagindavis2020hands}; our measures do not depend on any assumed sound values
+for the glyphs. Two facts bound everything that follows: roughly an eighth of the leaves are lost,
+and the vocabulary does not saturate --- new words keep appearing --- so every count is a lower
+bound on what the complete book contained.
+
+\section{How we know: method as epistemology}
+Our method is mostly a set of rules for not fooling ourselves.
+\begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+  \item \textbf{Validate before claiming.} No measurement is trusted on the manuscript until it
+  can tell real language apart from deliberately \emph{meaningless} imitations --- texts generated
+  to mimic surface structure while carrying no content --- and from ciphers of known texts. A
+  measure that cannot make that distinction on material where we know the answer is not allowed to
+  pronounce on the manuscript, where we do not.
+  \item \textbf{Numbers only from code.} Every figure we report is written by versioned software
+  that records how it was produced. Nothing is estimated from memory or asserted by hand.
+  \item \textbf{Attack every strong claim.} Before a strong finding stands, an independent reader
+  --- given the evidence but not our story about it --- is asked to make the best possible case
+  that we are wrong, and that case is preserved. More than a dozen of our own first conclusions
+  did not survive this step; we report the survivors and the casualties alike.
+  \item \textbf{Grade everything.} Each claim below carries an A--D grade so a reader can see, at a
+  glance, how much weight it can bear.
+\end{itemize}
+
+\section{What the statistics say}
+\textbf{An anomalous, two-system script (grade A/B).} The manuscript's letter-to-letter
+predictability is far higher than any natural-language comparison we tested --- its conditional
+character entropy sits well below that of medieval Latin, Italian, German, or Hebrew. Currier's two
+``languages'' are genuinely distinct as statistical systems, and the writing is built from a dense
+web of near-identical word-forms, more like a paradigm of variations on a theme than an ordinary
+vocabulary. (Exact values and comparisons are given in the appendix; here we keep to what they
+mean.)
+
+\textbf{No measurement localizes meaning (grade C).} The central negative, and the paper's
+epistemic core: across every statistic we can compute, \emph{a deliberately meaningless imitation
+scores as ``meaningful'' at least as strongly as real text does}, and the manuscript itself sits
+at or below both. There is, on our evidence, no quantitative dial that reads out ``this carries
+meaning.'' This is why the honest question is not \emph{what does it say} but \emph{how far along
+each measurable dimension does it sit} --- and it marks the exact boundary past which numbers stop
+being able to help.
+
+\textbf{Not a cipher of ordinary prose --- with one live exception (grade B/C).} If the manuscript
+were a cipher that preserved the word order of some real language, it would inherit that language's
+strong sentence-level grammar. It does not: its word-level syntactic structure is weak, whereas a
+$1{:}1$ substitution, a vowel-dropping abjad, and a nomenclator applied to Latin all show the
+strong structure of their source --- and this holds across typologically diverse languages,
+including a native abjad (Hebrew). Once the comparison is made fairly, the gap is large and stable.
+\emph{So the manuscript is not a word-order-preserving cipher of real prose.} We had first claimed
+more --- that \emph{no} cipher of real prose could fit --- but engaging a
+concurrently-published, hand-built cipher designed to imitate the manuscript
+\citep{greshko2025naibbe} forced us to withdraw the stronger claim: the word-order evidence we had
+leaned on turns out to be confounded by re-spacing and by the use of many interchangeable symbols,
+not a clean signal. A verbose, ``many-symbols-per-letter'' cipher therefore remains a live
+possibility, as does a rule-driven generative process; an independent recent analysis reaches a
+neighbouring, cipher-leaning conclusion \citep{parisel2026layered}.
+
+\section{Where distributional methods stop}
+The payoff of the discipline is not a headline but a boundary. We can say, with graded confidence,
+what the manuscript's statistics are \emph{like}; we can rule out whole families of explanation; and
+we can show that the one question everyone wants answered --- does it mean anything, and if so what
+--- is, on present evidence, \emph{provably underdetermined by the statistics}, because meaningless
+processes reproduce the same numbers. That is a genuinely useful thing to know: it tells future work
+that progress on meaning will have to come from outside the distributional toolkit --- from the
+images, the material object, the historical record --- not from another pass over the character
+counts.
+
+\section{In conversation with manuscript studies}
+Our stance is continuous with the recent turn in computational work on the manuscript that tests
+\emph{structure} without claiming to read the text --- for example, latent-semantic analysis of
+topical coherence \citep{layfield2026lsa} and the broader linguistic synthesis of
+\citet{bowern2021linguistics}, both of which treat the manuscript as something to characterize
+rather than crack. Where earlier computational readings sought a solution, this line asks what can
+be responsibly said without one; we contribute a reproducible, self-auditing way to do so, and a
+tool others can run.
+
+\section{Limitations}
+The evidence is a single manuscript, and an incomplete one, so several findings are
+power-limited; two of our word-level syntactic measures are ``soft'' (their confidence intervals
+cross zero) and we do not lean on them beyond the large cipher-versus-manuscript gap; the
+word-order statistic is confounded as noted; and our analysis is based on one transliteration
+system with a second used only as a spot-check. The grades above reflect these limits honestly.
+
+\section{Conclusion}
+Treating the Voynich Manuscript as an object to constrain rather than to solve turns a century of
+irreproducible ``solutions'' into a set of reproducible, gradeable statements: an anomalous
+two-system script, a meaning that no statistic can localize, and a cipher hypothesis narrowed but
+not closed. The transferable contribution is the discipline itself --- validate before claiming,
+numbers only from code, attack every strong claim, grade everything --- offered to a field that has
+long needed it.
+
+\section*{Data and reproducibility}
+The transliteration is the public Zandbergen--Landini edition; all statistics are produced by
+deterministic, versioned code, and the discriminator tool, its reference data, and the archived
+adversarial-review briefs are released open-source. Numerical appendix and code links accompany the
+article.
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+\end{document}

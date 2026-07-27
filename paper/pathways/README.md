@@ -6,10 +6,14 @@ Paper B) for the pathways in `docs/planning/publication-h2-2026/`. Draft order (
 
 | Dir | Pathway | Paper → venue | Status |
 |---|---|---|---|
-| `alpha-tacl/` | alpha | A → TACL | ✅ v1 drafted (5pp, compiles clean) |
-| `beta-lre/` | beta | B → LRE | ⬜ next |
-| `gamma-dhq/` | gamma | A → DHQ | ⬜ |
-| `delta-*/` | delta | conference fast-path | ⬜ |
+| `alpha-tacl/` | alpha | A → TACL | ✅ v1 drafted (5pp, compiles clean) — anonymized, tool reframed as benchmark |
+| `beta-lre/` | beta | B → LRE | ✅ v1 drafted (5pp) — methods paper reframed around released evaluation resources |
+| `gamma-dhq/` | gamma | A → DHQ | ✅ v1 drafted (4pp) — DH/epistemology-first sibling of alpha (numbers-light) |
+| `delta-conf/` | delta | A → CHR / HistoCrypt / Voynich Conf | ✅ v1 drafted (2pp conference short paper) |
+
+All four v1 drafts compile clean (0 undefined refs/citations). Alpha & gamma both carry Paper A
+to different audiences — see the gamma coordination note (do not dual-submit the *same*
+manuscript; stagger or keep the framings distinct).
 
 ## Discipline notes
 

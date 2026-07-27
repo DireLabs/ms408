@@ -1,0 +1,92 @@
+% delta-v1 — Paper A as a CONFERENCE SHORT PAPER (the fast-path pathway).
+% Base content: paper/v7 (firewall-sourced), compressed to conference length. Aimed at the
+% conference homes for Paper A: CHR 2027 (CEUR), HistoCrypt 2027, and the Voynich Manuscript
+% Conference (poster/short talk). Article class for portability; convert to the target venue's
+% template (CEUR / HistoCrypt) at submission. See docs/planning/.../pathways/delta/v1.md.
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{natbib}
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{0.5em}{}
+
+\title{\textbf{Shrinking the Voynich Hypothesis Space:\\
+A Reproducible Discriminator Battery (short paper)}}
+\author{Tim Walsh \\ \small DireLabs, LLC}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent We present a reproducible, firewall-disciplined statistical characterization of the
+Voynich Manuscript (Beinecke MS~408) that \emph{constrains} rather than solves: a battery of
+substitution-invariant discriminators, each null-corrected, used to exclude classes of
+hypothesis. We confirm the low-entropy anomaly and the Currier~A/B two-system structure, show
+that no statistic localizes meaning, and robustly exclude word-order-preserving ciphers of real
+prose while leaving the verbose-homophonic class inconclusive. Every claim is evidence-graded and
+every number is produced by versioned code; the battery is released as an open tool. No
+decipherment claim is made.
+\end{abstract}
+
+\section{The problem, and a stance}
+The manuscript attracts confident, mutually incompatible ``solutions'' because, with no ground
+truth, ``it looks like language / a cipher / a number system'' is nearly unfalsifiable
+\citep{bowern2021linguistics}. We invert the order: validate first, claim second, and aim to
+\emph{shrink} the space of viable hypotheses rather than pick one. Every claim carries an A--D
+grade; every number is produced by deterministic, versioned code.
+
+\section{Method}
+For a token stream (ZL transliteration \citep{zandbergen_voynichnu}, stratified by Currier
+system) we compute substitution-invariant discriminators: conditional character entropy $h_2$;
+Montemurro--Zanette word-order information $\Delta I$ \citep{montemurro2013keywords};
+edit-distance-1 (ED1) morphology-network share; Zipf slope; and two null-corrected mid-level
+syntax measures (a function/content collocation gap and an adjacent word-class NMI). Each measure
+must first separate real language from matched structured-meaningless controls and from ciphers of
+real prose before it is trusted on the manuscript.
+
+\section{Results}
+\textbf{A low-entropy, two-system script (A/B).} $h_2\approx 2.08$ versus $3.07$--$3.91$ for
+medieval natural-language controls; Currier~A and B are distinct systems; the ED1 morphology main
+component covers $\approx 0.80$ of types.
+
+\textbf{No statistic localizes meaning (C).} Against matched meaningless baselines, a meaningless
+generator out-scores meaningful text on every axis and the manuscript sits at or below both:
+distributional statistics cannot read out meaning, so ``how far along each dimension'' replaces
+``what does it say.''
+
+\textbf{Ciphers of real prose: order-preserving excluded, homophonic inconclusive (B/C).}
+Word-order-preserving ciphers (substitution, abjad, nomenclator) inherit their source's strong
+word-level syntax --- language-universally, including a native abjad --- which the manuscript
+lacks; deconfounded from topic drift, an order-preserving cipher sits $6.8$--$8.0\sigma$ from the
+manuscript, so that class is excluded. We had over-reached to the \emph{entire} cipher-of-real-prose
+class; engaging a concurrent verbose-homophonic cipher \citep{greshko2025naibbe} forced a
+retraction, since the word-order statistic it rested on is confounded by re-spacing and homophony.
+The verbose-homophonic class is therefore inconclusive --- neither excluded nor robustly reached
+--- adjacent to a concurrent cipher-leaning analysis \citep{parisel2026layered}.
+
+\section{A released tool}
+The battery ships as an open package that scores any token stream against the manuscript's
+reference bands and returns each axis's value, band, in/out, and \emph{its caveat} (confounded or
+soft axes flagged and not counted). Matching is \emph{necessary, not sufficient}: it means a
+hypothesis is not excluded, never that it is the mechanism. Bands are built by versioned code and
+reproducible from source.
+
+\section{Conclusion}
+Treating the manuscript as an object to constrain yields reproducible, falsifiable results: a
+low-entropy two-system script whose meaning no statistic localizes, that is not a
+word-order-preserving cipher of real prose, and for which a verbose-homophonic cipher and a
+generative account both remain live. Full treatment and all numbers are in the companion long
+paper and the open repository.
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+\end{document}

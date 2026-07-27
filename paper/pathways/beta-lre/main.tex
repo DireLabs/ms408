@@ -1,0 +1,199 @@
+% beta-v1 — Paper B adapted for Language Resources and Evaluation (Springer).
+% Base content: paper/methods/v3 (firewall-sourced). Article class for portability; convert to
+% the Springer/LRE template at submission. LRE is single-blind, so the author line is retained.
+% Adaptation brief: docs/planning/publication-h2-2026/pathways/beta/v1.md
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{natbib}
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{0.6em}{}
+
+\title{\textbf{Adversarial Self-Correction for Ground-Truth-Free Corpora:\\
+A Harness, Firewall, and Clean-Context Refutation Protocol,\\
+with an Undeciphered-Manuscript Case Study}}
+\author{Tim Walsh \\ \small DireLabs, LLC}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent Computational study of corpora with no ground truth --- undeciphered scripts, lost
+languages, contested authorship --- is unusually prone to plausible-but-wrong conclusions:
+with no key against which to check a reading, ``it comes out looking like language / a cipher /
+a number system'' is nearly unfalsifiable, and the analyst's degrees of freedom are vast. We
+describe, and release as reusable resources, an operating architecture that couples three
+disciplines to blunt this. A synthetic \emph{ground-truth harness} (a suite of matched
+null/meaningless and cipher controls that every method must separate from real language before
+it touches the real object); a \emph{firewall} (every reported number is produced by
+deterministic, versioned code that records its script, commit, inputs, and parameters --- nothing
+is estimated or recalled); and a standing \emph{clean-context adversarial refutation pass} in
+which an independent skeptic, without the original analysis's context, is tasked to build the
+strongest case against each finding, its brief preserved in a versioned archive. We do not claim
+to have \emph{proven} the discipline works --- the evidence is a single program's record with no
+controlled counterfactual --- but over an eleven-iteration program on the Voynich Manuscript
+(Beinecke MS~408) we report a firewall-verified record in which over a dozen first-pass
+conclusions --- several asserted by the program's \emph{own} analysis code, and two of them
+\emph{negatives} --- were narrowed, withdrawn, or retracted. We release the harness controls, the
+reference-band artifact, the evaluation tool, and the refutation archive, and offer the
+architecture with an adoption checklist as a disciplined default for reproducible,
+over-claim-resistant research on unverifiable corpora. Consistent with the method it describes,
+this paper was itself subjected to the refutation pass.
+\end{abstract}
+
+\section{Introduction}
+Evaluation is hard when there is nothing to evaluate against. For a corpus with a recoverable
+answer, a method can be scored on held-out truth; for an undeciphered or otherwise
+ground-truth-free corpus, the community's usual failure mode is a succession of confident,
+mutually incompatible ``solutions,'' each internally plausible and none checkable --- a
+setting in which the well-documented mechanisms of false discovery and analyst degrees of
+freedom \citep{ioannidis2005why,simmons2011false,gelman2013garden} operate with the brakes off. The problem
+is not a shortage of methods but a shortage of \emph{discipline}: unbounded researcher degrees
+of freedom meeting an unfalsifiable target.
+
+This paper contributes an evaluation methodology, and the resources to run it, aimed squarely at
+that setting. The architecture couples a matched-control harness, a computational firewall, and a
+standing adversarial-refutation pass (\S\ref{sec:arch}); we release its reusable components as
+evaluation resources (\S\ref{sec:resources}); we report the worked record of an eleven-iteration
+program that stress-tested it (\S\ref{sec:record}); we situate it against related practice
+(\S\ref{sec:related}); and we give an adoption checklist for applying it to a new corpus
+(\S\ref{sec:adopt}). The Voynich Manuscript is our worked example, but the contribution is the
+transferable protocol and resources, not any claim about the manuscript.
+
+\section{The architecture}
+\label{sec:arch}
+\textbf{The harness.} Every method must first separate \emph{known positives} (real language,
+typologically diverse) from matched \emph{structured-meaningless} controls and from ciphers of
+real prose, on synthetic data, before it is trusted on the real object. The controls are
+generators that reproduce surface structure without carrying meaning --- self-citation /
+auto-copying \citep{timm2020selfcitation}, positional/template and reuse generators, and cipher families (verbose, abjad,
+nomenclator, verbose-homophonic). A measure that cannot tell real language from a meaningless
+generator is not allowed to opine on the corpus. This is what lets a \emph{negative} carry weight.
+
+\textbf{The firewall.} Every reported number is produced by deterministic, versioned code writing
+machine-readable results (fixed seeds; each result records its producing script, commit, input
+dataset, and parameters). Nothing is estimated, recalled, or hand-entered. The rule extends to
+released artifacts: the evaluation tool refuses to run rather than fabricate a reference band if
+its committed band artifact is absent.
+
+\textbf{The clean-context refutation pass.} Before any strong claim stands, it is handed to an
+independent reviewer given the claim, the code, and the data --- but \emph{not} the original
+analyst's narrative or sunk cost --- and tasked to build the strongest possible case
+\emph{against} it. The reviewer's brief is versioned. If it lands, the claim is downgraded,
+narrowed, or retracted, and the correction is preserved. This is a protocol, not a component: it
+runs out-of-band and its honest limits (\S\ref{sec:limits}) matter.
+
+\textbf{Connective tissue.} Every claim carries an A--D evidence grade; decisions not covered by
+prior locks become surfaced ledger items rather than silent judgment calls.
+
+\section{Released evaluation resources}
+\label{sec:resources}
+The architecture is only useful if others can run it, so its components ship as reusable resources
+(open source, permissive license):
+\begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+  \item \textbf{A matched-control generator suite} --- the null/meaningless and cipher generators
+  above, parameterized, usable as a benchmark for calibrating any new discriminator on
+  known-positive vs.\ known-meaningless inputs.
+  \item \textbf{A reference-band artifact} --- the target corpus's statistical bands, built by
+  versioned code (duplicate-safe subsample-without-replacement CIs) and shipped as a checked file
+  with its own provenance (producing script, commit, parameters).
+  \item \textbf{An evaluation entry point} --- scores an arbitrary token stream against the bands
+  and returns, per axis, the value, the band, whether it lands inside, \emph{and the caveat that
+  axis carries}; soft or confounded axes are flagged and not counted, so a verdict cannot be
+  quoted without its hedges. Matching is treated as \emph{necessary, not sufficient}.
+  \item \textbf{A refutation archive} --- the preserved adversary briefs, so ``the refuter caught
+  it'' is dereferenceable rather than operator summary, and a verification path that reproduces
+  the released numbers from source.
+\end{itemize}
+Together these make the methodology executable on a new corpus, not merely described.
+
+\section{The record: an eleven-iteration stress test}
+\label{sec:record}
+We do not claim to have proven the discipline works; the honest evidence is what it did to a real
+program. Over eleven iterations on MS~408, the refutation pass overturned, before publication,
+more than a dozen of the program's own first-pass conclusions. Representative episodes:
+\begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+  \item A ``meaning certificate'' reading of a word-order statistic, and a
+  ``constructed-language best fit,'' both withdrawn once matched meaningless baselines reached the
+  same values.
+  \item A ``needs constructed morphology'' claim refuted by the very abjad control the reviewer
+  demanded; a ``whitening confirms'' claim withdrawn once the covariance was shown
+  ill-conditioned; a set of candidate anchors caught only by a mandatory null control.
+  \item A ``generative class is sufficient'' claim (grade~B) overturned when the refuter showed
+  the generator's constants had been \emph{grid-selected to hit the target's own bands} --- a
+  fitted point mislabelled a-priori --- and its weak-signal test used a threshold a random shuffle
+  also passes; the corrected analysis reduced it to a precise negative, which was then itself
+  \emph{walked back} a step later when a refutation-directed generator showed the alleged
+  obstruction was largely a parameterization artifact --- ``retraction, not reversal.''
+  \item Most tellingly, when a verbose-homophonic cipher designed to imitate the manuscript was
+  published concurrently \citep{greshko2025naibbe}, the program's \emph{own} first-pass read of its ciphertext scored as
+  \emph{confirmation} of a prior cipher-exclusion conclusion --- until the refutation pass showed
+  that read was an artifact of the cipher's respacing and homophony, forcing a retraction of the
+  over-broad exclusion. A \emph{further} pass then caught a recalled, unsourced figure in the
+  retraction write-up itself --- the firewall catching its own violation.
+\end{itemize}
+Two of these episodes show the discipline declining to over-read a \emph{negative} as readily as
+a positive; one shows it curbing its own correction. In the recursive cases the adjudication came
+partly from new experiments, not the refutation pass alone --- which we report rather than smooth
+over.
+
+\section{Relation to existing practice}
+\label{sec:related}
+The architecture recombines familiar ideas for a setting each addresses only partly:
+pre-registration \citep{nosek2018preregistration} (commit before seeing results) constrains
+analyst freedom but cannot catch a confound in an unfalsifiable target; multiverse /
+specification-curve analysis \citep{steegen2016multiverse,simonsohn2020specification} exposes
+researcher degrees of freedom but does not adjudicate meaning; severe testing
+\citep{mayo2018severe} formalizes the demand that a claim survive a genuine attempt to falsify
+it --- which our refutation pass operationalizes with an independent, context-stripped adversary;
+adversarial collaboration \citep{mellers2001adversarial} pits opposing experts but is heavyweight;
+and reproducible-research practice \citep{sandve2013ten} ensures the numbers recompute --- which
+our firewall enforces mechanically. The novel combination is the
+\emph{standing, clean-context, versioned} refutation pass wired to a matched-control harness and
+a firewall, aimed specifically at corpora with no ground truth.
+
+\section{Adoption checklist}
+\label{sec:adopt}
+To apply the protocol to another ground-truth-free corpus: (1) build matched
+known-positive and structured-meaningless controls and require every discriminator to separate
+them first; (2) put all reported numbers behind versioned code writing machine-readable results;
+(3) for each strong claim, run an independent clean-context reviewer tasked to refute it, and
+archive the brief; (4) grade every claim A--D and surface uncovered decisions to a ledger; (5)
+release the controls, the reference bands, and the briefs so the evaluation is reproducible. The
+released resources (\S\ref{sec:resources}) instantiate steps 1--2 and 5 directly.
+
+\section{Limitations and reflexivity}
+\label{sec:limits}
+The evidence is a single program's record with no controlled counterfactual --- we cannot show the
+same program \emph{without} the discipline would have erred more, only that with it, it corrected
+itself in the open. The refuter is context-independent but not model- or operator-independent: in
+our program it was a fresh-context agent of the same model family, spawned by the same operator,
+so cross-vendor or human refutation remains the stronger check where stakes are high; ``survived
+the refutation pass'' means the strongest same-family clean-context attack did not break the
+claim, not that the claim is true. And a discipline that makes over-claiming hard can also make a
+program slow and negative-heavy --- a cost we regard as appropriate for this setting but which is
+real.
+
+\section{Conclusion}
+For corpora where no reading can be checked, the useful contribution is not another candidate
+solution but a disciplined, reproducible way to keep from fooling ourselves. We offer the harness,
+firewall, and clean-context refutation pass --- and the resources to run them --- as a default
+worth adopting and testing, not a demonstrated cure.
+
+\section*{Availability}
+The harness controls, the reference-band artifact, the evaluation tool, the archived refutation
+briefs, and a verification path are released open-source under a permissive license. All
+statistics are reproducible from committed code and acquired data.
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+\end{document}
