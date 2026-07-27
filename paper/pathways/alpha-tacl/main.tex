@@ -1,0 +1,206 @@
+% alpha-v1 — Paper A adapted for TACL. Base content: paper/v7 (firewall-sourced; every
+% number traces to results/**). Article class here for portability; convert to the ACL/TACL
+% LaTeX style (acl.sty) at submission. ANONYMIZED for double-blind review.
+% See docs/planning/publication-h2-2026/pathways/alpha/v1.md for the adaptation brief.
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{natbib}
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{0.6em}{}
+\newcommand{\grade}[1]{{\small\textbf{[#1]}}}
+
+\title{\textbf{A Firewall-Disciplined Statistical Characterization of the Voynich Manuscript:\\
+Reproducible Discriminators that Shrink the Hypothesis Space}}
+\author{Anonymous submission\\ \small (author, affiliation, and the accompanying open-source
+tool are withheld for double-blind review)}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent We present a reproducible, firewall-disciplined statistical characterization of
+Beinecke MS~408 (the Voynich Manuscript) and release it as an open evaluation tool. Rather
+than propose a reading, we build a battery of substitution-invariant discriminators ---
+conditional character entropy, Montemurro--Zanette word-order information, edit-distance-1
+morphology, Zipf slope, and null-corrected mid-level syntax measures --- and use them to
+\emph{exclude} classes of hypothesis. We confirm the low-entropy anomaly ($h_2\approx 2.08$ vs
+$3.07$--$3.91$ for medieval natural-language controls) and a genuine two-system (Currier~A/B)
+structure; we show that \emph{no single statistic, nor a vector of them, localizes meaning}
+(against matched structured-meaningless baselines, a meaningless generator out-scores
+meaningful text on every axis); and, turning a mid-level syntactic signature into a
+cryptanalytic discriminator, we robustly exclude word-order-preserving ciphers of real prose
+($6.8$--$8.0\sigma$ once the null is deconfounded from topic drift) while finding the
+verbose-homophonic class inconclusive. Every claim carries an explicit A--D evidence grade;
+every number is produced by deterministic, versioned code writing machine-readable results, and
+the discriminator battery is released so any hypothesis can be scored against the manuscript's
+reference bands. We make no decipherment claim.
+\end{abstract}
+
+\section{Introduction}
+The Voynich Manuscript is an early-fifteenth-century codex \citep{dimperio1978elegant} in an
+undeciphered script, and a magnet for confident, mutually incompatible ``solutions.'' The
+structural reason is simple: with no ground truth against which to check a reading, ``it comes
+out looking like language / a cipher / a number system'' is nearly unfalsifiable, and the
+analyst's degrees of freedom are vast. We take the opposite stance. Rather than announce what
+the text says, we ask, for each measurable dimension, \emph{how far along it sits}, and we
+\emph{shrink} the space of hypotheses consistent with the evidence.
+
+Concretely, we contribute:
+\begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+  \item a battery of substitution-invariant discriminators for an undeciphered word-stream
+  corpus, each computed against a matched null, and released as an open tool that scores an
+  arbitrary token stream against the manuscript's reference bands (\S\ref{sec:method},
+  \S\ref{sec:tool});
+  \item a demonstration that these statistics \emph{cannot localize meaning}: matched
+  structured-meaningless processes reproduce or exceed the manuscript on every axis
+  (\S\ref{sec:meaning});
+  \item a cryptanalytic result that \emph{robustly excludes word-order-preserving ciphers} of
+  real prose on a mid-level syntactic signature, while showing --- against a
+  concurrently-published verbose-homophonic cipher --- that the word-order axis it was thought
+  to rest on is confounded, leaving the homophonic class inconclusive (\S\ref{sec:cipher});
+  \item all under a firewall (every number from versioned code) and evidence grading, so the
+  characterization is reproducible and honestly bounded (\S\ref{sec:method}).
+\end{itemize}
+The goal is a smaller, better-defended envelope, not a decode.
+
+\section{Related work}
+Computational study of the manuscript has a long lineage: \citet{currier1976} identified the
+two ``languages'' A and B; \citet{reddy2011know} surveyed its statistical properties for a
+computational-linguistics audience; \citet{montemurro2013keywords} measured long-range
+word-order information; \citet{bowern2021linguistics} synthesized the linguistic evidence; and
+\citet{lindemann2022entropy} characterized its anomalous conditional character entropy.
+Decipherment \emph{methods} for lost scripts have matured in CL --- e.g.\ minimum-cost-flow and
+phonetic-prior models for Ugaritic, Linear~B, and undersegmented scripts
+\citep{luo2019neural,luo2021deciphering} --- but these assume a recoverable target language,
+which for MS~408 is exactly what is in doubt. Our contribution is orthogonal: not a decoder but
+a set of \emph{discriminators} that constrain which such efforts could even be well-posed. We
+engage two concurrent cipher accounts \citep{greshko2025naibbe,parisel2026layered} directly in
+\S\ref{sec:cipher}.
+
+\section{Data and transliteration}
+We use the manuscript text in the Zandbergen--Landini (ZL) EVA transliteration
+\citep{zandbergen_voynichnu}, parsed from IVTFF, and stratify every text analysis by Currier
+system (A/B) and, where relevant, scribal hand \citep{fagindavis2020hands}. Our measures are
+\emph{substitution-invariant} (unchanged under renaming glyphs), so no arbitrary phonetic
+rendering is assumed; we additionally run a v101-transliteration sensitivity pass. About
+$12\%$ of the foliated range is lost and the vocabulary is non-saturating, which bounds every
+lexical statistic from below (\S\ref{sec:limits}).
+
+\section{Method: discriminators, harness, firewall}
+\label{sec:method}
+\textbf{The discriminator battery.} For a token stream we compute: conditional character
+entropy $h_2$ (Lindemann--Bowern, spaces included); the Montemurro--Zanette word-order
+information $\Delta I$ and its peak scale; edit-distance-1 (ED1) morphology-network main-component
+share; the Zipf rank--frequency slope; the type--token ratio; and two null-corrected
+\emph{mid-level} syntax measures --- a function/content collocation gap and an adjacent
+word-class NMI \citep{brown1992class} --- each expressed as a $z$-score against an ensemble of
+order-shuffle nulls that share the corpus's own nuisance parameters, so the $z$ is
+nuisance-controlled by construction and comparable across corpora.
+
+\textbf{Harness and matched controls.} No measure is trusted on the manuscript until it
+separates known positives (real language, several typologically diverse) from matched
+\emph{structured-meaningless} controls (self-citation/auto-copying \citep{timm2020selfcitation},
+positional/template and reuse generators) and from ciphers of real prose (verbose, abjad,
+nomenclator, and verbose-homophonic). This ``harness-first'' rule is what lets a negative
+result carry weight.
+
+\textbf{Firewall and grading.} Every reported number is produced by deterministic, versioned
+code writing machine-readable results (fixed seeds; each result records its script, commit,
+input, and parameters); nothing is estimated or recalled. Every claim carries an A--D evidence
+grade. Strong claims additionally pass a standing clean-context adversarial-refutation step
+before they stand; that protocol is the subject of a companion paper and is summarized here only
+where it changed a result.
+
+\section{Results}
+\subsection{A low-entropy, two-system script \grade{A/B}}
+The manuscript's conditional character entropy is anomalously low, $h_2\approx 2.08$, versus
+$3.07$--$3.91$ for medieval natural-language controls --- a robust, substitution-invariant
+anomaly. Currier~A and B are genuinely distinct systems, and the two are separable on
+co-occurrence structure. The morphology is dense and paradigmatic: the ED1 main component
+covers $\approx 0.80$ of word types (a $10$k-token subsample gives $\approx 0.75$).
+
+\subsection{No statistic localizes meaning \grade{C}}
+\label{sec:meaning}
+A central negative: across the battery, \emph{no axis --- nor a vector of them --- separates
+meaningful from meaningless text} in a way the manuscript satisfies. Against honest
+structured-meaningless baselines, a meaningless generator out-scores meaningful text on every
+axis we can measure, and the manuscript sits at or below both. This is why we reframe the
+question from ``what does it say'' to ``how far along each dimension does it sit,'' and it marks
+the boundary at which purely distributional methods stop.
+
+\subsection{Ciphers of real prose: order-preserving excluded, homophonic inconclusive}
+\label{sec:cipher}
+The mid-level syntax measures double as a cryptanalytic discriminator, because a
+word-order-\emph{preserving} cipher of a real language inherits the source's strong surface
+syntax, whereas the manuscript's is weak. A $1{:}1$ substitution, a vowel-dropping abjad, and a
+light nomenclator applied to Latin all show strong function/content and word-class $z$
+(e.g.\ $13.8$/$21.0$/$9.8$ and $11.3$/$13.0$), versus the manuscript's weak
+$z\approx-1.2$/$1.9$ (A), $-4.7$/$2.6$ (B). The gap is \emph{language-universal} --- no natural
+control is weak, including consonantal Hebrew, a native abjad --- and once the null is
+deconfounded from section/topic vocabulary drift (a within-block shuffle), an order-preserving
+cipher sits $6.8\sigma$ (function/content) and $8.0\sigma$ (word-class) from the manuscript.
+\textbf{So word-order-preserving ciphers of real prose are robustly excluded \grade{B}.}
+
+We initially over-reached to the \emph{entire} cipher-of-real-prose class via a second leg ---
+that ciphers destroy the manuscript's retained word-order information $\Delta I$. Engaging a
+concurrent, hand-constructed verbose-homophonic cipher \citep{greshko2025naibbe} forced a
+retraction: its apparent $\Delta I$ collapse is an artifact of \emph{respacing} (word-boundary
+Latin already has $\Delta I=0.076$, inside the manuscript's band; $\approx\!82\%$ of the loss
+precedes the cipher) and of \emph{homophony} (with word order fixed, $\Delta I$ falls
+monotonically as homophones-per-type rises). $\Delta I$ is therefore a
+homophony/type-token-coupling detector, not a clean word-order axis. A block-scale, like-for-like
+$\Delta I$ analysis on the $(h_2,\Delta I)$ plane \emph{weakly} separates verbose-homophonic
+ciphers but does not revive $\Delta I$ into a hard discriminator. \textbf{We therefore report the
+verbose-homophonic (Naibbe-class) case as inconclusive \grade{C}} --- neither robustly excluded
+nor robustly reached --- converging with \citet{greshko2025naibbe} and adjacent to the
+cipher-like reading of \citet{parisel2026layered}. No decipherment or meaning claim is made or
+implied; this is a statement about which cipher classes reproduce the distributional signature.
+
+\subsection{The discriminator battery as a released tool}
+\label{sec:tool}
+The battery is released as an open package (withheld for review) with a single entry point that
+scores an arbitrary token stream against the manuscript's reference bands and returns, per axis,
+the value, the band, whether it lands inside, and \emph{the caveat that axis carries} --- the
+confounded $\Delta I$, the token-count-sensitive type--token ratio, and the soft mid-level
+measures are flagged and not counted, so a verdict cannot be quoted without its hedges. The
+reference bands are themselves built by versioned code (subsample-without-replacement CIs) and
+ship as a checked artifact; a verification path reproduces them from source. We intend the tool
+as a reusable evaluation resource for undeciphered-corpus work: a hypothesis (a cipher output, a
+generator, a transliteration variant) is \emph{necessary}-tested, not confirmed --- matching the
+bands means a hypothesis is not excluded, never that it is the mechanism.
+
+\section{Limitations}
+\label{sec:limits}
+The evidence is a single manuscript-length corpus, so several results are power-limited; the
+text is incomplete ($\approx\!12\%$ lost, non-saturating vocabulary), bounding lexical
+statistics from below; the two soft mid-level $z$-measures have a manuscript-side subsample CI
+that crosses zero (we do not count them and report the gap that drives the cipher exclusion
+either way); $\Delta I$ is confounded as above; and results are primarily EVA-based with v101 as
+a sensitivity layer, not a full replication. Grades reflect these limits.
+
+\section{Conclusion}
+Treating an undeciphered corpus as an object to \emph{constrain} rather than \emph{solve}
+yields reproducible, falsifiable results: a low-entropy two-system script whose meaning is not
+localizable by any statistic we have, that is not a word-order-preserving cipher of real prose,
+and for which a verbose-homophonic cipher and a generative account both remain live. The
+transferable artifact is the firewall-disciplined discriminator battery, released so others can
+test their own hypotheses against the same bands.
+
+\section*{Reproducibility}
+All statistics are produced by deterministic, versioned code writing machine-readable results;
+the discriminator battery, the reference-band artifact, a verification path, and the archived
+adversarial-refutation briefs accompany the paper (repository withheld for double-blind review).
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+\end{document}
