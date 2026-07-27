@@ -52,5 +52,9 @@ Jul 31–Aug 31); after ~Nov 15 every target is *projected*, not posted. The mos
   reproducibility venues) — a research pass is finishing; will augment VENUE-LANDSCAPE.
 - ✅ Scoring rubric + ranked opportunities.
 - ✅ Four pathways defined with v1 briefs.
-- ⬜ **Decision needed (Tim):** which pathways to greenlight, and whether to attempt the
-  imminent Aug deadlines or target the Oct+ window. Then full venue-tailored drafts follow.
+- ✅ **Full venue-tailored v1 drafts for all four pathways** (`paper/pathways/{alpha-tacl,
+  beta-lre,gamma-dhq,delta-conf}/`, journals-first order; all compile clean).
+- ✅ Voynich Conf outreach email drafted (`outreach/voynich-conf-2026-email.md`) — Tim to send.
+- ⬜ **Remaining (Tim):** send the Voynich Conf email; arXiv-post v7 + methods-v3 to timestamp
+  priority; convert the chosen draft(s) to the venue template + resolve `% UNVERIFIED` bib
+  details + fix the `ti.mims.ms` contact; then submit. delta only if chasing an Aug deadline.
