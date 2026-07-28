@@ -1,0 +1,42 @@
+[
+  {
+    "name": "fleuron",
+    "char": "a",
+    "pua": "0xE000"
+  },
+  {
+    "name": "quatrefoil",
+    "char": "b",
+    "pua": "0xE001"
+  },
+  {
+    "name": "rosette",
+    "char": "c",
+    "pua": "0xE002"
+  },
+  {
+    "name": "sprig",
+    "char": "d",
+    "pua": "0xE003"
+  },
+  {
+    "name": "star",
+    "char": "e",
+    "pua": "0xE004"
+  },
+  {
+    "name": "lozenge",
+    "char": "f",
+    "pua": "0xE005"
+  },
+  {
+    "name": "sun",
+    "char": "g",
+    "pua": "0xE006"
+  },
+  {
+    "name": "bullet",
+    "char": "h",
+    "pua": "0xE007"
+  }
+]

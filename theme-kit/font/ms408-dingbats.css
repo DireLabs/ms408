@@ -1,0 +1,28 @@
+/* MS408 dingbats — a small ORNAMENT font (fleuron, quatrefoil, rosette, sprig, star, lozenge,
+   sun, bullet). Decorative only; NOT Voynich glyphs, NOT a transliteration. Built by
+   site/scripts/build-font.mjs (opentype.js). Glyphs map to a–h and to PUA U+E000–U+E007. */
+
+@font-face {
+  font-family: "MS408 Dingbats";
+  src: url("./ms408-dingbats.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+[class^="db-"], [class*=" db-"] {
+  font-family: "MS408 Dingbats";
+  font-style: normal;
+  line-height: 1;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  color: var(--ms408-rubric, #9e3b2f);
+}
+.db-fleuron::before    { content: "a"; }
+.db-quatrefoil::before { content: "b"; }
+.db-rosette::before    { content: "c"; }
+.db-sprig::before      { content: "d"; }
+.db-star::before       { content: "e"; }
+.db-lozenge::before    { content: "f"; }
+.db-sun::before        { content: "g"; }
+.db-bullet::before     { content: "h"; }

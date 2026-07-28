@@ -1,0 +1,12 @@
+{
+  "name": "ms408-ui-kit",
+  "version": "0.1.0",
+  "description": "MS408 UI kit — IBM Plex / architectural + manuscript design tokens, motifs, and an ornament dingbat font, distilled from the MS408 Voynich research site.",
+  "license": "Apache-2.0",
+  "keywords": ["design-system", "design-tokens", "voynich", "ms408", "bootstrap", "wordpress", "svg"],
+  "files": ["tokens.css", "bootstrap/", "wordpress/", "motifs/", "font/", "demo.html", "README.md"],
+  "scripts": {
+    "build:font": "node ../site/scripts/build-font.mjs"
+  },
+  "sideEffects": ["*.css"]
+}

@@ -21,11 +21,21 @@ full plan.
 ```
 theme-kit/
   tokens.css                     # canonical design tokens (both palettes + type + flag colors)
+  demo.html                      # self-contained specimen (open in a browser)
+  package.json                   # ms408-ui-kit (Apache-2.0), lift-out ready
   bootstrap/_ms408-variables.scss# Bootstrap 5 variable map (import before bootstrap)
   wordpress/theme.json           # WordPress block-theme starter (palette + font families)
   motifs/                        # framework-agnostic SVGs (currentColor, recolorable)
     botanical-divider.svg  glyph-frieze.svg  herbal-sprig.svg  rosette.svg
+  font/
+    ms408-dingbats.otf           # ornament dingbat font (fleuron, quatrefoil, rosette, sprig,
+    ms408-dingbats.css           #   star, lozenge, sun, bullet) — a–h / U+E000–E007
+    specimen.json
 ```
+
+The dingbat font (`.otf`) is committed for convenience (the demo + ports need it) and is fully
+**regenerable** with `node site/scripts/build-font.mjs` (opentype.js) — or `npm run build:font`
+from this dir. It's a **decorative ornament font**, not Voynich glyphs and not a transliteration.
 
 The live web components (Astro) live in `site/src/components/` and the scoped skin in
 `site/src/styles/theme-ms408.css`; the `motifs/*.svg` here are their portable equivalents.
@@ -47,7 +57,9 @@ transliteration. Keep them decorative and `aria-hidden`.
 
 ## Roadmap
 
-- ⬜ Marginalia / initial frames; a fuller herbal illustration set.
-- ⬜ A proper glyph dingbat **font** (build via a font pipeline, e.g. FontForge/opentype.js).
-- ⬜ Package as a standalone repo (`ms408-ui-kit`) with a small demo, once the components settle.
-- ⬜ Ship the Bootstrap theme + WordPress block theme as installable artifacts.
+- ✅ Dingbat **font** (`font/ms408-dingbats.otf`, built via opentype.js) + specimen `demo.html`.
+- ✅ Kit `package.json` (`ms408-ui-kit`) — lift-out ready.
+- ⬜ Marginalia / initial frames beyond the drop-cap; a fuller herbal illustration set; expand
+  the dingbat set.
+- ⬜ Extract to a standalone repo and publish the Bootstrap theme + WordPress block theme as
+  installable artifacts (npm / packagist).

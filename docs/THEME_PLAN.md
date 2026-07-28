@@ -65,7 +65,9 @@ Derived from the manuscript's materials, not copied from it:
 - ✅ **Timeline** rosette accent (rendered in the default blueprint-blue — an "astronomical
   instrument" read that suits the record).
 - ✅ **Herbal hero illustration** (Library) + **illuminated (framed) initial** on themed prose.
-- ✅ **`theme-kit/`** distribution seed (tokens + Bootstrap SCSS + WordPress theme.json + portable
-  motif SVGs).
-- ⬜ Marginalia/initial frames beyond the drop-cap; a full glyph dingbat **font**; packaging the
-  kit as a standalone `ms408-ui-kit` repo with installable Bootstrap/WordPress artifacts.
+- ✅ **`theme-kit/`** distribution kit: tokens + Bootstrap SCSS + WordPress theme.json + portable
+  motif SVGs + **an ornament dingbat font** (`ms408-dingbats.otf`, built via opentype.js) +
+  a self-contained `demo.html` specimen + `package.json` (lift-out ready as `ms408-ui-kit`).
+- ⬜ Remaining polish (optional): marginalia/initial frames beyond the drop-cap; expand the
+  dingbat set; extract the kit to a standalone repo and publish installable Bootstrap/WordPress
+  artifacts. The core theme is complete.

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MS408 UI kit — specimen</title>
+<link rel="stylesheet" href="tokens.css" />
+<link rel="stylesheet" href="font/ms408-dingbats.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Serif:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  body { font-family: var(--ms408-font-sans); color: var(--ms408-text); background: var(--ms408-bg);
+    margin: 0; line-height: 1.6; }
+  .wrap { max-width: 52rem; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+  h1, h2 { font-family: var(--ms408-font-sans); }
+  h1 { letter-spacing: -0.02em; }
+  .eyebrow { font-family: var(--ms408-font-mono); font-size: .72rem; text-transform: uppercase;
+    letter-spacing: .14em; color: var(--ms408-accent-ink); margin: 2.4rem 0 .5rem; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); gap: .5rem; }
+  .sw { border: 1px solid var(--ms408-line); border-radius: 2px; overflow: hidden; font-size: .72rem;
+    font-family: var(--ms408-font-mono); }
+  .sw .chip { height: 3rem; } .sw .lbl { padding: .3rem .4rem; background: #fff; }
+  .panel { border: 1px solid var(--ms408-line); border-radius: 2px; padding: 1.2rem 1.4rem; margin: .6rem 0; background: var(--ms408-panel); }
+  .panel.manuscript { background: var(--ms408-vellum); border-color: var(--ms408-tan-line);
+    color: var(--ms408-iron-gall); font-family: var(--ms408-font-serif); }
+  .panel.manuscript h2 { font-family: var(--ms408-font-serif); color: var(--ms408-rubric); }
+  .motifs { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; color: var(--ms408-rubric); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr)); gap: .8rem; }
+  .db { text-align: center; border: 1px solid var(--ms408-tan-line); border-radius: 2px; padding: .9rem .4rem; background: var(--ms408-vellum-panel); }
+  .db span { font-size: 2.6rem; display: block; }
+  .db small { font-family: var(--ms408-font-mono); font-size: .66rem; color: var(--ms408-muted); }
+  code { font-family: var(--ms408-font-mono); background: #eef1f6; padding: .1em .35em; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">MS408 UI kit — specimen</p>
+  <h1>Two flavors, one token set</h1>
+  <p>Architectural (IBM Plex + blueprint blue) for research surfaces; manuscript (iron-gall +
+    vellum + rubric) for the outreach surfaces. Everything derives from <code>tokens.css</code>.
+    Motifs and the dingbat font are original — decorative, never a transliteration.</p>
+
+  <p class="eyebrow">Palette</p>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#161616"></div><div class="lbl">ink #161616</div></div>
+    <div class="sw"><div class="chip" style="background:#0f62fe"></div><div class="lbl">blue #0f62fe</div></div>
+    <div class="sw"><div class="chip" style="background:#f5f5f3"></div><div class="lbl">bg #f5f5f3</div></div>
+    <div class="sw"><div class="chip" style="background:#2b2117"></div><div class="lbl">iron-gall #2b2117</div></div>
+    <div class="sw"><div class="chip" style="background:#9e3b2f"></div><div class="lbl">rubric #9e3b2f</div></div>
+    <div class="sw"><div class="chip" style="background:#f3ead6"></div><div class="lbl">vellum #f3ead6</div></div>
+    <div class="sw"><div class="chip" style="background:#6b7250"></div><div class="lbl">botanical #6b7250</div></div>
+    <div class="sw"><div class="chip" style="background:#5b6b7a"></div><div class="lbl">astro #5b6b7a</div></div>
+  </div>
+
+  <p class="eyebrow">Type</p>
+  <p style="font-family:var(--ms408-font-sans);font-size:1.4rem">IBM Plex Sans — the interface voice</p>
+  <p style="font-family:var(--ms408-font-serif);font-size:1.4rem">IBM Plex Serif — reading &amp; manuscript headings</p>
+  <p style="font-family:var(--ms408-font-mono);font-size:1.1rem">IBM Plex Mono — labels, eyebrows, code</p>
+
+  <p class="eyebrow">Motifs (SVG, currentColor)</p>
+  <div class="motifs">
+    <img src="motifs/rosette.svg" width="72" alt="rosette" />
+    <img src="motifs/herbal-sprig.svg" width="54" alt="herbal sprig" />
+    <img src="motifs/botanical-divider.svg" width="220" alt="botanical divider" />
+  </div>
+  <div class="motifs" style="margin-top:1rem"><img src="motifs/glyph-frieze.svg" width="300" alt="glyph frieze" /></div>
+
+  <p class="eyebrow">Dingbat font</p>
+  <p>Class <code>db-*</code> or type <code>a–h</code> / U+E000–E007 in "MS408 Dingbats".</p>
+  <div class="grid" id="specimen"></div>
+
+  <p class="eyebrow">Flavors</p>
+  <div class="panel"><h2>Architectural panel</h2><p>Clean, blueprint-blue, sharp corners — research &amp; docs.</p></div>
+  <div class="panel manuscript"><h2>Manuscript panel <span class="db-fleuron"></span></h2>
+    <p>Vellum, iron-gall, rubric, serif — library &amp; media outreach.</p></div>
+</div>
+<script>
+  const marks = [['fleuron','a'],['quatrefoil','b'],['rosette','c'],['sprig','d'],
+    ['star','e'],['lozenge','f'],['sun','g'],['bullet','h']];
+  document.getElementById('specimen').innerHTML = marks.map(([n,c],i) =>
+    `<div class="db"><span class="db-${n}"></span><small>${c} · U+E00${i} · ${n}</small></div>`).join('');
+</script>
+</body>
+</html>
