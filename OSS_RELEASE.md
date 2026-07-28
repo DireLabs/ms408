@@ -1,5 +1,13 @@
 # OSS release checklist
 
+> **Live (pushed to `DireLabs/ms408`, 2026-07-28):** the **`ci` workflow is green** on `main`
+> (lint + test matrix 3.11/3.12/3.13 + wheel-build). Fixes applied on push: pinned ruff's rule
+> set (`[tool.ruff.lint] select`) so ruff 0.16's expanded defaults don't fail CI; corrected two
+> data-dependent test guards (`test_encoding` checked `manifest.json` instead of the corpus
+> `.txt`; `test_e2` was unguarded) so corpus tests skip cleanly when data is absent. The
+> **`pages` workflow is ready but waits on you to enable Pages** (Settings → Pages → Source:
+> GitHub Actions) — auto-enable needs an admin token the default `GITHUB_TOKEN` lacks.
+
 Living checklist for publishing `ms408` as an open-source repository. Grouped by severity.
 `[x]` done · `[ ]` open · **(you)** = author action I can't do (key rotation, publishing,
 naming). Diagnostics as of the last update: `pip check` clean · `ruff check src tests examples`
