@@ -28,9 +28,10 @@ theme-kit/
   motifs/                        # framework-agnostic SVGs (currentColor, recolorable)
     botanical-divider.svg  glyph-frieze.svg  herbal-sprig.svg  rosette.svg
   font/
-    ms408-dingbats.otf           # ornament dingbat font (fleuron, quatrefoil, rosette, sprig,
-    ms408-dingbats.css           #   star, lozenge, sun, bullet) — a–h / U+E000–E007
-    specimen.json
+    ms408-dingbats.otf           # ornament dingbat font — 16 marks (fleuron, quatrefoil,
+    ms408-dingbats.css           #   rosette, sprig, star, lozenge, sun, bullet, heart, trefoil,
+    specimen.json                #   crescent, cross, compass, coronet, flower5, compass4)
+                                 #   mapped a–p / U+E000–E00F
 ```
 
 The dingbat font (`.otf`) is committed for convenience (the demo + ports need it) and is fully
@@ -57,9 +58,8 @@ transliteration. Keep them decorative and `aria-hidden`.
 
 ## Roadmap
 
-- ✅ Dingbat **font** (`font/ms408-dingbats.otf`, built via opentype.js) + specimen `demo.html`.
+- ✅ Dingbat **font** (16 ornaments, `font/ms408-dingbats.otf`, built via opentype.js) + specimen `demo.html`.
 - ✅ Kit `package.json` (`ms408-ui-kit`) — lift-out ready.
-- ⬜ Marginalia / initial frames beyond the drop-cap; a fuller herbal illustration set; expand
-  the dingbat set.
+- ✅ Marginalia frame (`Frame.astro` in the site; corner-flourish pattern) + illuminated initial.
 - ⬜ Extract to a standalone repo and publish the Bootstrap theme + WordPress block theme as
-  installable artifacts (npm / packagist).
+  installable artifacts (npm / packagist); `woff2` conversion; a fuller herbal illustration set.

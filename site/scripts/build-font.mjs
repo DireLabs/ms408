@@ -75,6 +75,33 @@ const DINGBATS = [
     circle(p, CX, CY, 150);
   }],
   ['bullet', ['h', 0xE007], (p) => circle(p, CX, CY, 120)],
+  ['heart', ['i', 0xE008], (p) => {
+    circle(p, CX - 92, CY + 70, 108); circle(p, CX + 92, CY + 70, 108);
+    poly(p, [[CX - 188, CY + 92], [CX + 188, CY + 92], [CX, CY - 215]]);
+  }],
+  ['trefoil', ['j', 0xE009], (p) => {
+    circle(p, CX, CY + 165, 118); circle(p, CX - 145, CY - 80, 118); circle(p, CX + 145, CY - 80, 118);
+    circle(p, CX, CY, 95);
+  }],
+  ['crescent', ['k', 0xE00A], (p) => { circle(p, CX, CY, 250, false); circle(p, CX + 95, CY, 215, true); }],
+  ['cross', ['l', 0xE00B], (p) => {
+    poly(p, [[CX - 58, CY - 250], [CX + 58, CY - 250], [CX + 58, CY + 250], [CX - 58, CY + 250]]);
+    poly(p, [[CX - 250, CY - 58], [CX + 250, CY - 58], [CX + 250, CY + 58], [CX - 250, CY + 58]]);
+  }],
+  ['compass', ['m', 0xE00C], (p) => star(p, CX, CY, 8, 255, 90)],
+  ['coronet', ['n', 0xE00D], (p) => poly(p, [
+    [CX - 205, CY - 150], [CX + 205, CY - 150], [CX + 205, CY - 30], [CX + 110, CY + 60],
+    [CX + 165, CY + 205], [CX + 55, CY + 90], [CX, CY + 225], [CX - 55, CY + 90],
+    [CX - 165, CY + 205], [CX - 110, CY + 60], [CX - 205, CY - 30],
+  ])],
+  ['flower5', ['o', 0xE00E], (p) => {
+    for (let i = 0; i < 5; i++) {
+      const a = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
+      circle(p, CX + 165 * Math.cos(a), CY + 165 * Math.sin(a), 105);
+    }
+    circle(p, CX, CY, 92);
+  }],
+  ['compass4', ['p', 0xE00F], (p) => star(p, CX, CY, 4, 265, 82)],
 ];
 
 const glyphs = [new opentype.Glyph({ name: '.notdef', advanceWidth: 0, path: new opentype.Path() })];

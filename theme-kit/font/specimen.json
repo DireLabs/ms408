@@ -38,5 +38,45 @@
     "name": "bullet",
     "char": "h",
     "pua": "0xE007"
+  },
+  {
+    "name": "heart",
+    "char": "i",
+    "pua": "0xE008"
+  },
+  {
+    "name": "trefoil",
+    "char": "j",
+    "pua": "0xE009"
+  },
+  {
+    "name": "crescent",
+    "char": "k",
+    "pua": "0xE00A"
+  },
+  {
+    "name": "cross",
+    "char": "l",
+    "pua": "0xE00B"
+  },
+  {
+    "name": "compass",
+    "char": "m",
+    "pua": "0xE00C"
+  },
+  {
+    "name": "coronet",
+    "char": "n",
+    "pua": "0xE00D"
+  },
+  {
+    "name": "flower5",
+    "char": "o",
+    "pua": "0xE00E"
+  },
+  {
+    "name": "compass4",
+    "char": "p",
+    "pua": "0xE00F"
   }
 ]

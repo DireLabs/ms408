@@ -68,6 +68,9 @@ Derived from the manuscript's materials, not copied from it:
 - ✅ **`theme-kit/`** distribution kit: tokens + Bootstrap SCSS + WordPress theme.json + portable
   motif SVGs + **an ornament dingbat font** (`ms408-dingbats.otf`, built via opentype.js) +
   a self-contained `demo.html` specimen + `package.json` (lift-out ready as `ms408-ui-kit`).
-- ⬜ Remaining polish (optional): marginalia/initial frames beyond the drop-cap; expand the
-  dingbat set; extract the kit to a standalone repo and publish installable Bootstrap/WordPress
-  artifacts. The core theme is complete.
+- ✅ **Marginalia frame** (`Frame.astro`) — a bordered callout with original corner flourishes
+  (used in the Library "Contribute" section); **dingbat set expanded to 16** (added heart,
+  trefoil, crescent, cross, compass, coronet, 5-flower, compass4).
+- ⬜ Remaining (optional): extract the kit to a standalone `ms408-ui-kit` repo and publish
+  installable Bootstrap/WordPress artifacts (npm/Packagist); `woff2` conversion of the font. The
+  theme itself is complete.

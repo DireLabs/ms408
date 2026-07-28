@@ -66,7 +66,7 @@
   <div class="motifs" style="margin-top:1rem"><img src="motifs/glyph-frieze.svg" width="300" alt="glyph frieze" /></div>
 
   <p class="eyebrow">Dingbat font</p>
-  <p>Class <code>db-*</code> or type <code>a–h</code> / U+E000–E007 in "MS408 Dingbats".</p>
+  <p>Class <code>db-*</code> or type <code>a–p</code> / U+E000–E00F in "MS408 Dingbats".</p>
   <div class="grid" id="specimen"></div>
 
   <p class="eyebrow">Flavors</p>
@@ -75,10 +75,13 @@
     <p>Vellum, iron-gall, rubric, serif — library &amp; media outreach.</p></div>
 </div>
 <script>
-  const marks = [['fleuron','a'],['quatrefoil','b'],['rosette','c'],['sprig','d'],
-    ['star','e'],['lozenge','f'],['sun','g'],['bullet','h']];
-  document.getElementById('specimen').innerHTML = marks.map(([n,c],i) =>
-    `<div class="db"><span class="db-${n}"></span><small>${c} · U+E00${i} · ${n}</small></div>`).join('');
+  const marks = ['fleuron','quatrefoil','rosette','sprig','star','lozenge','sun','bullet',
+    'heart','trefoil','crescent','cross','compass','coronet','flower5','compass4'];
+  document.getElementById('specimen').innerHTML = marks.map((n,i) => {
+    const c = String.fromCharCode(97 + i);
+    const pua = 'U+' + (0xE000 + i).toString(16).toUpperCase();
+    return `<div class="db"><span class="db-${n}"></span><small>${c} \u00b7 ${pua} \u00b7 ${n}</small></div>`;
+  }).join('');
 </script>
 </body>
 </html>

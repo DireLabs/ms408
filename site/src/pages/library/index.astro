@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import BotanicalDivider from '../../components/BotanicalDivider.astro';
 import HerbalSprig from '../../components/HerbalSprig.astro';
 import GlyphFrieze from '../../components/GlyphFrieze.astro';
+import Frame from '../../components/Frame.astro';
 import { href } from '../../config';
 const activities = (await getCollection('activities')).sort((a, b) => a.data.order - b.data.order);
 ---
@@ -60,10 +61,12 @@ const activities = (await getCollection('activities')).sort((a, b) => a.data.ord
   <BotanicalDivider />
 
   <p class="eyebrow">04 · Contribute</p>
-  <h2>Made your own activity?</h2>
-  <p>If you're an educator and you've run an activity with real learners, we'd love to add it.
-    To keep quality high, submissions are reviewed and must be <strong>tested with a real
-    class or group</strong> first — see <a href={href('library/submit')}>how to submit</a>.</p>
+  <Frame title="Made your own activity?">
+    <p style="margin:0">If you're an educator and you've run an activity with real learners, we'd
+      love to add it. To keep quality high, submissions are reviewed and must be <strong>tested
+      with a real class or group</strong> first — see <a href={href('library/submit')}>how to
+      submit</a>.</p>
+  </Frame>
 </Base>
 
 <style>
