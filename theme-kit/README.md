@@ -27,7 +27,8 @@ theme-kit/
   wordpress/theme.json           # WordPress block-theme starter (palette + font families)
   motifs/                        # framework-agnostic SVGs (currentColor, recolorable)
     botanical-divider.svg  glyph-frieze.svg  herbal-sprig.svg  rosette.svg
-    balneo-tubes.svg  balneo-pool.svg   # bathing-section: plumbing divider + abstract vignette
+    balneo-tubes.svg  balneo-pool.svg  balneo-bathers.svg   # bathing section
+    rosettes-foldout.svg                                    # nine-rosettes cosmological foldout
   font/
     ms408-dingbats.otf           # ornament dingbat font — 16 marks (fleuron, quatrefoil,
     ms408-dingbats.css           #   rosette, sprig, star, lozenge, sun, bullet, heart, trefoil,

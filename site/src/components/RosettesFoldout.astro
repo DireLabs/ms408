@@ -1,0 +1,49 @@
+---
+// Original stylization of the manuscript's famous nine-"rosettes" cosmological foldout: a 3x3
+// grid of circular medallions joined by causeways. Not traced from any scan. Decorative;
+// currentColor.
+const { size = 300 } = Astro.props;
+const P = [55, 165, 275];
+const cells = [];
+for (const cy of P) for (const cx of P) cells.push({ cx, cy, center: cx === 165 && cy === 165 });
+const spokes = (cx, cy) => Array.from({ length: 12 }, (_, k) => {
+  const a = (k * Math.PI) / 6;
+  return { x1: cx + 30 * Math.cos(a), y1: cy + 30 * Math.sin(a), x2: cx + 46 * Math.cos(a), y2: cy + 46 * Math.sin(a) };
+});
+const conns = [];
+for (let r = 0; r < 3; r++) for (let c = 0; c < 3; c++) {
+  if (c < 2) conns.push({ x1: P[c] + 46, y: P[r], x2: P[c + 1] - 46, horiz: true });
+  if (r < 2) conns.push({ y1: P[r] + 46, x: P[c], y2: P[r + 1] - 46, horiz: false });
+}
+const star = Array.from({ length: 16 }, (_, i) => {
+  const rad = i % 2 ? 7 : 15, a = -Math.PI / 2 + (i * Math.PI) / 8;
+  return `${165 + rad * Math.cos(a)},${165 + rad * Math.sin(a)}`;
+}).join(' ');
+---
+<div class="rosettes-foldout" aria-hidden="true">
+  <svg viewBox="0 0 330 330" width={size} height={size} role="presentation">
+    <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+      <rect x="6" y="6" width="318" height="318" stroke-opacity="0.35" />
+      {conns.map((c) => c.horiz ? (
+        <g stroke-opacity="0.7"><line x1={c.x1} y1={c.y - 3} x2={c.x2} y2={c.y - 3} /><line x1={c.x1} y1={c.y + 3} x2={c.x2} y2={c.y + 3} /></g>
+      ) : (
+        <g stroke-opacity="0.7"><line x1={c.x - 3} y1={c.y1} x2={c.x - 3} y2={c.y2} /><line x1={c.x + 3} y1={c.y1} x2={c.x + 3} y2={c.y2} /></g>
+      ))}
+      {cells.map((m) => (
+        <g>
+          <circle cx={m.cx} cy={m.cy} r={46} />
+          <circle cx={m.cx} cy={m.cy} r={30} stroke-opacity="0.6" />
+          {spokes(m.cx, m.cy).map((s) => <line x1={s.x1} y1={s.y1} x2={s.x2} y2={s.y2} stroke-opacity="0.55" />)}
+          {!m.center && <circle cx={m.cx} cy={m.cy} r={6} fill="currentColor" fill-opacity="0.25" />}
+        </g>
+      ))}
+      <polygon points={star} fill="currentColor" fill-opacity="0.18" />
+      <circle cx="165" cy="165" r="3.5" fill="currentColor" fill-opacity="0.4" />
+    </g>
+  </svg>
+</div>
+
+<style>
+  .rosettes-foldout { color: var(--accent); opacity: 0.9; line-height: 0; display: inline-block; }
+  .rosettes-foldout svg { height: auto; max-width: 100%; }
+</style>

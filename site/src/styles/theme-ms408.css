@@ -114,3 +114,35 @@ body.theme-ms408-media {
 }
 .theme-ms408-media .note { background: #f6eeda; border-left-color: var(--accent); color: #4a3c2a; }
 .theme-ms408-media code { background: #efe4c9; color: #5a3a20; }
+
+/* ------------------------------------------------------------------ *
+   MS408 balneo variant — for the hidden /balneo page. Green, watery vellum (the balneo folios
+   are famously green), botanical-green accent. Serif headings.
+ * ------------------------------------------------------------------ */
+body.theme-ms408-balneo {
+  --ink: #232a1f;
+  --text: #33402c;
+  --muted: #5f6b4a;
+  --faint: #94a06f;
+  --line: #dfe0c4;
+  --line-2: #ccd0a3;
+  --line-strong: #9aa06f;
+  --bg: #eef0dd;
+  --panel: #f8f9ec;
+  --accent: #5b7150;      /* botanical green */
+  --accent-ink: #435a3d;
+  --grid: rgba(91, 113, 80, 0.06);
+
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 28% 8%, rgba(80, 110, 90, 0.07), transparent 46%),
+    radial-gradient(ellipse at 76% 82%, rgba(70, 100, 110, 0.06), transparent 48%);
+}
+.theme-ms408-balneo h1, .theme-ms408-balneo h2, .theme-ms408-balneo h3 { font-family: var(--font-serif); letter-spacing: 0; }
+.theme-ms408-balneo .hero::before {
+  background-image: none;
+  background: radial-gradient(ellipse at 50% 0%, rgba(91, 113, 80, 0.05), transparent 60%);
+}
+.theme-ms408-balneo .eyebrow { color: var(--accent-ink); }
+.theme-ms408-balneo .note { background: #e9edd6; border-left-color: var(--accent); color: #37432c; }
+.theme-ms408-balneo code { background: #e4e7cf; color: #3d4a2c; }

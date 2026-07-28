@@ -37,8 +37,14 @@ Derived from the manuscript's materials, not copied from it:
 6. **Balneo series** — original art inspired by the bathing (balneological) section: a
    connective-plumbing tube divider (`BalneoTubes`, non-sensitive, on Media) and an
    ABSTRACT, modest bathing-pool vignette (`BalneoPool` — simple heads at a waterline, no
-   explicit figures). ✅ Placed the tube divider on Media; the pool ships in the kit for
-   deliberate placement (kept OFF the kid-facing Library).
+   explicit figures) + a more illustrative `BalneoBathers` (figures shown shoulders-up only).
+   ✅ Tube divider on Media; the figure motifs live on the hidden `/balneo` page (kept OFF the
+   kid-facing Library).
+7. **Rosettes foldout** (`RosettesFoldout`) — original stylization of the nine-medallion
+   cosmological fold-out (3×3 rosettes joined by causeways). ✅ Featured on `/balneo`.
+8. **Hidden `/balneo` page** — an unlisted "easter egg" (footer ❦ hook only, not in nav) using a
+   green `theme-ms408-balneo` variant; showcases the balneo + rosettes + glyph motifs and muses
+   honestly on the manuscript's strangest folios, linking out to the Yale scans.
 
 ## Application (opt-in via a `theme` prop on the layout)
 

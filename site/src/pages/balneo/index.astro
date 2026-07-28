@@ -1,0 +1,68 @@
+---
+import Base from '../../layouts/Base.astro';
+import RosettesFoldout from '../../components/RosettesFoldout.astro';
+import BalneoBathers from '../../components/BalneoBathers.astro';
+import BalneoTubes from '../../components/BalneoTubes.astro';
+import BalneoPool from '../../components/BalneoPool.astro';
+import GlyphFrieze from '../../components/GlyphFrieze.astro';
+import { href } from '../../config';
+---
+<Base title="The hidden folios"
+  description="An easter-egg corner on the Voynich Manuscript's strangest pages — the green bathing pools and the nine-rosette foldout — with original stylized art."
+  active={null} theme="ms408-balneo">
+  <section class="hero" style="text-align:center">
+    <p class="eyebrow" style="justify-content:center">You found a hidden page</p>
+    <h1>Into the strange half of the manuscript</h1>
+    <p class="lede" style="margin-inline:auto">
+      Most of this site is careful and cold. This corner isn't. The Voynich Manuscript's weirdest
+      folios — nude figures in green pools of impossible plumbing, and a vast fold-out map of nine
+      linked circles — resist even our discipline. Here we let ourselves simply marvel at them,
+      illustrated in our own hand.
+    </p>
+    <div style="margin:1.5rem 0"><RosettesFoldout size={230} /></div>
+  </section>
+
+  <BalneoTubes />
+
+  <p class="eyebrow">The balneological section</p>
+  <h2>Pools, plumbing, and bathers</h2>
+  <p>In one quire the manuscript fills with small nude figures standing in green baths, joined by
+    an elaborate, biologically-impossible network of tubes and reservoirs. No one knows what it
+    depicts. The guesses run from the practical to the esoteric: a treatise on bathing and health
+    (balneotherapy was a real medieval genre), a gynaecological or reproductive text, an alchemical
+    allegory of vessels and distillation, or a cosmological/biological metaphor. The plumbing looks
+    anatomical and architectural at once, and the "water" is often the same green as nothing in
+    nature.</p>
+  <div style="display:flex;gap:2rem;align-items:flex-end;flex-wrap:wrap;margin:1.4rem 0">
+    <BalneoBathers size={280} />
+    <BalneoPool size={130} />
+  </div>
+  <p class="note">These are our <strong>original</strong> stylizations, drawn in the manuscript's
+    naïve spirit — deliberately abstract. To see the real folios, browse the
+    <a href="https://collections.library.yale.edu/catalog/2002046" rel="noopener">Yale digital
+    scans</a>. And for what the statistics actually can and can't say, that's the
+    <a href={href('docs/limits')}>rest of the site</a>.</p>
+
+  <p class="eyebrow">The nine rosettes</p>
+  <h2>The fold-out that unfolds into a cosmos</h2>
+  <p>The manuscript's largest page is a six-panel fold-out: nine circular "rosettes" — each a
+    little world of rings, rays, and star-like marks — connected by causeways, with what look like
+    castles and a volcano at the edges. It has been read as a map (of the cosmos, of a real place,
+    of the elements), as a T-O world diagram, and as pure decoration. It is the single most
+    enigmatic object in a very enigmatic book, and one of the few pages whose <em>structure</em>
+    is undeniable even if its meaning is not.</p>
+  <div style="text-align:center;margin:1.6rem 0"><RosettesFoldout size={300} /></div>
+
+  <p class="eyebrow">The script</p>
+  <h2>Letters that behave like nothing else</h2>
+  <p>Threaded through all of it is the script itself — looping "gallows" characters, words that
+    repeat like incantations, and (tellingly) almost no corrections, as if written fluently by
+    someone who knew exactly what they were doing, in a system no one else has ever read. Our
+    ornamental frieze below only <em>evokes</em> that hand; it is not, and never claims to be, a
+    real transliteration.</p>
+  <GlyphFrieze />
+
+  <p style="text-align:center;font-family:var(--font-mono);font-size:0.82rem;margin-top:2.5rem">
+    <a href={href('')}>← back to the cold, careful part</a>
+  </p>
+</Base>
