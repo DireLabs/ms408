@@ -6,6 +6,14 @@ naming). Diagnostics as of the last update: `pip check` clean · `ruff check src
 clean · `python -m ms408.verify` PASS · `pytest -q` **180 passed** · wheel builds and ships
 `reference_bands.json` + CLI · `import ms408` makes no network/API calls.
 
+## Publish-safety — VERIFIED (2026-07-28)
+
+The **tracked git tree is clean to publish**: no `.env`/key/credential/`.pem`/`.key` files
+(only `.env.example`), no `data/raw`/gitignored data, no `.DS_Store`, and **no real API-key
+patterns anywhere in the tracked tree**. A clean-checkout build (`git archive HEAD` → wheel)
+contains no `.env` and produces a working `ms408-0.1.0` wheel. So `git push` leaks nothing.
+(The `.env` on disk still holds keys → rotate per the blocking item, but git won't expose them.)
+
 ## BLOCKING — must be true before the repo is public
 
 - [ ] **(you) Rotate/revoke the three API keys** currently in the working-tree `.env`
