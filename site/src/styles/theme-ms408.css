@@ -1,0 +1,68 @@
+/* MS408 manuscript theme — an opt-in skin layered over global.css. Everything is scoped under
+   .theme-ms408 (set on <body> by the layout's `theme` prop), so unthemed pages are untouched.
+   Palette + motifs are ORIGINAL, inspired by the manuscript's materials — no scan imagery. */
+
+body.theme-ms408 {
+  /* iron-gall ink + vellum + rubric red */
+  --ink: #2b2117;
+  --text: #3b3020;
+  --muted: #6f5f45;
+  --faint: #a48c63;
+  --line: #e2d5b6;
+  --line-2: #d3c09a;
+  --line-strong: #a98f63;
+  --bg: #f3ead6;
+  --panel: #fbf5e6;
+  --accent: #9e3b2f;      /* rubric vermilion */
+  --accent-ink: #7d2f26;
+  --grid: rgba(158, 59, 47, 0.05);
+
+  background-color: var(--bg);
+  /* subtle vellum mottling — pure CSS, no image */
+  background-image:
+    radial-gradient(ellipse at 18% 24%, rgba(150, 116, 60, 0.06), transparent 42%),
+    radial-gradient(ellipse at 82% 70%, rgba(120, 92, 52, 0.06), transparent 46%),
+    radial-gradient(ellipse at 50% 100%, rgba(120, 92, 52, 0.05), transparent 55%);
+  background-attachment: fixed;
+}
+
+/* Headings become book-like (Plex Serif); rubric-tinted */
+.theme-ms408 h1, .theme-ms408 h2, .theme-ms408 h3 {
+  font-family: var(--font-serif);
+  letter-spacing: 0;
+}
+.theme-ms408 h1 { font-weight: 600; }
+
+/* Warm the header/footer explicitly (they already use --panel, this adds a hairline warmth) */
+.theme-ms408 header.site { border-bottom-color: var(--line-2); }
+
+/* Replace the cool blueprint hero grid with a warm, quiet vellum (no grid lines) */
+.theme-ms408 .hero::before {
+  background-image: none;
+  background: radial-gradient(ellipse at 50% 0%, rgba(158, 59, 47, 0.05), transparent 60%);
+}
+
+/* Drop-cap / decorative initial for themed long-form prose (e.g. library activities) */
+.theme-ms408 .prose > p:first-of-type::first-letter {
+  font-family: var(--font-serif);
+  font-size: 3.3rem;
+  line-height: 0.78;
+  float: left;
+  margin: 0.16rem 0.55rem 0 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Notes/blockquotes read as rubricated marginalia */
+.theme-ms408 blockquote, .theme-ms408 .note {
+  background: #f6eeda;
+  border-left-color: var(--accent);
+  color: #4a3c2a;
+}
+
+/* Code stays legible on parchment */
+.theme-ms408 code { background: #efe4c9; color: #5a3a20; }
+.theme-ms408 pre { background: var(--panel); border-left-color: var(--accent); }
+
+/* Pills/tags pick up the warm palette automatically via vars; nudge the eyebrow to feel inked */
+.theme-ms408 .eyebrow { color: var(--accent-ink); }

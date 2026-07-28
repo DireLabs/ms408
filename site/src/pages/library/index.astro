@@ -1,13 +1,16 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import BotanicalDivider from '../../components/BotanicalDivider.astro';
+import Rosette from '../../components/Rosette.astro';
 import { href } from '../../config';
 const activities = (await getCollection('activities')).sort((a, b) => a.data.order - b.data.order);
 ---
 <Base title="For libraries & educators"
   description="A friendly welcome and guided activities for libraries, classrooms, and summer programs exploring the Voynich Manuscript."
-  active="library">
+  active="library" theme="ms408">
   <section class="hero">
+    <div class="hero-rosette"><Rosette size={88} /></div>
     <p class="eyebrow">For libraries · classrooms · summer programs</p>
     <h1>Explore the world's most mysterious book — together</h1>
     <p class="lede">
@@ -36,6 +39,8 @@ const activities = (await getCollection('activities')).sort((a, b) => a.data.ord
     the big one — being honest about <strong>how sure you are</strong>. No prior knowledge
     needed, for learners or facilitators.</p>
 
+  <BotanicalDivider />
+
   <p class="eyebrow" id="activities">03 · Guided activities</p>
   <h2>Ready-to-run activities</h2>
   <div class="cards">
@@ -49,9 +54,16 @@ const activities = (await getCollection('activities')).sort((a, b) => a.data.ord
     ))}
   </div>
 
+  <BotanicalDivider />
+
   <p class="eyebrow">04 · Contribute</p>
   <h2>Made your own activity?</h2>
   <p>If you're an educator and you've run an activity with real learners, we'd love to add it.
     To keep quality high, submissions are reviewed and must be <strong>tested with a real
     class or group</strong> first — see <a href={href('library/submit')}>how to submit</a>.</p>
 </Base>
+
+<style>
+  .hero-rosette { float: right; margin: 0 0 1rem 1.5rem; }
+  @media (max-width: 30rem) { .hero-rosette { display: none; } }
+</style>

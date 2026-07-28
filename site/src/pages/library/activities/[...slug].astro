@@ -11,7 +11,7 @@ const { a } = Astro.props;
 const { Content } = await render(a);
 const d = a.data;
 ---
-<Base title={d.title} description={d.summary} active="library">
+<Base title={d.title} description={d.summary} active="library" theme="ms408">
   <p class="eyebrow">Guided activity{d.classroom_tested ? '' : ' · pilot (not yet classroom-tested)'}</p>
   <p style="font-size:0.82rem;font-family:var(--font-mono)"><a href={href('library')}>← All activities</a></p>
   <h1>{d.title}</h1>
