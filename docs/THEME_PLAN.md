@@ -40,8 +40,9 @@ Derived from the manuscript's materials, not copied from it:
   override under that class, so unthemed pages are untouched.
 - **Library** (v1): full skin — parchment, serif headings, botanical dividers, drop-caps on
   activities (book-like, kid-friendly).
-- **Media** (planned): a lighter setting — parchment tint + serif headings, but the feed keeps
-  its structure (a "looser" variant, e.g. `theme="ms408-media"` or a modifier class).
+- **Media** (v1 ✅): `theme="ms408-media"` — a lighter "commonplace-book / clippings" setting:
+  lighter vellum, near-white panels so the feed's colored reality-check edges still pop, serif
+  hero, feed items as pinned clippings (soft shadow). Looser/more social than Library.
 - **Timeline** (optional): a rosette accent could suit the "record" framing.
 - Docs / Papers / Home stay on the clean default.
 
@@ -56,6 +57,6 @@ Derived from the manuscript's materials, not copied from it:
 ## Status
 
 - ✅ v1: `theme-ms408.css` + botanical divider, rosette, drop-cap, parchment texture; applied to
-  the Library section.
-- ⬜ Media "looser" variant; Timeline rosette accent; the glyph dingbat set; the Bootstrap /
-  WordPress ports.
+  the **Library** section (full book-look) and the **Media** feed (lighter "clippings" variant,
+  `theme-ms408-media`).
+- ⬜ Optional Timeline rosette accent; the glyph dingbat set; the Bootstrap / WordPress ports.

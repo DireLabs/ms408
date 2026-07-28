@@ -10,7 +10,8 @@ import '../styles/global.css';
 import '../styles/theme-ms408.css';
 import { REPO_URL, SITE_TITLE, href } from '../config';
 const { title, description, active, theme } = Astro.props;
-const bodyClass = theme === 'ms408' ? 'theme-ms408' : '';
+// theme="ms408" -> class "theme-ms408"; theme="ms408-media" -> "theme-ms408-media"; etc.
+const bodyClass = theme ? `theme-${theme}` : '';
 const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
 const nav = [
   { label: 'Home', path: '', key: 'home' },

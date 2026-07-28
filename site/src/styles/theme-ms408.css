@@ -66,3 +66,44 @@ body.theme-ms408 {
 
 /* Pills/tags pick up the warm palette automatically via vars; nudge the eyebrow to feel inked */
 .theme-ms408 .eyebrow { color: var(--accent-ink); }
+
+/* ------------------------------------------------------------------ *
+   MS408 media variant — a lighter, "commonplace-book / clippings" setting.
+   Warmer than the clean default but lighter than the Library book-look, so the
+   feed's colored reality-check edges still pop. Looser and more social.
+ * ------------------------------------------------------------------ */
+body.theme-ms408-media {
+  --ink: #2b2117;
+  --text: #3b3020;
+  --muted: #7a6a4f;
+  --faint: #a48c63;
+  --line: #e9dfc9;
+  --line-2: #ddccaa;
+  --line-strong: #b89d70;
+  --bg: #f7f1e3;          /* lighter vellum */
+  --panel: #fffdf6;       /* near-white so colored flags pop */
+  --accent: #9e3b2f;
+  --accent-ink: #7d2f26;
+
+  background-color: var(--bg);
+  background-image: radial-gradient(ellipse at 50% -5%, rgba(158, 59, 47, 0.04), transparent 55%);
+}
+
+/* Serif display for the hero; body stays sans (looser/social) */
+.theme-ms408-media h1, .theme-ms408-media h2 { font-family: var(--font-serif); letter-spacing: 0; }
+.theme-ms408-media .hero::before {
+  background-image: none;
+  background: radial-gradient(ellipse at 50% 0%, rgba(158, 59, 47, 0.045), transparent 60%);
+}
+
+/* Feed items read as pinned clippings on the board — keep the colored claim-flag edge
+   (set by [data-flag] in global.css; we only touch width/shadow/panel here). */
+.theme-ms408-media .feed-item {
+  background: var(--panel);
+  border: 1px solid var(--line-2);
+  border-left-width: 4px;
+  border-radius: 2px;
+  box-shadow: 0 1px 0 rgba(120, 90, 50, 0.06), 2px 3px 9px rgba(120, 90, 50, 0.07);
+}
+.theme-ms408-media .note { background: #f6eeda; border-left-color: var(--accent); color: #4a3c2a; }
+.theme-ms408-media code { background: #efe4c9; color: #5a3a20; }

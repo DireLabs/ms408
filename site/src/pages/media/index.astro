@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import BotanicalDivider from '../../components/BotanicalDivider.astro';
 import { href } from '../../config';
 import media from '../../data/media.json';
 
@@ -26,7 +27,7 @@ const items = [...media].sort((a, b) => order.indexOf(a.category) - order.indexO
 ---
 <Base title="The Voynich in the wild"
   description="Documentaries, articles, podcasts, games, theories, and reality-checks about the Voynich Manuscript — all sides, honestly flagged."
-  active="media">
+  active="media" theme="ms408-media">
   <section class="hero">
     <p class="eyebrow">The media corner · explore all sides</p>
     <h1>The Voynich, in the wild</h1>
@@ -47,6 +48,8 @@ const items = [...media].sort((a, b) => order.indexOf(a.category) - order.indexO
     solved</strong>. Every "solved!" claim here is paired with a reality-check. See
     <a href={href('docs/limits')}>what the statistics actually say</a>.
   </p>
+
+  <BotanicalDivider />
 
   <div class="filters" id="filters">
     {filters.map((f) => (
