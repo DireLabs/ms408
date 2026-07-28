@@ -67,6 +67,9 @@ body.theme-ms408 {
 /* Pills/tags pick up the warm palette automatically via vars; nudge the eyebrow to feel inked */
 .theme-ms408 .eyebrow { color: var(--accent-ink); }
 
+/* Rubricated fleuron bullets in themed lists (progressive; falls back to default bullet) */
+.theme-ms408 ul li::marker { color: var(--accent); content: "\2767  "; }
+
 /* ------------------------------------------------------------------ *
    MS408 media variant — a lighter, "commonplace-book / clippings" setting.
    Warmer than the clean default but lighter than the Library book-look, so the

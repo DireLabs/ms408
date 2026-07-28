@@ -1,0 +1,30 @@
+---
+// Original decorative "quill-stroke" frieze — a rhythmic row of pen-flourishes that EVOKE the
+// handwritten feel of the manuscript's script WITHOUT being (or claiming to be) real Voynich
+// glyphs or any transliteration. Purely ornamental. Uses currentColor.
+---
+<div class="glyph-frieze" aria-hidden="true">
+  <svg viewBox="0 0 336 40" width="336" height="40" role="presentation">
+    <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- loop-topped gallows -->
+      <g transform="translate(20 4)"><path d="M0 30 V8"/><path d="M0 8 a4 4 0 1 1 -0.2 0"/><path d="M-8 18 h16"/></g>
+      <!-- triple minims with feet -->
+      <g transform="translate(64 4)"><path d="M-7 30 V16"/><path d="M0 30 V16"/><path d="M7 30 V16"/><path d="M-9 29 q9 5 18 0"/></g>
+      <!-- o with descending tail -->
+      <g transform="translate(108 4)"><circle cx="0" cy="16" r="6"/><path d="M4 21 q5 6 0 11"/></g>
+      <!-- open c with a small top loop -->
+      <g transform="translate(150 4)"><path d="M7 11 a8 8 0 1 0 0 16"/><path d="M7 11 a3 3 0 1 1 -3.5 -1"/></g>
+      <!-- benched double gallows -->
+      <g transform="translate(196 4)"><path d="M-7 30 V9"/><path d="M7 30 V9"/><path d="M-7 9 a3 3 0 1 1 3.4 0.6"/><path d="M7 9 a3 3 0 1 1 -3.4 0.6"/><path d="M-7 16 h14"/></g>
+      <!-- e-loop chain -->
+      <g transform="translate(244 4)"><path d="M-8 22 a4 4 0 1 1 5 -4"/><path d="M-3 18 a4 4 0 1 1 5 4"/><path d="M2 22 a4 4 0 1 1 5 -4"/></g>
+      <!-- s-flourish with a curl -->
+      <g transform="translate(292 4)"><path d="M-6 28 q11 -3 1 -9 q-11 -5 0 -11"/><path d="M5 8 a2.5 2.5 0 1 1 0.1 0"/></g>
+    </g>
+  </svg>
+</div>
+
+<style>
+  .glyph-frieze { display: flex; justify-content: center; margin: 1.6rem 0; color: var(--accent); opacity: 0.8; }
+  .glyph-frieze svg { max-width: 100%; height: auto; }
+</style>

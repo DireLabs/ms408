@@ -31,8 +31,10 @@ Derived from the manuscript's materials, not copied from it:
 2. **Rosette** — concentric ring motif (cosmological pages) for corner/hero accents. ✅ v1
 3. **Drop-cap / decorative initial** — first-letter treatment for themed prose. ✅ v1 (CSS)
 4. **Parchment texture** — a very subtle vellum background (CSS, no image). ✅ v1
-5. Later: a "Voynichese-flavored" glyph dingbat set (original marks, clearly decorative — never
-   presented as real transliteration), marginalia/initial frames, a herbal corner illustration.
+5. **Glyph frieze** — a rhythmic row of original "quill-stroke" pen-flourishes that evoke the
+   script's handwritten feel (clearly decorative — never presented as real transliteration).
+   ✅ v1 (on Library + Media). Plus rubricated fleuron (❧) list bullets in themed content. ✅
+6. Later: marginalia/initial frames, a herbal corner illustration, a full glyph dingbat font.
 
 ## Application (opt-in via a `theme` prop on the layout)
 
@@ -56,7 +58,10 @@ Derived from the manuscript's materials, not copied from it:
 
 ## Status
 
-- ✅ v1: `theme-ms408.css` + botanical divider, rosette, drop-cap, parchment texture; applied to
-  the **Library** section (full book-look) and the **Media** feed (lighter "clippings" variant,
-  `theme-ms408-media`).
-- ⬜ Optional Timeline rosette accent; the glyph dingbat set; the Bootstrap / WordPress ports.
+- ✅ v1: `theme-ms408.css` + botanical divider, rosette, **glyph frieze**, drop-cap, fleuron
+  bullets, parchment texture; applied to the **Library** section (full book-look) and the
+  **Media** feed (lighter "clippings" variant, `theme-ms408-media`).
+- ✅ **Timeline** rosette accent (rendered in the default blueprint-blue — an "astronomical
+  instrument" read that suits the record).
+- ⬜ Marginalia/initial frames; a herbal corner illustration; a full glyph dingbat font; the
+  Bootstrap 5 / WordPress theme ports.

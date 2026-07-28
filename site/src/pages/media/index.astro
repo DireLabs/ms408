@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import BotanicalDivider from '../../components/BotanicalDivider.astro';
+import GlyphFrieze from '../../components/GlyphFrieze.astro';
 import { href } from '../../config';
 import media from '../../data/media.json';
 
@@ -49,7 +49,7 @@ const items = [...media].sort((a, b) => order.indexOf(a.category) - order.indexO
     <a href={href('docs/limits')}>what the statistics actually say</a>.
   </p>
 
-  <BotanicalDivider />
+  <GlyphFrieze />
 
   <div class="filters" id="filters">
     {filters.map((f) => (

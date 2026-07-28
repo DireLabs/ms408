@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Rosette from '../../components/Rosette.astro';
 import { href } from '../../config';
 import raw from '../../data/timeline.json';
 
@@ -20,6 +21,7 @@ const fmt = (d) => d ? d : '—';
   description="The program's iterations, experiments, gates, and — its signature — the self-corrections where the discipline overturned its own conclusions."
   active="timeline">
   <section class="hero">
+    <div class="hero-rosette"><Rosette size={84} /></div>
     <p class="eyebrow">The record · iterations i01–i11</p>
     <h1>Research timeline</h1>
     <p class="lede">
@@ -72,3 +74,8 @@ const fmt = (d) => d ? d : '—';
     }));
   </script>
 </Base>
+
+<style>
+  .hero-rosette { float: right; margin: 0 0 1rem 1.5rem; }
+  @media (max-width: 30rem) { .hero-rosette { display: none; } }
+</style>

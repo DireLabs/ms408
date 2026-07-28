@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import BotanicalDivider from '../../components/BotanicalDivider.astro';
 import Rosette from '../../components/Rosette.astro';
+import GlyphFrieze from '../../components/GlyphFrieze.astro';
 import { href } from '../../config';
 const activities = (await getCollection('activities')).sort((a, b) => a.data.order - b.data.order);
 ---
@@ -19,6 +20,8 @@ const activities = (await getCollection('activities')).sort((a, b) => a.data.ord
       reasoning. This is your welcome guide and a set of ready-to-run activities.
     </p>
   </section>
+
+  <GlyphFrieze />
 
   <p class="eyebrow">01 · How to use this site</p>
   <h2>Finding your way</h2>
