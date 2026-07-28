@@ -1,11 +1,20 @@
 from collections import Counter
 
+import pytest
+
 from ms408.experiments.e2_wordorder_confound import (
     deterministic_verbose_cipher,
     meaningless_block_stream,
 )
+from ms408.sources import path_for
+
+# The verbose cipher loads the Naibbe tables (consume-only, gitignored) — skip if absent.
+needs_naibbe = pytest.mark.skipif(
+    not path_for("naibbe_tables").exists(), reason="run `python -m ms408.acquire` first"
+)
 
 
+@needs_naibbe
 def test_deterministic_cipher_is_type_preserving():
     # same plaintext word -> same cipher word (bijection on types)
     plain = ["aqua", "aqua", "herba", "aqua", "herba"]
@@ -19,6 +28,7 @@ def test_deterministic_cipher_is_type_preserving():
     assert len(ciphered[0]) > len("aqua")
 
 
+@needs_naibbe
 def test_deterministic_cipher_preserves_type_frequency_structure():
     plain = ["a"] * 10 + ["b"] * 5 + ["c"] * 2
     ciphered = deterministic_verbose_cipher(plain)

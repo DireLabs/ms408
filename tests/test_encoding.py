@@ -10,7 +10,9 @@ from ms408.studies.encoding import (
 )
 
 needs_h4 = pytest.mark.skipif(
-    not (H4_OUT / "manifest.json").exists(), reason="run `python -m ms408.h4` first"
+    # Check an actual corpus file, not manifest.json (which is committed while the gitignored
+    # .txt corpora are not — so manifest.json exists in CI but the data does not).
+    not (H4_OUT / "latin_vulgate.txt").exists(), reason="run `python -m ms408.h4` first"
 )
 
 
