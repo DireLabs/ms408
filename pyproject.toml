@@ -40,6 +40,12 @@ packages = ["src/ms408"]
 line-length = 100
 src = ["src", "tests"]
 
+[tool.ruff.lint]
+# Pin the rule set explicitly (ruff's historical default) so CI is deterministic across ruff
+# versions — 0.16 expanded the defaults (ISC/I/SIM/RUF), which would flag intentional style
+# (multi-line strings, etc.). Expand this set deliberately if we want stricter linting.
+select = ["E4", "E7", "E9", "F"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
