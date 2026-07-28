@@ -33,6 +33,6 @@ user/org), so no hardcoded URL is needed in CI. For a **local** build the base d
 
 ## Placeholders to replace before launch
 
-`OWNER/ms408` appears as a default in `astro.config.mjs` and `src/config.ts` (both overridden
+`direlabs/ms408` appears as a default in `astro.config.mjs` and `src/config.ts` (both overridden
 in CI). Also replace it in the repo-level `CITATION.cff`, README badges, and
 `.github/ISSUE_TEMPLATE/config.yml`. Tracked in `../OSS_RELEASE.md`.

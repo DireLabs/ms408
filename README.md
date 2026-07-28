@@ -1,6 +1,6 @@
 # MS408 — a cold, reproducible evaluator for Voynich-Manuscript hypotheses
 
-[![CI](https://github.com/OWNER/ms408/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/ms408/actions/workflows/ci.yml)
+[![CI](https://github.com/direlabs/ms408/actions/workflows/ci.yml/badge.svg)](https://github.com/direlabs/ms408/actions/workflows/ci.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/python-3.11%E2%80%933.13-blue)
 

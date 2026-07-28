@@ -2,11 +2,11 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// GitHub Pages config. For a PROJECT site (owner.github.io/ms408) keep base '/ms408'.
-// For a user/org site or a custom domain, set SITE_BASE=/ and SITE_URL accordingly.
-// The deploy Action sets SITE_URL/SITE_BASE from repo settings.
-const site = process.env.SITE_URL || 'https://OWNER.github.io';
-const base = process.env.SITE_BASE || '/ms408';
+// Deploys to the custom domain ms408.direlabs.com (see site/public/CNAME) at the root.
+// The deploy Action overrides SITE_URL/SITE_BASE from Pages settings; these are the local
+// defaults (base '/' for a custom domain — set SITE_BASE=/reponame for a project sub-path).
+const site = process.env.SITE_URL || 'https://ms408.direlabs.com';
+const base = process.env.SITE_BASE || '/';
 
 export default defineConfig({
   site,

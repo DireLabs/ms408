@@ -66,17 +66,19 @@ contains no `.env` and produces a working `ms408-0.1.0` wheel. So `git push` lea
 - [x] Astro v1 site under `site/` — landing (researcher/developer fork), layered docs (synced
   from `docs/`), papers list, about, cite. Builds clean (10 pages). Deploy Action
   `.github/workflows/pages.yml` (derives base/origin from Pages settings).
-- [ ] **(you) Enable GitHub Pages** for the repo (Settings → Pages → Source: GitHub Actions)
-  so the `pages` workflow can deploy.
+- [x] Site set up for the **custom domain `ms408.direlabs.com`** (root base `/`): `site/public/CNAME`,
+  `astro.config` defaults, sitemap/robots/canonical all on the custom domain. Verified in a build.
+- [ ] **(you) DNS + Pages:** add a DNS `CNAME` record `ms408 → direlabs.github.io` (or an
+  `ALIAS`/apex per your DNS host), then in the repo **Settings → Pages**: Source = GitHub Actions,
+  Custom domain = `ms408.direlabs.com`, and enable "Enforce HTTPS" once the cert is issued.
 - [ ] v2 (see `docs/SITE_PLAN.md`): blog/news, interactive research timeline, and the separate
   `ms408-community-map` repo.
 
-## Open URLs / naming (fill once the GitHub repo exists)
+## Open URLs / naming
 
-- [ ] **(you) Replace the `OWNER/ms408` placeholder** with the real repo path in: README badges,
-  `CITATION.cff` (`repository-code`), `.github/ISSUE_TEMPLATE/config.yml`, and the two site
-  defaults (`site/astro.config.mjs`, `site/src/config.ts` — CI overrides these, so only the
-  local-build defaults). (Grep `OWNER/ms408`.)
+- [x] **Repo path resolved to `direlabs/ms408`** — all `OWNER/ms408` placeholders replaced
+  (README badges, `CITATION.cff`, issue config, site defaults, sync script). Domain →
+  `ms408.direlabs.com`.
 - [x] **Contact line `ti.mims.ms` is NOT a typo** — it is Tim's actual personal site
   (https://ti.mims.ms), alongside direlabs.com. The paper contact lines are correct as-is.
   (Earlier flagged as a possible typo; retracted.)

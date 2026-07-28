@@ -62,7 +62,7 @@ surface. The main site consumes it read-only.
   community-map deferred to v2.
 - **v1 built:** `site/` Astro project — landing, layered docs (synced from `docs/`), papers,
   about, cite; `.github/workflows/pages.yml` deploy. Builds clean (10 pages). Remaining to go
-  live: enable Pages in repo settings; replace the `OWNER/ms408` placeholders (`OSS_RELEASE.md`).
+  live: enable Pages in repo settings; replace the `direlabs/ms408` placeholders (`OSS_RELEASE.md`).
 
 ## Decisions to confirm before building
 
