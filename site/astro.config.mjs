@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // GitHub Pages config. For a PROJECT site (owner.github.io/ms408) keep base '/ms408'.
 // For a user/org site or a custom domain, set SITE_BASE=/ and SITE_URL accordingly.
@@ -11,6 +12,10 @@ export default defineConfig({
   site,
   base,
   trailingSlash: 'ignore',
+  integrations: [
+    // Exclude the hidden /balneo easter egg from the sitemap.
+    sitemap({ filter: (page) => !page.includes('/balneo') }),
+  ],
   markdown: {
     shikiConfig: { theme: 'github-light' },
   },

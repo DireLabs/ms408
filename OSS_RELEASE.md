@@ -38,9 +38,20 @@ clean · `python -m ms408.verify` PASS · `pytest -q` **180 passed** · wheel bu
 
 - [x] Untracked the 6 committed `paper/**/main.pdf` (contradicted `.gitignore`); PDFs are now
   build-on-demand / site-hosted. Deduped the `.gitignore` LaTeX block. Deleted loose `.DS_Store`.
-- [ ] Silence the pytest class-scoped-fixture deprecation in `tests/test_h4.py` (convert to `@classmethod`).
-- [ ] Decide whether the tracked `results/experiments/e12_openai_annotations.jsonl` (model-rater
-  output) should ship — confirm it contains no third-party corpus text (L19). Likely fine as a research record.
+- [x] Pytest class-scoped-fixture deprecation silenced (`test_h4.py` → `@staticmethod`); suite runs 0 warnings.
+- [x] `e12_openai_annotations.jsonl` **cleared to ship** — 129 records of model-generated *feature
+  labels* (keys: page/provider/model/features/_cost_usd); contains no third-party corpus text (L19-fine).
+
+## SEO / discoverability baseline (pre-publish)
+
+- [x] `@astrojs/sitemap` — `sitemap-index.xml` generated on build (17 public pages; the hidden
+  `/balneo` is excluded via a filter).
+- [x] `robots.txt` — Astro endpoint emitting an absolute, base-aware `Sitemap:` URL; AI crawlers
+  allowed (per `docs/SEO_STRATEGY.md`).
+- [x] Per-page `<link rel="canonical">` + Open Graph + Twitter-card meta in the layout; a
+  `noindex` prop (set on `/balneo`).
+- [ ] Later (SEO roadmap): a default OG image, JSON-LD (`ScholarlyArticle`/`Organization`),
+  Search Console + privacy analytics — after the domain is fixed.
 
 ## Website (GitHub Pages)
 
@@ -58,8 +69,9 @@ clean · `python -m ms408.verify` PASS · `pytest -q` **180 passed** · wheel bu
   `CITATION.cff` (`repository-code`), `.github/ISSUE_TEMPLATE/config.yml`, and the two site
   defaults (`site/astro.config.mjs`, `site/src/config.ts` — CI overrides these, so only the
   local-build defaults). (Grep `OWNER/ms408`.)
-- [ ] **(you) Contact line `ti.mims.ms`** looks like a typo of `tim@mims.ms`; it appears in
-  `paper/metadata.yaml` and every `paper/**/main.tex` title page. Fix or confirm before publishing.
+- [x] **Contact line `ti.mims.ms` is NOT a typo** — it is Tim's actual personal site
+  (https://ti.mims.ms), alongside direlabs.com. The paper contact lines are correct as-is.
+  (Earlier flagged as a possible typo; retracted.)
 - [ ] **(you) DOI:** mint on arXiv/Zenodo registration, then add to `CITATION.cff` and a README badge.
 
 ## Release-build steps (when the above are green)
