@@ -34,7 +34,11 @@ Derived from the manuscript's materials, not copied from it:
 5. **Glyph frieze** — a rhythmic row of original "quill-stroke" pen-flourishes that evoke the
    script's handwritten feel (clearly decorative — never presented as real transliteration).
    ✅ v1 (on Library + Media). Plus rubricated fleuron (❧) list bullets in themed content. ✅
-6. Later: marginalia/initial frames, a herbal corner illustration, a full glyph dingbat font.
+6. **Balneo series** — original art inspired by the bathing (balneological) section: a
+   connective-plumbing tube divider (`BalneoTubes`, non-sensitive, on Media) and an
+   ABSTRACT, modest bathing-pool vignette (`BalneoPool` — simple heads at a waterline, no
+   explicit figures). ✅ Placed the tube divider on Media; the pool ships in the kit for
+   deliberate placement (kept OFF the kid-facing Library).
 
 ## Application (opt-in via a `theme` prop on the layout)
 

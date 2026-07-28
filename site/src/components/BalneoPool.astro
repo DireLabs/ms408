@@ -1,0 +1,30 @@
+---
+// Original, deliberately ABSTRACT & MODEST bathing-pool vignette — inspired by the balneo
+// section's figures-in-a-basin, rendered as simple heads at a waterline in a scalloped, tube-fed
+// pool (no explicit figures). Not traced from any scan. Decorative; currentColor.
+const { size = 150 } = Astro.props;
+---
+<div class="balneo-pool" aria-hidden="true">
+  <svg viewBox="0 0 170 132" width={size} height={size * 132 / 170} role="presentation">
+    <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+      <!-- basin -->
+      <path d="M22 48 C22 92 44 118 85 118 C126 118 148 92 148 48"/>
+      <!-- scalloped rim -->
+      <path d="M16 48 q11.5 -11 23 0 q11.5 -11 23 0 q11.5 -11 23 0 q11.5 -11 23 0 q11.5 -11 23 0 q11.5 -11 23 0"/>
+      <!-- water -->
+      <path d="M32 74 q53 14 106 0"/><path d="M36 88 q49 12 98 0"/>
+      <!-- three heads at the waterline (abstract) -->
+      <circle cx="60" cy="60" r="8" fill="currentColor" fill-opacity="0.14"/>
+      <circle cx="86" cy="56" r="8" fill="currentColor" fill-opacity="0.14"/>
+      <circle cx="112" cy="60" r="8" fill="currentColor" fill-opacity="0.14"/>
+      <path d="M50 72 q10 -7 20 0"/><path d="M76 68 q10 -7 20 0"/><path d="M102 72 q10 -7 20 0"/>
+      <!-- feed tube -->
+      <path d="M148 50 C166 45 166 24 150 22"/>
+    </g>
+  </svg>
+</div>
+
+<style>
+  .balneo-pool { color: var(--accent); opacity: 0.9; line-height: 0; }
+  .balneo-pool svg { height: auto; }
+</style>

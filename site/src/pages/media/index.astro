@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import GlyphFrieze from '../../components/GlyphFrieze.astro';
+import BalneoTubes from '../../components/BalneoTubes.astro';
 import { href } from '../../config';
 import media from '../../data/media.json';
 
@@ -71,6 +72,8 @@ const items = [...media].sort((a, b) => order.indexOf(a.category) - order.indexO
       </article>
     ))}
   </div>
+
+  <BalneoTubes />
 
   <p style="font-size:0.82rem;color:var(--muted);margin-top:2rem;font-family:var(--font-mono)">
     Curated links to third-party content; we host none of it. Spotted something to add or fix?
