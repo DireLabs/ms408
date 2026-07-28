@@ -32,9 +32,9 @@ jobs:
           cache-dependency-path: site/package-lock.json
       - name: Configure Pages
         id: pages
+        # Requires Pages to be enabled once in repo Settings → Pages → Source: GitHub Actions
+        # (auto-enablement needs an admin-scoped token the default GITHUB_TOKEN lacks).
         uses: actions/configure-pages@v5
-        with:
-          enablement: true   # let the workflow turn Pages on (Source: GitHub Actions)
       - name: Install
         working-directory: site
         run: npm ci
