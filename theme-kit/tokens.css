@@ -1,0 +1,39 @@
+/* MS408 UI kit — canonical design tokens (single source of truth).
+   The website (site/src/styles/*.css), the Bootstrap port, and the WordPress port all derive
+   from these. Two palettes: "architectural" (IBM Plex / blueprint, the professional default)
+   and "manuscript" (iron-gall + vellum + rubric, the MS408 skin). Motifs (glyph frieze,
+   rosette, botanical, herbal) ship as SVG in site/src/components/ and theme-kit/motifs/. */
+
+:root {
+  /* Type — IBM Plex family (self-host via @fontsource or a CDN) */
+  --ms408-font-sans:  "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ms408-font-mono:  "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ms408-font-serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+
+  /* Architectural palette (default / docs / research) */
+  --ms408-ink:    #161616;   /* Carbon gray-100 */
+  --ms408-text:   #21272a;
+  --ms408-muted:  #6f6f6f;
+  --ms408-bg:     #f5f5f3;   /* warm gray-10 */
+  --ms408-panel:  #ffffff;
+  --ms408-line:   #e0e0e0;
+  --ms408-accent: #0f62fe;   /* IBM interactive blue */
+  --ms408-accent-ink: #0043ce;
+
+  /* Manuscript palette (the MS408 skin — library/media) */
+  --ms408-vellum:        #f3ead6;   /* parchment */
+  --ms408-vellum-light:  #f7f1e3;   /* lighter (media) */
+  --ms408-vellum-panel:  #fbf5e6;
+  --ms408-iron-gall:     #2b2117;   /* ink */
+  --ms408-iron-gall-2:   #3b3020;
+  --ms408-rubric:        #9e3b2f;   /* rubric vermilion — the manuscript accent */
+  --ms408-rubric-ink:    #7d2f26;
+  --ms408-botanical:     #6b7250;   /* herbal green */
+  --ms408-faded-blue:    #5b6b7a;   /* astro blue */
+  --ms408-tan-line:      #e2d5b6;
+
+  /* Reality-check flag colors (media feed) — keep consistent across ports */
+  --ms408-flag-scholarship: #198038;
+  --ms408-flag-claim:       #da1e28;
+  --ms408-flag-fiction:     #8a3ffc;
+}

@@ -1,0 +1,42 @@
+// MS408 → Bootstrap 5 variable map. Import this BEFORE Bootstrap's own variables:
+//
+//   @import "ms408-variables";
+//   @import "bootstrap/scss/bootstrap";
+//
+// Derived from theme-kit/tokens.css. Ships two flavors — architectural (default) or manuscript
+// (uncomment the block). Fonts: load IBM Plex (e.g. @fontsource/ibm-plex-{sans,mono,serif}).
+
+$font-family-sans-serif: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+$font-family-monospace:  "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+// ---- Architectural (default) ----------------------------------------------
+$primary:       #0f62fe;   // IBM interactive blue
+$body-color:    #21272a;
+$body-bg:       #f5f5f3;
+$border-color:  #e0e0e0;
+$border-radius:        0;  // sharp, architectural
+$border-radius-sm:     0;
+$border-radius-lg:     0;
+
+// ---- Manuscript (uncomment to swap the whole theme to the MS408 skin) ------
+// $primary:                #9e3b2f;   // rubric vermilion
+// $body-color:             #2b2117;   // iron-gall ink
+// $body-bg:                #f3ead6;   // vellum parchment
+// $border-color:           #e2d5b6;   // tan
+// $headings-font-family:   "IBM Plex Serif", Georgia, serif;
+// $border-radius:          2px;
+
+// ---- Extra MS408 tokens (available to your own components) -----------------
+$ms408-rubric:      #9e3b2f;
+$ms408-iron-gall:   #2b2117;
+$ms408-vellum:      #f3ead6;
+$ms408-botanical:   #6b7250;
+$ms408-faded-blue:  #5b6b7a;
+
+// Fold the accents into Bootstrap's theme-color map so `.text-rubric`, `.bg-vellum`, etc. exist.
+$custom-colors: (
+  "rubric":    $ms408-rubric,
+  "vellum":    $ms408-vellum,
+  "botanical": $ms408-botanical,
+);
+// $theme-colors: map-merge($theme-colors, $custom-colors);  // enable after importing bootstrap functions

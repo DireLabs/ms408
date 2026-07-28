@@ -48,13 +48,14 @@ Derived from the manuscript's materials, not copied from it:
 - **Timeline** (optional): a rosette accent could suit the "record" framing.
 - Docs / Papers / Home stay on the clean default.
 
-## Distribution roadmap (later)
+## Distribution roadmap
 
-- Extract the tokens + motifs into a standalone package (CSS variables + SVG components) — an
-  "MS408 UI kit."
-- Port to popular platforms: a Bootstrap 5 theme (SCSS variable map + a few components) and a
-  WordPress block theme (theme.json palette + block styles). Each is a mechanical mapping of the
-  same tokens; scope as a follow-up once the web components settle.
+- ✅ **Seeded `theme-kit/`** — the extractable "MS408 UI kit": `tokens.css` (canonical tokens,
+  both palettes), `bootstrap/_ms408-variables.scss` (Bootstrap 5 map), `wordpress/theme.json`
+  (block-theme starter), and `motifs/*.svg` (framework-agnostic, currentColor). `tokens.css` is
+  the single source of truth the site + ports derive from.
+- ⬜ Package as a standalone repo (`ms408-ui-kit`) with a demo; ship the Bootstrap theme + WP
+  block theme as installable artifacts; add a proper glyph **font** (needs a font pipeline).
 
 ## Status
 
@@ -63,5 +64,8 @@ Derived from the manuscript's materials, not copied from it:
   **Media** feed (lighter "clippings" variant, `theme-ms408-media`).
 - ✅ **Timeline** rosette accent (rendered in the default blueprint-blue — an "astronomical
   instrument" read that suits the record).
-- ⬜ Marginalia/initial frames; a herbal corner illustration; a full glyph dingbat font; the
-  Bootstrap 5 / WordPress theme ports.
+- ✅ **Herbal hero illustration** (Library) + **illuminated (framed) initial** on themed prose.
+- ✅ **`theme-kit/`** distribution seed (tokens + Bootstrap SCSS + WordPress theme.json + portable
+  motif SVGs).
+- ⬜ Marginalia/initial frames beyond the drop-cap; a full glyph dingbat **font**; packaging the
+  kit as a standalone `ms408-ui-kit` repo with installable Bootstrap/WordPress artifacts.

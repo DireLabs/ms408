@@ -42,15 +42,19 @@ body.theme-ms408 {
   background: radial-gradient(ellipse at 50% 0%, rgba(158, 59, 47, 0.05), transparent 60%);
 }
 
-/* Drop-cap / decorative initial for themed long-form prose (e.g. library activities) */
+/* Illuminated initial: a framed decorated capital for themed long-form prose. */
 .theme-ms408 .prose > p:first-of-type::first-letter {
   font-family: var(--font-serif);
-  font-size: 3.3rem;
-  line-height: 0.78;
+  font-size: 2.9rem;
+  line-height: 0.8;
   float: left;
-  margin: 0.16rem 0.55rem 0 0;
+  margin: 0.2rem 0.55rem 0 0;
+  padding: 0.28rem 0.4rem 0.14rem;
   color: var(--accent);
   font-weight: 600;
+  background: rgba(158, 59, 47, 0.06);
+  border: 1px solid rgba(158, 59, 47, 0.28);
+  border-radius: 2px;
 }
 
 /* Notes/blockquotes read as rubricated marginalia */

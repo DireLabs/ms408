@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import BotanicalDivider from '../../components/BotanicalDivider.astro';
-import Rosette from '../../components/Rosette.astro';
+import HerbalSprig from '../../components/HerbalSprig.astro';
 import GlyphFrieze from '../../components/GlyphFrieze.astro';
 import { href } from '../../config';
 const activities = (await getCollection('activities')).sort((a, b) => a.data.order - b.data.order);
@@ -11,7 +11,7 @@ const activities = (await getCollection('activities')).sort((a, b) => a.data.ord
   description="A friendly welcome and guided activities for libraries, classrooms, and summer programs exploring the Voynich Manuscript."
   active="library" theme="ms408">
   <section class="hero">
-    <div class="hero-rosette"><Rosette size={88} /></div>
+    <div class="hero-figure"><HerbalSprig size={124} /></div>
     <p class="eyebrow">For libraries · classrooms · summer programs</p>
     <h1>Explore the world's most mysterious book — together</h1>
     <p class="lede">
@@ -67,6 +67,6 @@ const activities = (await getCollection('activities')).sort((a, b) => a.data.ord
 </Base>
 
 <style>
-  .hero-rosette { float: right; margin: 0 0 1rem 1.5rem; }
-  @media (max-width: 30rem) { .hero-rosette { display: none; } }
+  .hero-figure { float: right; margin: -0.5rem -0.5rem 1rem 1.5rem; }
+  @media (max-width: 34rem) { .hero-figure { display: none; } }
 </style>
