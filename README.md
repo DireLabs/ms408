@@ -1,8 +1,12 @@
 # MS408 — a cold, reproducible evaluator for Voynich-Manuscript hypotheses
 
-[![CI](https://github.com/direlabs/ms408/actions/workflows/ci.yml/badge.svg)](https://github.com/direlabs/ms408/actions/workflows/ci.yml)
+[![CI](https://github.com/DireLabs/ms408/actions/workflows/ci.yml/badge.svg)](https://github.com/DireLabs/ms408/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/ms408.svg)](https://pypi.org/project/ms408/)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/python-3.11%E2%80%933.13-blue)
+<!-- DOI badge: after enabling Zenodo + cutting the first Release, paste the concept-DOI badge here, e.g.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX) -->
+[![site](https://img.shields.io/badge/site-ms408.direlabs.com-6b4e2e)](https://ms408.direlabs.com)
 
 > **New here? Pick your path.**
 > - **You study the Voynich Manuscript** (and want to test an idea, or understand what's

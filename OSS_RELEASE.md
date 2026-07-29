@@ -84,18 +84,34 @@ contains no `.env` and produces a working `ms408-0.1.0` wheel. So `git push` lea
 
 ## Open URLs / naming
 
-- [x] **Repo path resolved to `direlabs/ms408`** — all `OWNER/ms408` placeholders replaced
+- [x] **Repo path resolved to `DireLabs/ms408`** — all `OWNER/ms408` placeholders replaced
   (README badges, `CITATION.cff`, issue config, site defaults, sync script). Domain →
   `ms408.direlabs.com`.
 - [x] **Contact line `ti.mims.ms` is NOT a typo** — it is Tim's actual personal site
   (https://ti.mims.ms), alongside direlabs.com. The paper contact lines are correct as-is.
   (Earlier flagged as a possible typo; retracted.)
-- [ ] **(you) DOI:** mint on arXiv/Zenodo registration, then add to `CITATION.cff` and a README badge.
+## PyPI + DOI release (PREPPED — one-time setup by you, then it's automated)
 
-## Release-build steps (when the above are green)
+Everything is wired; both artifacts pass `twine check`. `ms408` is free on PyPI.
 
-1. `git status` clean; confirm no `.env`, no `.DS_Store`, no `data/raw/` in the tree.
-2. Fresh clone to a temp dir; `pip install -e ".[dev]"`; `ruff check src tests examples`; `pytest -q`.
-3. `python -m ms408.acquire` then `python -m ms408.verify --full` (reproduces the shipped bands).
-4. `python -m build` from the clean clone; verify the wheel ships `reference_bands.json`.
-5. Tag `v0.1.0`; push; confirm CI green; publish.
+- [x] **`pyproject.toml` PyPI-ready** — public description, `readme`, `license = "Apache-2.0"`
+  (+ `license-files`), authors, keywords, classifiers, `[project.urls]`. sdist + wheel build and
+  **`twine check` PASSES**.
+- [x] **`.github/workflows/publish.yml`** — publishes to PyPI on a GitHub Release via **Trusted
+  Publishing** (OIDC, no stored tokens).
+- [x] **README badges**: PyPI + site added; **DOI badge placeholder** ready to paste.
+- [x] **`docs/RELEASE_NOTES_v0.1.0.md`** — draft release notes to paste into the GitHub Release.
+- [ ] **(you) One-time PyPI setup:** on pypi.org add a *Trusted Publisher* (or "pending
+  publisher") → owner `DireLabs`, repo `ms408`, workflow `publish.yml`, environment `pypi`.
+- [ ] **(you) One-time Zenodo setup:** log into zenodo.org with GitHub → toggle `DireLabs/ms408`
+  on.
+- [ ] **(you) Cut the release:** create a GitHub Release tagged **`v0.1.0`** (paste the release
+  notes). This one action → publishes to PyPI **and** mints the Zenodo DOI. Then paste the DOI
+  badge into README + `CITATION.cff` (uncomment the placeholder). Bump `version` before any later
+  release (PyPI won't overwrite).
+
+## Release-build sanity (already verified locally)
+
+1. Tree clean to publish (see Publish-safety above); no `.env`/data/`.DS_Store`.
+2. `ruff check` clean · `pytest` 180 passed · `python -m ms408.verify --full` reproduces bands.
+3. `python -m build` → sdist + wheel; wheel ships `reference_bands.json`; `twine check` passes.

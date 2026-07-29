@@ -1,8 +1,28 @@
 [project]
 name = "ms408"
 version = "0.1.0"
-description = "MS408 research program: corpus pipeline, validation harness, statistics"
+description = "A cold, reproducible evaluator and benchmark for Voynich-Manuscript (Beinecke MS 408) hypotheses"
+readme = "README.md"
 requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "Tim Walsh", email = "tim@mims.ms" }]
+keywords = [
+    "voynich", "voynich-manuscript", "ms408", "computational-philology",
+    "reproducible-research", "adversarial-validation", "evidence-grading", "cryptanalysis",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Text Processing :: Linguistic",
+    "Typing :: Typed",
+]
 # Core deps are all the evaluator needs. `anthropic` powers only the optional
 # vision-annotation track (ms408.annotate), so it lives in the `vision` extra — a stranger
 # running `evaluate()` should not have to install it.
@@ -21,6 +41,12 @@ dev = [
     "pytest>=8.0",
     "ruff>=0.4",
 ]
+
+[project.urls]
+Homepage = "https://ms408.direlabs.com"
+Repository = "https://github.com/DireLabs/ms408"
+Documentation = "https://ms408.direlabs.com/docs"
+Issues = "https://github.com/DireLabs/ms408/issues"
 
 [project.scripts]
 ms408 = "ms408.__main__:main"

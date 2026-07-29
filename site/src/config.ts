@@ -1,5 +1,5 @@
 // Central site config. Override REPO_URL at build via PUBLIC_REPO_URL.
-export const REPO_URL = import.meta.env.PUBLIC_REPO_URL || 'https://github.com/direlabs/ms408';
+export const REPO_URL = import.meta.env.PUBLIC_REPO_URL || 'https://github.com/DireLabs/ms408';
 export const SITE_TITLE = 'MS408';
 export const SITE_TAGLINE = 'An honest, reproducible toolkit and shared benchmark for Voynich-Manuscript research';
 

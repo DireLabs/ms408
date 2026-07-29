@@ -13,7 +13,7 @@ authors:
     given-names: Tim
     affiliation: "DireLabs, LLC"
 license: Apache-2.0
-repository-code: "https://github.com/direlabs/ms408"
+repository-code: "https://github.com/DireLabs/ms408"
 keywords:
   - Voynich Manuscript
   - computational philology

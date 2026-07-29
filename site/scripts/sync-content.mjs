@@ -8,7 +8,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO = resolve(__dirname, '..', '..');          // repo root
 const OUT = resolve(__dirname, '..', 'src', 'content', 'docs');
 const BASE = (process.env.SITE_BASE || '/').replace(/\/$/, '');
-const REPO_URL = process.env.REPO_URL || 'https://github.com/direlabs/ms408';
+const REPO_URL = process.env.REPO_URL || 'https://github.com/DireLabs/ms408';
 
 // Curated set: which repo docs become site pages, in order, with metadata.
 const DOCS = [
