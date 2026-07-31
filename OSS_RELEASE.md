@@ -76,9 +76,10 @@ contains no `.env` and produces a working `ms408-0.1.0` wheel. So `git push` lea
   `.github/workflows/pages.yml` (derives base/origin from Pages settings).
 - [x] Site set up for the **custom domain `ms408.direlabs.com`** (root base `/`): `site/public/CNAME`,
   `astro.config` defaults, sitemap/robots/canonical all on the custom domain. Verified in a build.
-- [ ] **(you) DNS + Pages:** add a DNS `CNAME` record `ms408 → direlabs.github.io` (or an
-  `ALIAS`/apex per your DNS host), then in the repo **Settings → Pages**: Source = GitHub Actions,
-  Custom domain = `ms408.direlabs.com`, and enable "Enforce HTTPS" once the cert is issued.
+- [ ] **(you) DNS + Pages** — full steps in [`docs/DEPLOY.md`](docs/DEPLOY.md). In short: add a
+  **CNAME** record `ms408 → direlabs.github.io` (subdomain → CNAME, not A/ALIAS); then repo
+  **Settings → Pages**: Source = GitHub Actions, Custom domain = `ms408.direlabs.com`, Enforce
+  HTTPS once the cert issues. (Cloudflare: set the record to DNS-only until the cert provisions.)
 - [ ] v2 (see `docs/SITE_PLAN.md`): blog/news, interactive research timeline, and the separate
   `ms408-community-map` repo.
 
