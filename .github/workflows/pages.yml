@@ -38,12 +38,8 @@ jobs:
       - name: Install
         working-directory: site
         run: npm ci
-      - name: Build paper PDFs
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
-            texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended latexmk
-          bash site/scripts/build-papers.sh
+      # Paper PDFs are committed under site/public/papers/ (see site/.gitignore) — no
+      # LaTeX-in-CI step, which was fragile. Regenerate locally with scripts/build-papers.sh.
       - name: Build
         working-directory: site
         # base_path / origin auto-derive the correct base for project vs user/org Pages;
