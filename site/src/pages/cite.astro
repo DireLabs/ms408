@@ -1,24 +1,42 @@
 ---
 import Base from '../layouts/Base.astro';
-import { REPO_URL } from '../config';
+import { REPO_URL, PYPI_URL, SOFTWARE_DOI, href } from '../config';
+const doiLine = SOFTWARE_DOI ? `  doi    = {${SOFTWARE_DOI}},\n` : '';
 const bibtex = `@misc{ms408,
   author = {Walsh, Tim},
   title  = {MS408 --- a firewall-disciplined evaluator for Voynich-Manuscript hypotheses},
   year   = {2026},
-  note   = {Apache-2.0. Preprint DOI to be added.},
+${doiLine}  note   = {Apache-2.0},
   howpublished = {\\url{${REPO_URL}}}
 }`;
 ---
-<Base title="Cite" description="How to cite MS408." active="cite">
+<Base title="Cite" description="How to cite MS408 — software (Zenodo DOI) and preprints." active="cite">
   <h1>Cite</h1>
   <p class="lede">If you use the toolkit or its findings, please cite the software and the
     relevant preprint.</p>
-  <p>The repository ships a <a href={`${REPO_URL}/blob/main/CITATION.cff`}><code>CITATION.cff</code></a>,
-    so GitHub's "Cite this repository" works directly. DOIs will be added here on preprint
-    registration.</p>
-  <h2>Software (BibTeX)</h2>
+
+  <h2>Install</h2>
+  <pre><code>pip install ms408</code></pre>
+  <p style="font-size:0.9rem"><a href={PYPI_URL} rel="noopener">PyPI</a> ·
+    <a href={REPO_URL} rel="noopener">source</a> ·
+    <a href={`${REPO_URL}/blob/main/CITATION.cff`}><code>CITATION.cff</code></a>
+    (GitHub's "Cite this repository" works directly).</p>
+
+  <h2>Software</h2>
+  {SOFTWARE_DOI ? (
+    <p>DOI: <a href={`https://doi.org/${SOFTWARE_DOI}`}><code>{SOFTWARE_DOI}</code></a> (Zenodo;
+      the concept DOI always resolves to the latest version).</p>
+  ) : (
+    <p class="note">A permanent citable <strong>DOI</strong> is minted by Zenodo on the first
+      release — it will appear here then.</p>
+  )}
   <pre><code>{bibtex}</code></pre>
-  <p>Data note: if you use the bundled Naibbe example data, also cite Greshko (2025),
-    <em>The Naibbe cipher</em>, Cryptologia, doi:10.1080/01611194.2025.2566408, per its source
-    licence.</p>
+
+  <h2>Preprints</h2>
+  <p>See the <a href={href('papers')}>papers</a> — the constraint-envelope study and the methods paper on
+    adversarial self-correction. Each will carry its own arXiv DOI once posted.</p>
+
+  <p style="font-size:0.9rem">Data note: if you use the bundled Naibbe example data, also cite
+    Greshko (2025), <em>The Naibbe cipher</em>, Cryptologia, doi:10.1080/01611194.2025.2566408,
+    per its source licence.</p>
 </Base>
