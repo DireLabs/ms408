@@ -24,10 +24,10 @@ from pathlib import Path
 
 from .acquire import sha256_of
 from .ivtff import IVTFFDocument
-from .sources import SOURCES, path_for
+from .sources import DATA_HOME, SOURCES, path_for
 
 DATASET_VERSION = "0.1.0"
-PROCESSED_ROOT = Path(__file__).resolve().parents[2] / "data" / "processed"
+PROCESSED_ROOT = DATA_HOME / "processed"
 TRANSLITERATIONS = ("zl", "gc")  # EVA primary + v101 sensitivity (L11)
 
 
