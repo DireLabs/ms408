@@ -15,6 +15,35 @@ reference bands are built at **10,000 tokens**; below ~8,000 the axes (especiall
 token-sensitive `ttr`, and the confidence intervals) are not strictly comparable, and the
 verdict carries a `LOW TOKEN BUDGET` note. Evaluate near 10,000 tokens where you can.
 
+## Dialect scope: the bands are Currier **A**, not A+B
+
+The reference bands are built by concatenating the Currier A and B paragraph token streams
+and truncating to the 10,000-token budget. Currier A alone supplies 10,709 tokens, so the
+truncation never reaches B — **the shipped bands contain zero Currier B tokens**, while B
+is 22,864 tokens, 68% of the manuscript. The artifact was labelled "Currier A+B" until this
+was caught in external review; the label now reads "Currier A ONLY".
+
+The consequence is measurable and large (`ms408.experiments.e34_band_dialect_scope`, sliding
+matched-budget windows at 1,000-token strides):
+
+| dialect | windows | `h2` in band | `ed1` in band | `zipf` in band | best hard tally |
+|---|---|---|---|---|---|
+| Currier A | 2 | 2/2 | 2/2 | 2/2 | 3/3 |
+| Currier B | 14 | 0/14 | 0/14 | 4/14 | 1/3 |
+
+**So: genuine Voynichese drawn from the majority dialect fails these bands**, and does so
+about as decisively as Latin does. Read an out-of-band verdict as "unlike Currier A" — not
+as "unlike the Voynich manuscript." This is not band *tightness*: under the builder's own
+75% block subsample the manuscript stays in band, which is what a 95% CI should do. It is
+scope. That A and B differ substantially is one of this program's own grade-A findings, and
+the analyses stratify by dialect (binding rule L8) — the public evaluator is the one
+artifact that did not.
+
+Whether to ship per-dialect bands, rebuild from a dialect-balanced sample, or leave the
+bands A-scoped and documented is an **open decision** (`D21` in
+`docs/planning/i01/DECISIONS.md`). Until it is settled the bands are unchanged, because
+changing them changes every shipped number.
+
 ## The single manuscript (n = 1)
 
 The reference bands come from one artifact resampled by subsampling its own blocks. That

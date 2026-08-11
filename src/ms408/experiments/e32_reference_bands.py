@@ -75,6 +75,14 @@ def _subsample(vms: list, nb: int, frac: float, seed: int) -> list:
 def build() -> dict:
     """Compute the reference-band artifact deterministically. No file IO (reads only the
     acquired VMS corpus). `run()` writes it; `ms408.verify` rebuilds and compares."""
+    # SCOPE (open decision D21, see docs/planning/i01/DECISIONS.md): this
+    # concatenation is truncated at N_TOKENS=10000, but Currier A alone supplies 10,709
+    # paragraph tokens — so the sample is 100% A and contains ZERO B tokens, while B is
+    # 68% of the manuscript. The bands below are therefore Currier-A-scoped, and the
+    # metadata string says so. E34 measures the consequence: no Currier B window scores
+    # better than 1 of 3 hard axes. Changing this expression rebuilds every shipped band
+    # and re-pins tests/test_verify.py — it is a scoping decision, not a bug fix, so the
+    # expression is deliberately left as-is pending sign-off.
     vms = _sub(_vms_tokens("A") + _vms_tokens("B"), N_TOKENS)
     nb = len(vms) // BLOCK
 
@@ -120,7 +128,16 @@ def build() -> dict:
             "script": "ms408.experiments.e32_reference_bands",
             "git_commit": git_commit(),
             "built_at": datetime.now(UTC).isoformat(timespec="seconds"),
-            "vms_dataset": "ZL EVA transliteration, Currier A+B, matched token budget",
+            "vms_dataset": "ZL EVA transliteration, Currier A ONLY, matched token budget",
+            "dialect_scope": {
+                "scope": "Currier A",
+                "note": "The A+B concatenation is truncated at the matched token budget, "
+                        "and Currier A alone exceeds it — so no Currier B token reaches "
+                        "these bands, though B is 68% of the manuscript. A stream from B "
+                        "scores 0-1 of 3 hard axes (E34). Scope is an open decision "
+                        "(D21); see docs/LIMITS.md.",
+                "evidence": "ms408.experiments.e34_band_dialect_scope",
+            },
             "n_tokens": N_TOKENS,
             "seed": SEED,
             "block": BLOCK,
