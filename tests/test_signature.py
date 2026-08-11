@@ -10,6 +10,7 @@ from __future__ import annotations
 import pytest
 
 from ms408 import evaluate
+from ms408.h4 import H4_OUT
 from ms408.signature import (
     AXES,
     CONFOUNDED_AXES,
@@ -23,6 +24,14 @@ from ms408.sources import path_for
 
 needs_data = pytest.mark.skipif(
     not path_for("zl").exists(), reason="run `python -m ms408.acquire` first"
+)
+
+# The H4 control corpora are built by `python -m ms408.h4` from raw sources that are not
+# in ms408.sources (they are not redistributable and not fetched by ms408.acquire), so a
+# test needing them must guard on the corpus file itself, not on the VMS transliteration.
+# Same guard as tests/test_encoding.py::needs_h4.
+needs_h4 = pytest.mark.skipif(
+    not (H4_OUT / "latin_vulgate.txt").exists(), reason="run `python -m ms408.h4` first"
 )
 
 
@@ -108,10 +117,10 @@ def test_vms_is_self_consistent():
 
 
 @needs_data
+@needs_h4
 def test_real_latin_is_excluded():
     """Raw natural-language prose must NOT pass the hard axes (high h2, no ED1 network)."""
     from ms408.experiments.e13_function_content import N_TOKENS, _sub
-    from ms408.h4 import H4_OUT
 
     latin = _sub((H4_OUT / "latin_vulgate.txt").read_text().split(), N_TOKENS)
     v = evaluate(latin)
