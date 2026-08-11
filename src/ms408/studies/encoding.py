@@ -159,6 +159,9 @@ def profile(words: list) -> dict:
     scan = scan_scales(words)
     scale, _, value = peak(scan)
     repeats = sum(1 for a, b in zip(words, words[1:]) if a == b)
+    # zipf_slope() is undefined (None) below min_rank + 10 types; carry that through
+    # rather than round() it, so degenerate streams get a verdict and not a TypeError.
+    zipf = zipf_slope(words)
     return {
         "tokens": len(words),
         "types": len(set(words)),
@@ -166,7 +169,7 @@ def profile(words: list) -> dict:
         "h2": round(h2, 4),
         "mean_word_length": round(sum(map(len, words)) / len(words), 3),
         "type_token_ratio": round(len(set(words)) / len(words), 4),
-        "zipf_slope": round(zipf_slope(words), 4),
+        "zipf_slope": None if zipf is None else round(zipf, 4),
         "abbreviation_rho": round(abbreviation_rho(words), 4),
         "ed1_main_component": ed1_network_stats(words)["main_component_share"],
         "position_entropy": positional_concentration(words)[

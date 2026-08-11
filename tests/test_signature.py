@@ -127,3 +127,25 @@ def test_real_latin_is_excluded():
     assert v["hard_axes_in_band"] == 0
     assert v["axes"]["h2"]["in_band"] is False
     assert v["axes"]["ed1"]["in_band"] is False
+
+
+@pytest.mark.parametrize(
+    "tokens",
+    [
+        pytest.param(["qokeedy"] * 1500, id="single-type"),
+        pytest.param(["qokeedy", "chedy"] * 750, id="two-types"),
+    ],
+)
+def test_degenerate_input_returns_verdict_not_crash(tokens):
+    """Streams with too few types must yield an undefined zipf, not a TypeError.
+
+    zipf_slope() returns None below min_rank + 10 types (a documented contract). The
+    verdict path must carry that None through rather than round() it: these are the
+    first inputs a stranger tries, and a traceback is not a verdict. Data-free.
+    """
+    v = evaluate(tokens)
+    assert v["axes"]["zipf"]["value"] is None
+    assert v["axes"]["zipf"]["in_band"] is None
+    # An undefined axis is excluded from the denominator, not silently counted as a miss.
+    assert v["hard_axes_total"] == len(HARD_AXES) - 1
+    assert v["axes"]["zipf"]["caveat"]
