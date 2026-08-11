@@ -4,7 +4,26 @@
 this file (and DECISIONS.md when relevant). Keep entries terse; this is how Code sessions, Cowork
 sessions, and Tim stay synchronized.
 
-_Last updated: 2026-07-05 (Code session 1)_
+_Last updated: 2026-08-10 (Code session — external-review follow-ups)_
+
+## Current: external review follow-ups (post-OSS-release)
+
+An independent, AI-assisted external review of the released site/preprints/repo/package
+returned five findings (`follow-ups/`). The review reproduced the headline statistics from
+an independently written IVTFF parser and matched them; `acquire` verified all 15 pinned
+checksums and `verify --full` rebuilt every shipped band.
+
+| # | Finding | State |
+|---|---|---|
+| 3 | `test_real_latin_is_excluded` fails on a clean checkout (guarded on the wrong corpus) | ✅ applied |
+| 4 | Degenerate token streams crash `evaluate()` (`round(None)`) | ✅ applied |
+| 5 | `acquire()` fails outside a checkout (`RAW_ROOT` resolves into site-packages) | ✅ applied |
+| 1 | Reference bands are Currier-A-only but were labelled "A+B" | ⚠️ **D21 open — Tim.** Interim: label corrected, `docs/LIMITS.md` §Dialect scope added, E34 diagnostic written. Bands unchanged. |
+| 2 | `results/experiments/*.json` gitignored — cited numbers don't dereference in the release | ⚠️ **D22 open — Tim.** No interim action; release-policy + L19 call. |
+
+Firewall status after the three applied fixes: every shipped band and point byte-identical
+(`verify --full` OK); the only change to `reference_bands.json` is metadata.
+
 
 ## Gates
 
@@ -47,3 +66,8 @@ _Last updated: 2026-07-05 (Code session 1)_
 ## New D-items raised since G0
 
 All resolved at G1 (2026-07-06): D13–D18 locked as L21–L26. Open by design: D9 (publication intent, decide by end of Phase 1), D12 (annotation budget, set before T1.3 — I'll bring a cost estimate when T1.2's schema exists).
+
+Raised 2026-08-10 from the external review, both awaiting Tim: **D21** (dialect scope of the
+public evaluator's reference bands) and **D22** (whether to ship the per-experiment results
+tier). Neither was resolved in-session — both are scoping/release-policy calls, so the
+least-committal path was taken and the decisions surfaced (rule 6).
