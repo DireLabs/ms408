@@ -1,0 +1,521 @@
+{
+  "meta": {
+    "script": "ms408.experiments.e34_band_dialect_scope",
+    "git_commit": "351193cbfae86ac0db95305d200da842fef963fa",
+    "built_at": "2026-08-14T07:06:41+00:00",
+    "purpose": "Coverage check on the per-dialect reference bands (D21): does each dialect's band set, built from that dialect's first 10000 paragraph tokens, actually cover the REST of the same dialect? And how far off is the other dialect? Originally written to demonstrate the pre-D21 defect, where a single band set labelled 'A+B' contained only A.",
+    "band_provenance": {
+      "script": "ms408.experiments.e32_reference_bands",
+      "git_commit": "351193cbfae86ac0db95305d200da842fef963fa",
+      "built_at": "2026-08-14T07:06:13+00:00",
+      "vms_dataset": "ZL EVA transliteration, one band set per Currier dialect, matched token budget",
+      "dialect_scope": {
+        "dialects": [
+          "A",
+          "B"
+        ],
+        "note": "Bands are stratified by Currier dialect (D21, L8). A and B are different generative regimes \u2014 a stream matching A's bands typically misses B's and vice versa \u2014 so there is no single 'the manuscript' band set and evaluate() reports every dialect rather than picking one. Each sample is the first 10000 paragraph tokens of that dialect in page order; see docs/LIMITS.md and E34 for how well that prefix covers the rest of the dialect.",
+        "evidence": "ms408.experiments.e34_band_dialect_scope",
+        "history": "Before D21 a single band set was built from A+B truncated at the budget, which contained only A while claiming A+B. The A band set here is byte-identical to that artifact."
+      },
+      "n_tokens": 10000,
+      "seed": 408,
+      "block": 250,
+      "method": "per dialect: profile axes = subsample-without-replacement 95% CI (120 reps); syntax axes = subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
+      "params": {
+        "profile_subsample": 120,
+        "syntax_subsample": 40,
+        "keep_frac": 0.75,
+        "n_null": 20,
+        "resample": "subsample-without-replacement (duplicate-safe)"
+      },
+      "caveats": {
+        "dI": "homophony/respacing-confounded (E29); in-band is weak evidence",
+        "syntax_soft": "VMS-side CIs cross zero \u2014 soft axes; see docs/LIMITS.md",
+        "dialect": "In-band for one dialect is NOT in-band for the manuscript; report which dialect (L8)."
+      }
+    },
+    "n_tokens": 10000,
+    "step": 1000,
+    "hard_axes": [
+      "ed1",
+      "h2"
+    ],
+    "caveat": "Windows overlap and each dialect's own bands were built from its first window, so 'own-band' coverage is not an out-of-sample test for that first window. Counts describe coverage, not independent samples. No decipherment or meaning claim (L7)."
+  },
+  "dialects": {
+    "A": {
+      "tokens": 10709,
+      "n_windows": 2,
+      "scored_against": "Currier A bands (its own)",
+      "per_axis_in_band": {
+        "ed1": 2,
+        "h2": 2
+      },
+      "best_hard_axes_in_band": 2,
+      "worst_hard_axes_in_band": 2,
+      "vs_other_best": {
+        "B": 1
+      }
+    },
+    "B": {
+      "tokens": 22864,
+      "n_windows": 14,
+      "scored_against": "Currier B bands (its own)",
+      "per_axis_in_band": {
+        "ed1": 2,
+        "h2": 9
+      },
+      "best_hard_axes_in_band": 2,
+      "worst_hard_axes_in_band": 0,
+      "vs_other_best": {
+        "A": 0
+      }
+    }
+  },
+  "corpus": {
+    "tokens_by_dialect": {
+      "A": 10709,
+      "B": 22864
+    },
+    "b_share_of_corpus": 0.681,
+    "prefix_share_of_dialect": {
+      "A": 0.9338,
+      "B": 0.4374
+    }
+  },
+  "windows": [
+    {
+      "axes": {
+        "ed1": {
+          "value": 0.7509,
+          "band": [
+            0.7374,
+            0.7619
+          ],
+          "in_band": true
+        },
+        "h2": {
+          "value": 2.1822,
+          "band": [
+            2.1595,
+            2.1972
+          ],
+          "in_band": true
+        }
+      },
+      "hard_axes_in_band": 2,
+      "hard_axes_total": 2,
+      "dialect": "A",
+      "start": 0,
+      "vs_other": {
+        "B": 0
+      }
+    },
+    {
+      "axes": {
+        "ed1": {
+          "value": 0.7568,
+          "band": [
+            0.7374,
+            0.7619
+          ],
+          "in_band": true
+        },
+        "h2": {
+          "value": 2.1823,
+          "band": [
+            2.1595,
+            2.1972
+          ],
+          "in_band": true
+        }
+      },
+      "hard_axes_in_band": 2,
+      "hard_axes_total": 2,
+      "dialect": "A",
+      "start": 709,
+      "vs_other": {
+        "B": 1
+      }
+    },
+    {
+      "axes": {
+        "ed1": {
+          "value": 0.7725,
+          "band": [
+            0.754,
+            0.7878
+          ],
+          "in_band": true
+        },
+        "h2": {
+          "value": 1.961,
+          "band": [
+            1.9259,
+            1.996
+          ],
+          "in_band": true
+        }
+      },
+      "hard_axes_in_band": 2,
+      "hard_axes_total": 2,
+      "dialect": "B",
+      "start": 0,
+      "vs_other": {
+        "A": 0
+      }
+    },
+    {
+      "axes": {
+        "ed1": {
+          "value": 0.7857,
+          "band": [
+            0.754,
+            0.7878
+          ],
+          "in_band": true
+        },
+        "h2": {
+          "value": 1.9533,
+          "band": [
+            1.9259,
+            1.996
+          ],
+          "in_band": true
+        }
+      },
+      "hard_axes_in_band": 2,
+      "hard_axes_total": 2,
+      "dialect": "B",
+      "start": 1000,
+      "vs_other": {
+        "A": 0
+      }
+    },
+    {
+      "axes": {
+        "ed1": {
+          "value": 0.7892,
+          "band": [
+            0.754,
+            0.7878
+          ],
+          "in_band": false
+        },
+        "h2": {
+          "value": 1.9437,
+          "band": [
+            1.9259,
+            1.996
+          ],
+          "in_band": true
+        }
+      },
+      "hard_axes_in_band": 1,
+      "hard_axes_total": 2,
+      "dialect": "B",
+      "start": 2000,
+      "vs_other": {
+        "A": 0
+      }
+    },
+    {
+      "axes": {
+        "ed1": {
+          "value": 0.8032,
+          "band": [
+            0.754,
+            0.7878
+          ],
+          "in_band": false
+        },
+        "h2": {
+          "value": 1.9075,
+          "band": [
+            1.9259,
+            1.996
+          ],
+          "in_band": false
+        }
+      },
+      "hard_axes_in_band": 0,
+      "hard_axes_total": 2,
+      "dialect": "B",
+      "start": 3000,
+      "vs_other": {
+        "A": 0
+      }
+    },
+    {
+      "axes": {
+        "ed1": {
+          "value": 0.8206,
+          "band": [
+            0.754,
+            0.7878
+          ],
+          "in_band": false
+        },
+        "h2": {
+          "value": 1.9281,
+          "band": [
+            1.9259,
+            1.996
+          ],
+          "in_band": true
+        }
+      },
+      "hard_axes_in_band": 1,
+      "hard_axes_total": 2,
+      "dialect": "B",
+      "start": 4000,
+      "vs_other": {
+        "A": 0
+      }
+    },
+    {
+      "axes": {
+        "ed1": {
+          "value": 0.8192,
+          "band": [
+            0.754,
+            0.7878
+          ],
+          "in_band": false
+        },
+        "h2": {
+          "value": 1.9712,
+          "band": [
+            1.9259,
+            1.996
+          ],
+          "in_band": true
+        }
+      },
+      "hard_axes_in_band": 1,
+      "hard_axes_total": 2,
+      "dialect": "B",
+      "start": 5000,
+      "vs_other": {
+        "A": 0
+      }
+    },
+    {
+      "axes": {
+        "ed1": {
+          "value": 0.8214,
+          "band": [
+            0.754,
+            0.7878
+          ],
+          "in_band": false
+        },
+        "h2": {
+          "value": 1.9931,
+          "band": [
+            1.9259,
+            1.996
+          ],
+          "in_band": true
+        }
+      },
+      "hard_axes_in_band": 1,
+      "hard_axes_total": 2,
+      "dialect": "B",
+      "start": 6000,
+      "vs_other": {
+        "A": 0
+      }
+    },
+    {
+      "axes": {
+        "ed1": {
+          "value": 0.8188,
+          "band": [
+            0.754,
+            0.7878
+          ],
+          "in_band": false
+        },
+        "h2": {
+          "value": 1.9955,
+          "band": [
+            1.9259,
+            1.996
+          ],
+          "in_band": true
+        }
+      },
+      "hard_axes_in_band": 1,
+      "hard_axes_total": 2,
+      "dialect": "B",
+      "start": 7000,
+      "vs_other": {
+        "A": 0
+      }
+    },
+    {
+      "axes": {
+        "ed1": {
+          "value": 0.8262,
+          "band": [
+            0.754,
+            0.7878
+          ],
+          "in_band": false
+        },
+        "h2": {
+          "value": 1.9903,
+          "band": [
+            1.9259,
+            1.996
+          ],
+          "in_band": true
+        }
+      },
+      "hard_axes_in_band": 1,
+      "hard_axes_total": 2,
+      "dialect": "B",
+      "start": 8000,
+      "vs_other": {
+        "A": 0
+      }
+    },
+    {
+      "axes": {
+        "ed1": {
+          "value": 0.8249,
+          "band": [
+            0.754,
+            0.7878
+          ],
+          "in_band": false
+        },
+        "h2": {
+          "value": 1.9993,
+          "band": [
+            1.9259,
+            1.996
+          ],
+          "in_band": false
+        }
+      },
+      "hard_axes_in_band": 0,
+      "hard_axes_total": 2,
+      "dialect": "B",
+      "start": 9000,
+      "vs_other": {
+        "A": 0
+      }
+    },
+    {
+      "axes": {
+        "ed1": {
+          "value": 0.8228,
+          "band": [
+            0.754,
+            0.7878
+          ],
+          "in_band": false
+        },
+        "h2": {
+          "value": 2.0077,
+          "band": [
+            1.9259,
+            1.996
+          ],
+          "in_band": false
+        }
+      },
+      "hard_axes_in_band": 0,
+      "hard_axes_total": 2,
+      "dialect": "B",
+      "start": 10000,
+      "vs_other": {
+        "A": 0
+      }
+    },
+    {
+      "axes": {
+        "ed1": {
+          "value": 0.8273,
+          "band": [
+            0.754,
+            0.7878
+          ],
+          "in_band": false
+        },
+        "h2": {
+          "value": 2.006,
+          "band": [
+            1.9259,
+            1.996
+          ],
+          "in_band": false
+        }
+      },
+      "hard_axes_in_band": 0,
+      "hard_axes_total": 2,
+      "dialect": "B",
+      "start": 11000,
+      "vs_other": {
+        "A": 0
+      }
+    },
+    {
+      "axes": {
+        "ed1": {
+          "value": 0.8267,
+          "band": [
+            0.754,
+            0.7878
+          ],
+          "in_band": false
+        },
+        "h2": {
+          "value": 1.995,
+          "band": [
+            1.9259,
+            1.996
+          ],
+          "in_band": true
+        }
+      },
+      "hard_axes_in_band": 1,
+      "hard_axes_total": 2,
+      "dialect": "B",
+      "start": 12000,
+      "vs_other": {
+        "A": 0
+      }
+    },
+    {
+      "axes": {
+        "ed1": {
+          "value": 0.8283,
+          "band": [
+            0.754,
+            0.7878
+          ],
+          "in_band": false
+        },
+        "h2": {
+          "value": 2.0079,
+          "band": [
+            1.9259,
+            1.996
+          ],
+          "in_band": false
+        }
+      },
+      "hard_axes_in_band": 0,
+      "hard_axes_total": 2,
+      "dialect": "B",
+      "start": 12864,
+      "vs_other": {
+        "A": 0
+      }
+    }
+  ]
+}

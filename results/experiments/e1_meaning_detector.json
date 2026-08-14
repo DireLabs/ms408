@@ -1,0 +1,73 @@
+{
+  "built_at": "2026-08-14T06:55:25+00:00",
+  "git_commit": "4800a23cbeb5cbfa3f7afa43c63a27714b6d3bbb",
+  "experiment": "E1 \u2014 is MZ DI a meaning detector?",
+  "tokens": 34111,
+  "vms": {
+    "peak_scale": 812,
+    "peak_di": 0.3072,
+    "di_ci95": [
+      0.2431,
+      0.3237
+    ]
+  },
+  "drift_null_sweep": [
+    {
+      "spread_frac": 0.02,
+      "mean_di": 2.196,
+      "mean_peak_scale": 1624
+    },
+    {
+      "spread_frac": 0.04,
+      "mean_di": 1.6516,
+      "mean_peak_scale": 2436
+    },
+    {
+      "spread_frac": 0.06,
+      "mean_di": 1.3049,
+      "mean_peak_scale": 3221
+    },
+    {
+      "spread_frac": 0.08,
+      "mean_di": 1.0483,
+      "mean_peak_scale": 3411
+    },
+    {
+      "spread_frac": 0.1,
+      "mean_di": 0.8442,
+      "mean_peak_scale": 4263
+    },
+    {
+      "spread_frac": 0.15,
+      "mean_di": 0.4686,
+      "mean_peak_scale": 3695
+    },
+    {
+      "spread_frac": 0.2,
+      "mean_di": 0.2225,
+      "mean_peak_scale": 4263
+    },
+    {
+      "spread_frac": 0.3,
+      "mean_di": 0.0302,
+      "mean_peak_scale": 2774
+    }
+  ],
+  "meaningless_best_di_match": {
+    "spread_frac": 0.2,
+    "mean_di": 0.2225,
+    "mean_peak_scale": 4263
+  },
+  "meaningless_max_di": {
+    "spread_frac": 0.02,
+    "mean_di": 2.196,
+    "mean_peak_scale": 1624
+  },
+  "meaningless_reaches_vms_di": true,
+  "character_stats_preserved_by_reorder": true,
+  "self_citation_reference": {
+    "note": "i01 encoding bracket: the self-citation null scored MZ DI 0.497 (already > VMS 0.307), at scale 275 \u2014 an independent second meaningless generator that also exceeds the VMS DI."
+  },
+  "verdict": "MODEST claim stands, STRONG claim withdrawn. Established [C, already conceded in i01]: the DI *value* alone is not a meaning certificate \u2014 a meaningless reordering of the VMS's own words reaches and exceeds it (max 2.2 vs VMS 0.307), so a high DI value does not imply content. NOT established: that a meaningless PROCESS reproduces the VMS phenomenon, which is DI value AND its 812-word characteristic scale. The drift-null hits the value at the wrong scale; the i01 self-citation process overshot the value (0.497) also at the wrong scale (275). E2 resolves what the 812 scale IS \u2014 it is the section/topic-block scale (blocked Vulgate books peak at 812), reachable by any block-structured vocabulary, meaningful or not. Net: DI cannot settle meaningful-vs-meaningless (confirms T3.3/C5); the 812 scale is a block-structure signature, not a meaning signature.",
+  "grade": "C"
+}

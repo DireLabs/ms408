@@ -1,0 +1,3279 @@
+{
+  "built_at": "2026-08-14T06:58:40+00:00",
+  "git_commit": "4800a23cbeb5cbfa3f7afa43c63a27714b6d3bbb",
+  "experiment": "E23 \u2014 positional + reuse generator genericity sweep",
+  "seed": 408,
+  "n_tokens": 10000,
+  "grid_size": 104,
+  "grid_ranges": {
+    "rho": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8
+    ],
+    "variant": [
+      "local_w50",
+      "local_w200",
+      "global"
+    ],
+    "branching": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "boost": [
+      6.0,
+      16.0
+    ],
+    "zipf_exp": 0.8,
+    "block_len": 400,
+    "note": "fixed a-priori; a sweep, not a fitted point"
+  },
+  "min_axes": 6,
+  "broad_basin_frac": 0.1,
+  "vms_band": {
+    "h2": [
+      2.1133,
+      2.1999
+    ],
+    "mz_peak_value": [
+      0.0735,
+      0.2057
+    ],
+    "ed1_main_component": [
+      0.7393,
+      0.766
+    ],
+    "zipf_slope": [
+      -0.9656,
+      -0.8036
+    ],
+    "type_token_ratio": [
+      0.1634,
+      0.2961
+    ],
+    "mean_word_length": [
+      4.917,
+      5.127
+    ],
+    "fc_z": [
+      -4.71,
+      -1.24
+    ],
+    "wc_z": [
+      1.9,
+      2.64
+    ]
+  },
+  "basin_ge6_incl_vms_wc": 0.0,
+  "n_ge6_axes": 0,
+  "n_ge6_incl_wc": 0,
+  "e22_axes_closed_by_reuse": {
+    "ed1_main_component": {
+      "any": true,
+      "variants": [
+        "global",
+        "local_w200",
+        "local_w50"
+      ],
+      "min_rho": 0.6
+    },
+    "type_token_ratio": {
+      "any": true,
+      "variants": [
+        "global",
+        "local_w200",
+        "local_w50"
+      ],
+      "min_rho": 0.4
+    },
+    "zipf_slope": {
+      "any": true,
+      "variants": [
+        "global",
+        "local_w200"
+      ],
+      "min_rho": 0.8
+    }
+  },
+  "axes_never_matched_on_grid": [
+    "mean_word_length"
+  ],
+  "pareto_tension": {
+    "freq_axes": [
+      "ed1_main_component",
+      "type_token_ratio",
+      "zipf_slope"
+    ],
+    "profile_axes": [
+      "h2",
+      "mz_peak_value",
+      "wc_z"
+    ],
+    "n_configs_all_freq": 0,
+    "rho_for_freq": [],
+    "n_configs_all_profile": 1,
+    "rho_for_profile": [
+      0.4
+    ],
+    "n_configs_both": 0,
+    "wc_z_restored_by_global_reuse": true
+  },
+  "baseline_rho0_best_n_axes": 2,
+  "best_config": {
+    "rho": 0.4,
+    "variant": "global",
+    "branching": 5,
+    "boost": 6.0,
+    "n_axes": 4,
+    "vms_syntax": true,
+    "sig": {
+      "h2": 2.1275,
+      "mz_peak_value": 0.0841,
+      "ed1_main_component": 0.9787,
+      "zipf_slope": -0.53,
+      "type_token_ratio": 0.4126,
+      "mean_word_length": 5.184,
+      "fc_z": -4.47,
+      "wc_z": 2.06,
+      "mz_peak_scale": 2000
+    },
+    "per_axis": {
+      "h2": true,
+      "mz_peak_value": true,
+      "ed1_main_component": false,
+      "zipf_slope": false,
+      "type_token_ratio": false,
+      "mean_word_length": false,
+      "fc_z": true,
+      "wc_z": true
+    }
+  },
+  "grid": [
+    {
+      "rho": 0.0,
+      "variant": "local_w50",
+      "branching": 4,
+      "boost": 6.0,
+      "sig": {
+        "h2": 1.9112,
+        "mz_peak_value": 0.1065,
+        "ed1_main_component": 0.9995,
+        "zipf_slope": -0.4854,
+        "type_token_ratio": 0.3755,
+        "mean_word_length": 5.194,
+        "fc_z": 1.71,
+        "wc_z": -0.63,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "local_w50",
+      "branching": 4,
+      "boost": 6.0,
+      "sig": {
+        "h2": 1.9125,
+        "mz_peak_value": 0.4612,
+        "ed1_main_component": 0.9991,
+        "zipf_slope": -0.4815,
+        "type_token_ratio": 0.3407,
+        "mean_word_length": 5.191,
+        "fc_z": 2.08,
+        "wc_z": 0.52,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "local_w50",
+      "branching": 4,
+      "boost": 6.0,
+      "sig": {
+        "h2": 1.9133,
+        "mz_peak_value": 0.921,
+        "ed1_main_component": 0.999,
+        "zipf_slope": -0.5044,
+        "type_token_ratio": 0.2924,
+        "mean_word_length": 5.193,
+        "fc_z": -5.02,
+        "wc_z": 5.91,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "local_w50",
+      "branching": 4,
+      "boost": 6.0,
+      "sig": {
+        "h2": 1.9012,
+        "mz_peak_value": 1.5745,
+        "ed1_main_component": 0.9934,
+        "zipf_slope": -0.6475,
+        "type_token_ratio": 0.2289,
+        "mean_word_length": 5.207,
+        "fc_z": -9.35,
+        "wc_z": 18.38,
+        "mz_peak_scale": 277
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "local_w50",
+      "branching": 4,
+      "boost": 6.0,
+      "sig": {
+        "h2": 1.8944,
+        "mz_peak_value": 2.5176,
+        "ed1_main_component": 0.9772,
+        "zipf_slope": -1.0779,
+        "type_token_ratio": 0.1403,
+        "mean_word_length": 5.148,
+        "fc_z": -14.11,
+        "wc_z": 47.57,
+        "mz_peak_scale": 277
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "local_w200",
+      "branching": 4,
+      "boost": 6.0,
+      "sig": {
+        "h2": 1.9145,
+        "mz_peak_value": 0.3834,
+        "ed1_main_component": 0.9982,
+        "zipf_slope": -0.4757,
+        "type_token_ratio": 0.338,
+        "mean_word_length": 5.185,
+        "fc_z": -3.67,
+        "wc_z": 1.2,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "local_w200",
+      "branching": 4,
+      "boost": 6.0,
+      "sig": {
+        "h2": 1.9056,
+        "mz_peak_value": 0.7557,
+        "ed1_main_component": 0.9972,
+        "zipf_slope": -0.5264,
+        "type_token_ratio": 0.2907,
+        "mean_word_length": 5.211,
+        "fc_z": 0.44,
+        "wc_z": 0.74,
+        "mz_peak_scale": 714
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "local_w200",
+      "branching": 4,
+      "boost": 6.0,
+      "sig": {
+        "h2": 1.8945,
+        "mz_peak_value": 1.2472,
+        "ed1_main_component": 0.997,
+        "zipf_slope": -0.6407,
+        "type_token_ratio": 0.2308,
+        "mean_word_length": 5.245,
+        "fc_z": -6.69,
+        "wc_z": 5.11,
+        "mz_peak_scale": 588
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "local_w200",
+      "branching": 4,
+      "boost": 6.0,
+      "sig": {
+        "h2": 1.8865,
+        "mz_peak_value": 1.815,
+        "ed1_main_component": 0.977,
+        "zipf_slope": -1.025,
+        "type_token_ratio": 0.1434,
+        "mean_word_length": 5.18,
+        "fc_z": -1.75,
+        "wc_z": 34.35,
+        "mz_peak_scale": 588
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "global",
+      "branching": 4,
+      "boost": 6.0,
+      "sig": {
+        "h2": 1.9123,
+        "mz_peak_value": 0.1001,
+        "ed1_main_component": 0.9991,
+        "zipf_slope": -0.4891,
+        "type_token_ratio": 0.3383,
+        "mean_word_length": 5.187,
+        "fc_z": -0.19,
+        "wc_z": -1.04,
+        "mz_peak_scale": 1000
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "global",
+      "branching": 4,
+      "boost": 6.0,
+      "sig": {
+        "h2": 1.9114,
+        "mz_peak_value": 0.1009,
+        "ed1_main_component": 0.9983,
+        "zipf_slope": -0.5689,
+        "type_token_ratio": 0.2909,
+        "mean_word_length": 5.191,
+        "fc_z": 0.51,
+        "wc_z": -0.16,
+        "mz_peak_scale": 1000
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 2,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "global",
+      "branching": 4,
+      "boost": 6.0,
+      "sig": {
+        "h2": 1.8778,
+        "mz_peak_value": 0.0699,
+        "ed1_main_component": 0.9952,
+        "zipf_slope": -0.7103,
+        "type_token_ratio": 0.2314,
+        "mean_word_length": 5.233,
+        "fc_z": -1.04,
+        "wc_z": -1.26,
+        "mz_peak_scale": 1000
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "global",
+      "branching": 4,
+      "boost": 6.0,
+      "sig": {
+        "h2": 1.6765,
+        "mz_peak_value": 0.0396,
+        "ed1_main_component": 0.9802,
+        "zipf_slope": -0.9734,
+        "type_token_ratio": 0.1417,
+        "mean_word_length": 5.214,
+        "fc_z": -2.28,
+        "wc_z": 0.94,
+        "mz_peak_scale": 1000
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.0,
+      "variant": "local_w50",
+      "branching": 4,
+      "boost": 16.0,
+      "sig": {
+        "h2": 1.9149,
+        "mz_peak_value": 0.2315,
+        "ed1_main_component": 0.9997,
+        "zipf_slope": -0.4821,
+        "type_token_ratio": 0.3778,
+        "mean_word_length": 5.194,
+        "fc_z": 1.12,
+        "wc_z": 5.32,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "local_w50",
+      "branching": 4,
+      "boost": 16.0,
+      "sig": {
+        "h2": 1.9158,
+        "mz_peak_value": 0.5574,
+        "ed1_main_component": 1.0,
+        "zipf_slope": -0.4718,
+        "type_token_ratio": 0.3405,
+        "mean_word_length": 5.191,
+        "fc_z": -1.71,
+        "wc_z": 2.23,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": true
+      },
+      "n_axes": 2,
+      "entropy_dI": false,
+      "vms_syntax": true
+    },
+    {
+      "rho": 0.4,
+      "variant": "local_w50",
+      "branching": 4,
+      "boost": 16.0,
+      "sig": {
+        "h2": 1.9173,
+        "mz_peak_value": 0.993,
+        "ed1_main_component": 0.999,
+        "zipf_slope": -0.5051,
+        "type_token_ratio": 0.297,
+        "mean_word_length": 5.193,
+        "fc_z": -10.93,
+        "wc_z": 4.13,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "local_w50",
+      "branching": 4,
+      "boost": 16.0,
+      "sig": {
+        "h2": 1.906,
+        "mz_peak_value": 1.6193,
+        "ed1_main_component": 0.9961,
+        "zipf_slope": -0.6425,
+        "type_token_ratio": 0.2305,
+        "mean_word_length": 5.207,
+        "fc_z": -8.69,
+        "wc_z": 22.28,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "local_w50",
+      "branching": 4,
+      "boost": 16.0,
+      "sig": {
+        "h2": 1.8997,
+        "mz_peak_value": 2.5354,
+        "ed1_main_component": 0.9803,
+        "zipf_slope": -1.0751,
+        "type_token_ratio": 0.1419,
+        "mean_word_length": 5.148,
+        "fc_z": -16.8,
+        "wc_z": 104.65,
+        "mz_peak_scale": 277
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "local_w200",
+      "branching": 4,
+      "boost": 16.0,
+      "sig": {
+        "h2": 1.9179,
+        "mz_peak_value": 0.4752,
+        "ed1_main_component": 0.9994,
+        "zipf_slope": -0.477,
+        "type_token_ratio": 0.3419,
+        "mean_word_length": 5.185,
+        "fc_z": -3.51,
+        "wc_z": 2.51,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": true
+      },
+      "n_axes": 2,
+      "entropy_dI": false,
+      "vms_syntax": true
+    },
+    {
+      "rho": 0.4,
+      "variant": "local_w200",
+      "branching": 4,
+      "boost": 16.0,
+      "sig": {
+        "h2": 1.9103,
+        "mz_peak_value": 0.8224,
+        "ed1_main_component": 0.9986,
+        "zipf_slope": -0.5028,
+        "type_token_ratio": 0.2927,
+        "mean_word_length": 5.211,
+        "fc_z": -1.59,
+        "wc_z": 3.11,
+        "mz_peak_scale": 714
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 2,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "local_w200",
+      "branching": 4,
+      "boost": 16.0,
+      "sig": {
+        "h2": 1.8992,
+        "mz_peak_value": 1.2882,
+        "ed1_main_component": 0.9987,
+        "zipf_slope": -0.6334,
+        "type_token_ratio": 0.2324,
+        "mean_word_length": 5.245,
+        "fc_z": -7.66,
+        "wc_z": 3.52,
+        "mz_peak_scale": 588
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "local_w200",
+      "branching": 4,
+      "boost": 16.0,
+      "sig": {
+        "h2": 1.8985,
+        "mz_peak_value": 1.8474,
+        "ed1_main_component": 0.9854,
+        "zipf_slope": -1.0031,
+        "type_token_ratio": 0.1439,
+        "mean_word_length": 5.18,
+        "fc_z": -1.73,
+        "wc_z": 34.62,
+        "mz_peak_scale": 588
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "global",
+      "branching": 4,
+      "boost": 16.0,
+      "sig": {
+        "h2": 1.9153,
+        "mz_peak_value": 0.181,
+        "ed1_main_component": 0.9994,
+        "zipf_slope": -0.5032,
+        "type_token_ratio": 0.3423,
+        "mean_word_length": 5.187,
+        "fc_z": 0.84,
+        "wc_z": 5.21,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "global",
+      "branching": 4,
+      "boost": 16.0,
+      "sig": {
+        "h2": 1.9145,
+        "mz_peak_value": 0.139,
+        "ed1_main_component": 0.9993,
+        "zipf_slope": -0.5767,
+        "type_token_ratio": 0.2963,
+        "mean_word_length": 5.191,
+        "fc_z": 0.16,
+        "wc_z": 2.54,
+        "mz_peak_scale": 1000
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": true
+      },
+      "n_axes": 2,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "global",
+      "branching": 4,
+      "boost": 16.0,
+      "sig": {
+        "h2": 1.8805,
+        "mz_peak_value": 0.0874,
+        "ed1_main_component": 0.9979,
+        "zipf_slope": -0.7009,
+        "type_token_ratio": 0.2342,
+        "mean_word_length": 5.233,
+        "fc_z": -4.45,
+        "wc_z": -0.48,
+        "mz_peak_scale": 1000
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 3,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "global",
+      "branching": 4,
+      "boost": 16.0,
+      "sig": {
+        "h2": 1.6803,
+        "mz_peak_value": 0.0447,
+        "ed1_main_component": 0.9791,
+        "zipf_slope": -0.9772,
+        "type_token_ratio": 0.1438,
+        "mean_word_length": 5.214,
+        "fc_z": -2.66,
+        "wc_z": 0.94,
+        "mz_peak_scale": 1000
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.0,
+      "variant": "local_w50",
+      "branching": 5,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.1456,
+        "mz_peak_value": 0.0488,
+        "ed1_main_component": 0.9918,
+        "zipf_slope": -0.4429,
+        "type_token_ratio": 0.594,
+        "mean_word_length": 5.204,
+        "fc_z": 0.19,
+        "wc_z": -0.18,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "local_w50",
+      "branching": 5,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.146,
+        "mz_peak_value": 0.431,
+        "ed1_main_component": 0.9859,
+        "zipf_slope": -0.3969,
+        "type_token_ratio": 0.5119,
+        "mean_word_length": 5.204,
+        "fc_z": 0.0,
+        "wc_z": 0.7,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "local_w50",
+      "branching": 5,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.1399,
+        "mz_peak_value": 0.9198,
+        "ed1_main_component": 0.9822,
+        "zipf_slope": -0.4686,
+        "type_token_ratio": 0.4091,
+        "mean_word_length": 5.199,
+        "fc_z": -3.07,
+        "wc_z": 10.98,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 2,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "local_w50",
+      "branching": 5,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.1381,
+        "mz_peak_value": 1.5955,
+        "ed1_main_component": 0.9555,
+        "zipf_slope": -0.5825,
+        "type_token_ratio": 0.3032,
+        "mean_word_length": 5.197,
+        "fc_z": -18.51,
+        "wc_z": 15.65,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "local_w50",
+      "branching": 5,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.1142,
+        "mz_peak_value": 2.5626,
+        "ed1_main_component": 0.883,
+        "zipf_slope": -0.9927,
+        "type_token_ratio": 0.1709,
+        "mean_word_length": 5.137,
+        "fc_z": -8.03,
+        "wc_z": 73.84,
+        "mz_peak_scale": 277
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 2,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "local_w200",
+      "branching": 5,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.1408,
+        "mz_peak_value": 0.3682,
+        "ed1_main_component": 0.9886,
+        "zipf_slope": -0.4077,
+        "type_token_ratio": 0.5097,
+        "mean_word_length": 5.204,
+        "fc_z": 0.0,
+        "wc_z": -2.8,
+        "mz_peak_scale": 833
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "local_w200",
+      "branching": 5,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.1469,
+        "mz_peak_value": 0.7794,
+        "ed1_main_component": 0.9817,
+        "zipf_slope": -0.4483,
+        "type_token_ratio": 0.4154,
+        "mean_word_length": 5.2,
+        "fc_z": -4.08,
+        "wc_z": -0.43,
+        "mz_peak_scale": 714
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 2,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "local_w200",
+      "branching": 5,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.1361,
+        "mz_peak_value": 1.2795,
+        "ed1_main_component": 0.956,
+        "zipf_slope": -0.6157,
+        "type_token_ratio": 0.3068,
+        "mean_word_length": 5.177,
+        "fc_z": -5.12,
+        "wc_z": 17.57,
+        "mz_peak_scale": 714
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "local_w200",
+      "branching": 5,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.1207,
+        "mz_peak_value": 1.8508,
+        "ed1_main_component": 0.8978,
+        "zipf_slope": -0.9679,
+        "type_token_ratio": 0.1703,
+        "mean_word_length": 5.143,
+        "fc_z": -3.41,
+        "wc_z": 33.73,
+        "mz_peak_scale": 588
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 3,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "global",
+      "branching": 5,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.1391,
+        "mz_peak_value": 0.0612,
+        "ed1_main_component": 0.9852,
+        "zipf_slope": -0.4389,
+        "type_token_ratio": 0.5069,
+        "mean_word_length": 5.194,
+        "fc_z": 0.0,
+        "wc_z": 1.73,
+        "mz_peak_scale": 833
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "global",
+      "branching": 5,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.1275,
+        "mz_peak_value": 0.0841,
+        "ed1_main_component": 0.9787,
+        "zipf_slope": -0.53,
+        "type_token_ratio": 0.4126,
+        "mean_word_length": 5.184,
+        "fc_z": -4.47,
+        "wc_z": 2.06,
+        "mz_peak_scale": 2000
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": true
+      },
+      "n_axes": 4,
+      "entropy_dI": true,
+      "vms_syntax": true
+    },
+    {
+      "rho": 0.6,
+      "variant": "global",
+      "branching": 5,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.1013,
+        "mz_peak_value": 0.063,
+        "ed1_main_component": 0.9611,
+        "zipf_slope": -0.6932,
+        "type_token_ratio": 0.3011,
+        "mean_word_length": 5.158,
+        "fc_z": -0.58,
+        "wc_z": 2.0,
+        "mz_peak_scale": 2500
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": true
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "global",
+      "branching": 5,
+      "boost": 6.0,
+      "sig": {
+        "h2": 1.9039,
+        "mz_peak_value": 0.0356,
+        "ed1_main_component": 0.8781,
+        "zipf_slope": -0.9283,
+        "type_token_ratio": 0.1698,
+        "mean_word_length": 4.914,
+        "fc_z": -1.56,
+        "wc_z": -0.56,
+        "mz_peak_scale": 1000
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": true,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 3,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.0,
+      "variant": "local_w50",
+      "branching": 5,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.1508,
+        "mz_peak_value": 0.1232,
+        "ed1_main_component": 0.9916,
+        "zipf_slope": -0.429,
+        "type_token_ratio": 0.5985,
+        "mean_word_length": 5.204,
+        "fc_z": 1.66,
+        "wc_z": 1.72,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 2,
+      "entropy_dI": true,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "local_w50",
+      "branching": 5,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.1505,
+        "mz_peak_value": 0.4882,
+        "ed1_main_component": 0.9868,
+        "zipf_slope": -0.3888,
+        "type_token_ratio": 0.5153,
+        "mean_word_length": 5.204,
+        "fc_z": 0.0,
+        "wc_z": 0.38,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "local_w50",
+      "branching": 5,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.1462,
+        "mz_peak_value": 0.9577,
+        "ed1_main_component": 0.9798,
+        "zipf_slope": -0.4597,
+        "type_token_ratio": 0.4149,
+        "mean_word_length": 5.199,
+        "fc_z": -2.03,
+        "wc_z": 20.32,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 2,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "local_w50",
+      "branching": 5,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.1455,
+        "mz_peak_value": 1.6208,
+        "ed1_main_component": 0.9623,
+        "zipf_slope": -0.5811,
+        "type_token_ratio": 0.3074,
+        "mean_word_length": 5.197,
+        "fc_z": -21.6,
+        "wc_z": 19.18,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "local_w50",
+      "branching": 5,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.1043,
+        "mz_peak_value": 2.5663,
+        "ed1_main_component": 0.8751,
+        "zipf_slope": -0.9811,
+        "type_token_ratio": 0.1689,
+        "mean_word_length": 5.137,
+        "fc_z": -8.36,
+        "wc_z": 139.7,
+        "mz_peak_scale": 277
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "local_w200",
+      "branching": 5,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.1481,
+        "mz_peak_value": 0.4094,
+        "ed1_main_component": 0.9891,
+        "zipf_slope": -0.3888,
+        "type_token_ratio": 0.5161,
+        "mean_word_length": 5.204,
+        "fc_z": 0.0,
+        "wc_z": 0.98,
+        "mz_peak_scale": 833
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "local_w200",
+      "branching": 5,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.1515,
+        "mz_peak_value": 0.8139,
+        "ed1_main_component": 0.9785,
+        "zipf_slope": -0.4521,
+        "type_token_ratio": 0.4183,
+        "mean_word_length": 5.2,
+        "fc_z": -2.73,
+        "wc_z": 0.78,
+        "mz_peak_scale": 714
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 2,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "local_w200",
+      "branching": 5,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.1435,
+        "mz_peak_value": 1.3017,
+        "ed1_main_component": 0.9614,
+        "zipf_slope": -0.6036,
+        "type_token_ratio": 0.3086,
+        "mean_word_length": 5.177,
+        "fc_z": -6.15,
+        "wc_z": 8.48,
+        "mz_peak_scale": 714
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "local_w200",
+      "branching": 5,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.1064,
+        "mz_peak_value": 1.8608,
+        "ed1_main_component": 0.8917,
+        "zipf_slope": -0.9716,
+        "type_token_ratio": 0.1718,
+        "mean_word_length": 5.143,
+        "fc_z": -2.43,
+        "wc_z": 19.84,
+        "mz_peak_scale": 588
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 2,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "global",
+      "branching": 5,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.1482,
+        "mz_peak_value": 0.1048,
+        "ed1_main_component": 0.9871,
+        "zipf_slope": -0.4198,
+        "type_token_ratio": 0.5132,
+        "mean_word_length": 5.194,
+        "fc_z": 0.0,
+        "wc_z": 0.29,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 2,
+      "entropy_dI": true,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "global",
+      "branching": 5,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.1335,
+        "mz_peak_value": 0.1045,
+        "ed1_main_component": 0.9803,
+        "zipf_slope": -0.5308,
+        "type_token_ratio": 0.4153,
+        "mean_word_length": 5.184,
+        "fc_z": -4.04,
+        "wc_z": 1.48,
+        "mz_peak_scale": 2000
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 3,
+      "entropy_dI": true,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "global",
+      "branching": 5,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.1074,
+        "mz_peak_value": 0.0674,
+        "ed1_main_component": 0.9557,
+        "zipf_slope": -0.7008,
+        "type_token_ratio": 0.305,
+        "mean_word_length": 5.158,
+        "fc_z": -1.22,
+        "wc_z": 2.24,
+        "mz_peak_scale": 1666
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": true
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "global",
+      "branching": 5,
+      "boost": 16.0,
+      "sig": {
+        "h2": 1.9129,
+        "mz_peak_value": 0.0407,
+        "ed1_main_component": 0.885,
+        "zipf_slope": -0.9182,
+        "type_token_ratio": 0.1705,
+        "mean_word_length": 4.914,
+        "fc_z": -1.92,
+        "wc_z": 2.35,
+        "mz_peak_scale": 1000
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": true,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": true
+      },
+      "n_axes": 4,
+      "entropy_dI": false,
+      "vms_syntax": true
+    },
+    {
+      "rho": 0.0,
+      "variant": "local_w50",
+      "branching": 6,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.3462,
+        "mz_peak_value": 0.0275,
+        "ed1_main_component": 0.9651,
+        "zipf_slope": -0.4069,
+        "type_token_ratio": 0.7315,
+        "mean_word_length": 5.194,
+        "fc_z": -1.54,
+        "wc_z": -0.51,
+        "mz_peak_scale": 1666
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "local_w50",
+      "branching": 6,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.3476,
+        "mz_peak_value": 0.4248,
+        "ed1_main_component": 0.948,
+        "zipf_slope": -0.3932,
+        "type_token_ratio": 0.6119,
+        "mean_word_length": 5.191,
+        "fc_z": 4.5,
+        "wc_z": -0.02,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "local_w50",
+      "branching": 6,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.3421,
+        "mz_peak_value": 0.9231,
+        "ed1_main_component": 0.9237,
+        "zipf_slope": -0.4275,
+        "type_token_ratio": 0.4836,
+        "mean_word_length": 5.193,
+        "fc_z": -2.83,
+        "wc_z": 9.37,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "local_w50",
+      "branching": 6,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.3343,
+        "mz_peak_value": 1.6139,
+        "ed1_main_component": 0.8661,
+        "zipf_slope": -0.5741,
+        "type_token_ratio": 0.3406,
+        "mean_word_length": 5.207,
+        "fc_z": -19.86,
+        "wc_z": 18.95,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "local_w50",
+      "branching": 6,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.2916,
+        "mz_peak_value": 2.5759,
+        "ed1_main_component": 0.7467,
+        "zipf_slope": -0.9698,
+        "type_token_ratio": 0.1832,
+        "mean_word_length": 5.148,
+        "fc_z": -7.49,
+        "wc_z": 100.48,
+        "mz_peak_scale": 277
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": true,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 2,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "local_w200",
+      "branching": 6,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.349,
+        "mz_peak_value": 0.3698,
+        "ed1_main_component": 0.9498,
+        "zipf_slope": -0.3745,
+        "type_token_ratio": 0.6111,
+        "mean_word_length": 5.185,
+        "fc_z": -1.14,
+        "wc_z": 0.73,
+        "mz_peak_scale": 833
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "local_w200",
+      "branching": 6,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.3431,
+        "mz_peak_value": 0.7963,
+        "ed1_main_component": 0.9219,
+        "zipf_slope": -0.4285,
+        "type_token_ratio": 0.4803,
+        "mean_word_length": 5.211,
+        "fc_z": -3.67,
+        "wc_z": 1.57,
+        "mz_peak_scale": 714
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "local_w200",
+      "branching": 6,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.3225,
+        "mz_peak_value": 1.3084,
+        "ed1_main_component": 0.8771,
+        "zipf_slope": -0.5707,
+        "type_token_ratio": 0.3393,
+        "mean_word_length": 5.245,
+        "fc_z": -6.05,
+        "wc_z": 21.84,
+        "mz_peak_scale": 714
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "local_w200",
+      "branching": 6,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.2913,
+        "mz_peak_value": 1.8891,
+        "ed1_main_component": 0.7162,
+        "zipf_slope": -0.9577,
+        "type_token_ratio": 0.1811,
+        "mean_word_length": 5.18,
+        "fc_z": -0.55,
+        "wc_z": 41.86,
+        "mz_peak_scale": 714
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": true,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 2,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "global",
+      "branching": 6,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.3495,
+        "mz_peak_value": 0.0669,
+        "ed1_main_component": 0.9474,
+        "zipf_slope": -0.382,
+        "type_token_ratio": 0.6106,
+        "mean_word_length": 5.187,
+        "fc_z": 0.37,
+        "wc_z": -0.74,
+        "mz_peak_scale": 1666
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "global",
+      "branching": 6,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.3501,
+        "mz_peak_value": 0.0855,
+        "ed1_main_component": 0.9225,
+        "zipf_slope": -0.5013,
+        "type_token_ratio": 0.4854,
+        "mean_word_length": 5.191,
+        "fc_z": -0.94,
+        "wc_z": 2.03,
+        "mz_peak_scale": 2500
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": true
+      },
+      "n_axes": 2,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "global",
+      "branching": 6,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.2826,
+        "mz_peak_value": 0.0659,
+        "ed1_main_component": 0.8731,
+        "zipf_slope": -0.6796,
+        "type_token_ratio": 0.3403,
+        "mean_word_length": 5.233,
+        "fc_z": -1.74,
+        "wc_z": 0.69,
+        "mz_peak_scale": 2500
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "global",
+      "branching": 6,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.0337,
+        "mz_peak_value": 0.0346,
+        "ed1_main_component": 0.7084,
+        "zipf_slope": -0.9188,
+        "type_token_ratio": 0.1852,
+        "mean_word_length": 5.214,
+        "fc_z": -3.34,
+        "wc_z": 0.12,
+        "mz_peak_scale": 1000
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": true,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 3,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.0,
+      "variant": "local_w50",
+      "branching": 6,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.3527,
+        "mz_peak_value": 0.0674,
+        "ed1_main_component": 0.9624,
+        "zipf_slope": -0.3925,
+        "type_token_ratio": 0.74,
+        "mean_word_length": 5.194,
+        "fc_z": -0.37,
+        "wc_z": 1.39,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "local_w50",
+      "branching": 6,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.3535,
+        "mz_peak_value": 0.4577,
+        "ed1_main_component": 0.947,
+        "zipf_slope": -0.3877,
+        "type_token_ratio": 0.6166,
+        "mean_word_length": 5.191,
+        "fc_z": 9.67,
+        "wc_z": 1.8,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "local_w50",
+      "branching": 6,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.3492,
+        "mz_peak_value": 0.9476,
+        "ed1_main_component": 0.9146,
+        "zipf_slope": -0.4154,
+        "type_token_ratio": 0.4882,
+        "mean_word_length": 5.193,
+        "fc_z": 0.0,
+        "wc_z": 5.38,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "local_w50",
+      "branching": 6,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.3424,
+        "mz_peak_value": 1.6294,
+        "ed1_main_component": 0.8689,
+        "zipf_slope": -0.5725,
+        "type_token_ratio": 0.3425,
+        "mean_word_length": 5.207,
+        "fc_z": -11.34,
+        "wc_z": 35.47,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "local_w50",
+      "branching": 6,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.3061,
+        "mz_peak_value": 2.5805,
+        "ed1_main_component": 0.7293,
+        "zipf_slope": -0.9688,
+        "type_token_ratio": 0.1821,
+        "mean_word_length": 5.148,
+        "fc_z": -9.99,
+        "wc_z": 83.4,
+        "mz_peak_scale": 277
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "local_w200",
+      "branching": 6,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.3534,
+        "mz_peak_value": 0.3929,
+        "ed1_main_component": 0.9471,
+        "zipf_slope": -0.3804,
+        "type_token_ratio": 0.6147,
+        "mean_word_length": 5.185,
+        "fc_z": -0.65,
+        "wc_z": 1.73,
+        "mz_peak_scale": 833
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "local_w200",
+      "branching": 6,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.3487,
+        "mz_peak_value": 0.8153,
+        "ed1_main_component": 0.9223,
+        "zipf_slope": -0.431,
+        "type_token_ratio": 0.4829,
+        "mean_word_length": 5.211,
+        "fc_z": -3.0,
+        "wc_z": -0.07,
+        "mz_peak_scale": 714
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "local_w200",
+      "branching": 6,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.332,
+        "mz_peak_value": 1.3254,
+        "ed1_main_component": 0.8746,
+        "zipf_slope": -0.5667,
+        "type_token_ratio": 0.343,
+        "mean_word_length": 5.245,
+        "fc_z": -8.04,
+        "wc_z": 12.17,
+        "mz_peak_scale": 714
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "local_w200",
+      "branching": 6,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.2921,
+        "mz_peak_value": 1.8885,
+        "ed1_main_component": 0.7329,
+        "zipf_slope": -0.9658,
+        "type_token_ratio": 0.1823,
+        "mean_word_length": 5.18,
+        "fc_z": 0.23,
+        "wc_z": 34.56,
+        "mz_peak_scale": 714
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "global",
+      "branching": 6,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.3561,
+        "mz_peak_value": 0.0866,
+        "ed1_main_component": 0.9444,
+        "zipf_slope": -0.3736,
+        "type_token_ratio": 0.6182,
+        "mean_word_length": 5.187,
+        "fc_z": 0.6,
+        "wc_z": -1.22,
+        "mz_peak_scale": 1666
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "global",
+      "branching": 6,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.3568,
+        "mz_peak_value": 0.0982,
+        "ed1_main_component": 0.92,
+        "zipf_slope": -0.4843,
+        "type_token_ratio": 0.4924,
+        "mean_word_length": 5.191,
+        "fc_z": 0.0,
+        "wc_z": 3.83,
+        "mz_peak_scale": 1000
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "global",
+      "branching": 6,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.2848,
+        "mz_peak_value": 0.0734,
+        "ed1_main_component": 0.8659,
+        "zipf_slope": -0.6798,
+        "type_token_ratio": 0.3401,
+        "mean_word_length": 5.233,
+        "fc_z": -1.31,
+        "wc_z": 2.68,
+        "mz_peak_scale": 1666
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "global",
+      "branching": 6,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.0193,
+        "mz_peak_value": 0.0344,
+        "ed1_main_component": 0.715,
+        "zipf_slope": -0.91,
+        "type_token_ratio": 0.1842,
+        "mean_word_length": 5.214,
+        "fc_z": -3.73,
+        "wc_z": 0.92,
+        "mz_peak_scale": 1000
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": true,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 3,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.0,
+      "variant": "local_w50",
+      "branching": 7,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.5085,
+        "mz_peak_value": 0.0139,
+        "ed1_main_component": 0.9003,
+        "zipf_slope": -0.3084,
+        "type_token_ratio": 0.8256,
+        "mean_word_length": 5.204,
+        "fc_z": 2.24,
+        "wc_z": -0.27,
+        "mz_peak_scale": 1250
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "local_w50",
+      "branching": 7,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.5037,
+        "mz_peak_value": 0.4113,
+        "ed1_main_component": 0.8782,
+        "zipf_slope": -0.3651,
+        "type_token_ratio": 0.6782,
+        "mean_word_length": 5.2,
+        "fc_z": 5.48,
+        "wc_z": 3.74,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "local_w50",
+      "branching": 7,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.5016,
+        "mz_peak_value": 0.9201,
+        "ed1_main_component": 0.8366,
+        "zipf_slope": -0.3924,
+        "type_token_ratio": 0.527,
+        "mean_word_length": 5.208,
+        "fc_z": 0.0,
+        "wc_z": 21.61,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "local_w50",
+      "branching": 7,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.493,
+        "mz_peak_value": 1.6116,
+        "ed1_main_component": 0.7797,
+        "zipf_slope": -0.5625,
+        "type_token_ratio": 0.3623,
+        "mean_word_length": 5.202,
+        "fc_z": -18.11,
+        "wc_z": 41.05,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "local_w50",
+      "branching": 7,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.436,
+        "mz_peak_value": 2.5827,
+        "ed1_main_component": 0.6084,
+        "zipf_slope": -0.966,
+        "type_token_ratio": 0.19,
+        "mean_word_length": 5.178,
+        "fc_z": -5.89,
+        "wc_z": 47.83,
+        "mz_peak_scale": 277
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "local_w200",
+      "branching": 7,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.5066,
+        "mz_peak_value": 0.3622,
+        "ed1_main_component": 0.8648,
+        "zipf_slope": -0.3534,
+        "type_token_ratio": 0.6767,
+        "mean_word_length": 5.201,
+        "fc_z": 2.38,
+        "wc_z": 0.27,
+        "mz_peak_scale": 833
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "local_w200",
+      "branching": 7,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.5022,
+        "mz_peak_value": 0.7886,
+        "ed1_main_component": 0.8382,
+        "zipf_slope": -0.4073,
+        "type_token_ratio": 0.5253,
+        "mean_word_length": 5.202,
+        "fc_z": 0.0,
+        "wc_z": 2.15,
+        "mz_peak_scale": 714
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": true
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "local_w200",
+      "branching": 7,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.5019,
+        "mz_peak_value": 1.3167,
+        "ed1_main_component": 0.7588,
+        "zipf_slope": -0.5643,
+        "type_token_ratio": 0.3632,
+        "mean_word_length": 5.218,
+        "fc_z": -5.23,
+        "wc_z": 14.72,
+        "mz_peak_scale": 714
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": true,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "local_w200",
+      "branching": 7,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.439,
+        "mz_peak_value": 1.8979,
+        "ed1_main_component": 0.5757,
+        "zipf_slope": -0.9523,
+        "type_token_ratio": 0.1895,
+        "mean_word_length": 5.214,
+        "fc_z": -1.71,
+        "wc_z": 27.05,
+        "mz_peak_scale": 714
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": true,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 3,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "global",
+      "branching": 7,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.5012,
+        "mz_peak_value": 0.0502,
+        "ed1_main_component": 0.8779,
+        "zipf_slope": -0.3998,
+        "type_token_ratio": 0.6812,
+        "mean_word_length": 5.197,
+        "fc_z": -0.27,
+        "wc_z": -0.52,
+        "mz_peak_scale": 1666
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "global",
+      "branching": 7,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.4895,
+        "mz_peak_value": 0.0825,
+        "ed1_main_component": 0.8354,
+        "zipf_slope": -0.5285,
+        "type_token_ratio": 0.5254,
+        "mean_word_length": 5.199,
+        "fc_z": 0.0,
+        "wc_z": 3.12,
+        "mz_peak_scale": 2000
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "global",
+      "branching": 7,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.4163,
+        "mz_peak_value": 0.0604,
+        "ed1_main_component": 0.7793,
+        "zipf_slope": -0.698,
+        "type_token_ratio": 0.3606,
+        "mean_word_length": 5.27,
+        "fc_z": -1.34,
+        "wc_z": 2.49,
+        "mz_peak_scale": 2500
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": true
+      },
+      "n_axes": 2,
+      "entropy_dI": false,
+      "vms_syntax": true
+    },
+    {
+      "rho": 0.8,
+      "variant": "global",
+      "branching": 7,
+      "boost": 6.0,
+      "sig": {
+        "h2": 2.0597,
+        "mz_peak_value": 0.0329,
+        "ed1_main_component": 0.6017,
+        "zipf_slope": -0.9047,
+        "type_token_ratio": 0.1923,
+        "mean_word_length": 5.362,
+        "fc_z": -2.2,
+        "wc_z": 0.37,
+        "mz_peak_scale": 1000
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": true,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 3,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.0,
+      "variant": "local_w50",
+      "branching": 7,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.5105,
+        "mz_peak_value": 0.0355,
+        "ed1_main_component": 0.906,
+        "zipf_slope": -0.3045,
+        "type_token_ratio": 0.8289,
+        "mean_word_length": 5.204,
+        "fc_z": -0.42,
+        "wc_z": -1.11,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "local_w50",
+      "branching": 7,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.5052,
+        "mz_peak_value": 0.4345,
+        "ed1_main_component": 0.881,
+        "zipf_slope": -0.3776,
+        "type_token_ratio": 0.6833,
+        "mean_word_length": 5.2,
+        "fc_z": 6.47,
+        "wc_z": 3.07,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "local_w50",
+      "branching": 7,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.5042,
+        "mz_peak_value": 0.9346,
+        "ed1_main_component": 0.8424,
+        "zipf_slope": -0.399,
+        "type_token_ratio": 0.5287,
+        "mean_word_length": 5.208,
+        "fc_z": 0.0,
+        "wc_z": 21.39,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "local_w50",
+      "branching": 7,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.4944,
+        "mz_peak_value": 1.6197,
+        "ed1_main_component": 0.756,
+        "zipf_slope": -0.5683,
+        "type_token_ratio": 0.3606,
+        "mean_word_length": 5.202,
+        "fc_z": -15.9,
+        "wc_z": 41.95,
+        "mz_peak_scale": 400
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": true,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "local_w50",
+      "branching": 7,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.4437,
+        "mz_peak_value": 2.589,
+        "ed1_main_component": 0.6221,
+        "zipf_slope": -0.9661,
+        "type_token_ratio": 0.19,
+        "mean_word_length": 5.178,
+        "fc_z": -8.23,
+        "wc_z": 110.67,
+        "mz_peak_scale": 277
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "local_w200",
+      "branching": 7,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.5074,
+        "mz_peak_value": 0.3714,
+        "ed1_main_component": 0.8762,
+        "zipf_slope": -0.3665,
+        "type_token_ratio": 0.6787,
+        "mean_word_length": 5.201,
+        "fc_z": 2.55,
+        "wc_z": -0.77,
+        "mz_peak_scale": 833
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "local_w200",
+      "branching": 7,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.5041,
+        "mz_peak_value": 0.8009,
+        "ed1_main_component": 0.8344,
+        "zipf_slope": -0.4104,
+        "type_token_ratio": 0.5247,
+        "mean_word_length": 5.202,
+        "fc_z": 0.0,
+        "wc_z": 1.71,
+        "mz_peak_scale": 714
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "local_w200",
+      "branching": 7,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.5028,
+        "mz_peak_value": 1.3206,
+        "ed1_main_component": 0.7683,
+        "zipf_slope": -0.5709,
+        "type_token_ratio": 0.3616,
+        "mean_word_length": 5.218,
+        "fc_z": -4.03,
+        "wc_z": 10.87,
+        "mz_peak_scale": 714
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "local_w200",
+      "branching": 7,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.4399,
+        "mz_peak_value": 1.9039,
+        "ed1_main_component": 0.5952,
+        "zipf_slope": -0.9436,
+        "type_token_ratio": 0.1902,
+        "mean_word_length": 5.214,
+        "fc_z": -1.46,
+        "wc_z": 25.72,
+        "mz_peak_scale": 714
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": true,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 3,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.2,
+      "variant": "global",
+      "branching": 7,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.5045,
+        "mz_peak_value": 0.0618,
+        "ed1_main_component": 0.8781,
+        "zipf_slope": -0.3904,
+        "type_token_ratio": 0.6831,
+        "mean_word_length": 5.197,
+        "fc_z": 3.74,
+        "wc_z": -0.96,
+        "mz_peak_scale": 1666
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 0,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.4,
+      "variant": "global",
+      "branching": 7,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.4919,
+        "mz_peak_value": 0.087,
+        "ed1_main_component": 0.8452,
+        "zipf_slope": -0.5191,
+        "type_token_ratio": 0.5253,
+        "mean_word_length": 5.199,
+        "fc_z": 0.0,
+        "wc_z": 6.28,
+        "mz_peak_scale": 1000
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.6,
+      "variant": "global",
+      "branching": 7,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.418,
+        "mz_peak_value": 0.0629,
+        "ed1_main_component": 0.7625,
+        "zipf_slope": -0.698,
+        "type_token_ratio": 0.3629,
+        "mean_word_length": 5.27,
+        "fc_z": -0.83,
+        "wc_z": 0.92,
+        "mz_peak_scale": 2500
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": true,
+        "zipf_slope": false,
+        "type_token_ratio": false,
+        "mean_word_length": false,
+        "fc_z": false,
+        "wc_z": false
+      },
+      "n_axes": 1,
+      "entropy_dI": false,
+      "vms_syntax": false
+    },
+    {
+      "rho": 0.8,
+      "variant": "global",
+      "branching": 7,
+      "boost": 16.0,
+      "sig": {
+        "h2": 2.0604,
+        "mz_peak_value": 0.0351,
+        "ed1_main_component": 0.6019,
+        "zipf_slope": -0.9033,
+        "type_token_ratio": 0.1929,
+        "mean_word_length": 5.362,
+        "fc_z": -1.95,
+        "wc_z": -1.29,
+        "mz_peak_scale": 1000
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "zipf_slope": true,
+        "type_token_ratio": true,
+        "mean_word_length": false,
+        "fc_z": true,
+        "wc_z": false
+      },
+      "n_axes": 3,
+      "entropy_dI": false,
+      "vms_syntax": false
+    }
+  ],
+  "grade": "C",
+  "verdict": "REUSE HELPS (notably restores the VMS's word-class structure) BUT A PARETO TENSION REMAINS. Word reuse individually rescues every axis E22 could never reach \u2014 ED1, TTR and Zipf all become reachable \u2014 and GLOBAL preferential attachment additionally lifts wc_z from E22's anti-structure (\u22121.02) into the VMS's weak-positive band (restored), a real gain over the context-free generator. BUT the axes are MUTUALLY CONSTRAINING under reuse and never align: each E22-missed axis is reachable only at its OWN reuse level (ED1 \u03c1\u22650.6, TTR \u03c1\u22650.4, Zipf \u03c1\u22650.8), and no single config satisfies even the whole frequency-concentration group ['ed1_main_component', 'type_token_ratio', 'zipf_slope'] (0 configs do), let alone jointly with the entropy/\u0394I/word-class group ['h2', 'mz_peak_value', 'wc_z'] (1 config holds that group, at \u03c1=0.4 global; 0 config holds BOTH). The reuse level that concentrates frequency (high \u03c1) simultaneously deflates the character entropy and block-\u0394I and re-negates the word-class structure. So the VMS's low entropy + retained \u0394I + weak-positive syntax COEXIST with heavy word reuse in a way simple token-copying cannot reproduce; the next mechanism must concentrate frequency WITHOUT spending entropy/\u0394I (e.g. a genuinely small, skewed TYPE lexicon with constrained morphology, rather than token-level copying). SCOPE: grid fixes Zipf exponent, block length and word length (~5.15, a narrow-band near-miss); the tension is over \u03c1\u00d7variant\u00d7branching\u00d7boost. Over an a-priori grid of 104 (\u03c1 [0.0, 0.2, 0.4, 0.6, 0.8] \u00d7 variant ['local_w50', 'local_w200', 'global'] \u00d7 branching [4, 5, 6, 7] \u00d7 boost [6.0, 16.0]). Reuse vs the E22 misses \u2014 ed1: IN-band (from \u03c1=0.6, global/local_w200/local_w50); type: IN-band (from \u03c1=0.4, global/local_w200/local_w50); zipf: IN-band (from \u03c1=0.8, global/local_w200). \u03c1=0 baseline best 2/8; best overall (\u03c1=0.4, global, branching 5, boost 6.0) 4/8 (vms_syntax=True). Axes never matched anywhere: [mean_word_length]. Best sig: h2=2.1275 \u0394I=0.0841 ED1=0.9787 TTR=0.4126 Zipf=-0.53 fc_z=-4.47 wc_z=2.06. (L7.)"
+}

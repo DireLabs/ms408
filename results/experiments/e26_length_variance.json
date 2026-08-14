@@ -1,0 +1,1380 @@
+{
+  "built_at": "2026-08-14T07:03:35+00:00",
+  "git_commit": "351193cbfae86ac0db95305d200da842fef963fa",
+  "experiment": "E26 \u2014 word-length variance vs the h2\u2194ED1 frontier",
+  "seed": 408,
+  "n_tokens": 10000,
+  "k_seeds": 5,
+  "grid_size": 48,
+  "grid_ranges": {
+    "alpha_size": [
+      4,
+      5
+    ],
+    "spread": [
+      "mid",
+      "wide",
+      "xwide"
+    ],
+    "word_zipf": [
+      1.0,
+      1.2
+    ],
+    "boost": [
+      2.0,
+      4.0
+    ],
+    "lex_size": [
+      3000,
+      4500
+    ]
+  },
+  "scoring": "multi-seed generator-side CI (min..max over K seeds) vs VMS band; all 6 profile axes counted (word length now varies); fc_z/wc_z soft, not counted",
+  "vms_band": {
+    "h2": [
+      2.1133,
+      2.1999
+    ],
+    "mz_peak_value": [
+      0.0735,
+      0.2057
+    ],
+    "ed1_main_component": [
+      0.7393,
+      0.766
+    ],
+    "type_token_ratio": [
+      0.1634,
+      0.2961
+    ],
+    "zipf_slope": [
+      -0.9656,
+      -0.8036
+    ],
+    "mean_word_length": [
+      4.917,
+      5.127
+    ]
+  },
+  "hard_axes": [
+    "h2",
+    "mz_peak_value",
+    "ed1_main_component",
+    "type_token_ratio",
+    "zipf_slope",
+    "mean_word_length"
+  ],
+  "basin_all6": 0.0,
+  "n_all6": 0,
+  "n_ge5": 0,
+  "ceiling_hard": 4,
+  "frontier_vs_e25": {
+    "crossed": false,
+    "n_all6": 0,
+    "n_ge5": 0,
+    "ed1_reaches_in_band": true,
+    "closest_with_ed1_in_band": {
+      "h2": 2.2336,
+      "h2_gap": 0.034,
+      "ed1": 0.757,
+      "len": 6.376,
+      "config": {
+        "alpha_size": 4,
+        "spread": "xwide",
+        "word_zipf": 1.0,
+        "boost": 4.0,
+        "lex_size": 4500
+      }
+    },
+    "vms_h2_band": [
+      2.1133,
+      2.1999
+    ],
+    "vms_ed1_floor": 0.7393,
+    "e25_max_ed1_while_h2_in_band": 0.625,
+    "length_construction_artifact": true
+  },
+  "ed1_cooccurs_with": {
+    "h2": false,
+    "mz_peak_value": true,
+    "type_token_ratio": true,
+    "zipf_slope": true,
+    "mean_word_length": false
+  },
+  "best_config": {
+    "alpha_size": 4,
+    "spread": "xwide",
+    "word_zipf": 1.0,
+    "boost": 4.0,
+    "lex_size": 3000,
+    "n_hard": 4,
+    "per_axis": {
+      "h2": false,
+      "mz_peak_value": true,
+      "ed1_main_component": true,
+      "type_token_ratio": true,
+      "zipf_slope": true,
+      "mean_word_length": false
+    },
+    "median": {
+      "h2": 2.2369,
+      "mz_peak_value": 0.2003,
+      "ed1_main_component": 0.7298,
+      "type_token_ratio": 0.1812,
+      "zipf_slope": -0.9098,
+      "mean_word_length": 6.11
+    }
+  },
+  "grid": [
+    {
+      "alpha_size": 4,
+      "spread": "mid",
+      "word_zipf": 1.0,
+      "boost": 2.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.2359,
+        "mz_peak_value": 0.05,
+        "ed1_main_component": 0.9494,
+        "type_token_ratio": 0.1813,
+        "zipf_slope": -0.9178,
+        "mean_word_length": 5.523
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 2,
+      "fc_z": -1.03,
+      "wc_z": 0.21
+    },
+    {
+      "alpha_size": 4,
+      "spread": "mid",
+      "word_zipf": 1.0,
+      "boost": 2.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.2363,
+        "mz_peak_value": 0.0445,
+        "ed1_main_component": 0.9581,
+        "type_token_ratio": 0.2144,
+        "zipf_slope": -0.8805,
+        "mean_word_length": 5.849
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 2,
+      "fc_z": -0.3,
+      "wc_z": -0.35
+    },
+    {
+      "alpha_size": 4,
+      "spread": "mid",
+      "word_zipf": 1.0,
+      "boost": 4.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.2379,
+        "mz_peak_value": 0.2003,
+        "ed1_main_component": 0.9405,
+        "type_token_ratio": 0.1812,
+        "zipf_slope": -0.9098,
+        "mean_word_length": 5.513
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 3,
+      "fc_z": -0.48,
+      "wc_z": 1.53
+    },
+    {
+      "alpha_size": 4,
+      "spread": "mid",
+      "word_zipf": 1.0,
+      "boost": 4.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.2397,
+        "mz_peak_value": 0.1754,
+        "ed1_main_component": 0.9591,
+        "type_token_ratio": 0.2176,
+        "zipf_slope": -0.8686,
+        "mean_word_length": 5.848
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 3,
+      "fc_z": 1.81,
+      "wc_z": -0.55
+    },
+    {
+      "alpha_size": 4,
+      "spread": "mid",
+      "word_zipf": 1.2,
+      "boost": 2.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.1696,
+        "mz_peak_value": 0.057,
+        "ed1_main_component": 0.8967,
+        "type_token_ratio": 0.1189,
+        "zipf_slope": -1.0839,
+        "mean_word_length": 5.391
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 1,
+      "fc_z": 0.76,
+      "wc_z": -1.01
+    },
+    {
+      "alpha_size": 4,
+      "spread": "mid",
+      "word_zipf": 1.2,
+      "boost": 2.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.1703,
+        "mz_peak_value": 0.0532,
+        "ed1_main_component": 0.8991,
+        "type_token_ratio": 0.1338,
+        "zipf_slope": -1.0722,
+        "mean_word_length": 5.864
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 1,
+      "fc_z": 2.29,
+      "wc_z": 1.06
+    },
+    {
+      "alpha_size": 4,
+      "spread": "mid",
+      "word_zipf": 1.2,
+      "boost": 4.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.1764,
+        "mz_peak_value": 0.2215,
+        "ed1_main_component": 0.8999,
+        "type_token_ratio": 0.1238,
+        "zipf_slope": -1.0812,
+        "mean_word_length": 5.412
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 1,
+      "fc_z": 0.03,
+      "wc_z": 1.2
+    },
+    {
+      "alpha_size": 4,
+      "spread": "mid",
+      "word_zipf": 1.2,
+      "boost": 4.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.1811,
+        "mz_peak_value": 0.217,
+        "ed1_main_component": 0.9038,
+        "type_token_ratio": 0.1364,
+        "zipf_slope": -1.0826,
+        "mean_word_length": 5.857
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 1,
+      "fc_z": -1.12,
+      "wc_z": 1.47
+    },
+    {
+      "alpha_size": 4,
+      "spread": "wide",
+      "word_zipf": 1.0,
+      "boost": 2.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.2365,
+        "mz_peak_value": 0.05,
+        "ed1_main_component": 0.9095,
+        "type_token_ratio": 0.1813,
+        "zipf_slope": -0.9178,
+        "mean_word_length": 5.876
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 2,
+      "fc_z": -1.03,
+      "wc_z": 0.21
+    },
+    {
+      "alpha_size": 4,
+      "spread": "wide",
+      "word_zipf": 1.0,
+      "boost": 2.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.2457,
+        "mz_peak_value": 0.0445,
+        "ed1_main_component": 0.9374,
+        "type_token_ratio": 0.2144,
+        "zipf_slope": -0.8805,
+        "mean_word_length": 6.076
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 2,
+      "fc_z": -0.3,
+      "wc_z": -0.35
+    },
+    {
+      "alpha_size": 4,
+      "spread": "wide",
+      "word_zipf": 1.0,
+      "boost": 4.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.239,
+        "mz_peak_value": 0.2003,
+        "ed1_main_component": 0.9147,
+        "type_token_ratio": 0.1812,
+        "zipf_slope": -0.9098,
+        "mean_word_length": 5.882
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 3,
+      "fc_z": -0.48,
+      "wc_z": 1.53
+    },
+    {
+      "alpha_size": 4,
+      "spread": "wide",
+      "word_zipf": 1.0,
+      "boost": 4.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.2465,
+        "mz_peak_value": 0.1754,
+        "ed1_main_component": 0.9418,
+        "type_token_ratio": 0.2176,
+        "zipf_slope": -0.8686,
+        "mean_word_length": 6.07
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 3,
+      "fc_z": 1.81,
+      "wc_z": -0.55
+    },
+    {
+      "alpha_size": 4,
+      "spread": "wide",
+      "word_zipf": 1.2,
+      "boost": 2.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.1737,
+        "mz_peak_value": 0.057,
+        "ed1_main_component": 0.8234,
+        "type_token_ratio": 0.1189,
+        "zipf_slope": -1.0839,
+        "mean_word_length": 5.886
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 1,
+      "fc_z": 0.76,
+      "wc_z": -1.01
+    },
+    {
+      "alpha_size": 4,
+      "spread": "wide",
+      "word_zipf": 1.2,
+      "boost": 2.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.1963,
+        "mz_peak_value": 0.0532,
+        "ed1_main_component": 0.8489,
+        "type_token_ratio": 0.1338,
+        "zipf_slope": -1.0722,
+        "mean_word_length": 6.178
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 1,
+      "fc_z": 2.29,
+      "wc_z": 1.06
+    },
+    {
+      "alpha_size": 4,
+      "spread": "wide",
+      "word_zipf": 1.2,
+      "boost": 4.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.1778,
+        "mz_peak_value": 0.2215,
+        "ed1_main_component": 0.8422,
+        "type_token_ratio": 0.1238,
+        "zipf_slope": -1.0812,
+        "mean_word_length": 5.879
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 1,
+      "fc_z": 0.03,
+      "wc_z": 1.2
+    },
+    {
+      "alpha_size": 4,
+      "spread": "wide",
+      "word_zipf": 1.2,
+      "boost": 4.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.2,
+        "mz_peak_value": 0.217,
+        "ed1_main_component": 0.8435,
+        "type_token_ratio": 0.1364,
+        "zipf_slope": -1.0826,
+        "mean_word_length": 6.18
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 1,
+      "fc_z": -1.12,
+      "wc_z": 1.47
+    },
+    {
+      "alpha_size": 4,
+      "spread": "xwide",
+      "word_zipf": 1.0,
+      "boost": 2.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.2367,
+        "mz_peak_value": 0.05,
+        "ed1_main_component": 0.7381,
+        "type_token_ratio": 0.1813,
+        "zipf_slope": -0.9178,
+        "mean_word_length": 6.078
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": true,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 3,
+      "fc_z": -1.03,
+      "wc_z": 0.21
+    },
+    {
+      "alpha_size": 4,
+      "spread": "xwide",
+      "word_zipf": 1.0,
+      "boost": 2.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.2359,
+        "mz_peak_value": 0.0445,
+        "ed1_main_component": 0.7637,
+        "type_token_ratio": 0.2144,
+        "zipf_slope": -0.8805,
+        "mean_word_length": 6.372
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": true,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 3,
+      "fc_z": -0.3,
+      "wc_z": -0.35
+    },
+    {
+      "alpha_size": 4,
+      "spread": "xwide",
+      "word_zipf": 1.0,
+      "boost": 4.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.2369,
+        "mz_peak_value": 0.2003,
+        "ed1_main_component": 0.7298,
+        "type_token_ratio": 0.1812,
+        "zipf_slope": -0.9098,
+        "mean_word_length": 6.11
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": true,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 4,
+      "fc_z": -0.48,
+      "wc_z": 1.53
+    },
+    {
+      "alpha_size": 4,
+      "spread": "xwide",
+      "word_zipf": 1.0,
+      "boost": 4.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.2336,
+        "mz_peak_value": 0.1754,
+        "ed1_main_component": 0.757,
+        "type_token_ratio": 0.2176,
+        "zipf_slope": -0.8686,
+        "mean_word_length": 6.376
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": true,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 4,
+      "fc_z": 1.81,
+      "wc_z": -0.55
+    },
+    {
+      "alpha_size": 4,
+      "spread": "xwide",
+      "word_zipf": 1.2,
+      "boost": 2.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.1707,
+        "mz_peak_value": 0.057,
+        "ed1_main_component": 0.6492,
+        "type_token_ratio": 0.1189,
+        "zipf_slope": -1.0839,
+        "mean_word_length": 6.047
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 1,
+      "fc_z": 0.76,
+      "wc_z": -1.01
+    },
+    {
+      "alpha_size": 4,
+      "spread": "xwide",
+      "word_zipf": 1.2,
+      "boost": 2.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.158,
+        "mz_peak_value": 0.0532,
+        "ed1_main_component": 0.645,
+        "type_token_ratio": 0.1338,
+        "zipf_slope": -1.0722,
+        "mean_word_length": 6.48
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 1,
+      "fc_z": 2.29,
+      "wc_z": 1.06
+    },
+    {
+      "alpha_size": 4,
+      "spread": "xwide",
+      "word_zipf": 1.2,
+      "boost": 4.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.1733,
+        "mz_peak_value": 0.2215,
+        "ed1_main_component": 0.6531,
+        "type_token_ratio": 0.1238,
+        "zipf_slope": -1.0812,
+        "mean_word_length": 6.061
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 1,
+      "fc_z": 0.03,
+      "wc_z": 1.2
+    },
+    {
+      "alpha_size": 4,
+      "spread": "xwide",
+      "word_zipf": 1.2,
+      "boost": 4.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.1523,
+        "mz_peak_value": 0.217,
+        "ed1_main_component": 0.6528,
+        "type_token_ratio": 0.1364,
+        "zipf_slope": -1.0826,
+        "mean_word_length": 6.467
+      },
+      "per_axis": {
+        "h2": true,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 1,
+      "fc_z": -1.12,
+      "wc_z": 1.47
+    },
+    {
+      "alpha_size": 5,
+      "spread": "mid",
+      "word_zipf": 1.0,
+      "boost": 2.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.4792,
+        "mz_peak_value": 0.05,
+        "ed1_main_component": 0.8494,
+        "type_token_ratio": 0.1813,
+        "zipf_slope": -0.9178,
+        "mean_word_length": 5.278
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 2,
+      "fc_z": -1.03,
+      "wc_z": 0.21
+    },
+    {
+      "alpha_size": 5,
+      "spread": "mid",
+      "word_zipf": 1.0,
+      "boost": 2.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.4922,
+        "mz_peak_value": 0.0445,
+        "ed1_main_component": 0.8531,
+        "type_token_ratio": 0.2144,
+        "zipf_slope": -0.8805,
+        "mean_word_length": 5.273
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 2,
+      "fc_z": -0.3,
+      "wc_z": -0.35
+    },
+    {
+      "alpha_size": 5,
+      "spread": "mid",
+      "word_zipf": 1.0,
+      "boost": 4.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.4785,
+        "mz_peak_value": 0.2003,
+        "ed1_main_component": 0.8488,
+        "type_token_ratio": 0.1812,
+        "zipf_slope": -0.9098,
+        "mean_word_length": 5.288
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 3,
+      "fc_z": -0.48,
+      "wc_z": 1.53
+    },
+    {
+      "alpha_size": 5,
+      "spread": "mid",
+      "word_zipf": 1.0,
+      "boost": 4.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.4875,
+        "mz_peak_value": 0.1754,
+        "ed1_main_component": 0.8516,
+        "type_token_ratio": 0.2176,
+        "zipf_slope": -0.8686,
+        "mean_word_length": 5.259
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 3,
+      "fc_z": 1.81,
+      "wc_z": -0.55
+    },
+    {
+      "alpha_size": 5,
+      "spread": "mid",
+      "word_zipf": 1.2,
+      "boost": 2.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.3715,
+        "mz_peak_value": 0.057,
+        "ed1_main_component": 0.7968,
+        "type_token_ratio": 0.1189,
+        "zipf_slope": -1.0839,
+        "mean_word_length": 5.259
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 0,
+      "fc_z": 0.76,
+      "wc_z": -1.01
+    },
+    {
+      "alpha_size": 5,
+      "spread": "mid",
+      "word_zipf": 1.2,
+      "boost": 2.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.3789,
+        "mz_peak_value": 0.0532,
+        "ed1_main_component": 0.7916,
+        "type_token_ratio": 0.1338,
+        "zipf_slope": -1.0722,
+        "mean_word_length": 5.176
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": true
+      },
+      "n_hard": 1,
+      "fc_z": 2.29,
+      "wc_z": 1.06
+    },
+    {
+      "alpha_size": 5,
+      "spread": "mid",
+      "word_zipf": 1.2,
+      "boost": 4.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.3749,
+        "mz_peak_value": 0.2215,
+        "ed1_main_component": 0.785,
+        "type_token_ratio": 0.1238,
+        "zipf_slope": -1.0812,
+        "mean_word_length": 5.251
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": true,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 1,
+      "fc_z": 0.03,
+      "wc_z": 1.2
+    },
+    {
+      "alpha_size": 5,
+      "spread": "mid",
+      "word_zipf": 1.2,
+      "boost": 4.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.3911,
+        "mz_peak_value": 0.217,
+        "ed1_main_component": 0.7847,
+        "type_token_ratio": 0.1364,
+        "zipf_slope": -1.0826,
+        "mean_word_length": 5.189
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": true
+      },
+      "n_hard": 1,
+      "fc_z": -1.12,
+      "wc_z": 1.47
+    },
+    {
+      "alpha_size": 5,
+      "spread": "wide",
+      "word_zipf": 1.0,
+      "boost": 2.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.486,
+        "mz_peak_value": 0.05,
+        "ed1_main_component": 0.6829,
+        "type_token_ratio": 0.1813,
+        "zipf_slope": -0.9178,
+        "mean_word_length": 5.635
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 2,
+      "fc_z": -1.03,
+      "wc_z": 0.21
+    },
+    {
+      "alpha_size": 5,
+      "spread": "wide",
+      "word_zipf": 1.0,
+      "boost": 2.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.4869,
+        "mz_peak_value": 0.0445,
+        "ed1_main_component": 0.688,
+        "type_token_ratio": 0.2144,
+        "zipf_slope": -0.8805,
+        "mean_word_length": 5.782
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 2,
+      "fc_z": -0.3,
+      "wc_z": -0.35
+    },
+    {
+      "alpha_size": 5,
+      "spread": "wide",
+      "word_zipf": 1.0,
+      "boost": 4.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.4852,
+        "mz_peak_value": 0.2003,
+        "ed1_main_component": 0.6885,
+        "type_token_ratio": 0.1812,
+        "zipf_slope": -0.9098,
+        "mean_word_length": 5.623
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 3,
+      "fc_z": -0.48,
+      "wc_z": 1.53
+    },
+    {
+      "alpha_size": 5,
+      "spread": "wide",
+      "word_zipf": 1.0,
+      "boost": 4.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.49,
+        "mz_peak_value": 0.1754,
+        "ed1_main_component": 0.7122,
+        "type_token_ratio": 0.2176,
+        "zipf_slope": -0.8686,
+        "mean_word_length": 5.789
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": true,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 4,
+      "fc_z": 1.81,
+      "wc_z": -0.55
+    },
+    {
+      "alpha_size": 5,
+      "spread": "wide",
+      "word_zipf": 1.2,
+      "boost": 2.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.3832,
+        "mz_peak_value": 0.057,
+        "ed1_main_component": 0.5946,
+        "type_token_ratio": 0.1189,
+        "zipf_slope": -1.0839,
+        "mean_word_length": 5.657
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 0,
+      "fc_z": 0.76,
+      "wc_z": -1.01
+    },
+    {
+      "alpha_size": 5,
+      "spread": "wide",
+      "word_zipf": 1.2,
+      "boost": 2.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.3802,
+        "mz_peak_value": 0.0532,
+        "ed1_main_component": 0.6115,
+        "type_token_ratio": 0.1338,
+        "zipf_slope": -1.0722,
+        "mean_word_length": 5.838
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 0,
+      "fc_z": 2.29,
+      "wc_z": 1.06
+    },
+    {
+      "alpha_size": 5,
+      "spread": "wide",
+      "word_zipf": 1.2,
+      "boost": 4.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.3863,
+        "mz_peak_value": 0.2215,
+        "ed1_main_component": 0.6177,
+        "type_token_ratio": 0.1238,
+        "zipf_slope": -1.0812,
+        "mean_word_length": 5.676
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 0,
+      "fc_z": 0.03,
+      "wc_z": 1.2
+    },
+    {
+      "alpha_size": 5,
+      "spread": "wide",
+      "word_zipf": 1.2,
+      "boost": 4.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.3888,
+        "mz_peak_value": 0.217,
+        "ed1_main_component": 0.5924,
+        "type_token_ratio": 0.1364,
+        "zipf_slope": -1.0826,
+        "mean_word_length": 5.842
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 0,
+      "fc_z": -1.12,
+      "wc_z": 1.47
+    },
+    {
+      "alpha_size": 5,
+      "spread": "xwide",
+      "word_zipf": 1.0,
+      "boost": 2.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.498,
+        "mz_peak_value": 0.05,
+        "ed1_main_component": 0.6089,
+        "type_token_ratio": 0.1813,
+        "zipf_slope": -0.9178,
+        "mean_word_length": 5.785
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 2,
+      "fc_z": -1.03,
+      "wc_z": 0.21
+    },
+    {
+      "alpha_size": 5,
+      "spread": "xwide",
+      "word_zipf": 1.0,
+      "boost": 2.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.5023,
+        "mz_peak_value": 0.0445,
+        "ed1_main_component": 0.5909,
+        "type_token_ratio": 0.2144,
+        "zipf_slope": -0.8805,
+        "mean_word_length": 5.925
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 2,
+      "fc_z": -0.3,
+      "wc_z": -0.35
+    },
+    {
+      "alpha_size": 5,
+      "spread": "xwide",
+      "word_zipf": 1.0,
+      "boost": 4.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.498,
+        "mz_peak_value": 0.2003,
+        "ed1_main_component": 0.5889,
+        "type_token_ratio": 0.1812,
+        "zipf_slope": -0.9098,
+        "mean_word_length": 5.816
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 3,
+      "fc_z": -0.48,
+      "wc_z": 1.53
+    },
+    {
+      "alpha_size": 5,
+      "spread": "xwide",
+      "word_zipf": 1.0,
+      "boost": 4.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.5048,
+        "mz_peak_value": 0.1754,
+        "ed1_main_component": 0.5908,
+        "type_token_ratio": 0.2176,
+        "zipf_slope": -0.8686,
+        "mean_word_length": 5.933
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": true,
+        "ed1_main_component": false,
+        "type_token_ratio": true,
+        "zipf_slope": true,
+        "mean_word_length": false
+      },
+      "n_hard": 3,
+      "fc_z": 1.81,
+      "wc_z": -0.55
+    },
+    {
+      "alpha_size": 5,
+      "spread": "xwide",
+      "word_zipf": 1.2,
+      "boost": 2.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.4039,
+        "mz_peak_value": 0.057,
+        "ed1_main_component": 0.5256,
+        "type_token_ratio": 0.1189,
+        "zipf_slope": -1.0839,
+        "mean_word_length": 5.695
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 0,
+      "fc_z": 0.76,
+      "wc_z": -1.01
+    },
+    {
+      "alpha_size": 5,
+      "spread": "xwide",
+      "word_zipf": 1.2,
+      "boost": 2.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.4117,
+        "mz_peak_value": 0.0532,
+        "ed1_main_component": 0.4956,
+        "type_token_ratio": 0.1338,
+        "zipf_slope": -1.0722,
+        "mean_word_length": 5.868
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 0,
+      "fc_z": 2.29,
+      "wc_z": 1.06
+    },
+    {
+      "alpha_size": 5,
+      "spread": "xwide",
+      "word_zipf": 1.2,
+      "boost": 4.0,
+      "lex_size": 3000,
+      "median": {
+        "h2": 2.4193,
+        "mz_peak_value": 0.2215,
+        "ed1_main_component": 0.5293,
+        "type_token_ratio": 0.1238,
+        "zipf_slope": -1.0812,
+        "mean_word_length": 5.759
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 0,
+      "fc_z": 0.03,
+      "wc_z": 1.2
+    },
+    {
+      "alpha_size": 5,
+      "spread": "xwide",
+      "word_zipf": 1.2,
+      "boost": 4.0,
+      "lex_size": 4500,
+      "median": {
+        "h2": 2.4128,
+        "mz_peak_value": 0.217,
+        "ed1_main_component": 0.5059,
+        "type_token_ratio": 0.1364,
+        "zipf_slope": -1.0826,
+        "mean_word_length": 5.87
+      },
+      "per_axis": {
+        "h2": false,
+        "mz_peak_value": false,
+        "ed1_main_component": false,
+        "type_token_ratio": false,
+        "zipf_slope": false,
+        "mean_word_length": false
+      },
+      "n_hard": 0,
+      "fc_z": -1.12,
+      "wc_z": 1.47
+    }
+  ],
+  "grade": "C",
+  "verdict": "RETRACTION OF THE i08 HARD CONSTRAINT \u2014 NOT a promotion to 'no constraint' (refutation-corrected). Word-length variance supplies the connectivity control fixed-length words lacked, so the E25 entropy\u2194connectivity tension is largely resolved and the i08 'gross multi-axis incompatibility' was largely a morphology-parameterisation artifact. NET across E25\u2013E26: freeing connectivity collapses that incompatibility to a single shallow COUPLED entropy\u2194connectivity\u2194length frontier a flexible generator approaches within ~0.03\u20130.05 on 4/6 axes \u2014 but NO single config reproduces the full set (incomplete, NOT vacuous), and the last obstruction MOVED (ED1\u2192h2/length) rather than vanished. So WITHIN this one generative family the hard axes under-determine the sub-mechanism; this is NOT a general non-discrimination claim \u2014 the same signature still EXCLUDES the cipher-of-real-prose class (i06). The load-bearing constraints stay i06 + the qualitative character/morphology structure, not a joint-signature barrier within the favoured class. (Grade C. Soft fc_z/wc_z not counted; no identification \u2014 L7.) A-priori grid 48 \u00d7 5 seeds (alphabet [4, 5] \u00d7 spread ['mid', 'wide', 'xwide'] \u00d7 word-Zipf [1.0, 1.2] \u00d7 boost [2.0, 4.0]). Length variance brings ED1 into the VMS band at the best config (0.757) with block-\u0394I/TTR/Zipf; the E25 sticking point (fixed length capped ED1@h2-in-band at 0.625) is largely gone. BUT no single config reaches all six (ceiling 4/6; 0 at \u22655/6): at that config the residual is TWO misses \u2014 h2 gap ~0.034 (h2=2.2336, band [2.1133, 2.1999]) AND mean length 6.376 vs band max ~5.13 (CONJECTURED short-word-saturation artifact, UNTESTED and possibly not separable \u2014 ED1-in-band configs are confined to the smallest alphabet + widest spread). CI-overlap scoring is lenient (seed min..max touches band) and was not applied to the i08 families, so the E24\u2192E26 comparison is not apples-to-apples. Best config 4/6 [mz_peak_value, ed1_main_component, type_token_ratio, zipf_slope]: h2=2.2369 \u0394I=0.2003 ED1=0.7298 TTR=0.1812 Zipf=-0.9098 len=6.11."
+}

@@ -1,0 +1,88 @@
+{
+  "built_at": "2026-08-14T06:55:12+00:00",
+  "git_commit": "4800a23cbeb5cbfa3f7afa43c63a27714b6d3bbb",
+  "experiment": "E17 \u2014 Currier A-vs-B contrast (content-controlled, word-class z)",
+  "seed": 408,
+  "n_seeds": 6,
+  "n_null": 10,
+  "matched_tokens": {
+    "global": 10709,
+    "herbal": 3305
+  },
+  "strata": {
+    "global_A": {
+      "z_by_seed": [
+        -0.23,
+        0.59,
+        0.33,
+        -1.86,
+        2.18,
+        0.66
+      ],
+      "mean": 0.28,
+      "min": -1.86,
+      "max": 2.18,
+      "tokens": 10709
+    },
+    "global_B": {
+      "z_by_seed": [
+        1.74,
+        1.08,
+        2.42,
+        2.08,
+        3.03,
+        2.06
+      ],
+      "mean": 2.07,
+      "min": 1.08,
+      "max": 3.03,
+      "tokens": 10709
+    },
+    "herbal_A": {
+      "z_by_seed": [
+        2.25,
+        1.32,
+        0.23,
+        0.73,
+        0.37,
+        1.63
+      ],
+      "mean": 1.09,
+      "min": 0.23,
+      "max": 2.25,
+      "tokens": 3305
+    },
+    "herbal_B": {
+      "z_by_seed": [
+        0.01,
+        0.12,
+        1.49,
+        -0.91,
+        -1.59,
+        0.0
+      ],
+      "mean": -0.15,
+      "min": -1.59,
+      "max": 1.49,
+      "tokens": 3305
+    }
+  },
+  "global_contrast": {
+    "A_mean": 0.28,
+    "B_mean": 2.07,
+    "B_minus_A": 1.79,
+    "B_gt_A_mean": true,
+    "B_clearly_above_A": false
+  },
+  "herbal_contrast_content_controlled": {
+    "A_mean": 1.09,
+    "B_mean": -0.15,
+    "B_minus_A": -1.24,
+    "B_gt_A_mean": false,
+    "B_clearly_above_A": false
+  },
+  "ab_difference_is_dialect_effect": false,
+  "ab_difference_was_content_confound": true,
+  "grade": "C",
+  "verdict": "CONTENT CONFOUND \u2014 the E14b A/B word-class difference is a SECTION effect, NOT a dialect difference. B>A holds globally (B\u2212A 1.79) but does NOT survive within the herbal section, where content is held fixed: there herbal-A (1.09) is if anything ABOVE herbal-B (-0.15). So the apparent 'B has more word-class structure' was driven by B covering the biological/recipe sections (which differ from the herbal), not by the Currier dialect. Once content is controlled, there is NO evidence that A and B differ in mid-level word-class structure. This CORRECTS the E14b reading and withdraws the 'A and B are different generative processes' inference from this probe. CAVEAT: Herbal-B is small (3305 tokens), so the within-herbal contrast is UNDERPOWERED \u2014 the robust claim is 'the global difference is content-confounded', and the within-content null is suggestive but not decisive; a larger content-matched sample (or a second both-dialect section) would settle it. Word-class z (mean over 6 seeds). GLOBAL A=0.28 B=2.07 (B\u2212A 1.79). HERBAL (content-controlled, 3305 tokens each) A=1.09 B=-0.15 (B\u2212A -1.24; B clearly above A: False). Both strata remain far below real language (z\u224815). (L7.)"
+}

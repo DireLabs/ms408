@@ -1,6 +1,6 @@
 # E28 — Angular/ordinal anchor in the zodiac rings
 
-Generated 2026-07-17T03:31:55+00:00 at commit `fbb3babd01` by `python -m ms408.experiments.e28_angular_anchor`. Numbers in `results/experiments/e28_angular_anchor.json`.
+Generated 2026-08-14T07:03:36+00:00 at commit `351193cbfa` by `python -m ms408.experiments.e28_angular_anchor`. Numbers in `results/experiments/e28_angular_anchor.json`.
 
 Anchor signal: **False**. Positive control detects ordered values: **True** (Mantel r=0.2402, p=0.001).
 

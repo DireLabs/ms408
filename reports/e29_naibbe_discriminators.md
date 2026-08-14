@@ -1,6 +1,6 @@
 # E29 — The Naibbe cipher against the i06 discriminators
 
-Generated 2026-07-17T09:09:07+00:00 at commit `5dcdcc9118` by `python -m ms408.experiments.e29_naibbe_discriminators`. Numbers in `results/experiments/e29_naibbe_discriminators.json`. Source: Greshko, Cryptologia 2025; ciphertext github.com/greshko/naibbe-cipher (nathist = Pliny Natural History, respaced Latin). Consume-only (L19).
+Generated 2026-08-14T07:04:04+00:00 at commit `351193cbfa` by `python -m ms408.experiments.e29_naibbe_discriminators`. Numbers in `results/experiments/e29_naibbe_discriminators.json`. Source: Greshko, Cryptologia 2025; ciphertext github.com/greshko/naibbe-cipher (nathist = Pliny Natural History, respaced Latin). Consume-only (L19).
 
 Full-text ΔI = **0.0035** @ 3476 (VMS band [0.0735, 0.2057]); ΔI collapsed: **True**; reproduces VMS joint signature: **False**.
 
