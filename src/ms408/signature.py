@@ -52,7 +52,12 @@ LOW_BUDGET_TOKENS = 8_000   # below this, axes (esp. ttr) are not comparable to 
 # Axes carried by evaluate(), in report order, each with its standing caveat. The caveat
 # text is the honest hedge for that axis; it ships with every verdict.
 AXES = {
-    "h2": "Lindemann-Bowern conditional character entropy (space included).",
+    "h2": "Lindemann-Bowern conditional character entropy: the SPACE COUNTS as a "
+          "character and bigrams span word boundaries (textstats.lb_entropies). This is "
+          "not the same statistic as the within-word convention "
+          "(textstats.char_conditional_entropy), which is also called h2 in the "
+          "literature and gives a materially different number on the same text — say "
+          "which convention you mean before comparing an h2 to anything.",
     "dI": "Montemurro-Zanette word-order information. CONFOUNDED: collapses under "
           "homophony and under re-spacing alone (E29) — a homophony/type-token detector, "
           "not a clean word-order measure. In-band here is weak evidence.",
