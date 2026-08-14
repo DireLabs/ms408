@@ -1,18 +1,23 @@
 {
+  "schema": 2,
   "meta": {
     "script": "ms408.experiments.e32_reference_bands",
-    "git_commit": "b7f9e18af1974807d42d3d29b66b369211a644d3",
-    "built_at": "2026-08-10T20:12:47+00:00",
-    "vms_dataset": "ZL EVA transliteration, Currier A ONLY, matched token budget",
+    "git_commit": "120d7b1bc1d3185ec43032f4491aa8e23e908ed2",
+    "built_at": "2026-08-14T06:43:13+00:00",
+    "vms_dataset": "ZL EVA transliteration, one band set per Currier dialect, matched token budget",
     "dialect_scope": {
-      "scope": "Currier A",
-      "note": "The A+B concatenation is truncated at the matched token budget, and Currier A alone exceeds it \u2014 so no Currier B token reaches these bands, though B is 68% of the manuscript. A stream from B scores 0-1 of 3 hard axes (E34). Scope is an open decision (D21); see docs/LIMITS.md.",
-      "evidence": "ms408.experiments.e34_band_dialect_scope"
+      "dialects": [
+        "A",
+        "B"
+      ],
+      "note": "Bands are stratified by Currier dialect (D21, L8). A and B are different generative regimes \u2014 a stream matching A's bands typically misses B's and vice versa \u2014 so there is no single 'the manuscript' band set and evaluate() reports every dialect rather than picking one. Each sample is the first 10000 paragraph tokens of that dialect in page order; see docs/LIMITS.md and E34 for how well that prefix covers the rest of the dialect.",
+      "evidence": "ms408.experiments.e34_band_dialect_scope",
+      "history": "Before D21 a single band set was built from A+B truncated at the budget, which contained only A while claiming A+B. The A band set here is byte-identical to that artifact."
     },
     "n_tokens": 10000,
     "seed": 408,
     "block": 250,
-    "method": "profile axes = subsample-without-replacement 95% CI (120 reps); syntax axes = subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
+    "method": "per dialect: profile axes = subsample-without-replacement 95% CI (120 reps); syntax axes = subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
     "params": {
       "profile_subsample": 120,
       "syntax_subsample": 40,
@@ -22,106 +27,228 @@
     },
     "caveats": {
       "dI": "homophony/respacing-confounded (E29); in-band is weak evidence",
-      "syntax_soft": "VMS-side CIs cross zero \u2014 soft axes; see docs/LIMITS.md"
+      "syntax_soft": "VMS-side CIs cross zero \u2014 soft axes; see docs/LIMITS.md",
+      "dialect": "In-band for one dialect is NOT in-band for the manuscript; report which dialect (L8)."
     }
   },
-  "vms_point": {
-    "tokens": 10000,
-    "types": 3292,
-    "h2": 2.1822,
-    "dI": 0.1634,
-    "ed1": 0.7509,
-    "zipf": -1.0486,
-    "ttr": 0.3292,
-    "mz_peak_scale": 333,
-    "fc_z_local": -1.54,
-    "wc_z_local": 1.97,
-    "fc_z_global": -1.19,
-    "wc_z_global": 1.98
-  },
-  "axes": {
-    "h2": {
-      "band": [
-        2.1595,
-        2.1972
-      ],
-      "method": "subsample-without-replacement 95% CI (120 reps)",
-      "soft": false,
-      "crosses_zero": false
+  "dialects": {
+    "A": {
+      "dialect": "A",
+      "vms_dataset": "ZL EVA transliteration, Currier A, first 10000 paragraph tokens in page order",
+      "corpus_tokens": 10709,
+      "method": "profile axes = subsample-without-replacement 95% CI (120 reps); syntax axes = subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
+      "vms_point": {
+        "tokens": 10000,
+        "types": 3292,
+        "h2": 2.1822,
+        "dI": 0.1634,
+        "ed1": 0.7509,
+        "zipf": -1.0486,
+        "ttr": 0.3292,
+        "mz_peak_scale": 333,
+        "fc_z_local": -1.54,
+        "wc_z_local": 1.97,
+        "fc_z_global": -1.19,
+        "wc_z_global": 1.98
+      },
+      "axes": {
+        "h2": {
+          "band": [
+            2.1595,
+            2.1972
+          ],
+          "method": "subsample-without-replacement 95% CI (120 reps)",
+          "soft": false,
+          "crosses_zero": false
+        },
+        "dI": {
+          "band": [
+            0.1435,
+            0.178
+          ],
+          "method": "subsample-without-replacement 95% CI (120 reps)",
+          "soft": false,
+          "crosses_zero": false
+        },
+        "ed1": {
+          "band": [
+            0.7374,
+            0.7619
+          ],
+          "method": "subsample-without-replacement 95% CI (120 reps)",
+          "soft": false,
+          "crosses_zero": false
+        },
+        "zipf": {
+          "band": null,
+          "method": "advisory (token-count-sensitive; not banded)",
+          "soft": false,
+          "token_sensitive": true,
+          "vms_full_point": -1.0486,
+          "vms_subsample_75pct_range": [
+            -1.0673,
+            -1.0358
+          ],
+          "subsample_bias": -0.0046
+        },
+        "ttr": {
+          "band": null,
+          "method": "advisory (token-count-sensitive; not banded)",
+          "soft": false,
+          "token_sensitive": true,
+          "vms_full_point": 0.3292,
+          "vms_subsample_75pct_range": [
+            0.3419,
+            0.3644
+          ],
+          "subsample_bias": 0.0247
+        },
+        "fc_z_local": {
+          "band": [
+            -4.51,
+            0.72
+          ],
+          "method": "subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
+          "soft": true,
+          "crosses_zero": true
+        },
+        "wc_z_local": {
+          "band": [
+            -1.23,
+            2.56
+          ],
+          "method": "subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
+          "soft": true,
+          "crosses_zero": true
+        },
+        "fc_z_global": {
+          "band": [
+            -4.65,
+            0.43
+          ],
+          "method": "subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
+          "soft": true,
+          "crosses_zero": true
+        },
+        "wc_z_global": {
+          "band": [
+            -1.07,
+            2.93
+          ],
+          "method": "subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
+          "soft": true,
+          "crosses_zero": true
+        }
+      }
     },
-    "dI": {
-      "band": [
-        0.1435,
-        0.178
-      ],
-      "method": "subsample-without-replacement 95% CI (120 reps)",
-      "soft": false,
-      "crosses_zero": false
-    },
-    "ed1": {
-      "band": [
-        0.7374,
-        0.7619
-      ],
-      "method": "subsample-without-replacement 95% CI (120 reps)",
-      "soft": false,
-      "crosses_zero": false
-    },
-    "zipf": {
-      "band": [
-        -1.0673,
-        -1.0358
-      ],
-      "method": "subsample-without-replacement 95% CI (120 reps)",
-      "soft": false,
-      "crosses_zero": false
-    },
-    "ttr": {
-      "band": null,
-      "method": "advisory (token-count-sensitive; not banded)",
-      "soft": false,
-      "token_sensitive": true,
-      "vms_full_point": 0.3292,
-      "vms_subsample_75pct_range": [
-        0.3419,
-        0.3644
-      ]
-    },
-    "fc_z_local": {
-      "band": [
-        -4.51,
-        0.72
-      ],
-      "method": "subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
-      "soft": true,
-      "crosses_zero": true
-    },
-    "wc_z_local": {
-      "band": [
-        -1.23,
-        2.56
-      ],
-      "method": "subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
-      "soft": true,
-      "crosses_zero": true
-    },
-    "fc_z_global": {
-      "band": [
-        -4.65,
-        0.43
-      ],
-      "method": "subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
-      "soft": true,
-      "crosses_zero": true
-    },
-    "wc_z_global": {
-      "band": [
-        -1.07,
-        2.93
-      ],
-      "method": "subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
-      "soft": true,
-      "crosses_zero": true
+    "B": {
+      "dialect": "B",
+      "vms_dataset": "ZL EVA transliteration, Currier B, first 10000 paragraph tokens in page order",
+      "corpus_tokens": 22864,
+      "method": "profile axes = subsample-without-replacement 95% CI (120 reps); syntax axes = subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
+      "vms_point": {
+        "tokens": 10000,
+        "types": 2470,
+        "h2": 1.961,
+        "dI": 0.1993,
+        "ed1": 0.7725,
+        "zipf": -1.2151,
+        "ttr": 0.247,
+        "mz_peak_scale": 277,
+        "fc_z_local": -3.7,
+        "wc_z_local": 1.59,
+        "fc_z_global": -4.83,
+        "wc_z_global": 2.92
+      },
+      "axes": {
+        "h2": {
+          "band": [
+            1.9259,
+            1.996
+          ],
+          "method": "subsample-without-replacement 95% CI (120 reps)",
+          "soft": false,
+          "crosses_zero": false
+        },
+        "dI": {
+          "band": [
+            0.1815,
+            0.2122
+          ],
+          "method": "subsample-without-replacement 95% CI (120 reps)",
+          "soft": false,
+          "crosses_zero": false
+        },
+        "ed1": {
+          "band": [
+            0.754,
+            0.7878
+          ],
+          "method": "subsample-without-replacement 95% CI (120 reps)",
+          "soft": false,
+          "crosses_zero": false
+        },
+        "zipf": {
+          "band": null,
+          "method": "advisory (token-count-sensitive; not banded)",
+          "soft": false,
+          "token_sensitive": true,
+          "vms_full_point": -1.2151,
+          "vms_subsample_75pct_range": [
+            -1.1701,
+            -1.1452
+          ],
+          "subsample_bias": 0.0589
+        },
+        "ttr": {
+          "band": null,
+          "method": "advisory (token-count-sensitive; not banded)",
+          "soft": false,
+          "token_sensitive": true,
+          "vms_full_point": 0.247,
+          "vms_subsample_75pct_range": [
+            0.2559,
+            0.2809
+          ],
+          "subsample_bias": 0.0218
+        },
+        "fc_z_local": {
+          "band": [
+            -3.87,
+            -0.66
+          ],
+          "method": "subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
+          "soft": true,
+          "crosses_zero": false
+        },
+        "wc_z_local": {
+          "band": [
+            -0.04,
+            4.13
+          ],
+          "method": "subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
+          "soft": true,
+          "crosses_zero": true
+        },
+        "fc_z_global": {
+          "band": [
+            -5.74,
+            -1.22
+          ],
+          "method": "subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
+          "soft": true,
+          "crosses_zero": false
+        },
+        "wc_z_global": {
+          "band": [
+            0.29,
+            3.63
+          ],
+          "method": "subsample-without-replacement 90% CI (40 reps, 75% of blocks; N_NULL=20)",
+          "soft": true,
+          "crosses_zero": false
+        }
+      }
     }
   }
 }

@@ -21,6 +21,7 @@ from .signature import HARD_AXES, axis_values, vms_bands
 from .sources import path_for
 
 TOL = 1e-9   # profile axes are deterministic; syntax z's are seed-fixed -> exact match
+INFO = "info"   # a reported observation, not a pass/fail check (None means SKIPPED)
 
 
 def _have_corpus() -> bool:
@@ -28,53 +29,79 @@ def _have_corpus() -> bool:
 
 
 def _check_vms_point(bands: dict) -> list:
-    """Recompute the VMS point signature from the corpus; it must equal the shipped one."""
+    """Recompute each dialect's point signature from the corpus; must equal the shipped one."""
     from .experiments.e13_function_content import N_TOKENS, _sub, _vms_tokens
 
-    vms = _sub(_vms_tokens("A") + _vms_tokens("B"), N_TOKENS)
-    fresh = axis_values(vms)
-    shipped = bands["vms_point"]
     out = []
-    for axis, exp in shipped.items():
-        got = fresh.get(axis)
-        if isinstance(exp, (int, float)) and isinstance(got, (int, float)):
-            ok = abs(got - exp) <= TOL
-        else:
-            ok = got == exp
-        out.append((f"vms_point.{axis}", ok, f"shipped {exp} vs recomputed {got}"))
+    for dialect, spec in bands["dialects"].items():
+        fresh = axis_values(_sub(_vms_tokens(dialect), N_TOKENS))
+        for axis, exp in spec["vms_point"].items():
+            got = fresh.get(axis)
+            if isinstance(exp, (int, float)) and isinstance(got, (int, float)):
+                ok = abs(got - exp) <= TOL
+            else:
+                ok = got == exp
+            out.append((f"vms_point.{dialect}.{axis}", ok,
+                        f"shipped {exp} vs recomputed {got}"))
     return out
 
 
 def _check_self_consistency(bands: dict) -> list:
-    """The VMS point must lie inside its own HARD bands (else the artifact is miscalibrated)."""
-    point, axes = bands["vms_point"], bands["axes"]
+    """Each dialect's point must lie inside its OWN hard bands (else it is miscalibrated)."""
     out = []
-    for axis in sorted(HARD_AXES):
-        lo, hi = axes[axis]["band"]
-        v = point[axis]
-        out.append((f"self-consistency.{axis}", bool(lo <= v <= hi), f"{v} in [{lo}, {hi}]"))
+    for dialect, spec in bands["dialects"].items():
+        point, axes = spec["vms_point"], spec["axes"]
+        for axis in sorted(HARD_AXES):
+            lo, hi = axes[axis]["band"]
+            v = point[axis]
+            out.append((f"self-consistency.{dialect}.{axis}", bool(lo <= v <= hi),
+                        f"{v} in [{lo}, {hi}]"))
+    return out
+
+
+def _check_dialect_separation(bands: dict) -> list:
+    """The dialects must actually differ (D21): if every dialect point sat inside every
+    other dialect's hard bands, stratifying would be pointless and the split would be
+    hiding rather than showing structure. Reported, never failed — this is a description
+    of the manuscript, not a property the code controls."""
+    out = []
+    dialects = bands["dialects"]
+    for d, spec in dialects.items():
+        for other, ospec in dialects.items():
+            if other == d:
+                continue
+            hits = [a for a in sorted(HARD_AXES)
+                    if ospec["axes"][a]["band"][0] <= spec["vms_point"][a]
+                    <= ospec["axes"][a]["band"][1]]
+            out.append((f"cross-dialect.{d}-in-{other}", INFO,
+                        f"{len(hits)}/{len(HARD_AXES)} hard axes"
+                        f"{' (' + ', '.join(hits) + ')' if hits else ''}"))
     return out
 
 
 def _check_full_rebuild(bands: dict) -> list:
-    """Rebuild the bands from code and diff vps_point + axis bands vs the shipped file."""
+    """Rebuild the bands from code and diff every dialect's point + axis bands."""
     from .experiments.e32_reference_bands import build
 
     rebuilt = build()
     out = []
-    for axis, exp in bands["vms_point"].items():
-        got = rebuilt["vms_point"].get(axis)
-        ok = abs(got - exp) <= TOL if isinstance(exp, (int, float)) else got == exp
-        out.append((f"rebuild.vms_point.{axis}", ok, f"{exp} vs {got}"))
-    for axis, spec in bands["axes"].items():
-        got = rebuilt["axes"][axis]["band"]
-        out.append((f"rebuild.band.{axis}", got == spec["band"], f"{spec['band']} vs {got}"))
+    for dialect, spec in bands["dialects"].items():
+        fresh = rebuilt["dialects"].get(dialect, {})
+        for axis, exp in spec["vms_point"].items():
+            got = fresh.get("vms_point", {}).get(axis)
+            ok = abs(got - exp) <= TOL if isinstance(exp, (int, float)) else got == exp
+            out.append((f"rebuild.{dialect}.vms_point.{axis}", ok, f"{exp} vs {got}"))
+        for axis, aspec in spec["axes"].items():
+            got = fresh.get("axes", {}).get(axis, {}).get("band")
+            out.append((f"rebuild.{dialect}.band.{axis}", got == aspec["band"],
+                        f"{aspec['band']} vs {got}"))
     return out
 
 
 def verify(full: bool = False) -> tuple[int, list]:
     bands = vms_bands()
     checks: list = []
+    checks += _check_dialect_separation(bands)
     if _have_corpus():
         checks += _check_vms_point(bands)
         checks += _check_self_consistency(bands)
@@ -95,7 +122,8 @@ def main(argv: list | None = None) -> int:
 
     failed, checks = verify(full=args.full)
     for name, ok, detail in checks:
-        tag = "SKIP" if ok is None else ("PASS" if ok else "FAIL")
+        tag = ("SKIP" if ok is None else "INFO" if ok == INFO
+               else ("PASS" if ok else "FAIL"))
         print(f"[{tag}] {name}: {detail}")
     print("-" * 60)
     if any(ok is None for _, ok, _ in checks):

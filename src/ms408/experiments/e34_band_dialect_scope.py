@@ -49,9 +49,12 @@ def _windows(tokens: list, width: int, step: int) -> list:
     return starts
 
 
-def _score(tokens: list, bands: dict) -> dict:
-    """Hard-axis in-band tally for one window, using the evaluator's own code path."""
-    vals = axis_values(tokens)
+def _score(vals: dict, bands: dict) -> dict:
+    """Hard-axis in-band tally for one window's axis values against one dialect's bands.
+
+    Takes precomputed values (from `axis_values`, the evaluator's own code path) because
+    each window is scored against every dialect and the axes are the expensive part.
+    """
     axes = {}
     for axis in sorted(HARD_AXES):
         band = bands["axes"][axis]["band"]
@@ -69,21 +72,27 @@ def _score(tokens: list, bands: dict) -> dict:
 
 
 def build() -> dict:
-    bands = vms_bands()
     hard = sorted(HARD_AXES)
     dialects, windows = {}, []
     for d in DIALECTS:
+        own = vms_bands(d)
         toks = _vms_tokens(d)
         starts = _windows(toks, N_TOKENS, STEP)
         scored = []
         for s in starts:
-            w = _score(toks[s : s + N_TOKENS], bands)
-            w |= {"dialect": d, "start": s}
+            vals = axis_values(toks[s : s + N_TOKENS])
+            w = _score(vals, own)
+            # Also score against every OTHER dialect's bands: the cross-dialect cell is
+            # what makes the stratification worth having (or not).
+            w |= {"dialect": d, "start": s,
+                  "vs_other": {o: _score(vals, vms_bands(o))["hard_axes_in_band"]
+                               for o in DIALECTS if o != d}}
             windows.append(w)
             scored.append(w)
         dialects[d] = {
             "tokens": len(toks),
             "n_windows": len(scored),
+            "scored_against": f"Currier {d} bands (its own)",
             "per_axis_in_band": {
                 a: sum(1 for w in scored if w["axes"][a]["in_band"]) for a in hard
             },
@@ -91,6 +100,10 @@ def build() -> dict:
                                           default=None),
             "worst_hard_axes_in_band": min((w["hard_axes_in_band"] for w in scored),
                                            default=None),
+            "vs_other_best": {
+                o: max((w["vs_other"][o] for w in scored), default=None)
+                for o in DIALECTS if o != d
+            },
         }
 
     tokens_by_dialect = {d: dialects[d]["tokens"] for d in DIALECTS}
@@ -100,25 +113,29 @@ def build() -> dict:
             "script": "ms408.experiments.e34_band_dialect_scope",
             "git_commit": git_commit(),
             "built_at": datetime.now(UTC).isoformat(timespec="seconds"),
-            "purpose": "Diagnostic for the E32 band-scope defect: the shipped bands are "
-                       "labelled Currier A+B but the A+B concatenation truncated at "
-                       "N_TOKENS contains only A.",
-            "band_provenance": bands["meta"],
+            "purpose": "Coverage check on the per-dialect reference bands (D21): does "
+                       "each dialect's band set, built from that dialect's first "
+                       f"{N_TOKENS} paragraph tokens, actually cover the REST of the same "
+                       "dialect? And how far off is the other dialect? Originally written "
+                       "to demonstrate the pre-D21 defect, where a single band set "
+                       "labelled 'A+B' contained only A.",
+            "band_provenance": vms_bands()["meta"],
             "n_tokens": N_TOKENS,
             "step": STEP,
             "hard_axes": hard,
-            "caveat": "Windows overlap; per-dialect counts describe coverage, not "
-                      "independent samples. No decipherment or meaning claim (L7).",
-        },
-        "band_sample_composition": {
-            "expression": '_sub(_vms_tokens("A") + _vms_tokens("B"), N_TOKENS)',
-            "tokens_by_dialect": tokens_by_dialect,
-            "b_share_of_corpus": round(tokens_by_dialect["B"] / total, 4),
-            "sample_is_pure_a": _vms_tokens("A")[:N_TOKENS]
-            == (_vms_tokens("A") + _vms_tokens("B"))[:N_TOKENS],
-            "b_tokens_in_band_sample": max(0, N_TOKENS - tokens_by_dialect["A"]),
+            "caveat": "Windows overlap and each dialect's own bands were built from its "
+                      "first window, so 'own-band' coverage is not an out-of-sample test "
+                      "for that first window. Counts describe coverage, not independent "
+                      "samples. No decipherment or meaning claim (L7).",
         },
         "dialects": dialects,
+        "corpus": {
+            "tokens_by_dialect": tokens_by_dialect,
+            "b_share_of_corpus": round(tokens_by_dialect["B"] / total, 4),
+            "prefix_share_of_dialect": {
+                d: round(min(1.0, N_TOKENS / tokens_by_dialect[d]), 4) for d in DIALECTS
+            },
+        },
         "windows": windows,
     }
 
@@ -134,10 +151,15 @@ def run() -> dict:
 
 if __name__ == "__main__":
     art = run()
-    comp = art["band_sample_composition"]
-    print(f"band sample is pure Currier A: {comp['sample_is_pure_a']} "
-          f"(B tokens reaching the bands: {comp['b_tokens_in_band_sample']})")
+    c = art["corpus"]
+    print(f"corpus tokens by dialect: {c['tokens_by_dialect']} "
+          f"(B is {c['b_share_of_corpus']:.0%} of the manuscript); each dialect's bands "
+          f"are built from its first {N_TOKENS}, i.e. "
+          + ", ".join(f"{d} {s:.0%}" for d, s in c["prefix_share_of_dialect"].items()))
+    n_hard = len(art["meta"]["hard_axes"])
     for d, s in art["dialects"].items():
         per = ", ".join(f"{a} {n}/{s['n_windows']}" for a, n in s["per_axis_in_band"].items())
-        print(f"  Currier {d}: {s['tokens']:>6} tokens, {s['n_windows']:>2} windows — {per}"
-              f" | best {s['best_hard_axes_in_band']}/{len(art['meta']['hard_axes'])}")
+        other = ", ".join(f"vs {o} best {v}/{n_hard}" for o, v in s["vs_other_best"].items())
+        print(f"  Currier {d}: {s['n_windows']:>2} windows vs its OWN bands — {per}"
+              f" | best {s['best_hard_axes_in_band']}/{n_hard}, worst "
+              f"{s['worst_hard_axes_in_band']}/{n_hard} | {other}")

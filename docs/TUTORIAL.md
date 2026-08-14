@@ -35,15 +35,28 @@ Or in Python:
 from ms408 import evaluate
 
 verdict = evaluate(open("my_tokens.txt").read().split())
-print(verdict["hard_axes_in_band"], "of", verdict["hard_axes_total"], "hard axes match")
-for axis, r in verdict["axes"].items():
-    print(f"{axis:12} value={r['value']!s:>9}  band={r['band']}  in={r['in_band']}")
-    # r["caveat"] carries the honest hedge; r["soft"] / r["confounded"] / r["token_sensitive"]
+
+# The bands are stratified by Currier dialect: you get one block per dialect.
+for dialect, block in verdict["dialects"].items():
+    print(f"Currier {dialect}: {block['hard_axes_in_band']} of "
+          f"{block['hard_axes_total']} hard axes match")
+    for axis, r in block["axes"].items():
+        print(f"  {axis:12} value={r['value']!s:>9}  band={r['band']}  in={r['in_band']}")
+        # r["caveat"] carries the honest hedge; r["soft"] / r["confounded"] /
+        # r["token_sensitive"] say how much weight the axis can bear
+
+print(verdict["best_match"])            # e.g. {"dialect": "A", ...}
+verdict_b = evaluate(tokens, dialect="B")   # or scope to one dialect
 ```
 
-> **Match the token budget.** The bands are built at ~10,000 tokens. `h2`, `ed1`, `zipf` are
-> fairly budget-robust, but `ttr` is intrinsically token-count-sensitive, so compare at a
-> similar budget. See how `examples/evaluate_naibbe.py` takes a matched block sample.
+> **Say which dialect.** Currier A and B are different generative regimes — each sits
+> outside the other's hard bands on every axis, and B is 68% of the manuscript. "Matches
+> the Voynich manuscript" is not a claim this tool can produce; "matches Currier A at 2/2
+> hard axes" is.
+
+> **Match the token budget.** The bands are built at ~10,000 tokens. `h2` and `ed1` are
+> fairly budget-robust, but `ttr` and `zipf` are token-count-sensitive — which is why
+> neither is banded or counted (D23) — so compare at a similar budget. See how `examples/evaluate_naibbe.py` takes a matched block sample.
 
 ## 3. Read the verdict honestly
 
@@ -51,10 +64,10 @@ The verdict groups axes by how much weight they can bear:
 
 | kind | axes | how to read an in-band result |
 |---|---|---|
-| **hard** | `h2`, `ed1`, `zipf` | Real evidence. These are counted in `hard_axes_in_band`. |
+| **hard** | `h2`, `ed1` | Real evidence. These are counted in `hard_axes_in_band`. |
 | **confounded** | `dI`, `*_global` | Weak. `dI` collapses under homophony/respacing (E29) — an in-band `dI` is *not* "intact word order". Not counted. |
-| **soft** | `fc_z_local`, `wc_z_local`, ... | Weak. The manuscript's own CI for these crosses zero. Reported, not counted. |
-| **advisory** | `ttr` | Token-count-sensitive; no band, not counted. |
+| **soft** | `fc_z_local`, `wc_z_local`, ... | Weak. Currier A's own CI for these crosses zero (in B, three of the four do not). Reported, not counted. |
+| **advisory** | `ttr`, `zipf` | Token-count-sensitive; no band, not counted. |
 
 Two verdicts that look similar but aren't:
 
@@ -65,7 +78,7 @@ Two verdicts that look similar but aren't:
 - **Zero hard axes in band.** Usually your hypothesis is genuinely off. But check *which*
   axes failed and whether any were confounded before you conclude "excluded" — see §4.
 
-## 4. The cautionary tale: a real cipher scoring 0/3
+## 4. The cautionary tale: a real cipher scoring zero
 
 Run the worked example (needs the Naibbe data from `acquire`):
 
@@ -74,7 +87,8 @@ python examples/evaluate_naibbe.py
 ```
 
 Greshko's Naibbe cipher (2025) — a genuine, decipherable verbose-homophonic cipher — scores
-**0/3 hard**. The naive read is "0/3 → the manuscript isn't this cipher". That read is wrong,
+**0 hard axes, against both dialects**. The naive read is "0 → the manuscript isn't this
+cipher". That read is wrong,
 and it is exactly the mistake the tool is built to prevent:
 
 - The `dI` axis has collapsed to ~0, but `dI` is **confounded**: most of the collapse is

@@ -10,9 +10,10 @@ Run:
     python -m ms408.acquire                 # fetch pinned Naibbe data (consume-only, L19)
     python examples/evaluate_naibbe.py
 
-What you'll see: the published ciphertext lands 0/3 on the hard axes (its morphology
-network `ed1` is far denser than the manuscript's, and its word-order information `dI` has
-collapsed). The naive read is "0/3 → excluded." That read is WRONG, and E29 is why:
+What you'll see: the published ciphertext lands 0 of the hard axes, against BOTH Currier
+dialects (its morphology network `ed1` is far denser than the manuscript's, and its
+word-order information `dI` has collapsed). The naive read is "0 → excluded." That read is
+WRONG, and E29 is why:
   * `dI` is a confounded axis. The collapse is mostly Greshko's *respacing*, applied to the
     plaintext BEFORE the cipher — the word-boundary Latin `dI` sits inside the VMS band. An
     out-of-band `dI` here is an artifact, not evidence.
@@ -81,7 +82,9 @@ def main() -> int:
 
     print("\n" + "=" * 74)
     print("READING THIS HONESTLY (see docs/LIMITS.md, reports/e29_naibbe_discriminators.md):")
-    print("- 0/3 hard is NOT 'cipher excluded'. dI is a CONFOUNDED axis; its collapse here is")
+    best = verdict["best_match"]
+    print(f"- {best['hard_axes_in_band']}/{best['hard_axes_total']} hard (best of any "
+          f"dialect) is NOT 'cipher excluded'. dI is a CONFOUNDED axis; its collapse is")
     print("  mostly Greshko's respacing of the plaintext, applied before the cipher.")
     d = _e29_decomposition()
     if d and d.get("dI_decomposition"):
