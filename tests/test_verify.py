@@ -23,33 +23,68 @@ needs_naibbe = pytest.mark.skipif(
     reason="acquire the Naibbe example data first",
 )
 
-# The committed reference-band artifact, frozen. Rebuild + `verify --full` if you change it.
+# The committed reference-band artifact, frozen — one block per Currier dialect (D21).
+# Rebuild + `verify --full` if you change it. Currier A's numbers are unchanged from the
+# pre-D21 pooled artifact, because that "A+B" sample was in fact A[:10000].
 PINNED_POINT = {
-    "tokens": 10000, "types": 3292, "h2": 2.1822, "dI": 0.1634, "ed1": 0.7509,
-    "zipf": -1.0486, "ttr": 0.3292, "mz_peak_scale": 333,
-    "fc_z_local": -1.54, "wc_z_local": 1.97, "fc_z_global": -1.19, "wc_z_global": 1.98,
+    "A": {
+        "tokens": 10000, "types": 3292, "h2": 2.1822, "dI": 0.1634, "ed1": 0.7509,
+        "zipf": -1.0486, "ttr": 0.3292, "mz_peak_scale": 333,
+        "fc_z_local": -1.54, "wc_z_local": 1.97, "fc_z_global": -1.19, "wc_z_global": 1.98,
+    },
+    "B": {
+        "tokens": 10000, "types": 2470, "h2": 1.961, "dI": 0.1993, "ed1": 0.7725,
+        "zipf": -1.2151, "ttr": 0.247, "mz_peak_scale": 277,
+        "fc_z_local": -3.7, "wc_z_local": 1.59, "fc_z_global": -4.83, "wc_z_global": 2.92,
+    },
 }
+# zipf and ttr are advisory (token-count-sensitive, D23): band is null in both dialects.
 PINNED_BANDS = {
-    "h2": [2.1595, 2.1972], "dI": [0.1435, 0.178], "ed1": [0.7374, 0.7619],
-    "zipf": [-1.0673, -1.0358], "ttr": None,
-    "fc_z_local": [-4.51, 0.72], "wc_z_local": [-1.23, 2.56],
-    "fc_z_global": [-4.65, 0.43], "wc_z_global": [-1.07, 2.93],
+    "A": {
+        "h2": [2.1595, 2.1972], "dI": [0.1435, 0.178], "ed1": [0.7374, 0.7619],
+        "zipf": None, "ttr": None,
+        "fc_z_local": [-4.51, 0.72], "wc_z_local": [-1.23, 2.56],
+        "fc_z_global": [-4.65, 0.43], "wc_z_global": [-1.07, 2.93],
+    },
+    "B": {
+        "h2": [1.9259, 1.996], "dI": [0.1815, 0.2122], "ed1": [0.754, 0.7878],
+        "zipf": None, "ttr": None,
+        "fc_z_local": [-3.87, -0.66], "wc_z_local": [-0.04, 4.13],
+        "fc_z_global": [-5.74, -1.22], "wc_z_global": [0.29, 3.63],
+    },
 }
 
 
 def test_shipped_bands_are_pinned():
-    """Freeze the exact numbers the tool reports (no corpus needed)."""
+    """Freeze the exact numbers the tool reports, per dialect (no corpus needed)."""
     bands = vms_bands()
-    assert bands["vms_point"] == PINNED_POINT
-    assert {a: s["band"] for a, s in bands["axes"].items()} == PINNED_BANDS
+    assert set(bands["dialects"]) == set(PINNED_POINT)
+    for dialect, spec in bands["dialects"].items():
+        assert spec["vms_point"] == PINNED_POINT[dialect], dialect
+        assert {a: s["band"] for a, s in spec["axes"].items()} == PINNED_BANDS[dialect]
 
 
 def test_shipped_bands_self_consistent():
-    """Each hard band contains the VMS point (a miscalibrated artifact would fail)."""
-    bands = vms_bands()
-    for axis in HARD_AXES:
-        lo, hi = bands["axes"][axis]["band"]
-        assert lo <= bands["vms_point"][axis] <= hi
+    """Each dialect's hard bands contain its own point (a miscalibrated set would fail).
+
+    This is the check that caught D23: with bands built per dialect, Currier B's zipf
+    point fell outside B's own zipf band, which is why zipf is now advisory.
+    """
+    for dialect, spec in vms_bands()["dialects"].items():
+        for axis in HARD_AXES:
+            lo, hi = spec["axes"][axis]["band"]
+            assert lo <= spec["vms_point"][axis] <= hi, f"{dialect}.{axis}"
+
+
+def test_advisory_axes_are_unbanded_in_every_dialect():
+    """ttr and zipf must ship unbanded: their subsample CI is biased off the point (D23)."""
+    for dialect, spec in vms_bands()["dialects"].items():
+        for axis in ("ttr", "zipf"):
+            entry = spec["axes"][axis]
+            assert entry["band"] is None, f"{dialect}.{axis}"
+            assert entry["token_sensitive"] is True
+            # the measured bias is carried so the demotion is auditable, not asserted
+            assert "subsample_bias" in entry
 
 
 @needs_data
@@ -76,6 +111,8 @@ def test_naibbe_example_headline_is_stable():
 
     ciphertext = path_for("naibbe_nathist_ciphertext").read_text().split()
     v = evaluate(mod._matched_sample(ciphertext))
-    assert v["hard_axes_in_band"] == 0
-    assert v["axes"]["dI"]["in_band"] is False
-    assert v["axes"]["ed1"]["in_band"] is False
+    assert v["best_match"]["hard_axes_in_band"] == 0
+    for dialect, block in v["dialects"].items():
+        assert block["hard_axes_in_band"] == 0, dialect
+        assert block["axes"]["dI"]["in_band"] is False
+        assert block["axes"]["ed1"]["in_band"] is False

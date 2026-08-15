@@ -57,7 +57,13 @@ AXES = {
           "homophony and under re-spacing alone (E29) — a homophony/type-token detector, "
           "not a clean word-order measure. In-band here is weak evidence.",
     "ed1": "Edit-distance-1 morphology main-component share.",
-    "zipf": "Zipf rank-frequency slope.",
+    "zipf": "Zipf rank-frequency slope, least-squares over ranks [10, 1000] (or to the "
+            "last type if there are fewer). ADVISORY: token-count-sensitive. That fixed "
+            "rank window runs into the count-saturated tail on smaller samples — at 7,500 "
+            "tokens the ranks near 1000 are mostly frequency-1, which flattens the fit — "
+            "so a resampled band is biased off the full-sample point (D23; the bias is "
+            "13x larger in Currier B, whose slope is steeper, than in A). Not banded and "
+            "not counted. Only compare at a similar token budget to the VMS reference.",
     "ttr": "Type-token ratio. ADVISORY: intrinsically token-count-sensitive (fewer tokens "
            "-> higher TTR), so it is not banded and not counted. Only compare at a similar "
            "token budget to the VMS reference (see band_provenance.vms_full_point).",
@@ -73,7 +79,11 @@ AXES = {
 }
 SOFT_AXES = frozenset({"fc_z_local", "wc_z_local", "fc_z_global", "wc_z_global"})
 CONFOUNDED_AXES = frozenset({"dI", "fc_z_global", "wc_z_global"})
-TOKEN_SENSITIVE_AXES = frozenset({"ttr"})
+# zipf joined ttr here at D23: per-dialect bands (D21) revealed that its 75%-block
+# subsample CI is biased off the full-sample point — enough that Currier B's point fell
+# outside B's own band. Same class of defect as ttr, and the same existing policy applies:
+# advisory, unbanded, uncounted. This dropped the hard tally from 3 axes to 2.
+TOKEN_SENSITIVE_AXES = frozenset({"ttr", "zipf"})
 # Hard axes (counted): everything not soft, not confounded, not token-sensitive.
 HARD_AXES = frozenset(AXES) - SOFT_AXES - CONFOUNDED_AXES - TOKEN_SENSITIVE_AXES
 
@@ -149,11 +159,17 @@ def axis_values(tokens: list, seed: int = SEED) -> dict:
     }
 
 
-def vms_bands() -> dict:
+def vms_bands(dialect: str | None = None) -> dict:
     """Load the committed VMS reference-band artifact (built by the e32 script).
 
-    Raises with a clear instruction rather than fabricating a band if it is absent —
-    the firewall applies to the tool as much as to the research.
+    With no argument, returns the whole artifact: `{"schema", "meta", "dialects": {...}}`.
+    With a dialect ("A" / "B"), returns just that dialect's block — `{"vms_point", "axes",
+    ...}` — which is the shape callers usually want.
+
+    Bands are stratified by Currier dialect (D21, L8): A and B are different generative
+    regimes, so there is no single "the manuscript" band set. Raises with a clear
+    instruction rather than fabricating a band if the artifact is absent — the firewall
+    applies to the tool as much as to the research.
     """
     try:
         raw = resources.files("ms408.data").joinpath("reference_bands.json").read_text()
@@ -163,19 +179,20 @@ def vms_bands() -> dict:
             "    python -m ms408.experiments.e32_reference_bands\n"
             "(needs the acquired VMS transliteration; run `python -m ms408.acquire` first)."
         ) from exc
-    return json.loads(raw)
+    bands = json.loads(raw)
+    if dialect is None:
+        return bands
+    try:
+        return bands["dialects"][dialect]
+    except KeyError:
+        raise ValueError(
+            f"unknown Currier dialect {dialect!r}; the artifact carries "
+            f"{sorted(bands['dialects'])}"
+        ) from None
 
 
-def evaluate(tokens: list, seed: int = SEED) -> dict:
-    """Evaluate a token stream against the VMS discriminator bands.
-
-    Returns a verdict dict: per-axis value / band / in_band with the axis caveat attached,
-    a hard-axis and soft-axis match count, and top-level notes. The caveats travel with the
-    verdict by construction, so it cannot be quoted without its hedges.
-    """
-    av = axis_values(tokens, seed)
-    bands = vms_bands()
-    band_axes = bands["axes"]
+def _score(av: dict, band_axes: dict) -> dict:
+    """Score precomputed axis values against ONE dialect's bands."""
     out_axes: dict = {}
     hard_in = hard_n = 0
     for axis, caveat in AXES.items():
@@ -201,15 +218,56 @@ def evaluate(tokens: list, seed: int = SEED) -> dict:
         if axis in HARD_AXES and in_band is not None:
             hard_n += 1
             hard_in += int(in_band)
+    return {
+        "axes": out_axes,
+        "hard_axes_in_band": hard_in,
+        "hard_axes_total": hard_n,
+        "soft_axes_in_band": sum(1 for a in SOFT_AXES if out_axes[a]["in_band"]),
+        "soft_axes_total": len(SOFT_AXES),
+    }
 
-    soft_in = sum(
-        1 for a in SOFT_AXES if out_axes[a]["in_band"]
+
+def evaluate(tokens: list, seed: int = SEED, dialect: str | None = None) -> dict:
+    """Evaluate a token stream against the VMS discriminator bands, per Currier dialect.
+
+    Returns a verdict dict with one scored block per dialect under `verdict["dialects"]`
+    — each carrying per-axis value / band / in_band with the axis caveat attached, plus
+    that dialect's hard and soft tallies — and top-level notes. The caveats travel with
+    the verdict by construction, so it cannot be quoted without its hedges.
+
+    Bands are dialect-stratified (D21, L8) because Currier A and B are different
+    generative regimes: a stream that matches A typically misses B and vice versa, and
+    the manuscript itself does not sit in one pooled envelope. Passing `dialect="A"`
+    scores against that dialect alone; the default scores against every dialect and
+    reports `best_match`, rather than silently privileging one.
+    """
+    av = axis_values(tokens, seed)
+    bands = vms_bands()
+    wanted = list(bands["dialects"]) if dialect is None else [dialect]
+    scored = {}
+    for d in wanted:
+        if d not in bands["dialects"]:
+            raise ValueError(
+                f"unknown Currier dialect {d!r}; the artifact carries "
+                f"{sorted(bands['dialects'])}"
+            )
+        spec = bands["dialects"][d]
+        scored[d] = _score(av, spec["axes"]) | {"vms_dataset": spec["vms_dataset"]}
+
+    best = max(scored, key=lambda d: (scored[d]["hard_axes_in_band"], d))
+    tally = ", ".join(
+        f"{d} {s['hard_axes_in_band']}/{s['hard_axes_total']}" for d, s in scored.items()
     )
     notes = [
         "Matching the VMS on these axes is NECESSARY, not sufficient: it means your "
         "hypothesis is not excluded, NOT that it is the manuscript's mechanism (L7).",
-        "Hard-axis count excludes the confounded (dI, *_global) and soft (*_local) axes. "
-        "A soft axis in-band is weak evidence — its VMS-side CI crosses zero.",
+        f"Bands are per Currier dialect (L8): {tally}. In-band for ONE dialect is not "
+        "in-band for the manuscript — A and B are different regimes, and roughly 68% of "
+        "the manuscript is B. Always report which dialect you matched.",
+        "Hard-axis count excludes the confounded (dI, *_global), the soft (*_local), and "
+        "the token-sensitive advisory axes (ttr, zipf — see D23). A soft axis in-band is "
+        "weak evidence: all four cross zero on the VMS side in Currier A, though not all "
+        "of them do in B.",
         "dI is homophony/respacing-confounded (E29); do not read an in-band dI as intact "
         "word order.",
         f"Reference bands: {bands['meta']['method']} (built at commit "
@@ -222,34 +280,46 @@ def evaluate(tokens: list, seed: int = SEED) -> dict:
             f"comparable to the bands. Evaluate near {REFERENCE_TOKENS} tokens where possible."
         ))
     return {
-        "axes": out_axes,
-        "hard_axes_in_band": hard_in,
-        "hard_axes_total": hard_n,
-        "soft_axes_in_band": soft_in,
-        "soft_axes_total": len(SOFT_AXES),
+        "axis_values": av,
+        "dialects": scored,
+        "best_match": {
+            "dialect": best,
+            "hard_axes_in_band": scored[best]["hard_axes_in_band"],
+            "hard_axes_total": scored[best]["hard_axes_total"],
+        },
         "band_provenance": bands["meta"],
         "notes": notes,
     }
 
 
 def format_verdict(verdict: dict) -> str:
-    """Human-readable table of an evaluate() verdict (used by the CLI)."""
-    lines = ["axis          value      VMS band                  in-band  flags",
-             "-" * 74]
-    for axis, e in verdict["axes"].items():
-        band = e["band"]
-        btxt = f"[{band[0]:>8.3f}, {band[1]:>8.3f}]" if band else "        (no band)      "
-        val = "   n/a  " if e["value"] is None else f"{e['value']:>8.3f}"
-        ib = "  ?  " if e["in_band"] is None else ("  ✓  " if e["in_band"] else "  ✗  ")
-        flags = ",".join(f for f, on in (
-            ("soft", e["soft"]), ("confounded", e["confounded"]),
-            ("advisory", e.get("token_sensitive")),
-        ) if on)
-        lines.append(f"{axis:<13} {val}  {btxt}   {ib}   {flags}")
-    lines.append("-" * 74)
+    """Human-readable tables of an evaluate() verdict — one per Currier dialect."""
+    lines = []
+    for dialect, block in verdict["dialects"].items():
+        lines.append(f"=== Currier {dialect} — {block['vms_dataset']} ===")
+        lines.append("axis          value      VMS band                  in-band  flags")
+        lines.append("-" * 74)
+        for axis, e in block["axes"].items():
+            band = e["band"]
+            btxt = (f"[{band[0]:>8.3f}, {band[1]:>8.3f}]" if band
+                    else "        (no band)      ")
+            val = "   n/a  " if e["value"] is None else f"{e['value']:>8.3f}"
+            ib = "  ?  " if e["in_band"] is None else ("  ✓  " if e["in_band"] else "  ✗  ")
+            flags = ",".join(f for f, on in (
+                ("soft", e["soft"]), ("confounded", e["confounded"]),
+                ("advisory", e.get("token_sensitive")),
+            ) if on)
+            lines.append(f"{axis:<13} {val}  {btxt}   {ib}   {flags}")
+        lines.append("-" * 74)
+        lines.append(
+            f"hard axes in band: {block['hard_axes_in_band']}/{block['hard_axes_total']}   "
+            f"soft axes in band: {block['soft_axes_in_band']}/{block['soft_axes_total']}"
+        )
+        lines.append("")
+    best = verdict["best_match"]
     lines.append(
-        f"hard axes in band: {verdict['hard_axes_in_band']}/{verdict['hard_axes_total']}   "
-        f"soft axes in band: {verdict['soft_axes_in_band']}/{verdict['soft_axes_total']}"
+        f"best match: Currier {best['dialect']} at "
+        f"{best['hard_axes_in_band']}/{best['hard_axes_total']} hard axes"
     )
     lines.append("")
     for n in verdict["notes"]:

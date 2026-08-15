@@ -78,24 +78,38 @@ cat my_tokens.txt | python -m ms408 -  # tokens from stdin
 from ms408 import evaluate
 
 verdict = evaluate(open("my_cipher_output.txt").read().split())
-print(verdict["hard_axes_in_band"], "of", verdict["hard_axes_total"], "hard axes match")
-for axis, r in verdict["axes"].items():
-    flag = " [soft]" if r["soft"] else (" [confounded]" if r["confounded"] else "")
-    print(f"{axis:12} {r['value']}  band={r['band']}  in={r['in_band']}{flag}")
-    # r["caveat"] carries the honest hedge for that axis
+
+# Bands are stratified by Currier dialect — there is no pooled "the manuscript" band set.
+for dialect, block in verdict["dialects"].items():
+    print(f"Currier {dialect}: {block['hard_axes_in_band']} of "
+          f"{block['hard_axes_total']} hard axes match")
+    for axis, r in block["axes"].items():
+        flag = " [soft]" if r["soft"] else (" [confounded]" if r["confounded"] else "")
+        print(f"  {axis:12} {r['value']}  band={r['band']}  in={r['in_band']}{flag}")
+        # r["caveat"] carries the honest hedge for that axis
+
+print(verdict["best_match"])          # the dialect you matched most closely
+# evaluate(tokens, dialect="B") scopes the verdict to one dialect.
 ```
 
-Each axis reports its value, the manuscript's reference band, and whether you land in it —
-**with the caveat attached** (the homophony-confounded `dI`, the token-sensitive `ttr`, the
-soft mid-level syntax z's whose VMS-side CI crosses zero). The `hard_axes` count deliberately
-excludes the confounded and soft axes, so the tool cannot be quoted without its hedges.
+Each axis reports its value, that dialect's reference band, and whether you land in it —
+**with the caveat attached** (the homophony-confounded `dI`, the token-sensitive advisory
+`ttr` and `zipf`, the soft mid-level syntax z's). The `hard_axes` count deliberately excludes
+the confounded, soft, and advisory axes, so the tool cannot be quoted without its hedges.
 
-Sanity check the discrimination yourself: the manuscript lands in all of its own hard bands,
-and raw Latin prose (high character entropy, no morphology network) lands in none —
-`tests/test_signature.py` pins both.
+**Dialect matters more than anything else here.** Currier A and B are different generative
+regimes: each one's own signature sits *outside* the other's hard bands on every axis, and B
+is 68% of the manuscript. In-band for one dialect is not in-band for the manuscript — always
+say which. See [`docs/LIMITS.md`](docs/LIMITS.md) for how well each dialect's bands cover the
+rest of that dialect (B's do so poorly on `ed1`).
+
+Sanity check the discrimination yourself: each dialect lands in all of its own hard bands,
+misses the other's, and raw Latin prose (high character entropy, no morphology network)
+lands in none of either — `tests/test_signature.py` pins all three.
 
 **Worked example — a real cipher.** [`examples/evaluate_naibbe.py`](examples/evaluate_naibbe.py)
-runs Greshko's Naibbe cipher (2025) through the evaluator. It lands 0/3 on the hard axes — and
+runs Greshko's Naibbe cipher (2025) through the evaluator. It lands 0 hard axes against both
+dialects — and
 the example explains why that is *not* exclusion (the `dI` collapse is a respacing artifact on
 a confounded axis; verbose+homophonic ciphers are inconclusive, not excluded). It is the
 sharpest demonstration of the tool's discipline.

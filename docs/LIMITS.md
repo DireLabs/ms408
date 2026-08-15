@@ -15,34 +15,53 @@ reference bands are built at **10,000 tokens**; below ~8,000 the axes (especiall
 token-sensitive `ttr`, and the confidence intervals) are not strictly comparable, and the
 verdict carries a `LOW TOKEN BUDGET` note. Evaluate near 10,000 tokens where you can.
 
-## Dialect scope: the bands are Currier **A**, not A+B
+## Dialect: there is no single "the manuscript" band set
 
-The reference bands are built by concatenating the Currier A and B paragraph token streams
-and truncating to the 10,000-token budget. Currier A alone supplies 10,709 tokens, so the
-truncation never reaches B — **the shipped bands contain zero Currier B tokens**, while B
-is 22,864 tokens, 68% of the manuscript. The artifact was labelled "Currier A+B" until this
-was caught in external review; the label now reads "Currier A ONLY".
+**The bands are stratified by Currier dialect** (D21). `evaluate()` scores your stream
+against Currier A and Currier B separately and reports both; `evaluate(tokens,
+dialect="B")` scopes to one. There is no pooled band set, because pooling the two is not
+meaningful: A and B are different generative regimes, and each one's point sits outside the
+other's hard bands on every axis.
 
-The consequence is measurable and large (`ms408.experiments.e34_band_dialect_scope`, sliding
-matched-budget windows at 1,000-token strides):
+This replaced a single band set labelled "Currier A+B" that in fact contained only A — the
+A and B streams were concatenated and truncated at the 10,000-token budget, and A alone
+supplies 10,709 tokens, so no B token ever reached it. Currier B, 22,864 tokens and 68% of
+the manuscript, then scored 0–1 of 3 hard axes against "the manuscript's" own bands.
 
-| dialect | windows | `h2` in band | `ed1` in band | `zipf` in band | best hard tally |
-|---|---|---|---|---|---|
-| Currier A | 2 | 2/2 | 2/2 | 2/2 | 3/3 |
-| Currier B | 14 | 0/14 | 0/14 | 4/14 | 1/3 |
+**What this means when you read a verdict.** In-band for one dialect is *not* in-band for
+the manuscript. Always report which dialect you matched. A generator tuned to A's low-ish
+entropy is not thereby a model of the majority of the text.
 
-**So: genuine Voynichese drawn from the majority dialect fails these bands**, and does so
-about as decisively as Latin does. Read an out-of-band verdict as "unlike Currier A" — not
-as "unlike the Voynich manuscript." This is not band *tightness*: under the builder's own
-75% block subsample the manuscript stays in band, which is what a 95% CI should do. It is
-scope. That A and B differ substantially is one of this program's own grade-A findings, and
-the analyses stratify by dialect (binding rule L8) — the public evaluator is the one
-artifact that did not.
+### How representative each dialect's bands are
 
-Whether to ship per-dialect bands, rebuild from a dialect-balanced sample, or leave the
-bands A-scoped and documented is an **open decision** (`D21` in
-`docs/planning/i01/DECISIONS.md`). Until it is settled the bands are unchanged, because
-changing them changes every shipped number.
+Each dialect's bands are built from the **first 10,000 paragraph tokens of that dialect in
+page order** — the same rule for both, so the two sets are like-for-like. That is 93% of
+Currier A but only 44% of Currier B. `ms408.experiments.e34_band_dialect_scope` slides
+matched-budget windows at 1,000-token strides and scores each against its own dialect's
+bands:
+
+| dialect | windows | `h2` in own band | `ed1` in own band | best | worst | best vs *other* dialect |
+|---|---|---|---|---|---|---|
+| Currier A | 2 | 2/2 | 2/2 | 2/2 | 2/2 | 1/2 |
+| Currier B | 14 | 9/14 | 2/14 | 2/2 | 0/2 | 0/2 |
+
+Two things to take from this, in order of importance:
+
+1. **Currier B's bands generalise poorly to the rest of Currier B**, especially on `ed1`
+   (2 of 14 windows). B's later folios differ from its earlier ones by more than the band
+   width. Treat a B verdict as calibrated against *early* B, and an out-of-band B result as
+   correspondingly weak evidence. A's bands do not have this problem, but A is also 93%
+   covered by its own sample, so that is close to a tautology rather than a strong result.
+2. **The dialects genuinely separate.** No B window reaches even 1 of 2 hard axes against
+   A's bands. Stratifying is showing structure, not manufacturing it.
+
+The windows overlap, and each dialect's first window *is* its band sample, so these counts
+describe coverage — they are not independent samples and not a significance test.
+
+Whether to rebuild B's bands from a spread sample rather than a page-order prefix is an
+open follow-up (`D24`); it is left alone for now because choosing a sampling scheme
+*because* it improves a coverage statistic is the kind of post-hoc tuning L35 exists to
+prevent.
 
 ## The single manuscript (n = 1)
 
@@ -56,12 +75,22 @@ frequentist confidence statement about a population.
 | axis | status | what it does and does not support |
 |---|---|---|
 | `h2` | **hard** | Conditional character entropy. Robust and substitution-invariant. A genuine anomaly of the manuscript; among the strongest axes. |
-| `ed1` | **hard** | Edit-distance-1 morphology main-component share. Robust; captures the tight morphological network. |
-| `zipf` | **hard** | Zipf slope. Reasonably sample-stable; mild finite-sample sensitivity. |
+| `ed1` | **hard** | Edit-distance-1 morphology main-component share. Robust; captures the tight morphological network. But see the dialect section: it is the axis on which Currier B's bands generalise worst within B. |
+| `zipf` | **advisory** (was hard, until D23) | Zipf slope, least-squares over ranks [10, 1000] (or to the last type if fewer). **Token-count-sensitive**, so not banded and not counted. The fixed rank window runs into the count-saturated tail on smaller samples — at 7,500 tokens the ranks near 1000 are mostly frequency-1, which flattens the fit — so the subsample CI is biased off the full-sample point. Measured bias: −0.005 in Currier A (small enough to hide inside a 0.032-wide CI) but **+0.059 in Currier B against a 0.025-wide CI**, which put B's own point outside B's own band. Only compare at a similar token budget. |
 | `dI` | **confounded** | Montemurro–Zanette word-order information. **Collapses under homophony alone and under re-spacing alone** (E29) — it is a homophony / type-token-coupling detector, not a clean word-order measure. An in-band `dI` is weak evidence; never read it as "intact word order." Not counted in the hard tally. |
 | `ttr` | **advisory** | Type-token ratio. Intrinsically token-count-sensitive (fewer tokens → higher TTR). Not banded and not counted; only compare at a token budget close to the VMS reference. |
 | `fc_z_local`, `wc_z_local` | **soft** | Mid-level syntax (function/content collocation gap; adjacent word-class NMI) vs a *within-block* null that removes topic-drift confound (E31). **Soft: the VMS's own subsample CI crosses zero.** An in-band soft axis is weak evidence. |
 | `fc_z_global`, `wc_z_global` | **soft + confounded** | Same measures vs a *global* order-shuffle null. Additionally **confounded by section/topic vocabulary drift** (E22): a block-wrapper control with no grammar can reproduce them. Reported for transparency and to expose the drift share against the local versions. |
+
+**"Soft" is a property of Currier A, not of the manuscript.** All four syntax bands cross
+zero in A. In **B** three of them do not: `fc_z_local` is [−3.87, −0.66], `fc_z_global` is
+[−5.74, −1.22], and `wc_z_global` is [0.29, 3.63] — all entirely off zero. This became
+visible only when the bands were split by dialect (D21); the pooled artifact was A, so
+"the syntax axes are soft" was really "the syntax axes are soft in A." The axes are still
+flagged soft everywhere, because the flag is a floor on how much weight to put on them and
+because **this observation has not been through adversarial review** (L10) — it is
+recorded here as an artifact-level description, deliberately ungraded, and is raised as
+`D25` for a proper look. Do not cite it as a finding about Currier B's syntax.
 
 **The honest partition on the cipher question.** Word-order-*preserving* ciphers of a real
 language are robustly separable from the VMS on the deconfounded syntax axes; a
