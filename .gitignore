@@ -13,7 +13,29 @@ data/processed/h4/*.txt
 .env
 results/annotations/*.jsonl
 results/synthesis/*.json
+
+# Per-experiment results (D22). Excluded by default, then allow-listed file by file —
+# NOT un-ignored wholesale. The blanket exclusion was correct L19 practice for anything
+# carrying third-party corpus text, but it also caught derived metric JSONs that carry
+# none, so 18 shipped reports cited files an outside reader could not open.
+#
+# Nothing goes on the allow-list until `python scripts/audit_results_tier.py` returns
+# METRICS_ONLY for it: no running corpus text, no redistributed vocabulary slice (a JSON
+# keyed by VMS word type is still a slice of someone else's transliteration).
+# tests/test_results_tier.py re-runs that audit over every allow-listed file in CI, so a
+# regenerated file that starts embedding text fails the build instead of shipping.
 results/experiments/*.json
+!results/experiments/e17_ab_contrast.json
+!results/experiments/e18_corpus_completeness.json
+!results/experiments/e1_meaning_detector.json
+!results/experiments/e23_reuse_generator.json
+!results/experiments/e24_typelevel_lexicon.json
+!results/experiments/e25_decoupled_ed1.json
+!results/experiments/e26_length_variance.json
+!results/experiments/e28_angular_anchor.json
+!results/experiments/e29_naibbe_discriminators.json
+!results/experiments/e32_reference_bands.json
+!results/experiments/e34_band_dialect_scope.json
 
 # LaTeX build artifacts — keep .tex/.bib source; PDFs are built on demand
 # (make_arxiv_bundle.sh) or hosted on the site, not committed.

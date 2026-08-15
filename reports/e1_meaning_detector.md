@@ -1,6 +1,6 @@
 # E1 — Is Montemurro-Zanette DI a meaning detector?
 
-Generated 2026-07-07T21:30:35+00:00 at commit `bb465830a3` by `python -m ms408.experiments.e1_meaning_detector`. Full numbers in `results/experiments/e1_meaning_detector.json`.
+Generated 2026-08-14T06:55:25+00:00 at commit `4800a23cbe` by `python -m ms408.experiments.e1_meaning_detector`. Full numbers in `results/experiments/e1_meaning_detector.json`.
 
 **Design.** Reorder the VMS's own 34,111 tokens meaninglessly (each word type clustered around a random centre). Character entropy and Zipf are unchanged by construction (verified: True); only word ORDER changes. Question: does reproducing the VMS DI require meaning?
 

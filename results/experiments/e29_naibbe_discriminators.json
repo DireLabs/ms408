@@ -1,0 +1,165 @@
+{
+  "built_at": "2026-08-14T07:04:04+00:00",
+  "git_commit": "351193cbfae86ac0db95305d200da842fef963fa",
+  "experiment": "E29 \u2014 Naibbe cipher against the i06 discriminators",
+  "source": "Greshko, Cryptologia 2025; ciphertext github.com/greshko/naibbe-cipher (nathist = Pliny Natural History, respaced Latin). Consume-only (L19).",
+  "seed": 408,
+  "n_tokens": 10000,
+  "k_blocks": 5,
+  "naibbe_full_tokens": 34764,
+  "vms_band": {
+    "h2": [
+      2.1133,
+      2.1999
+    ],
+    "mz_peak_value": [
+      0.0735,
+      0.2057
+    ],
+    "ed1_main_component": [
+      0.7393,
+      0.766
+    ],
+    "type_token_ratio": [
+      0.1634,
+      0.2961
+    ],
+    "zipf_slope": [
+      -0.9656,
+      -0.8036
+    ],
+    "mean_word_length": [
+      4.917,
+      5.127
+    ],
+    "fc_z": [
+      -4.71,
+      -1.24
+    ],
+    "wc_z": [
+      1.9,
+      2.64
+    ]
+  },
+  "naibbe_full_text": {
+    "h2": 2.0797,
+    "mz_peak_value": 0.0035,
+    "mz_peak_scale": 3476,
+    "ed1_main_component": 0.9302
+  },
+  "naibbe_median": {
+    "h2": 2.0792,
+    "mz_peak_value": 0.0049,
+    "ed1_main_component": 0.9116,
+    "type_token_ratio": 0.2998,
+    "zipf_slope": -0.8918,
+    "mean_word_length": 5.226,
+    "fc_z": -0.39,
+    "wc_z": -0.64
+  },
+  "naibbe_range": {
+    "h2": [
+      2.074,
+      2.0813
+    ],
+    "mz_peak_value": [
+      0.0016,
+      0.0083
+    ],
+    "ed1_main_component": [
+      0.9013,
+      0.9158
+    ],
+    "type_token_ratio": [
+      0.298,
+      0.3042
+    ],
+    "zipf_slope": [
+      -0.8966,
+      -0.8873
+    ],
+    "mean_word_length": [
+      5.223,
+      5.252
+    ],
+    "fc_z": [
+      -2.01,
+      0.79
+    ],
+    "wc_z": [
+      -1.65,
+      1.39
+    ]
+  },
+  "axis_in_vms_band": {
+    "h2": false,
+    "mz_peak_value": false,
+    "ed1_main_component": false,
+    "type_token_ratio": false,
+    "zipf_slope": true,
+    "mean_word_length": false,
+    "fc_z": false,
+    "wc_z": false
+  },
+  "n_axes_in_band": 1,
+  "dI_shuffle_floor": 0.011,
+  "dI_collapsed": true,
+  "weak_syntax": true,
+  "reproduces_vms_joint_signature": false,
+  "vms_dI_band_floor": 0.0735,
+  "dI_decomposition": {
+    "word_boundary_latin": {
+      "dI": 0.0758,
+      "scale": 770,
+      "in_vms_band": true
+    },
+    "respaced_fragments_pre_cipher": {
+      "dI": 0.0176,
+      "scale": 827
+    },
+    "ciphertext": {
+      "dI": 0.0049
+    }
+  },
+  "respacing_share_of_dI_loss": 0.821,
+  "homophony_sweep_order_fixed": [
+    {
+      "homophones_per_type": 1,
+      "dI": 0.0758,
+      "scale": 770
+    },
+    {
+      "homophones_per_type": 2,
+      "dI": 0.0448,
+      "scale": 770
+    },
+    {
+      "homophones_per_type": 4,
+      "dI": 0.0305,
+      "scale": 770
+    },
+    {
+      "homophones_per_type": 8,
+      "dI": 0.0174,
+      "scale": 660
+    },
+    {
+      "homophones_per_type": 16,
+      "dI": 0.0105,
+      "scale": 660
+    },
+    {
+      "homophones_per_type": 18,
+      "dI": 0.0093,
+      "scale": 4621
+    },
+    {
+      "homophones_per_type": 32,
+      "dI": 0.0049,
+      "scale": 660
+    }
+  ],
+  "dI_confounded_by_homophony": true,
+  "grade": "C",
+  "verdict": "THE NAIBBE \u0394I TEST IS UNINFORMATIVE \u2014 i06 is NOT confirmed, and the analysis EXPOSES A CONFOUND IN i06's \u0394I LEG (refutation-corrected from a first-pass 'CONFIRMED [B]'). First-pass reasoning: Naibbe's \u0394I collapses to 0.0049 (full-text 0.0035) vs the VMS band [0.0735, 0.2057], so 'no cipher reproduces retained \u0394I' looked confirmed. Two controls kill that reading. (1) DECOMPOSITION across Greshko's pipeline: word-boundary Latin (Pliny) \u0394I=0.0758 is IN the VMS band (True); the RESPACING into non-word fragments drops it to 0.0176 \u2014 i.e. ~0.821 of the total \u0394I loss happens BEFORE the cipher runs \u2014 and the homophonic encryption only accounts for the small remainder. The collapse is dominated by a SPACING CONVENTION, not by ciphering. (2) HOMOPHONY SWEEP with word order AND boundaries FIXED: \u0394I falls monotonically with homophones/type anyway (H=1 0.0758 in-band \u2192 H=32 0.0049 below floor), so \u0394I is a homophony / type-token-coupling detector, NOT a clean word-order measure. CONSEQUENCES: (a) faulting Naibbe for low \u0394I is circular \u2014 real Latin with word boundaries is already IN the VMS band, and Greshko's respacing (not the cipher) removes it; (b) the VMS's own retained \u0394I is BLOCK/section structure (our i06/E1/E2), so comparing it to Naibbe's token-level \u0394I on an unsectioned stream is not like-for-like; (c) a LOW-homophony or word-boundary-preserving cipher of real prose would sit in the VMS \u0394I band. NET: i06's \u0394I leg does NOT robustly separate the VMS from ciphers of real prose \u2014 the exclusion leans more heavily on the SOFT fc_z/wc_z measures than i06/paper v3\u2013v5b state, and must be walked back accordingly. On our battery Naibbe still matches only 1/8 tight bands, but that is a different, weaker claim than 'i06 confirmed'. REQUIRED FOLLOW-UP before any external engagement: encrypt word-boundary Latin (order-preserving) and re-test; measure the glyph-level properties Greshko actually claims. Naibbe ciphertext (Greshko 2025, 34764 tokens of respaced-Latin Pliny), 5\u00d710000-token blocks, vs the VMS bands. Signature: h2 2.0792 (VMS [2.1133, 2.1999]), \u0394I 0.0049 (full-text 0.0035@3476; VMS [0.0735, 0.2057]), ED1 0.9116 (VMS [0.7393, 0.766]), Zipf -0.8918 (VMS [-0.9656, -0.8036]), TTR 0.2998, len 5.226, fc_z -0.39, wc_z -0.64 (VMS wc_z [1.9, 2.64]). 1/8 axes in the VMS band. (Statistical; no decipherment \u2014 L7.)"
+}

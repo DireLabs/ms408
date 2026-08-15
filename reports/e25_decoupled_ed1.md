@@ -1,6 +1,6 @@
 # E25 — Decoupled-ED1 type-lexicon generator (multi-seed)
 
-Generated 2026-07-17T00:47:04+00:00 at commit `11a5414ab4` by `python -m ms408.experiments.e25_decoupled_ed1`. Numbers in `results/experiments/e25_decoupled_ed1.json`.
+Generated 2026-08-14T07:02:24+00:00 at commit `351193cbfa` by `python -m ms408.experiments.e25_decoupled_ed1`. Numbers in `results/experiments/e25_decoupled_ed1.json`.
 
 A-priori grid 48 × 6 seeds. Scoring: generator-side CI (min..max over K seeds) overlaps VMS bootstrap band.
 

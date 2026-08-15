@@ -1,0 +1,224 @@
+{
+  "built_at": "2026-08-14T07:03:36+00:00",
+  "git_commit": "351193cbfae86ac0db95305d200da842fef963fa",
+  "experiment": "E28 \u2014 angular/ordinal anchor in the zodiac rings",
+  "seed": 408,
+  "n_perm": 999,
+  "min_labels": 10,
+  "n_rings_tested": 12,
+  "ring_langs": [],
+  "ring_hands": [
+    "4"
+  ],
+  "per_ring": [
+    {
+      "page": "f70v2",
+      "lang": null,
+      "hand": "4",
+      "n": 29,
+      "mantel": {
+        "r": 0.0352,
+        "p": 0.174,
+        "n": 29
+      },
+      "length_ac": {
+        "ac1": 0.146,
+        "p": 0.181
+      }
+    },
+    {
+      "page": "f70v1",
+      "lang": null,
+      "hand": "4",
+      "n": 15,
+      "mantel": {
+        "r": -0.1031,
+        "p": 0.881,
+        "n": 15
+      },
+      "length_ac": {
+        "ac1": 0.0278,
+        "p": 0.367
+      }
+    },
+    {
+      "page": "f71r",
+      "lang": null,
+      "hand": "4",
+      "n": 15,
+      "mantel": {
+        "r": -0.1564,
+        "p": 0.975,
+        "n": 15
+      },
+      "length_ac": {
+        "ac1": 0.2162,
+        "p": 0.13
+      }
+    },
+    {
+      "page": "f71v",
+      "lang": null,
+      "hand": "4",
+      "n": 15,
+      "mantel": {
+        "r": 0.1534,
+        "p": 0.05,
+        "n": 15
+      },
+      "length_ac": {
+        "ac1": 0.0894,
+        "p": 0.257
+      }
+    },
+    {
+      "page": "f72r1",
+      "lang": null,
+      "hand": "4",
+      "n": 15,
+      "mantel": {
+        "r": -0.1878,
+        "p": 0.992,
+        "n": 15
+      },
+      "length_ac": {
+        "ac1": -0.0044,
+        "p": 0.387
+      }
+    },
+    {
+      "page": "f72r2",
+      "lang": null,
+      "hand": "4",
+      "n": 29,
+      "mantel": {
+        "r": 0.0133,
+        "p": 0.379,
+        "n": 29
+      },
+      "length_ac": {
+        "ac1": -0.147,
+        "p": 0.733
+      }
+    },
+    {
+      "page": "f72r3",
+      "lang": null,
+      "hand": "4",
+      "n": 30,
+      "mantel": {
+        "r": 0.0464,
+        "p": 0.149,
+        "n": 30
+      },
+      "length_ac": {
+        "ac1": 0.1729,
+        "p": 0.124
+      }
+    },
+    {
+      "page": "f72v3",
+      "lang": null,
+      "hand": "4",
+      "n": 30,
+      "mantel": {
+        "r": 0.0404,
+        "p": 0.174,
+        "n": 30
+      },
+      "length_ac": {
+        "ac1": -0.097,
+        "p": 0.666
+      }
+    },
+    {
+      "page": "f72v2",
+      "lang": null,
+      "hand": "4",
+      "n": 30,
+      "mantel": {
+        "r": 0.0468,
+        "p": 0.139,
+        "n": 30
+      },
+      "length_ac": {
+        "ac1": 0.0602,
+        "p": 0.279
+      }
+    },
+    {
+      "page": "f72v1",
+      "lang": null,
+      "hand": "4",
+      "n": 30,
+      "mantel": {
+        "r": 0.0516,
+        "p": 0.076,
+        "n": 30
+      },
+      "length_ac": {
+        "ac1": 0.0106,
+        "p": 0.369
+      }
+    },
+    {
+      "page": "f73r",
+      "lang": null,
+      "hand": "4",
+      "n": 30,
+      "mantel": {
+        "r": 0.2404,
+        "p": 0.001,
+        "n": 30
+      },
+      "length_ac": {
+        "ac1": -0.2416,
+        "p": 0.881
+      }
+    },
+    {
+      "page": "f73v",
+      "lang": null,
+      "hand": "4",
+      "n": 30,
+      "mantel": {
+        "r": 0.0092,
+        "p": 0.344,
+        "n": 30
+      },
+      "length_ac": {
+        "ac1": -0.1055,
+        "p": 0.67
+      }
+    }
+  ],
+  "mantel_combined": {
+    "chi2": 44.105,
+    "df": 24,
+    "p_combined": 0.00742
+  },
+  "length_ac_combined": {
+    "chi2": 25.33,
+    "df": 24,
+    "p_combined": 0.388
+  },
+  "n_rings_mantel_p_below_0.05": 1,
+  "robustness": {
+    "lowest_p_ring": "f73r",
+    "lowest_p": 0.001,
+    "combined_p_dropping_lowest_ring": 0.1116,
+    "driven_by_single_ring": true,
+    "n_rings_positive_r": 9
+  },
+  "positive_control": {
+    "mantel": {
+      "r": 0.2402,
+      "p": 0.001,
+      "n": 30
+    },
+    "detects_ordered_values": true
+  },
+  "anchor_signal": false,
+  "grade": "D",
+  "verdict": "NO ROBUST ANCHOR \u2014 the register hypothesis STAYS D (clean graded negative). The positive control confirms the test detects ordinal structure when present, yet across the 12 rings there is no CONSISTENT angular-ordinal signal. The Fisher-combined Mantel p (0.00742) is driven by a SINGLE ring (f73r, p=0.001): dropping it, the combined p is 0.1116 (n.s.); only 1/12 rings are individually p<0.05, with mixed sign (9/12 positive r), and the length-autocorrelation is null (0.388). Since all 12 rings are the SAME diagram type, a genuine value-encoding of the labels would appear across them, not in one \u2014 so the lone f73r hit reads as a chance fluctuation (a footnote-worthy idiosyncrasy at most, not an anchor). Combined with E27 (positional-numeral shape excluded), the symbols-as-values direction finds NO support in the manuscript's most number-like folios \u2014 the astronomical rings. i10 closes here unless a materially different anchor is proposed; the standing constraints remain the i06 cipher exclusion and the character/morphology structure. (No value/number claim \u2014 L7.) 12 zodiac rings (langs [], hands ['4']), 999 permutations. Mantel (angular-distance vs label-edit-distance) combined p=0.00742 (1/12 rings individually p<0.05); length-autocorrelation combined p=0.388. Positive control (ordered integers on a ring): Mantel r=0.2402 p=0.001 \u2014 DETECTS ordered values (test is sensitive)."
+}

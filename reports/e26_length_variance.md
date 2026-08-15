@@ -1,6 +1,6 @@
 # E26 — Word-length variance vs the h2↔ED1 frontier
 
-Generated 2026-07-17T02:49:14+00:00 at commit `8f6d3514ea` by `python -m ms408.experiments.e26_length_variance`. Numbers in `results/experiments/e26_length_variance.json`.
+Generated 2026-08-14T07:03:35+00:00 at commit `351193cbfa` by `python -m ms408.experiments.e26_length_variance`. Numbers in `results/experiments/e26_length_variance.json`.
 
 A-priori grid 48 × 5 seeds. multi-seed generator-side CI (min..max over K seeds) vs VMS band; all 6 profile axes counted (word length now varies); fc_z/wc_z soft, not counted.
 

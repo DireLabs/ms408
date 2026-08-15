@@ -1,0 +1,38 @@
+{
+  "built_at": "2026-08-14T06:55:12+00:00",
+  "git_commit": "4800a23cbeb5cbfa3f7afa43c63a27714b6d3bbb",
+  "experiment": "E18 \u2014 corpus completeness (missing folios + vocabulary growth)",
+  "foliation": {
+    "pages_sides_present": 207,
+    "folios_present": 102,
+    "range": "f1-f116",
+    "missing_folio_numbers_in_range": [
+      12,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      74,
+      91,
+      92,
+      97,
+      98,
+      109,
+      110
+    ],
+    "n_missing_in_range": 14,
+    "surviving_fraction_of_foliated_range": 0.879,
+    "note": "lower bound on loss; end (f116) is present so range is anchored; cannot detect folios lost before/after the foliation"
+  },
+  "vocabulary_growth": {
+    "total_tokens": 34111,
+    "total_types": 7424,
+    "type_token_ratio": 0.218,
+    "heaps_beta": 0.73,
+    "mean_new_type_fraction_first_quartile": 0.401,
+    "mean_new_type_fraction_last_quartile": 0.2,
+    "interpretation": "beta~0.73 and ~20% new types/page even in the last quartile => NOT lexically saturating => the ~12% missing folios likely held substantial unseen vocabulary; the high vocabulary richness + incompleteness compound the sparsity that limits lexical/anchor statistics"
+  }
+}

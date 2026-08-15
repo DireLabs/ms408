@@ -4,25 +4,41 @@
 this file (and DECISIONS.md when relevant). Keep entries terse; this is how Code sessions, Cowork
 sessions, and Tim stay synchronized.
 
-_Last updated: 2026-08-10 (Code session — external-review follow-ups)_
+_Last updated: 2026-08-14 (Code session — external-review follow-ups)_
 
 ## Current: external review follow-ups (post-OSS-release)
 
 An independent, AI-assisted external review of the released site/preprints/repo/package
-returned five findings (`follow-ups/`). The review reproduced the headline statistics from
-an independently written IVTFF parser and matched them; `acquire` verified all 15 pinned
-checksums and `verify --full` rebuilt every shipped band.
+returned five findings (`follow-ups/`), plus three items it flagged but declined to file.
+The review reproduced the headline statistics from an independently written IVTFF parser
+and matched them; `acquire` verified all 15 pinned checksums and `verify --full` rebuilt
+every shipped band. Every finding was reproduced here before being acted on.
 
-| # | Finding | State |
+**All of it is on branches as PRs #1–#8, stacked in review order; none is merged.**
+
+| # | Finding | State | PR |
+|---|---|---|---|
+| 3 | `test_real_latin_is_excluded` fails on a clean checkout (guarded on the wrong corpus) | ✅ fixed | #1 |
+| 4 | Degenerate token streams crash `evaluate()` (`round(None)`) | ✅ fixed | #2 |
+| 5 | `acquire()` fails outside a checkout (`RAW_ROOT` resolves into site-packages) | ✅ fixed | #3 |
+| 1 | Reference bands are Currier-A-only but were labelled "A+B" | ✅ **D21 → L38.** Interim label fix + E34 diagnostic (#4), then per-dialect bands (#5) | #4, #5 |
+| 2 | `results/experiments/*.json` gitignored — cited numbers don't dereference | ✅ **D22 → L40.** Audited allow-list + CI guard; 11 files ship | #8 |
+| — | Site's "41 self-corrections" (~3x the papers' "over a dozen") | ✅ **D26 interim.** Site now leads with 27 and states all three counting units | #7 |
+| — | h2 slice/convention conflation; unstated Zipf rank window | ✅ fixed — both were live errors, not just missing prose | #6 |
+
+**Decisions raised by doing the work** — all awaiting Tim, none resolved in-session:
+
+| ID | What | Why it is open |
 |---|---|---|
-| 3 | `test_real_latin_is_excluded` fails on a clean checkout (guarded on the wrong corpus) | ✅ applied |
-| 4 | Degenerate token streams crash `evaluate()` (`round(None)`) | ✅ applied |
-| 5 | `acquire()` fails outside a checkout (`RAW_ROOT` resolves into site-packages) | ✅ applied |
-| 1 | Reference bands are Currier-A-only but were labelled "A+B" | ⚠️ **D21 open — Tim.** Interim: label corrected, `docs/LIMITS.md` §Dialect scope added, E34 diagnostic written. Bands unchanged. |
-| 2 | `results/experiments/*.json` gitignored — cited numbers don't dereference in the release | ⚠️ **D22 open — Tim.** No interim action; release-policy + L19 call. |
+| L39 | `zipf` demoted hard → advisory; **hard tally is now /2, not /3** | Decided by Tim. Found by D21: B's own zipf point fell outside B's own band. |
+| D24 | Rebuild Currier B's bands from a spread sample? | B's bands cover B poorly (`ed1` 2/14 windows). Retuning the sample to fix a coverage statistic is the Type-C forking path L35 forbids. |
+| D25 | "Soft axes" is a property of Currier A, not the manuscript | Three of B's four syntax bands sit entirely off zero. Ungraded and unreviewed; needs L10 before it is cited. Bears on i05 and L37. |
+| D26 | Canonical self-correction count across site + papers | Editorial; the conclusion-level count needs a by-hand mapping only Tim should sign off. |
+| D27 | **25 of 36 experiments cannot be regenerated from a clean checkout** | 22 blocked on unpinnable H4 corpora (L19 call), 3 on the gitignored annotation JSONL. Caps what D22 could ship and weakens "reproducible in principle". |
 
-Firewall status after the three applied fixes: every shipped band and point byte-identical
-(`verify --full` OK); the only change to `reference_bands.json` is metadata.
+Firewall status: `verify --full` passes at every commit. Currier A's bands and point are
+byte-identical to the pre-review artifact; the 11 shipped experiment JSONs regenerated
+byte-identically apart from their provenance headers.
 
 
 ## Gates

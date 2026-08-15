@@ -1,6 +1,6 @@
 # E23 — Positional + reuse generator: genericity sweep
 
-Generated 2026-07-15T09:14:48+00:00 at commit `8b96e27340` by `python -m ms408.experiments.e23_reuse_generator`. Numbers in `results/experiments/e23_reuse_generator.json`.
+Generated 2026-08-14T06:58:40+00:00 at commit `4800a23cbe` by `python -m ms408.experiments.e23_reuse_generator`. Numbers in `results/experiments/e23_reuse_generator.json`.
 
 A-priori grid: 104 configs, ranges {'rho': [0.0, 0.2, 0.4, 0.6, 0.8], 'variant': ['local_w50', 'local_w200', 'global'], 'branching': [4, 5, 6, 7], 'boost': [6.0, 16.0], 'zipf_exp': 0.8, 'block_len': 400, 'note': 'fixed a-priori; a sweep, not a fitted point'}.
 

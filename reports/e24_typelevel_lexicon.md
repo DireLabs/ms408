@@ -1,6 +1,6 @@
 # E24 — Type-level small-lexicon generator
 
-Generated 2026-07-15T23:45:42+00:00 at commit `d2e399e800` by `python -m ms408.experiments.e24_typelevel_lexicon`. Numbers in `results/experiments/e24_typelevel_lexicon.json`.
+Generated 2026-08-14T07:00:46+00:00 at commit `4800a23cbe` by `python -m ms408.experiments.e24_typelevel_lexicon`. Numbers in `results/experiments/e24_typelevel_lexicon.json`.
 
 A-priori grid: 144 configs, ranges {'lex_size': [500, 1500, 3000, 6000], 'branching': [5, 6, 7], 'word_zipf': [0.8, 1.0, 1.2], 'boost': [2.0, 4.0, 8.0, 16.0], 'block_len': 400, 'note': 'a-priori sweep, not a fitted point'}.
 
