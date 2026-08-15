@@ -6,10 +6,18 @@ import raw from '../../data/timeline.json';
 
 // sort ascending by date (nulls last), stable
 const entries = [...raw].sort((a, b) => (a.date ?? '9999').localeCompare(b.date ?? '9999'));
-const nSelf = entries.filter((e) => e.self_correction).length;
+const flagged = entries.filter((e) => e.self_correction);
+const nSelf = flagged.length;
+// The flag sits at MIXED granularity: an experiment that was corrected carries it, and so
+// do the iteration that contains it and the paper version that shipped the change. Counting
+// flagged entries therefore counts one episode several times. Report the atomic level —
+// experiments and standalone retractions — separately from the rollups, so nobody reads
+// the entry count as "N distinct overturned conclusions". See docs/planning D26.
+const nEpisodes = flagged.filter((e) => e.kind === 'experiment' || e.kind === 'retraction').length;
+const nRollups = nSelf - nEpisodes;
 const filters = [
   { key: 'all', label: 'Everything' },
-  { key: 'self', label: `Self-corrections (${nSelf})` },
+  { key: 'self', label: `Self-correction entries (${nSelf})` },
   { key: 'experiment', label: 'Experiments' },
   { key: 'iteration', label: 'Iterations' },
   { key: 'milestone', label: 'Milestones' },
@@ -26,8 +34,17 @@ const fmt = (d) => d ? d : '—';
     <h1>Research timeline</h1>
     <p class="lede">
       Every iteration, experiment, gate, and milestone — and, most tellingly, the
-      <strong>{nSelf} self-corrections</strong> where the refutation pass overturned the
+      <strong>{nEpisodes} corrections</strong> where the refutation pass overturned the
       program's own conclusions before they stood. The honest record <em>is</em> the method.
+    </p>
+    <p class="lede-note">
+      Counting note: {nEpisodes} is the number of <em>experiments and retractions</em> that
+      were corrected. The self-correction filter below shows {nSelf} entries, because the
+      iteration and paper-version rollups that carried each correction are marked too — so
+      one episode can appear several times. The preprints count corrected
+      <em>conclusions</em>, which is coarser still than experiments, and report “over a
+      dozen”. Three different units, three different numbers; none of them is a headline on
+      its own.
     </p>
   </section>
 
