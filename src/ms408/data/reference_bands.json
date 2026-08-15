@@ -1,9 +1,14 @@
 {
   "meta": {
     "script": "ms408.experiments.e32_reference_bands",
-    "git_commit": "d166fbb5d7808621a8fb3da400eba9e65b26fd90",
-    "built_at": "2026-07-18T00:48:27+00:00",
-    "vms_dataset": "ZL EVA transliteration, Currier A+B, matched token budget",
+    "git_commit": "b7f9e18af1974807d42d3d29b66b369211a644d3",
+    "built_at": "2026-08-10T20:12:47+00:00",
+    "vms_dataset": "ZL EVA transliteration, Currier A ONLY, matched token budget",
+    "dialect_scope": {
+      "scope": "Currier A",
+      "note": "The A+B concatenation is truncated at the matched token budget, and Currier A alone exceeds it \u2014 so no Currier B token reaches these bands, though B is 68% of the manuscript. A stream from B scores 0-1 of 3 hard axes (E34). Scope is an open decision (D21); see docs/LIMITS.md.",
+      "evidence": "ms408.experiments.e34_band_dialect_scope"
+    },
     "n_tokens": 10000,
     "seed": 408,
     "block": 250,

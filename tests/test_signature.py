@@ -84,6 +84,17 @@ def test_reference_bands_shape():
     assert bands["axes"]["ttr"]["band"] is None
 
 
+def test_reference_bands_declare_their_dialect_scope():
+    """The artifact must not claim a dialect it wasn't built from (D21, docs/LIMITS.md).
+
+    It was labelled 'Currier A+B' while the A+B concatenation, truncated at the token
+    budget, contains only A. Re-pin this if D21 is resolved by rebuilding the bands.
+    """
+    meta = vms_bands()["meta"]
+    assert meta["dialect_scope"]["scope"] == "Currier A"
+    assert "A+B" not in meta["vms_dataset"]
+
+
 def test_evaluate_contract_and_caveats():
     v = evaluate(_toy())
     # every axis carries its caveat and correct flags
