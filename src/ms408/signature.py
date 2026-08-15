@@ -139,7 +139,7 @@ def axis_values(tokens: list, seed: int = SEED) -> dict:
         "h2": round(p["h2"], 4),
         "dI": round(p["mz_peak_value"], 4),
         "ed1": round(p["ed1_main_component"], 4),
-        "zipf": round(p["zipf_slope"], 4),
+        "zipf": None if p["zipf_slope"] is None else round(p["zipf_slope"], 4),
         "ttr": round(p["type_token_ratio"], 4),
         "mz_peak_scale": p["mz_peak_scale"],
         "fc_z_local": _fc_z(tokens, _loc, seed),
