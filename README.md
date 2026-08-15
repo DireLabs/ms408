@@ -148,6 +148,11 @@ sha256-checksummed sources into gitignored `data/raw/` under a consume-only poli
 registry (`src/ms408/sources.py`) records each source's licence. If you use the Naibbe
 example data, cite Greshko 2025 (doi:10.1080/01611194.2025.2566408) per its source licence.
 
+Acquired and derived data land under the repo's `data/` when you run from a checkout. From a
+`pip install` there is no checkout, so they land in `$XDG_DATA_HOME/ms408` (default
+`~/.local/share/ms408`). Set `MS408_DATA_HOME` to override either case — useful for CI and
+shared caches.
+
 Code is licensed under **Apache-2.0** (see [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE)).
 Companion preprints: the constraint-envelope paper (`paper/v6b/`) and the methods paper on
 adversarial self-correction (`paper/methods/v3/`).

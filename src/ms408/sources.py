@@ -10,6 +10,7 @@ on re-download means the source moved: re-verify, then re-pin deliberately.
 
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -143,7 +144,31 @@ SOURCES: dict[str, Source] = {
     ]
 }
 
-RAW_ROOT = Path(__file__).resolve().parents[2] / "data" / "raw"
+
+def data_home() -> Path:
+    """Root under which acquired (`raw/`) and derived (`processed/`) data live.
+
+    In a repo checkout this is the repo's own `data/`, so the layout documented in
+    CLAUDE.md is unchanged. Installed from a wheel there is no repo, and the old
+    `parents[2]` walk landed inside site-packages' parent (an unwritable directory on
+    most installs), so `python -m ms408.acquire` — the second command in the README
+    quickstart — failed with PermissionError. Resolution order:
+
+      1. $MS408_DATA_HOME, if set (explicit override, useful for CI and shared caches);
+      2. the repo's `data/`, when running from a source checkout;
+      3. $XDG_DATA_HOME/ms408 (default ~/.local/share/ms408) otherwise.
+    """
+    if env := os.environ.get("MS408_DATA_HOME"):
+        return Path(env).expanduser().resolve()
+    repo_root = Path(__file__).resolve().parents[2]
+    if (repo_root / "pyproject.toml").is_file():
+        return repo_root / "data"
+    xdg = os.environ.get("XDG_DATA_HOME") or Path.home() / ".local" / "share"
+    return Path(xdg).expanduser().resolve() / "ms408"
+
+
+DATA_HOME = data_home()
+RAW_ROOT = DATA_HOME / "raw"
 
 
 def path_for(name: str) -> Path:
