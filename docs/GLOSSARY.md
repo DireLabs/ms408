@@ -30,8 +30,21 @@ Where a term names a computed quantity, the "computed in" note points at the cod
 ## The discriminator axes (what `evaluate()` reports)
 
 - **h2** — conditional (second-order) character entropy: how predictable the next character is
-  given the previous one. The manuscript's is anomalously *low* (~2.08) vs natural language
-  (~3.1–3.9). A "hard" axis. Computed in `textstats.lb_entropies` (Lindemann–Bowern).
+  given the previous one. The manuscript's is anomalously *low* vs natural language. A "hard"
+  axis.
+  **Two conventions share the name, and they give different numbers on the same text** —
+  always say which you mean:
+  - *within-word* (`textstats.char_conditional_entropy`): no space, bigrams never cross a word
+    boundary. This is what the harness benchmark and the replication measurements report — the
+    familiar ~2.08 for the manuscript (all words) against ~3.1–3.9 for natural language.
+  - *Lindemann–Bowern* (`textstats.lb_entropies`): the space counts as a character and bigrams
+    span word boundaries. **This is the convention the evaluator bands.** On the same
+    all-pages slice it gives 2.1643, not 2.1247.
+
+  The slice matters as much as the convention: "all words" (every locus type) is not
+  "paragraph tokens only", and neither is a per-dialect or matched-10,000-token sample. The
+  shipped band points are LB, paragraph tokens, 10,000-token budget, per dialect —
+  Currier A 2.1822, Currier B 1.961 (`src/ms408/data/reference_bands.json`).
 - **ΔI (dI) / MZ information** — Montemurro–Zanette word-order information: how much information
   the *order* of words carries at a given scale. **Confounded**: it collapses under homophony
   or respacing alone, so it is a homophony/type-token detector, not a clean word-order axis —
@@ -39,8 +52,14 @@ Where a term names a computed quantity, the "computed in" note points at the cod
 - **ed1 / ED1** — edit-distance-1 morphology: the share of word types connected in a network
   where an edge joins words one character-edit apart. The manuscript has a dense such network
   (~0.75–0.80). A "hard" axis. Computed in `studies/morphology.py`.
-- **Zipf slope** — the slope of the rank–frequency law (log rank vs log frequency). A "hard"
-  axis. Computed in `textstats.zipf_slope`.
+- **Zipf slope** — the slope of the rank–frequency law (log rank vs log frequency), fitted by
+  least squares over a **fixed rank window of [10, 1000]** — or to the last type if there are
+  fewer, and undefined (`None`) below 20 types. State the window whenever you quote a slope:
+  it is not scale-free, and a different window gives a different number.
+  **Advisory** since D23 — it was a "hard" axis until per-dialect bands showed its resampled
+  CI is biased off the full-sample point, because at smaller token counts the ranks near 1000
+  are mostly frequency-1 and the saturated tail flattens the fit. Not banded, not counted.
+  Computed in `textstats.zipf_slope`.
 - **TTR (type–token ratio)** — vocabulary richness = distinct words ÷ total words. **Advisory**:
   intrinsically sensitive to the token count (fewer tokens → higher TTR), so it is not banded
   and not counted; only compare at a similar token budget.

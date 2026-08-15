@@ -167,7 +167,14 @@ def run() -> dict:
         "policies": {
             "h1_words": "EVA default TextPolicy + drop_uncertain_words; words containing "
             "'@' escapes removed; all locus types included",
-            "entropy_method": "within-word character bigrams (Lindemann-Bowern style)",
+            # NOT Lindemann-Bowern: LB include the space as a character and let bigrams
+            # span word boundaries, which is a different number on the same text (ZL EVA
+            # all pages: within-word 2.1247 vs LB 2.1643). The harness uses within-word
+            # throughout (textstats.char_conditional_entropy); the evaluator's banded h2
+            # axis uses LB (textstats.lb_entropies). Do not compare across the two.
+            "entropy_method": "within-word character bigrams "
+            "(textstats.char_conditional_entropy); NOT the space-inclusive "
+            "Lindemann-Bowern convention used by the evaluator's h2 axis",
             "zipf_fit": "log-log least squares, ranks 10-1000",
             "h2_seed": H2_SEED,
             "h3_seeds": list(H3_SEEDS),

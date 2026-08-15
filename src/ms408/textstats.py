@@ -23,7 +23,18 @@ def char_unigram_entropy(words: list) -> float:
 
 
 def char_conditional_entropy(words: list) -> float:
-    """h2: H(next char | previous char) over word-internal adjacent pairs."""
+    """WITHIN-WORD conditional character entropy: H(next char | previous char) over
+    word-internal adjacent pairs only.
+
+    NOT the same statistic as the `h2` the evaluator bands, and the two are routinely
+    confused because both get called "h2" in the literature. This one excludes the space
+    and never crosses a word boundary; `lb_entropies` (Lindemann & Bowern) includes the
+    space as a character and lets bigrams span boundaries. They give materially different
+    numbers on the same text. Use this one only where the reference statistic being
+    matched is itself within-word (e.g. the Naibbe comparisons); use `lb_entropies` for
+    anything compared against the reference bands or the T1.1 entropy targets. Always say
+    which convention a reported h2 uses.
+    """
     pair_counts: Counter = Counter()
     first_counts: Counter = Counter()
     for w in words:
