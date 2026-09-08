@@ -1,6 +1,6 @@
 [project]
 name = "ms408"
-version = "0.1.0"
+version = "0.2.0"
 description = "A cold, reproducible evaluator and benchmark for Voynich-Manuscript (Beinecke MS 408) hypotheses"
 readme = "README.md"
 requires-python = ">=3.11"
