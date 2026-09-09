@@ -8,6 +8,8 @@ abstract: >-
   the manuscript's statistical discriminator bands, with every axis's caveat attached,
   plus a documented adversarial-refutation protocol.
 type: software
+version: "0.2.0"
+date-released: "2026-08-26"
 authors:
   - family-names: Walsh
     given-names: Tim
