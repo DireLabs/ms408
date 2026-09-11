@@ -6,7 +6,7 @@ changelog is `paper/CHANGELOG.md`. Format loosely follows [Keep a Changelog]; ve
 
 ## [Unreleased]
 
-## [0.2.0] — 2026-08-26
+## [0.2.0] — 2026-09-11
 
 Everything in this release came out of an independent, AI-assisted external review of the
 v0.1.0 release, plus the defects found while acting on it. Decisions are recorded in
