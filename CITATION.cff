@@ -9,7 +9,7 @@ abstract: >-
   plus a documented adversarial-refutation protocol.
 type: software
 version: "0.2.0"
-date-released: "2026-08-26"
+date-released: "2026-09-11"
 authors:
   - family-names: Walsh
     given-names: Tim
